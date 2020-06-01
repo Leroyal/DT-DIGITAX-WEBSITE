@@ -1,0 +1,43 @@
+body{
+	margin:0 auto;
+	padding: 0;
+
+}
+.mat-drawer-container{
+	background: #fff;
+}
+mat-sidenav-container{
+	height: 100%
+}
+mat-sidenav,
+mat-sidenav-content{
+}
+mat-sidenav{
+	width: 300px;
+	background: #212121;
+}
+mat-sidenav.mat-drawer.mat-drawer-push{
+	background: #212121;
+}
+
+.side_nav{
+	height: 100%;
+	background: #212121;
+	float: left;
+	color:#fff;
+	width: 55px;
+	text-align: center;
+	position: fixed;
+	z-index: 1;
+
+}
+.side_nav mat-icon{
+	color: #fff;
+	margin-top: 80px;
+	cursor: pointer;
+}
+.main-content{
+	max-width: 1920px;
+	margin: 0 auto;
+	padding-left: 55px;
+}
