@@ -115,21 +115,6 @@ div{
 	background: #03a9f4;
 	transition: all ease-in-out 0.3s; 
 }
-
-.red_btn{
-	border:2px solid #e53935;
-	border-radius: 8px;
-	color: #e53935;
-	box-shadow: 0 7px 10px 0px rgba(229, 57, 53, 0.44);
-}
-.red_btn:hover{
-	color: #fff;
-	background: #e53935;
-	transition: all ease-in-out 0.3s; 
-}
-.align_right{
-	float: right;
-}
 .dashboard_footer{
 	width: 100%;
 	float: left;
@@ -141,33 +126,4 @@ div{
 .dashboard_footer a{
 	color: #03a9f4;
 	text-decoration: none;
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1270px) {
-	.dashboard_small_box{
-		width: 50%;
-	}
-}
-
-@media only screen and (min-width: 601px) and (max-width: 768px){
-	.dashboard_small_box{
-		width: 50%;
-	}
-}
-
-@media only screen and (max-width: 600px){
-	.dashboard_small_box{
-		width: 100%;
-		padding: 10px 0;
-	}
-	.search_box{
-		width: 100%;
-	}
-	.tax_box{
-		width: 100%;
-		text-align: left;
-	}
-	.dashboard_footer{
-		text-align: center;
-	}
 }

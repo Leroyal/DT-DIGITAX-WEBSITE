@@ -10,6 +10,11 @@ import { MatToolbarModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import {MatGridListModule} from '@angular/material/grid-list';
 
@@ -25,6 +30,14 @@ import { SignupComponent } from './signup/signup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TaxPrepareProfileComponent } from './tax-prepare-profile/tax-prepare-profile.component';
+import { TaxPreparePackageComponent } from './tax-prepare-package/tax-prepare-package.component';
+import { TaxPrepareDocumentComponent } from './tax-prepare-document/tax-prepare-document.component';
+import { TaxPrepareRegisterComponent } from './tax-prepare-register/tax-prepare-register.component';
+import { ResultComponent } from './result/result.component';
+import { SubmissionComponent } from './submission/submission.component';
+import { FaqComponent } from './faq/faq.component';
+import { SurveyComponent } from './survey/survey.component';
 
 
 @NgModule({
@@ -38,7 +51,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SignupComponent,
     ResetPasswordComponent,
     MenuListComponent,
-    DashboardComponent
+    DashboardComponent,
+    TaxPrepareProfileComponent,
+    TaxPreparePackageComponent,
+    TaxPrepareDocumentComponent,
+    TaxPrepareRegisterComponent,
+    ResultComponent,
+    SubmissionComponent,
+    FaqComponent,
+    SurveyComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +73,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
