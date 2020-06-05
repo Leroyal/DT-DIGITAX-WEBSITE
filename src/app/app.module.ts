@@ -38,6 +38,8 @@ import { ResultComponent } from './result/result.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { FaqComponent } from './faq/faq.component';
 import { SurveyComponent } from './survey/survey.component';
+import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
+import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { SurveyComponent } from './survey/survey.component';
     ResultComponent,
     SubmissionComponent,
     FaqComponent,
-    SurveyComponent
+    SurveyComponent,
+    SurveyStepTwoComponent,
+    SurveyStepThreeComponent
   ],
   imports: [
     BrowserModule,

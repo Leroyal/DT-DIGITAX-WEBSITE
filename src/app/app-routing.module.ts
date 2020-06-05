@@ -16,6 +16,8 @@ import { ResultComponent } from './result/result.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { FaqComponent } from './faq/faq.component';
 import { SurveyComponent } from './survey/survey.component';
+import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
+import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
 
 
 const routes: Routes = [
@@ -100,6 +102,16 @@ const routes: Routes = [
 		path: 'survey',
 		pathMatch: 'full',
 		component  : SurveyComponent  
+    },
+    { 
+		path: 'survey-step-two',
+		pathMatch: 'full',
+		component  : SurveyStepTwoComponent  
+    },
+    { 
+		path: 'survey-step-three',
+		pathMatch: 'full',
+		component  : SurveyStepThreeComponent  
     }
 
 ];
