@@ -108,12 +108,21 @@ div{
 	border:2px solid #03a9f4;
 	border-radius: 8px;
 	color: #03a9f4;
+	float: right;
 	box-shadow: 0 7px 11px 0px rgba(3, 169, 244, 0.44);
 }
 .blue_btn:hover{
 	color: #fff;
 	background: #03a9f4;
 	transition: all ease-in-out 0.3s; 
+}
+.back_btn{
+	padding: 0;
+	border: none;
+	background: none;
+	float: left;
+	box-shadow: none;
+	color: #607d8b;
 }
 .dashboard_footer{
 	width: 100%;
@@ -127,7 +136,14 @@ div{
 	color: #03a9f4;
 	text-decoration: none;
 }
-
+.next_step{
+	width: 100%;
+	float: left;
+	padding: 50px 15px;
+}
+.next_step button{
+	
+}
 
 @media only screen and (min-width: 769px) and (max-width: 1270px) {
 	.dashboard_small_box{

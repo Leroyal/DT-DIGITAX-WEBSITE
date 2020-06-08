@@ -62,4 +62,61 @@ body { margin: 0;
 	top:0 !important;
 }
 
+.search_box .mat-form-field-underline{
+	display: none;
+}
+.search_box .mat-form-field-wrapper{
+	padding-bottom: 0
+}
+.search_box .mat-form-field-appearance-fill .mat-form-field-flex{
+	background:none;
+}
+.mat-tab-header{
+	border-bottom: none;
+}
+
+.mat-tab-label-active{
+	background: #fff;
+	border-radius: 8px 8px 0 0;
+	opacity: 1 !important;
+}
+.mat-tab-label{
+	font-size: 12px;
+	font-weight: 600;
+}
+mat-tab-body{
+	background: #fff;
+	border-radius: 0 0 8px 8px;
+	padding: 20px;
+}
+.mat-ink-bar{
+	display: none;
+}
+
+.faq_section .mat-tab-labels{
+	justify-content: center;
+}
+.faq_section .mat-tab-label{
+	border-radius: 8px;
+	border:2px solid #03a9f4;
+	color: #03a9f4;
+	margin:0 5px;
+}
+.faq_section .mat-tab-label-active{
+	color: #fff;
+	background:#03a9f4;
+}
+
+.faq_section .mat-expansion-panel-header{
+	font-weight: 600;
+}
+.faq_section .mat-accordion .mat-expansion-panel:first-of-type,
+.faq_section .mat-accordion .mat-expansion-panel:last-of-type,
+.faq_section .mat-expansion-panel:not([class*=mat-elevation-z]){
+	border-radius: 0;
+	box-shadow: none;
+}
+.faq_section .mat-expansion-panel-spacing{
+	border-left:3px solid #ff4612;
+}
 

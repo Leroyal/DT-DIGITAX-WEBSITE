@@ -13,11 +13,38 @@ mat-sidenav,
 mat-sidenav-content{
 }
 mat-sidenav{
-	width: 300px;
+	width: 250px;
 	background: #212121;
 }
 mat-sidenav.mat-drawer.mat-drawer-push{
-	background: #212121;
+	background: #fff;
+}
+
+.sidenav{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.sidenav li{
+	padding: 5px 0 6px 20px;
+	margin-bottom: 10px;
+}
+.sidenav li.active{
+	position: relative;
+}
+.sidenav li.active:before{
+	content:' ';
+	position: absolute;
+	left:0;
+	top:0;
+	height: 100%;
+	width: 4px;
+	background: #03a9f4;
+}
+.sidenav li a{
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
 }
 
 .side_nav{
