@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 
@@ -40,6 +41,7 @@ import { FaqComponent } from './faq/faq.component';
 import { SurveyComponent } from './survey/survey.component';
 import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
+import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
 
 
 @NgModule({
@@ -63,7 +65,8 @@ import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.
     FaqComponent,
     SurveyComponent,
     SurveyStepTwoComponent,
-    SurveyStepThreeComponent
+    SurveyStepThreeComponent,
+    SurveyFeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

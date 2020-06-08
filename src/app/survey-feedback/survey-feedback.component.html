@@ -1,0 +1,47 @@
+<section class="dashboard_section">
+	<div class="dashboard_head">
+		<div class="search_box">
+			<mat-form-field appearance="fill">
+				<span matPrefix><img src="assets/images/search_icon.png" alt=""></span>
+				<input type="search" matInput placeholder="Search Here">
+			</mat-form-field>
+		</div>
+		<div class="tax_box">
+			<img src="assets/images/tax_documents.png" alt="">
+			your tax returns and documents
+		</div>
+	</div>
+	<div class="dashboard_body">
+		<h2>You did it, Sample Name! <span class="blue_txt">You just e-filed your taxes.</span></h2>
+		<p>you filed on February 25th, 2020 at 07:00 PM.</p>
+		<div class="survey_feedback">
+			<div class="dashboard_small_box_inner">
+				<h2 class="center_text">How likely are you to recommend  <span class="blue_txt">digitax</span> to a friend?</h2>
+				<p>
+					It is a long established fact that a reader will be distracted by the readable content of a page when looking.
+				</p>
+				<p class="mt_50">
+					We'd love to hear your thoughts (optional).
+				</p>
+				<mat-form-field appearance="outline">
+					<textarea matInput
+					placeholder="Write your message" 
+					cdkTextareaAutosize
+					#autosize="cdkTextareaAutosize"
+					cdkAutosizeMinRows="5"
+					cdkAutosizeMaxRows="5"></textarea>
+				</mat-form-field>
+			</div>
+		</div>
+
+		<div class="next_step">
+			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
+			<button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button>
+			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
+		</div>
+	</div>
+</section>
+
+<div class="dashboard_footer">
+	Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+</div>

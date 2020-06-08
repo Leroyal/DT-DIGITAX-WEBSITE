@@ -18,6 +18,7 @@ import { FaqComponent } from './faq/faq.component';
 import { SurveyComponent } from './survey/survey.component';
 import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
+import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
 
 
 const routes: Routes = [
@@ -112,6 +113,11 @@ const routes: Routes = [
 		path: 'survey-step-three',
 		pathMatch: 'full',
 		component  : SurveyStepThreeComponent  
+    },
+    { 
+		path: 'survey-feedback',
+		pathMatch: 'full',
+		component  : SurveyFeedbackComponent  
     }
 
 ];
