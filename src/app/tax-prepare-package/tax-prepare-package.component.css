@@ -1,0 +1,177 @@
+div{
+	box-sizing: border-box;
+}
+.tax_prepare_section{
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	background:#e1e7ed;
+	float: left;
+	box-sizing: border-box;
+}
+.tax_prepare_head{
+	background:#dbe2e9;
+	width: 100%;
+	float: left;
+	padding: 15px;
+}
+.search_box,
+.tax_box{
+	width: 50%;
+	float: left;
+}
+.tax_box{
+	text-align: right;
+	color: #607d8b;
+	font-size: 16px;
+	padding: 12px 0;
+}
+.search_box mat-form-field{
+	width: 100%;
+}
+.search_box .mat-form-field-prefix span img{
+	margin-right: 15px;
+}
+.tax_prepare_body{
+	width: 100%;
+	float: left;
+	padding: 30px;
+}
+.tax_prepare_body p{
+	line-height: 25px;
+}
+.first_p{
+	color: #607d8b;
+	font-size: 16px;
+}
+.second_p{
+	font-size: 20px;
+	font-weight: 600;
+}
+.third_p{
+	color: #607d8b;
+}
+.black_txt{
+	color: #212121;
+}
+.blue_txt{
+	color: #03a9f4;
+}
+
+.table_box{
+	width: 100%;
+	float: left;
+	padding: 30px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0px 4px 10px 6px rgba(0, 0, 0, 0.10);
+}
+.table_box table{
+	width: 100%;
+}
+.table_box table td div{
+	float: left;
+	padding: 5px;
+}
+.table_box table td{
+	padding: 10px;
+}
+.table_box table td div p{
+	margin:0;
+}
+.table_box h2{
+	font-size: 32px;
+	font-weight: 500;
+}
+.white_box{
+	width: 100%;
+	min-height: 325px;
+	float: left;
+	background: #fff;
+	border-radius: 8px;
+	padding: 15px;
+	position: relative;
+	color: #607d8b;
+	font-size: 16px;
+	box-shadow: 0px 4px 10px 6px rgba(0, 0, 0, 0.10);
+}
+.price_box_head{
+	font-size: 16px;
+	line-height: 25px;
+	margin:0;
+}
+.green_txt{
+	color: #26dd70;
+}
+.violet_txt{
+	color: #ba68c8;
+}
+.blue_txt{
+	color: #03a9f4;
+}
+.orange_txt{
+	color: #e65100;
+}
+.price_txt{
+	font-size: 32px;
+	font-weight: 700;
+	color:#212121;
+}
+
+.blue_btn{
+	border:2px solid #03a9f4;
+	border-radius: 8px;
+	color: #03a9f4;
+	box-shadow: 0 7px 11px 0px rgba(3, 169, 244, 0.44);
+}
+.blue_btn:hover{
+	color: #fff;
+	background: #03a9f4;
+	transition: all ease-in-out 0.3s; 
+}
+
+.next_step{
+	width: 100%;
+	float: left;
+	padding: 50px 15px;
+}
+.next_step h2{
+	font-size: 32px;
+	font-weight: 500;
+	margin: 0;
+}
+.next_step p{
+	color: #607d8b;
+}
+.next_step button{
+	float: right;
+}
+
+.dashboard_footer{
+	width: 100%;
+	float: left;
+	padding: 50px 30px;
+	text-align: right;
+	color: #607d8b;
+	background:#e1e7ed;
+}
+.dashboard_footer a{
+	color: #03a9f4;
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 600px){
+	.table_box{
+		overflow: auto;
+	}
+	.search_box{
+		width: 100%;
+	}
+	.tax_box{
+		width: 100%;
+		text-align: left;
+	}
+	.tax_prepare_head{
+		padding: 10px;
+	}
+}

@@ -1,0 +1,50 @@
+<section class="signUp_container">
+	<div class="signup_left">
+		<div class="signup_left_inner">
+			<h2>SIGN <span>UP</span></h2>
+			<p>Hello! Let’s create account</p>
+
+			<form action="">
+				<p>Email</p>
+				<mat-form-field appearance="outline">
+					<!-- <mat-label>Username</mat-label> -->
+					<input matInput placeholder="sample@email.com" required>
+					<mat-error>Error</mat-error>
+				</mat-form-field>
+
+				<p>User ID</p>
+				<mat-form-field appearance="outline">
+					<!-- <mat-label>Username</mat-label> -->
+					<input matInput placeholder="Sample Name" required>
+					<mat-icon matSuffix class="valid">check</mat-icon>
+					<mat-error>Error</mat-error>
+				</mat-form-field>
+
+				<p>Phone Number</p>
+				<mat-form-field appearance="outline">
+					<span matPrefix>+91 &nbsp;</span>
+					<input type="tel" matInput placeholder="555-555-1234">
+				</mat-form-field>
+
+
+				<p>Password</p>
+				<mat-form-field appearance="outline">
+					<input type="Password" matInput placeholder="Password" required>
+					<mat-error>Error</mat-error>
+				</mat-form-field>
+
+				<button class="login_btn" mat-raised-button >SIGN UP</button>
+			</form>
+			<p class="signin_copy">Copyright &copy; 2020 Digitax</p>
+		</div>
+	</div>
+
+	<div class="signup_right">
+		<div class="signup_right_inner">
+			<h2 class="signUp_head">Welcome Back!</h2>
+			<p><img src="assets/images/signin_icon.png" alt=""></p>
+			<p>To keep connected with us please sign in with your personal info</p>
+			<button mat-raised-button>SIGN IN</button>
+		</div>
+	</div>
+</section>
