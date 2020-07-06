@@ -1,5 +1,5 @@
-<mat-sidenav-container>
-	<mat-sidenav #sidenav mode="push" [(opened)]="opened">Sidenav
+<mat-sidenav-container *ngIf="sidebarShow">
+	<mat-sidenav  #sidenav mode="push" [(opened)]="opened">Sidenav
 		<button (click)="sidenav.close()" mat-raised-button> close</button>
 		<p align="center"><img src="assets/images/logo.png" alt=""></p>
 		
@@ -28,3 +28,6 @@
 		</div>
 	</mat-sidenav-content>
 </mat-sidenav-container>
+  <div *ngIf="!sidebarShow" class="main-content">
+			<router-outlet></router-outlet>
+		</div>
