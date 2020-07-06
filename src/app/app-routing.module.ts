@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
+import { AuthGuard } from '../app/auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SigninComponent } from './signin/signin.component';
@@ -22,13 +22,13 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
 
 
 const routes: Routes = [
-	{ path  : ""    , 
+	{ path  : "", 
       component  : LayoutComponent ,
-      canActivate: [],
+      canActivate: [AuthGuard],
       
       	children: [
 			{ 
-				path: 'home',
+				path: '',
 				pathMatch: 'full',
 				component  : HomeComponent  
 		    },
@@ -45,7 +45,6 @@ const routes: Routes = [
 		pathMatch: 'full',
 		component  : SigninComponent  
     },
-
     { 
 		path: 'signup',
 		pathMatch: 'full',
