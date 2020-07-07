@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
@@ -22,7 +23,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -43,7 +43,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
 import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -77,6 +77,7 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
     MatButtonModule,
     MatSidenavModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
     MatGridListModule,
@@ -87,7 +88,8 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
     MatNativeDateModule,
     MatTabsModule,
     MatExpansionModule,
-    TextFieldModule
+    TextFieldModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

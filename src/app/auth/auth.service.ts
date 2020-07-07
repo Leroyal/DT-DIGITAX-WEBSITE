@@ -11,21 +11,29 @@ import { tap, delay,map } from 'rxjs/operators';
 export class AuthService {
    headers;
    access_token;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+     this.headers = new  HttpHeaders().set("Access-Control-Allow-Origin",  "*"); 
+  }
   isLoggedIn = (localStorage.getItem('access_token'))?true:false; 
   
   // store the URL so we can redirect after logging in
  
   redirectUrl: string;
 
-  login(email: string, password: string){
-     return this.http.post<any>(`${environment.BASE_URL}admin/login`, { email, password })
+  login(email: string, password: string, remember:boolean){
+     return this.http.post<any>(`${environment.BASE_URL}auth/signin`, { email, password })
       .pipe(map(fetchresult => {
      // console.log(" user",fetchresult)
          
-          if (fetchresult && fetchresult.result.access_token) {
-              localStorage.setItem('access_token', fetchresult.result.access_token);
-              localStorage.setItem('user_id', fetchresult.result.id);
+          if (fetchresult && fetchresult.data.session && remember) {
+              localStorage.setItem('access_token', fetchresult.data.session.accessToken);
+              localStorage.setItem('user_id', fetchresult.data.user.id);
+              this.isLoggedIn = true
+              return fetchresult.result;
+          }
+          else if(fetchresult && fetchresult.data.session && !remember){
+              sessionStorage.setItem('access_token', fetchresult.data.session.accessToken);
+              sessionStorage.setItem('user_id', fetchresult.data.user.id);
               this.isLoggedIn = true
               return fetchresult.result;
           }
@@ -33,6 +41,10 @@ export class AuthService {
      }));
   }
 
+ SignUp(data:any)
+    {
+        return this.http.post(`${environment.BASE_URL}auth/signup`, data, {headers: this.headers});
+    }
 
 
 
@@ -55,11 +67,23 @@ export class AuthService {
   }
 
   getToken() {
-        return localStorage.getItem('access_token')
+        if(sessionStorage.getItem('access_token'))
+        {
+           return sessionStorage.getItem('access_token');
+        }
+        else
+        return localStorage.getItem('access_token');
+
+var ProductName = sessionStorage.getItem('ProductName');
     }
 
   getUserId() {
-        return localStorage.getItem('user_id')
+     if(sessionStorage.getItem('user_id'))
+        {
+           return sessionStorage.getItem('user_id');
+        }
+        else
+        return localStorage.getItem('user_id');
     }
 
   checkToken() {
