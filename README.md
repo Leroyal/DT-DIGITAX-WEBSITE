@@ -2,7 +2,7 @@
 DigiTax website
 
 
-This is a test project to demonstrate using Intern with Angular 4+. It contains all of the specs from Angular's test guide as well as some extras. Specs have been reformatted and converted to using Intern best practices as outlined below.
+This is project is built in Angular 9. It contains all of the specs from Angular's test guide as well as some extras. 
 
 Get started
 Clone the repo
