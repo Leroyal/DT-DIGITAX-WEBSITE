@@ -1,20 +1,21 @@
 <mat-sidenav-container *ngIf="sidebarShow">
-	<mat-sidenav  #sidenav mode="push" [(opened)]="opened">Sidenav
-		<button (click)="sidenav.close()" mat-raised-button> close</button>
+	<!-- <mat-sidenav  #sidenav mode="push" [(opened)]="opened">Sidenav -->
+	<mat-sidenav  #sidenav mode="push" [(opened)]="opened">
+		<!-- <button (click)="sidenav.close()" mat-raised-button> close</button> -->
 		<p align="center"><img src="assets/images/logo.png" alt=""></p>
 		
 		<ul class="sidenav">
-			<li class="active"><a href="">Tax Home</a></li>
-			<li><a href="">Documents</a></li>
-			<li><a href="">My Info</a></li>
-			<li><a href="">Federal</a></li>
-			<li><a href="">State</a></li>
-			<li><a href="">Review</a></li>
-			<li><a href="">File</a></li>
-			<li><a href="">Help</a></li>
-			<li><a href="">Tax Tools</a></li>
-			<li><a href="">Account</a></li>
-			<li><a href="">Sign Out</a></li>
+			<li class="active"><a routerLink="/dashboard">Tax Home</a></li>
+			<li><a routerLink="/tax-prepare-document">Documents</a></li>
+			<li><a routerLink="/tax-prepare-profile">My Info</a></li>
+			<li><a routerLink="/tax-prepare-profile">Federal</a></li>
+			<li><a routerLink="/tax-prepare-profile">State</a></li>
+			<li><a routerLink="/survey">Review</a></li>
+			<li><a routerLink="/tax-prepare-register">File</a></li>
+			<li><a routerLink="/faq">Help</a></li>
+			<li><a routerLink="/tax-prepare-package">Tax Tools</a></li>
+			<li><a routerLink="/tax-prepare-profile">Account</a></li>
+			<li><a routerLink="/">Sign Out</a></li>
 		</ul>
 	</mat-sidenav>
 	<mat-sidenav-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService }      from './auth/auth.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,17 @@ import { AuthService }      from './auth/auth.service';
 })
 export class AppComponent {
   title = 'digitax';
-  sidebarShow:boolean=false;
-   constructor(private authService: AuthService) {
+  opened:boolean=false;
+  sidebarShow:boolean=true;
+   
+   constructor(private authService: AuthService,router: Router) {
      if (this.authService.isLoggedIn ) { 
        this.sidebarShow = true; 
      }
+     router.events.subscribe(val => {
+        console.log(val);
+         this.opened = false;
+      });
 
    }
-  
-  opened = false;
 }
