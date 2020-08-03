@@ -57,6 +57,8 @@ import {
   
 } from '@angular/material';
 
+import {NgxPrintModule} from 'ngx-print';
+
 @NgModule({
   exports: [   
     MatDialogModule   
@@ -116,7 +118,8 @@ export class MaterialModule {}
     MatSnackBarModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPrintModule
     
 
   ],
