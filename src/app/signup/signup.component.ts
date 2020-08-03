@@ -53,7 +53,10 @@ export class SignupComponent implements OnInit {
     this.addRecaptchaScript();
   	
   }
-
+ /*
+ * This function is used for signup
+ * @params(email:string,password:string,userid:string,phone number:string)  
+ */
   signupFormSubmit(){
       this.isSubmitted = true;
        const response = grecaptcha.getResponse();
@@ -103,7 +106,7 @@ export class SignupComponent implements OnInit {
       }
       
     }
-    //6LeJqqsZAAAAAKaXJ0q65NRkbaos4hbYjCpiY5t5
+    
 
     get f(){
                           return this.signupForm.controls;
