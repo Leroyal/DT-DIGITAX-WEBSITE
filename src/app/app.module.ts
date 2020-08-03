@@ -45,6 +45,27 @@ import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.
 import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+import { BnNgIdleService } from 'bn-ng-idle'; 
+
+import {ConfirmationDialog} from './confirmation-dialog.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+
+import {    
+  MatDialogModule   
+  
+} from '@angular/material';
+
+@NgModule({
+  exports: [   
+    MatDialogModule   
+    
+  ]
+})
+export class MaterialModule {}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +88,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SurveyComponent,
     SurveyStepTwoComponent,
     SurveyStepThreeComponent,
-    SurveyFeedbackComponent
+    SurveyFeedbackComponent,
+    ConfirmationDialog,
+    AlertDialogComponent
+
   ],
   imports: [
     BrowserModule,
@@ -89,9 +113,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTabsModule,
     MatExpansionModule,
     TextFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    MatDialogModule
+    
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [BnNgIdleService],
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialog, AlertDialogComponent]
 })
 export class AppModule { }

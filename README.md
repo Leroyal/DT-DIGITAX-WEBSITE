@@ -32,3 +32,58 @@ npm run ci - cleans, lints, and builds the application and runs Intern tests (bo
 Techniques
 
 Hence for security we have used both local storage and session storage, If users wants to remember them, then we are using local storage otherwise using session storage.
+
+
+## Table of Contents
+
+* [Technical Information](#technical-information)
+    * [Framework](#framework)
+    * [Version](#version)
+    * [Installation](#installation)    
+    * [For Login](#login)   
+    
+* [Error Handling](#error-handling)
+* [CHANGELOG](#changelog)
+
+
+<a name="technical-information"></a>
+## Technical Information
+
+
+### Framework	: Angular
+
+### Version	:9
+
+### Installation
+
+1. 	First  of all, we are going to need Node js. NPM (node package manager, is a part of node js) is a tool for installing 3rd party libraries and dependencies to our project. If you don’t have it yet, you can download and install it from https://nodejs.org/en/
+2. 	If you have node js installed, the next step is installing the Angular CLI itself to your computer---npm install -g @angular/cli.
+g stands for global installation. If you use -g later you can use the CLI in any Angular project on your computer.
+3. 	After the installation is completed, you can use Angular CLI to create a new Angular project with the following command:ng new my-first-app
+4. 	After installing the CLI and creating a new Angular app, the final step is to start the project. To do that, we need to use the following command:ng serve -- open
+5. 	Run the project in browser like 'localhost:4200'. You can see angular default page.
+	
+
+### For Login
+
+ 1. Create login component .To do that ,we need to use the following command :ng g c signin/signin
+ 2. Create signup component same as before.
+
+
+<a name="error-handling"></a>
+## Error Handling
+
+If you are encountering a angular cli  error, don't panic! Here is a list of common issues and how to solve them.
+
+### npm ERR! code ENOENT
+
+Try uninstalling clearing your cache first npm uninstall -g @angular/cli npm cache clean npm install -g @angular/cli@latest.
+
+### Module not found: Error: 
+
+If your component is inside the same directory, then you need to point your templateUrl to the same folder as well:
+
+<a name="changelog"></a>
+## CHANGELOG
+
+1. 2020-08-03: Initial release 1.0.0

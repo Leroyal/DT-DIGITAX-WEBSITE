@@ -14,11 +14,14 @@
 				<img src="assets/images/form_img.png" alt="">
 				<p class="form_txt_one">welcome to</p>
 				<p class="form_txt_two">DIGITAX</p>
-				<p><label>Username</label></p>
+
+				<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
+				<p><label>Email</label></p>
+				<!--<p><label>Username</label></p>-->
 				
 				<mat-form-field appearance="fill">
 					<!-- <mat-label>Username</mat-label> -->
-					<input matInput placeholder="Sample Name" required>
+					<input matInput placeholder="Sample Name" required formControlName="email" >
 					<mat-icon matSuffix class="valid">check</mat-icon>
 					<mat-error>Error</mat-error>
 				</mat-form-field>
@@ -26,7 +29,7 @@
 				
 				<mat-form-field appearance="fill">
 					<!-- <mat-label>Username</mat-label> -->
-					<input type="password" matInput placeholder="Password" required>
+					<input type="password" matInput placeholder="Password" required formControlName="password" >
 					<mat-error>Error</mat-error>
 				</mat-form-field>
 				<mat-checkbox><span class="remember_txt">Remember Me</span></mat-checkbox>
@@ -40,6 +43,7 @@
 						and have read and acknowledge our Privacy Statement
 					</p>
 				</div>
+			</form>
 				
 			</div>
 		</div>

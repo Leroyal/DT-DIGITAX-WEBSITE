@@ -21,9 +21,11 @@ export class AuthService {
   redirectUrl: string;
 
   login(email: string, password: string, remember:boolean){
+    
      return this.http.post<any>(`${environment.BASE_URL}auth/signin`, { email, password })
+    
       .pipe(map(fetchresult => {
-     // console.log(" user",fetchresult)
+      console.log(" user",fetchresult)
          
           if (fetchresult && fetchresult.data.session && remember) {
               localStorage.setItem('access_token', fetchresult.data.session.accessToken);
@@ -41,8 +43,25 @@ export class AuthService {
      }));
   }
 
+
+
+  loginnew(email: string, password: string, remember:boolean){
+    
+     sessionStorage.setItem('access_token', '234');
+              sessionStorage.setItem('user_id', '123');
+              this.isLoggedIn = true;
+              let fetch={
+              user_id:'123',
+              access_token:'234'
+
+              };
+              return fetch;
+
+  }
+
  SignUp(data:any)
-    {
+    {        
+
         return this.http.post(`${environment.BASE_URL}auth/signup`, data, {headers: this.headers});
     }
 
@@ -61,6 +80,11 @@ export class AuthService {
       tap(val =>{
          localStorage.removeItem('access_token');
          localStorage.removeItem('user_id');
+
+         sessionStorage.removeItem('access_token');
+         sessionStorage.removeItem('user_id');
+ 
+         //sessionStorage.clear();
          this.isLoggedIn = false;
          })
     );
