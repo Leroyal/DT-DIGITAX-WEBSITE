@@ -20,11 +20,10 @@ declare var grecaptcha: any;
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
- //public formModel: FormModel = {};
+export class SignupComponent implements OnInit { 
  captcha?: string;
  errormsg: string;
- @ViewChild('recaptcha', {static: true }) recaptchaElement: ElementRef;
+@ViewChild('g-recaptcha', {static: true }) recaptchaElement: ElementRef;
   
   signupForm: FormGroup;
   isSubmitted:boolean=false;
@@ -37,12 +36,13 @@ export class SignupComponent implements OnInit {
                    email: new FormControl('',[Validators.compose([Validators.required,Validators.email,Validators.pattern(/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/)]) ]),
                    //captcha: new FormControl('',[Validators.required]),
                    user_id: new FormControl('',[Validators.required]),
-                   phone: new FormControl('', [Validators.compose([
+                  /* phone: new FormControl('', [Validators.compose([
                                                                   Validators.minLength(10),
                                                                   Validators.pattern(/^-?(0|[1-9]\d*)?$/),
                                                                   Validators.required
-                                                                ]) ]),
+                                                                ]) ]),*/
                    password: ['', [Validators.required,Validators.minLength(6),PasswordValidator.cannotContainSpace]],
+                   phone: new FormControl(''),
                     });
 
 
@@ -50,12 +50,12 @@ export class SignupComponent implements OnInit {
   	            }
   
   ngOnInit() {
-    this.addRecaptchaScript();
+   this.addRecaptchaScript();
   	
   }
- /*
- * This function is used for signup
- * @params(email:string,password:string,userid:string,phone number:string)  
+   /*
+ * This function is used for signup 
+ * @params(email:string,password:string,user id:string,phone number:string)  
  */
   signupFormSubmit(){
       this.isSubmitted = true;
@@ -72,28 +72,21 @@ export class SignupComponent implements OnInit {
         }
       if(this.signupForm.valid)
       {
-      let saveData = this.signupForm.value;
-    
-       //console.log("saveData"+document.getElementById('g-recaptcha-response').value);
+      let saveData = this.signupForm.value;    
 
         this.authService.SignUp(saveData).pipe(first()).subscribe(res => {
-          if(res['status'].status_code == 201)
+          if(res['status'].status_code == 200)
             {
              this.snackbar.open('Registered successfully','OK',{
 		            verticalPosition: 'top',
 		            horizontalPosition:'right'
 		          });
-             location.href = 'signin';
-             // this.authService.login(saveData.email, saveData.password).pipe(first()).subscribe(resp => {
-             //    if(resp.status == 1){
-             //    location.href = '/dashboard';
-             //    }
-             // });
+              location.href = '/dashboard';             
             }
           else{
             console.log("lko");
              confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
-             //confirm('Something went wrong');
+            
           } 
          });
       }
@@ -106,13 +99,15 @@ export class SignupComponent implements OnInit {
       }
       
     }
-    
+   
 
     get f(){
-                          return this.signupForm.controls;
+              return this.signupForm.controls;
                      }
 
-
+     /*
+ * This function is used for rendering captcha 
+ */
     renderReCaptch() {
     window['grecaptcha'].render(this.recaptchaElement.nativeElement, {
       'sitekey' : '6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD',
@@ -124,8 +119,10 @@ export class SignupComponent implements OnInit {
       }
     });
   }
-  
-//https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key
+   /*
+ * This function is used for captcha reload 
+ */
+
   addRecaptchaScript() {
  
     window['grecaptchaCallback'] = () => {

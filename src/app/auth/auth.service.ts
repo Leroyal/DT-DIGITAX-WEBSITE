@@ -62,7 +62,26 @@ export class AuthService {
  SignUp(data:any)
     {        
 
-        return this.http.post(`${environment.BASE_URL}auth/signup`, data, {headers: this.headers});
+        /*return this.http.post(`${environment.BASE_URL}auth/signup`, data, {headers: this.headers});*/
+        
+
+     return this.http.post<any>(`${environment.BASE_URL}auth/signup`, data,{headers: this.headers})
+    
+      .pipe(map(fetchresult => {
+      console.log(" user",fetchresult)
+         
+          if (fetchresult && fetchresult.data.session) {
+              localStorage.setItem('access_token', fetchresult.data.session.accessToken);
+              localStorage.setItem('user_id', fetchresult.data.user.id);
+              this.isLoggedIn = true
+              return fetchresult.result;
+          }
+         
+          return fetchresult;
+     }));
+
+
+
     }
 
 
@@ -90,6 +109,30 @@ export class AuthService {
     );
   }
 
+  siteLogout()
+    {      
+      let payloadObj={
+        accessToken:localStorage.getItem('access_token')
+      };
+
+        
+        return this.http.post(`${environment.BASE_URL}auth/logout`, payloadObj, {headers: this.headers}).pipe(map(fetchresult => {
+         console.log(" user",fetchresult)
+         
+          if (fetchresult) {
+              localStorage.removeItem('access_token');
+              localStorage.removeItem('user_id');
+
+             sessionStorage.removeItem('access_token');
+             sessionStorage.removeItem('user_id');
+     
+             //sessionStorage.clear();
+             this.isLoggedIn = false;
+          }         
+          return fetchresult;
+     }));
+    }
+  
   getToken() {
         if(sessionStorage.getItem('access_token'))
         {

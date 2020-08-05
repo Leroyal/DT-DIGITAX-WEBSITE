@@ -5,7 +5,7 @@ import { AuthService }      from './auth/auth.service';
 import { Observable, of } from 'rxjs';
 import {first , tap, delay,map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
-//import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'confirmation-dialog',
@@ -25,7 +25,7 @@ export class ConfirmationDialog {
     this.message = data.message || this.message;
     if (data.buttonText) {
       this.confirmButtonText = data.buttonText.ok || this.confirmButtonText;
-      //this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
+      
     }
       }
   }
@@ -52,7 +52,7 @@ export class ConfirmationDialog {
                         duration:2000
                       });
                 }); 
-    //location.href = '/dashboard';
+    
   }
 
 }
