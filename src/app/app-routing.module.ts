@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-
+import { AuthGuard } from '../app/auth/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SigninComponent } from './signin/signin.component';
@@ -22,13 +22,13 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
 
 
 const routes: Routes = [
-	{ path  : ""    , 
+	{ path  : "", 
       component  : LayoutComponent ,
-      canActivate: [],
+      //canActivate: [AuthGuard],
       
       	children: [
 			{ 
-				path: 'home',
+				path: '',
 				pathMatch: 'full',
 				component  : HomeComponent  
 		    },
@@ -36,6 +36,67 @@ const routes: Routes = [
 				path: 'faq',
 				pathMatch: 'full',
 				component  : FaqComponent  
+		    },
+		    { 
+				path: 'dashboard',
+				pathMatch: 'full',
+				component  : DashboardComponent  
+		    },
+
+		    { 
+				path: 'tax-prepare-profile',
+				pathMatch: 'full',
+				component  : TaxPrepareProfileComponent  
+		    },
+
+		    { 
+				path: 'tax-prepare-package',
+				pathMatch: 'full',
+				component  : TaxPreparePackageComponent  
+		    },
+
+		    { 
+				path: 'tax-prepare-document',
+				pathMatch: 'full',
+				component  : TaxPrepareDocumentComponent  
+		    },
+		    { 
+				path: 'tax-prepare-register',
+				pathMatch: 'full',
+				component  : TaxPrepareRegisterComponent  
+		    },
+
+		    { 
+				path: 'result',
+				pathMatch: 'full',
+				component  : ResultComponent  
+		    },
+
+		    { 
+				path: 'submission',
+				pathMatch: 'full',
+				component  : SubmissionComponent  
+		    },
+
+		    { 
+				path: 'survey',
+				pathMatch: 'full',
+				component  : SurveyComponent  
+		    },
+		    { 
+				path: 'survey-step-two',
+				pathMatch: 'full',
+				component  : SurveyStepTwoComponent  
+		    },
+		    { 
+				path: 'survey-step-three',
+				pathMatch: 'full',
+				component  : SurveyStepThreeComponent  
+		    },
+		    { 
+				path: 'survey-feedback',
+				pathMatch: 'full',
+				component  : SurveyFeedbackComponent  
 		    }
 	    ]
     },
@@ -45,7 +106,6 @@ const routes: Routes = [
 		pathMatch: 'full',
 		component  : SigninComponent  
     },
-
     { 
 		path: 'signup',
 		pathMatch: 'full',
@@ -58,67 +118,7 @@ const routes: Routes = [
 		component  : ResetPasswordComponent  
     },
 
-    { 
-		path: 'dashboard',
-		pathMatch: 'full',
-		component  : DashboardComponent  
-    },
-
-    { 
-		path: 'tax-prepare-profile',
-		pathMatch: 'full',
-		component  : TaxPrepareProfileComponent  
-    },
-
-    { 
-		path: 'tax-prepare-package',
-		pathMatch: 'full',
-		component  : TaxPreparePackageComponent  
-    },
-
-    { 
-		path: 'tax-prepare-document',
-		pathMatch: 'full',
-		component  : TaxPrepareDocumentComponent  
-    },
-    { 
-		path: 'tax-prepare-register',
-		pathMatch: 'full',
-		component  : TaxPrepareRegisterComponent  
-    },
-
-    { 
-		path: 'result',
-		pathMatch: 'full',
-		component  : ResultComponent  
-    },
-
-    { 
-		path: 'submission',
-		pathMatch: 'full',
-		component  : SubmissionComponent  
-    },
-
-    { 
-		path: 'survey',
-		pathMatch: 'full',
-		component  : SurveyComponent  
-    },
-    { 
-		path: 'survey-step-two',
-		pathMatch: 'full',
-		component  : SurveyStepTwoComponent  
-    },
-    { 
-		path: 'survey-step-three',
-		pathMatch: 'full',
-		component  : SurveyStepThreeComponent  
-    },
-    { 
-		path: 'survey-feedback',
-		pathMatch: 'full',
-		component  : SurveyFeedbackComponent  
-    }
+    
 
 ];
 
