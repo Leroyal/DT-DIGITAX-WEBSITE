@@ -6,10 +6,8 @@
 
 			<form [formGroup]="signupForm" (ngSubmit)="signupFormSubmit()" >
 				<p>Email</p>
-				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
-					<input matInput formControlName="email" placeholder="sample@email.com" required>
-					<!--<mat-error>Enter valid email ID</mat-error>-->
+				<mat-form-field appearance="outline">					
+					<input matInput formControlName="email" placeholder="sample@email.com" required>					
 					<mat-error>Please enter your email address in the format: youremail@example.com.</mat-error>
 				</mat-form-field>
 
@@ -17,7 +15,7 @@
 
 				<p>User ID</p>
 				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input matInput formControlName="user_id" placeholder="Sample Name" required>
 					<mat-icon matSuffix class="valid">check</mat-icon>
 					<mat-error>Enter valid user ID</mat-error>
@@ -36,15 +34,14 @@
 				<p>Password</p>
 				<mat-form-field appearance="outline">
 					<input type="Password"  formControlName="password" matInput placeholder="Password" required>
-					<!--<mat-error>Enter valid Password(must be 6 character)</mat-error>
-					<mat-error *ngIf="f.password.errors.cannotContainSpace">Enter valid Password(not contain spaces)</mat-error>-->
+					
                  <mat-error>Enter valid Password</mat-error>
 					
 				</mat-form-field>
 				
 				
 				<div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
-            <!--<div *ngIf="f.password.errors.required"><mat-error>Enter valid Password</mat-error></div>-->
+          
             <div *ngIf="f.password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
             <div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
            </div>
@@ -55,40 +52,7 @@
 		<re-captcha [(ngModel)]="declarativeFormCaptchaValue" name="captcha" required></re-captcha>
 		
 	</form>
-  <!--<button [disabled]="!declarativeForm.valid">Submi1t</button>-->
-
-       
-
-         
-   <!--<re-captcha (resolved)="resolved($event)" siteKey="6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD"></re-captcha>-->
-
-     <!--<form #captchaProtectedForm="ngForm">
-    <re-captcha
-      [(ngModel)]="formModel.captcha"
-      name="captcha" #g-recaptcha-response
-      required
-      siteKey="6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD"
-      #captchaControl="ngModel" (resolved)="resolved($event)" 
-    ></re-captcha>
-    <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error"><mat-error>Captcha must be solved</mat-error></div>
-    <div [hidden]="!captchaControl.valid" class="success">Captcha is valid<mat-icon matSuffix class="valid">check</mat-icon></div>
-
-     <div [hidden]="captchaProtectedForm.form.valid" class="error"><mat-error>The captcha must be filled out</mat-error></div>
-    
-    <button (click)="formModel.captcha = ''">Reset Captcha</button>
-  </form>-->
-   
-
-            <!----recaptcha---------->
-           <!--- <div class="row mt-5">
-			  <div class="col-md-9 mx-auto">			      
-			      <div class="card mt-3">
-			          <div class="card-body">
-			              <div #recaptcha  formControlName="captcha"></div>
-			          </div>
-			      </div>
-			  </div>
-			</div>--->
+  
 
 				<button class="login_btn" mat-raised-button [disabled]="!declarativeForm.valid" >SIGN UP</button>
 			</form>
