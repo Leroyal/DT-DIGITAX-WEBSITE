@@ -36,12 +36,12 @@ export class AppComponent {
 
    }
 
-
-
   ngOnInit(): void {
-     /*
-       * This function is used for idle session logout after 15 minutes       
-   */
+   /*
+ * This function is used for srssion logout after 15 minutes
+ * After signup dialog box open 
+ */
+
     this.bnIdle.startWatching(900).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
         console.log('session expired');
@@ -50,9 +50,6 @@ export class AppComponent {
     });
   }
 
-   /*
-       * This function is used for open dilaog box after idle time     
-   */
    openDialog() {
     const dialogRef = this.dialog.open(ConfirmationDialog,{
       data:{
@@ -66,15 +63,15 @@ export class AppComponent {
     });
     
   }
-   
-   /*
-       * This function is used for user logout     
-   */
+    /*
+ * This function is used for logout
+ */
+
+
     onLogout(event) {
     event.preventDefault();
 
-   this.authService.logout
-   ().subscribe(() => {
+   this.authService.logout().subscribe(() => {
      location.href = '/';
    },
    (error: any) => {

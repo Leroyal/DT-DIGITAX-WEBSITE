@@ -42,7 +42,8 @@ export class HomeComponent implements OnInit {
               access_token:'234'
 
               };  
-              location.href = '/dashboard'; 
+              location.href = '/tax-prepare-profile'; 
+             // location.href = '/dashboard'; 
    }
    else
    {

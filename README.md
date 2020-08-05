@@ -40,7 +40,9 @@ Hence for security we have used both local storage and session storage, If users
     * [Framework](#framework)
     * [Version](#version)
     * [Installation](#installation)    
-    * [For Login](#login)   
+    * [For Login](#login)
+    * [For Idle](#idle)
+
     
 * [Error Handling](#error-handling)
 * [CHANGELOG](#changelog)
@@ -68,6 +70,12 @@ g stands for global installation. If you use -g later you can use the CLI in any
 
  1. Create login component .To do that ,we need to use the following command :ng g c signin/signin
  2. Create signup component same as before.
+
+
+### For Idle
+
+ 1. We need to use bn-ng-idle tool in app component
+ 2. If session idle for 15 minutes or more than that it is figure out by this tool.
 
 
 <a name="error-handling"></a>

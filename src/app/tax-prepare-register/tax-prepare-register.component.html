@@ -22,6 +22,8 @@
 				<h2>LOREM IPSUM SIMPLY <span class="blue_txt">DUMMY TEXT</span></h2>
 			</div>
 			<div class="form_box">
+				<!----print section---->
+				<div id="print-section"> 
 				<div class="name_box">
 					<div>
 						<p>Your Name</p>
@@ -71,6 +73,10 @@
 					<mat-datepicker #picker></mat-datepicker>
 				</mat-form-field>
 				</div>
+
+				<!----print section---->
+				</div>
+
 				<div class="detail_txt">
 					<p>
 						It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
@@ -80,11 +86,13 @@
 					</p>
 				</div>
 				<div class="button_box">
-					<button mat-raised-button class="red_btn">Print this page</button>
+					<button mat-raised-button class="red_btn" printSectionId="print-section" ngxPrint>Print this page</button>
 				</div>
 			</div>
 			
 		</div>
+
+
 
 		<div class="next_step">
 			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
