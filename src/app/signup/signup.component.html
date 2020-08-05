@@ -49,8 +49,13 @@
             <div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
            </div>
         </div>
-      <div #recaptcha ></div>
+      <!--run<div #recaptcha ></div>-->
        <!--<div class="g-recaptcha" ng-model="g-recaptcha-response" data-sitekey="6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD" ></div>-->
+       <form #declarativeForm="ngForm">
+		<re-captcha [(ngModel)]="declarativeFormCaptchaValue" name="captcha" required></re-captcha>
+		
+	</form>
+  <!--<button [disabled]="!declarativeForm.valid">Submi1t</button>-->
 
        
 
@@ -85,7 +90,7 @@
 			  </div>
 			</div>--->
 
-				<button class="login_btn" mat-raised-button >SIGN UP</button>
+				<button class="login_btn" mat-raised-button [disabled]="!declarativeForm.valid" >SIGN UP</button>
 			</form>
 			<p class="signin_copy">Copyright &copy; 2020 Digitax</p>
 		</div>

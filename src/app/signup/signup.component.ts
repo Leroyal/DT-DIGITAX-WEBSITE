@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
  //public formModel: FormModel = {};
  captcha?: string;
  errormsg: string;
- @ViewChild('recaptcha', {static: true }) recaptchaElement: ElementRef;
+/*@ViewChild('recaptcha', {static: true }) recaptchaElement: ElementRef;*/
   
   signupForm: FormGroup;
   isSubmitted:boolean=false;
@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
   	            }
   
   ngOnInit() {
-    this.addRecaptchaScript();
+   // this.addRecaptchaScript();
   	
   }
 
@@ -110,7 +110,7 @@ export class SignupComponent implements OnInit {
                      }
 
 
-    renderReCaptch() {
+   /* renderReCaptch() {
     window['grecaptcha'].render(this.recaptchaElement.nativeElement, {
       'sitekey' : '6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD',
       'callback': (response) => {
@@ -120,10 +120,10 @@ export class SignupComponent implements OnInit {
 
       }
     });
-  }
+  }*/
   
 //https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key
-  addRecaptchaScript() {
+  /*addRecaptchaScript() {
  
     window['grecaptchaCallback'] = () => {
       this.renderReCaptch();
@@ -139,7 +139,7 @@ export class SignupComponent implements OnInit {
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'recaptcha-jssdk', this));
  
-  }
+  }*/
 
   resolved(captchaResponse: string) {
         console.log(`Resolved captcha with response: ${captchaResponse}`);

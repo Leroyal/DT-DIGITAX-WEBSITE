@@ -50,7 +50,10 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import {ConfirmationDialog} from './confirmation-dialog.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
-import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+//import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaFormsModule } from 'ng-recaptcha';
+//import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import {    
   MatDialogModule   
@@ -123,7 +126,13 @@ export class MaterialModule {}
     
 
   ],
-  providers: [BnNgIdleService],
+  //providers: [BnNgIdleService],
+  providers: [{
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: '6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD',
+    } as RecaptchaSettings,
+  },BnNgIdleService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialog, AlertDialogComponent]
 })

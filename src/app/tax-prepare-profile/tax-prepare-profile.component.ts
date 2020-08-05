@@ -1,3 +1,7 @@
+ /**
+     * This component is used for fetch user info after signin.     
+     */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +10,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tax-prepare-profile.component.css']
 })
 export class TaxPrepareProfileComponent implements OnInit {
+  userList:any;
 
   constructor() { }
 
   ngOnInit() {
+   	this.listUserDetails();
+  }
+
+  listUserDetails(){
+  console.log("ok");
+  	/*this.employeeService.listUserDetails({}).pipe(first()).subscribe(request => {
+      if(request['status'])
+        {
+          this.userList = request['result'];
+        }
+        
+     });*/
+  	
   }
 
 }
