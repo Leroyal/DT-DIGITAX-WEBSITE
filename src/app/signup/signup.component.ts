@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
  
  captcha?: string;
  errormsg: string;
+ declarativeFormCaptchaValue:any
 
   
   signupForm: FormGroup;
