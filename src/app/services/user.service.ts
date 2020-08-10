@@ -21,6 +21,12 @@ export class UserService {
         return this.http.post(`${environment.BASE_URL}users-list`,{headers: this.headers});
     }
 
+     saveUserDetails(savedata) {
+      console.log('save userdetails api');
+      console.log(this.headers);
+        return this.http.post(`${environment.BASE_URL}save-user-details`,{headers: this.headers});
+    }
+
     
   
 
