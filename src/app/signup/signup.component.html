@@ -46,15 +46,25 @@
             <div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
            </div>
         </div>
-      <!--run<div #recaptcha ></div>-->
-       <!--<div class="g-recaptcha" ng-model="g-recaptcha-response" data-sitekey="6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD" ></div>-->
-       <form #declarativeForm="ngForm">
-		<re-captcha [(ngModel)]="declarativeFormCaptchaValue" name="captcha" required></re-captcha>
-		
-	</form>
-  
 
-				<button class="login_btn" mat-raised-button [disabled]="!declarativeForm.valid" >SIGN UP</button>
+      <!--run<div #recaptcha ></div>-->
+       <!--<div class="g-recaptcha" ng-model="g-recaptcha-response" data-sitekey="6LeVrLsZAAAAAL3SLpGnM1aRROCgjgqykVTOFjSg" ></div>-->
+       <!--<form #declarativeForm="ngForm">
+		<re-captcha size="invisible" #invisible [(ngModel)]="declarativeFormCaptchaValue" name="captcha" required></re-captcha>
+
+		
+		
+	</form>-->
+
+	<!---<re-captcha
+    #captchaRef="reCaptcha"
+    (resolved)="resolved($event)"
+    siteKey="6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD"
+    
+  ></re-captcha>-->
+ 
+
+				<button class="login_btn" mat-raised-button >SIGN UP</button>
 			</form>
 			<p class="signin_copy">Copyright &copy; 2020 Digitax</p>
 		</div>

@@ -20,6 +20,15 @@ export class AuthService {
  
   redirectUrl: string;
 
+  httpOptions = {
+        headers: new HttpHeaders({
+            'Access-Control-Allow-Methods':'DELETE, POST, GET, OPTIONS',
+            'Access-Control-Allow-Headers':'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'http://localhost:4200'
+        })
+      };
+
   login(email: string, password: string, remember:boolean){
     
      return this.http.post<any>(`${environment.BASE_URL}auth/signin`, { email, password })
@@ -136,4 +145,23 @@ var ProductName = sessionStorage.getItem('ProductName');
             return fetchresult;
         }));
     }
+
+    captchaVerify(token: string){
+    console.log("callll");
+    let secretkey="6LdoiLwZAAAAADmQpBrZnki6eFbWJS-WaD1r1luU";
+
+    let payloadObj={
+      secret:secretkey,
+      response:token
+    }
+    
+     return this.http.post<any>(`${environment.BASE_URL}`, payloadObj,this.httpOptions)
+    
+      .pipe(map(fetchresult => {
+      console.log(" userrecap",fetchresult);
+         
+         
+          return fetchresult;
+     }));
+  }
 }

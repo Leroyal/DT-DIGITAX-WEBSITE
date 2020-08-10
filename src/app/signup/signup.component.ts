@@ -11,6 +11,8 @@ import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators}
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PasswordValidator } from './password.validator';
 
+import { OnExecuteData, ReCaptchaV3Service } from 'ng-recaptcha';
+import { Subscription } from 'rxjs';
 
 
 declare var grecaptcha: any;
@@ -24,6 +26,16 @@ export class SignupComponent implements OnInit {
  
  captcha?: string;
  errormsg: string;
+ window: any;
+ rec_response:any;
+ grecaptcha:any;
+
+
+  public recentToken: string = '';
+  public readonly executionLog: OnExecuteData[] = [];
+
+  private allExecutionsSubscription: Subscription;
+  private singleExecutionSubscription: Subscription;
 
   
   signupForm: FormGroup;
@@ -31,6 +43,7 @@ export class SignupComponent implements OnInit {
   constructor( public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
+               private recaptchaV3Service: ReCaptchaV3Service
   	           )
                {
   	               this.signupForm = this.fb.group({
@@ -44,21 +57,38 @@ export class SignupComponent implements OnInit {
 
                      
   	            }
-  
+
+
+   
   ngOnInit() {
+
   
   	
   }
+  
+
+  addscript(){
+     grecaptcha.ready(() => {
+       grecaptcha.execute('6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD', { action: 'validate_captcha' }).then((token) => {
+      console.log("okll"+token);
+      this.rec_response=token;
+    });
+  });
+    }
+
   /*
  * This function is used for signup
  * @params(email:string,password:string,user id:string,phone number:string)
  * As  no live api url found we are setting token static value  
  */
-
+//https://www.google.com/recaptcha/api.js?render=put your site key here"
   signupFormSubmit(){
       this.isSubmitted = true;
-       const response = grecaptcha.getResponse();
-      console.log("forms"+response);
+       console.log("plo");
+       
+      
+       /*const response = grecaptcha.getResponse();
+      //console.log("forms"+response);
       if (response.length === 0) {
           console.log("not");
           this.errormsg = 'Recaptcha not verified. Please try again!';
@@ -67,13 +97,21 @@ export class SignupComponent implements OnInit {
                 horizontalPosition:'right'
               });
           return;
-        }
+        }*/
       if(this.signupForm.valid)
       {
       let saveData = this.signupForm.value;   
-       
+          grecaptcha.ready(() => {
+              grecaptcha.execute('6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn', { action: 'submit' }).then((token) => {
+                console.log(token);
+                    this.authService.captchaVerify(token).pipe(first()).subscribe(res => {
+                       console.log("cateres"+res);
+                     });
+              });
+          });  
+        
 
-        this.authService.SignUp(saveData).pipe(first()).subscribe(res => {
+        /*this.authService.SignUp(saveData).pipe(first()).subscribe(res => {
           if(res['status'].status_code == 201)
             {
              this.snackbar.open('Registered successfully','OK',{
@@ -88,7 +126,7 @@ export class SignupComponent implements OnInit {
              confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
              
           } 
-         });
+         });*/
       }
       else
       {
@@ -112,5 +150,12 @@ export class SignupComponent implements OnInit {
         console.log(`Resolved captcha with response: ${captchaResponse}`);
     }
                   
+    public formatToken(token: string): string {
+    if (!token) {
+      return '(empty)';
+    }
 
+    return `${token.substr(0, 7)}...${token.substr(-7)}`;
+  } 
+ 
 }

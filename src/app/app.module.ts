@@ -50,9 +50,9 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import {ConfirmationDialog} from './confirmation-dialog.component';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
-//import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+//import { RecaptchaFormsModule, RecaptchaModule, } from 'ng-recaptcha';
 
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaFormsModule } from 'ng-recaptcha';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaFormsModule,RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module  } from 'ng-recaptcha';
 //import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import {    
@@ -122,18 +122,23 @@ export class MaterialModule {}
     RecaptchaModule,
     RecaptchaFormsModule,
     MatDialogModule,
-    NgxPrintModule
+    NgxPrintModule,
+    RecaptchaV3Module
     
 
   ],
   //providers: [BnNgIdleService],
   providers: [{
-    provide: RECAPTCHA_SETTINGS,
+    provide: RECAPTCHA_V3_SITE_KEY,
     useValue: {
       siteKey: '6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD',
     } as RecaptchaSettings,
-  },BnNgIdleService],
+  },
+
+  BnNgIdleService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialog, AlertDialogComponent]
 })
+//6LeJqqsZAAAAAKaXJ0q65NRkbaos4hbYjCpiY5t5
+//work 6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD
 export class AppModule { }
