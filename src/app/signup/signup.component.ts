@@ -84,49 +84,24 @@ export class SignupComponent implements OnInit {
 //https://www.google.com/recaptcha/api.js?render=put your site key here"
   signupFormSubmit(){
       this.isSubmitted = true;
-       console.log("plo");
-       
+       console.log("plo");      
+      //6LeJqqsZAAAAAKaXJ0q65NRkbaos4hbYjCpiY5t5
+
+      //6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn----working
       
-       /*const response = grecaptcha.getResponse();
-      //console.log("forms"+response);
-      if (response.length === 0) {
-          console.log("not");
-          this.errormsg = 'Recaptcha not verified. Please try again!';
-           this.snackbar.open('Recaptcha not verified. Please try again!','OK',{
-                verticalPosition: 'top',
-                horizontalPosition:'right'
-              });
-          return;
-        }*/
       if(this.signupForm.valid)
       {
-      let saveData = this.signupForm.value;   
+       let saveData = this.signupForm.value;   
           grecaptcha.ready(() => {
-              grecaptcha.execute('6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn', { action: 'submit' }).then((token) => {
-                console.log(token);
+              grecaptcha.execute('6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn', { action: 'cta_signup' }).then((token) => {
+                   console.log(token);
                     this.authService.captchaVerify(token).pipe(first()).subscribe(res => {
                        console.log("cateres"+res);
                      });
               });
-          });  
-        
+          });          
 
-        /*this.authService.SignUp(saveData).pipe(first()).subscribe(res => {
-          if(res['status'].status_code == 201)
-            {
-             this.snackbar.open('Registered successfully','OK',{
-		            verticalPosition: 'top',
-		            horizontalPosition:'right'
-		          });
-             location.href = 'signin';
-             
-            }
-          else{
-            console.log("lko");
-             confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
-             
-          } 
-         });*/
+       
       }
       else
       {
