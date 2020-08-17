@@ -13,22 +13,22 @@
 			<h2>SIGN <span>IN</span></h2>
 			<p>Hello! Let's get Started</p>
 
-			<form action="">
+			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
 				<p>Email</p>
 				<mat-form-field appearance="outline">
 					<!-- <mat-label>Username</mat-label> -->
-					<input matInput placeholder="sample@email.com" required>
-					<mat-icon matSuffix class="valid">check</mat-icon>
-					<mat-error>Error</mat-error>
+					<input matInput formControlName="email"  placeholder="sample@email.com" required>
+					<mat-icon matSuffix  class="valid">check</mat-icon>
+					<mat-error>Enter valid email ID</mat-error>
 				</mat-form-field>
 
 				<p>Password</p>
 				<mat-form-field appearance="outline">
-					<input type="Password" matInput placeholder="Password" required>
-					<mat-error>Error</mat-error>
+					<input type="Password" formControlName="password" matInput placeholder="Password" required>
+					<mat-error>Enter valid Password(must be 6 character)</mat-error>
 				</mat-form-field>
 
-				<mat-checkbox><span class="remember_txt">Remember Me</span></mat-checkbox>
+				<mat-checkbox formControlName="remember_me" ><span class="remember_txt">Remember Me</span></mat-checkbox>
 				<span class="forget_pass">Forgot Password ?</span>
 				<button class="login_btn" mat-raised-button >SIGN IN</button>
 				<div class="form_info">

@@ -215,8 +215,8 @@
 
 		<div class="next_step">
 			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
-			<button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button>
-			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
+			<a [routerLink]="['/survey-step-two']"><button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button></a>
+			<a [routerLink]="['/survey-feedback']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>
 		</div>
 	</div>
 </section>

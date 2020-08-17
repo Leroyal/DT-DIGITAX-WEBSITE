@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material';
@@ -22,7 +23,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -43,6 +43,32 @@ import { SurveyComponent } from './survey/survey.component';
 import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
 import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { BnNgIdleService } from 'bn-ng-idle'; 
+
+import {ConfirmationDialog} from './confirmation-dialog.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+
+//import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaFormsModule } from 'ng-recaptcha';
+//import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+
+import {    
+  MatDialogModule   
+  
+} from '@angular/material';
+
+import {NgxPrintModule} from 'ngx-print';
+
+@NgModule({
+  exports: [   
+    MatDialogModule   
+    
+  ]
+})
+export class MaterialModule {}
 
 
 @NgModule({
@@ -67,7 +93,10 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
     SurveyComponent,
     SurveyStepTwoComponent,
     SurveyStepThreeComponent,
-    SurveyFeedbackComponent
+    SurveyFeedbackComponent,
+    ConfirmationDialog,
+    AlertDialogComponent
+
   ],
   imports: [
     BrowserModule,
@@ -77,6 +106,7 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
     MatButtonModule,
     MatSidenavModule,
     FormsModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
     MatGridListModule,
@@ -87,9 +117,23 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
     MatNativeDateModule,
     MatTabsModule,
     MatExpansionModule,
-    TextFieldModule
+    TextFieldModule,
+    MatSnackBarModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    MatDialogModule,
+    NgxPrintModule
+    
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  //providers: [BnNgIdleService],
+  providers: [{
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: '6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD',
+    } as RecaptchaSettings,
+  },BnNgIdleService],
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialog, AlertDialogComponent]
 })
 export class AppModule { }

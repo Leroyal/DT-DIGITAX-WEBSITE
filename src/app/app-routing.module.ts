@@ -24,7 +24,7 @@ import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.compo
 const routes: Routes = [
 	{ path  : "", 
       component  : LayoutComponent ,
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
       
       	children: [
 			{ 
@@ -36,6 +36,67 @@ const routes: Routes = [
 				path: 'faq',
 				pathMatch: 'full',
 				component  : FaqComponent  
+		    },
+		    { 
+				path: 'dashboard',
+				pathMatch: 'full',
+				component  : DashboardComponent  
+		    },
+
+		    { 
+				path: 'tax-prepare-profile',
+				pathMatch: 'full',
+				component  : TaxPrepareProfileComponent  
+		    },
+
+		    { 
+				path: 'tax-prepare-package',
+				pathMatch: 'full',
+				component  : TaxPreparePackageComponent  
+		    },
+
+		    { 
+				path: 'tax-prepare-document',
+				pathMatch: 'full',
+				component  : TaxPrepareDocumentComponent  
+		    },
+		    { 
+				path: 'tax-prepare-register',
+				pathMatch: 'full',
+				component  : TaxPrepareRegisterComponent  
+		    },
+
+		    { 
+				path: 'result',
+				pathMatch: 'full',
+				component  : ResultComponent  
+		    },
+
+		    { 
+				path: 'submission',
+				pathMatch: 'full',
+				component  : SubmissionComponent  
+		    },
+
+		    { 
+				path: 'survey',
+				pathMatch: 'full',
+				component  : SurveyComponent  
+		    },
+		    { 
+				path: 'survey-step-two',
+				pathMatch: 'full',
+				component  : SurveyStepTwoComponent  
+		    },
+		    { 
+				path: 'survey-step-three',
+				pathMatch: 'full',
+				component  : SurveyStepThreeComponent  
+		    },
+		    { 
+				path: 'survey-feedback',
+				pathMatch: 'full',
+				component  : SurveyFeedbackComponent  
 		    }
 	    ]
     },
@@ -57,67 +118,7 @@ const routes: Routes = [
 		component  : ResetPasswordComponent  
     },
 
-    { 
-		path: 'dashboard',
-		pathMatch: 'full',
-		component  : DashboardComponent  
-    },
-
-    { 
-		path: 'tax-prepare-profile',
-		pathMatch: 'full',
-		component  : TaxPrepareProfileComponent  
-    },
-
-    { 
-		path: 'tax-prepare-package',
-		pathMatch: 'full',
-		component  : TaxPreparePackageComponent  
-    },
-
-    { 
-		path: 'tax-prepare-document',
-		pathMatch: 'full',
-		component  : TaxPrepareDocumentComponent  
-    },
-    { 
-		path: 'tax-prepare-register',
-		pathMatch: 'full',
-		component  : TaxPrepareRegisterComponent  
-    },
-
-    { 
-		path: 'result',
-		pathMatch: 'full',
-		component  : ResultComponent  
-    },
-
-    { 
-		path: 'submission',
-		pathMatch: 'full',
-		component  : SubmissionComponent  
-    },
-
-    { 
-		path: 'survey',
-		pathMatch: 'full',
-		component  : SurveyComponent  
-    },
-    { 
-		path: 'survey-step-two',
-		pathMatch: 'full',
-		component  : SurveyStepTwoComponent  
-    },
-    { 
-		path: 'survey-step-three',
-		pathMatch: 'full',
-		component  : SurveyStepThreeComponent  
-    },
-    { 
-		path: 'survey-feedback',
-		pathMatch: 'full',
-		component  : SurveyFeedbackComponent  
-    }
+    
 
 ];
 

@@ -14,31 +14,39 @@
 
 	<div class="tax_prepare_body">
 		<p class="first_p"><span class="black_txt"><strong>Sample Name</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
-		<p class="second_p">Sign now, save time later</p>
-		<p class="third_p">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+		<p class="second_p">Sign now, save time later</p>		
 
 		<div class="table_box">
-			<div class="center_txt">
-				<h2>LOREM IPSUM SIMPLY <span class="blue_txt">DUMMY TEXT</span></h2>
+			<div class="center_txt">				
 				<img src="assets/images/document_icon.png" alt="">
 			</div>
 			<div class="detail_txt">
+				
 				<p>
-					It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+					Sign now, save time later Temporary Language - 060720Sharing your tax info with your DigiTax account can save you time and effort. The IRS requires us to get your disclosing information from your tax return for this purpose. With your OK, your tax info will be shared with subsidiaries.
 				</p>
 				<p>
-					The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-				</p>
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-				</p>
-				<p>
-					It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-				</p>
+					Consent to disclosure of your tax return informationFederal law requires us to provide this consent form to you. Unless authorized by law, we cannot disclose your tax return information in Digital Tax USA, LLC for the purposes other than the preparing and filing of your tax return without your consent. If you consent to the disclosure of your tax return information, Federal law may not protect your tax return information from further use or distribution.
+			  </p>
+			  <p>
+			       You are not required to complete this form to engage our tax return preparation services. If we obtain your signature on this form by conditioning our tax return preparation services on your consent, your consent will not be valid. If you agree to the disclosure of your tax return information, you consent is valid for the amount of time that you specify. If you do not specify the duration of your consent, your consent is valid for one year from the date of signature.
+
+			   </p>
+			   
+			   <p>
+			       You can choose to have us share your tax return information in order to enhance your DigiTax account and build your profile, communicate with you, provide personalized offers, give you advice regarding your unique financial profile, provide you with live expert advisory services, and provide insights for the benefit of you and other customers. Information that may be shared includes personal and business information, filing status, refund or taxes due, income information, deductions and credits, other information related to your use of DigiTax, and financial instruction connection information. You are consenting to allow this disclosure within three years of the date of your signature.
+			     </p>
+			     <p>
+			       If you believe your tax return information has been disclosed or used improperly in a manner unauthorized by law or without your permission, you may contact the Treasure Inspector General for Tax Administration (TIGTA) by telephone at 1-800-366-4484, or by email at complaints@tigta.treas.gov.
+			       </p>
+
+			       <p>
+			          By signing and clicking “Continue” below, I authorize DigiTax to disclose my personal information, filing status, refund or taxes due, income information, deductions and credits, and financial institution connection information from this {{currentYear}} tax return and any amendments to Digital Tax USA, LLC.
+			       </p>      		
 			</div>
 			<div class="center_txt blue_txt">
-				<p>
-					Digitax values your privacy and works hard to protect your info.
+				<p (click)="privacyClick()">
+					DigiTax values your privacy and works hard to protect your personal information.
 				</p>
 			</div>
 		</div>
@@ -46,12 +54,13 @@
 		<div class="next_step">
 			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
 
-			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
+			
+			<button mat-raised-button class="blue_btn"   (click)="onNext($event)" #button>Continue<mat-icon>navigate_next</mat-icon> </button>
 		</div>
 	</div>
 
 	<div class="dashboard_footer">
-		Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+		Copyright © {{currentYear}} Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
 	</div>
 
 	
