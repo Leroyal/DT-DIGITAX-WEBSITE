@@ -15,17 +15,49 @@ export class UserService {
                
     }
 
+    /*
+      * This function is used for fetch user details(personal info)
+    */
+
+
     listUserDetails() {
       console.log('userlist api');
       console.log(this.headers);
         return this.http.post(`${environment.BASE_URL}users-list`,{headers: this.headers});
     }
 
+
+
      saveUserDetails(savedata) {
       console.log('save userdetails api');
       console.log(this.headers);
         return this.http.post(`${environment.BASE_URL}save-user-details`,{headers: this.headers});
     }
+
+    /*
+      * This function is used for saving user details
+      * @params(array)
+    */
+
+
+    //SAVE USER CONSENT
+     saveUserConsent(savedata) {
+      console.log('save userconsent api');      
+      /*let payloadObj={
+        first_name:savedata.first_name,
+        last_name:savedata.last_name,
+        user_date:savedata.user_date,
+        spouse_first_name:savedata.spouse_first_name,
+        spouse_last_name:savedata.spouse_last_name,
+        spouse_date:savedata.spouse_date,
+        consentToCollectPersonalInformation:true
+
+      };*/
+       return this.http.post(`${environment.BASE_URL}save-user-consent`,savedata);
+      }
+      
+    
+
 
     
   

@@ -21,10 +21,8 @@
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/personal_info_icon.png" alt="">
-					<p class="heading">Personal Info</p>
-					<!--<p>Sample Name</p>-->
-					<p>{{userDetails.user_name}}</p>
-					<!--<p>With 2 dependents</p>-->
+					<p class="heading">Personal Info</p>					
+					<p>{{userDetails.user_name}}</p>					
 					<p>With {{userDetails.no_of_dependants}} dependents</p>
 				</div>
 			</div>
@@ -32,10 +30,8 @@
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/income_icon.png" alt="">
-					<p class="heading">Income</p>
-					<!--<p>Forms : Scedule C,</p>-->
-					<p>Forms : {{incomeDetails.form_name}}</p>
-					<!--<p>1099 - G</p>-->
+					<p class="heading">Income</p>					
+					<p>Forms : {{incomeDetails.form_name}}</p>					
 					<p>{{incomeDetails.form_desc}}</p>
 				</div>
 			</div>
@@ -43,8 +39,7 @@
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/tax_breaks_icon.png" alt="">
-					<p class="heading">Tax breaks</p>
-					<!--<p>Donations</p>-->
+					<p class="heading">Tax breaks</p>					
 					<p>{{taxDetails.tax_desc}}</p>
 				</div>
 			</div>
@@ -52,11 +47,7 @@
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/summary_icon.png" alt="">
-					<p class="heading">{{lastYear}} Summary</p>
-					<!--<p>Filed on</p>
-					<p>AGI</p>
-					<p>Federal Refund</p>
-					<p>CA Stoto Rofund</p>-->
+					<p class="heading">{{lastYear}} Summary</p>					
 					<p>{{summaryDetails.filed_on}}</p>
 					<p>{{summaryDetails.filed_type}}</p>
 					<p>{{summaryDetails.filed_fund}}</p>
@@ -69,7 +60,7 @@
 			<h2>All set! Next, lets choose the right product for you</h2>
 			<p>We’ll help you update any change since last your as we go.</p>
 
-			<!--<button mat-raised-button class="blue_btn" (click)="onNext($event)">Continue <mat-icon>navigate_next</mat-icon></button>-->
+			
 			<button mat-raised-button class="blue_btn"   (click)="onNext($event)" #button>Continue<mat-icon>navigate_next</mat-icon> </button>
 		</div>
 

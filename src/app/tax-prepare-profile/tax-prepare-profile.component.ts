@@ -31,43 +31,17 @@ export class TaxPrepareProfileComponent implements OnInit {
   
 
  this.currentYear= moment().year();
- this.lastYear= moment().subtract(1, 'years').year();
-  //console.log("lastYear"+this.lastYear);
+ this.lastYear= moment().subtract(1, 'years').year();  
    	this.listUserDetails();
     
   }
+  /*
+   * This function is used for fetch user details.
+   * personal info,tax info,last year summary details
+  */
 
-  listUserDetails(){
-   console.log("ok");
-  	/*this.userService.listUserDetails({}).pipe(first()).subscribe(request => {
-      if(request['status'])
-        {
-          this.userList = request['result'];
-        }
-        
-     });
-     this.userService.incomeDetails({}).pipe(first()).subscribe(request => {
-      if(request['status'])
-        {
-          this.incomeDetails = request['result'];
-        }
-        
-     });
-     this.userService.taxDetails({}).pipe(first()).subscribe(request => {
-      if(request['status'])
-        {
-          this.taxDetails = request['result'];
-        }
-        
-     });
-      this.userService.summaryDetails({}).pipe(first()).subscribe(request => {
-      if(request['status'])
-        {
-          this.summaryDetails = request['result'];
-        }
-        
-     });*/
-     //
+  listUserDetails(){  
+     
      this.userDetails={
       user_name:'rick roy',
       no_of_dependants:2
@@ -91,7 +65,7 @@ export class TaxPrepareProfileComponent implements OnInit {
      
   	
   }
-  //onNext
+  
 
     onNext(event) {
     console.log("next");

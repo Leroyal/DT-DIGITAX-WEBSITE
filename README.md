@@ -42,6 +42,7 @@ Hence for security we have used both local storage and session storage, If users
     * [Installation](#installation)    
     * [For Login](#login)
     * [For Idle](#idle)
+    * [For UserTaxDetails](#usertaxdetails)
 
     
 * [Error Handling](#error-handling)
@@ -76,6 +77,11 @@ g stands for global installation. If you use -g later you can use the CLI in any
 
  1. We need to use bn-ng-idle tool in app component
  2. If session idle for 15 minutes or more than that it is figure out by this tool.
+
+ ### For UserTaxDetails
+
+ 1. Create tax-prepare-profile component .To do that ,we need to use the following command :ng g c tax-prepare-profile/tax-prepare-profile
+ 2. User personal info,tax info is figure out by this tool.
 
 
 <a name="error-handling"></a>
