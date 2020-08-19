@@ -62,6 +62,9 @@ import {
 
 import {NgxPrintModule} from 'ngx-print';
 
+import {MatDividerModule} from '@angular/material/divider';
+
+
 @NgModule({
   exports: [   
     MatDialogModule   
@@ -122,7 +125,8 @@ export class MaterialModule {}
     RecaptchaModule,
     RecaptchaFormsModule,
     MatDialogModule,
-    NgxPrintModule
+    NgxPrintModule,
+    MatDividerModule
     
 
   ],
