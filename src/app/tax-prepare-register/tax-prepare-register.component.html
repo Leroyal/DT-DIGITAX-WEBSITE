@@ -16,7 +16,7 @@
 		<p class="first_p"><span class="black_txt"><strong>Sample Name</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
 		<p class="second_p">We just need to sign and date this form below.</p>
 		<p class="third_p">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-
+        <form [formGroup]="userForm" (ngSubmit)="userFormSubmit()" >
 		<div class="table_box">
 			<div class="center_txt">
 				<h2>LOREM IPSUM SIMPLY <span class="blue_txt">DUMMY TEXT</span></h2>
@@ -27,16 +27,14 @@
 				<div class="name_box">
 					<div>
 						<p>Your Name</p>
-						<mat-form-field appearance="outline">
-						<!-- <mat-label>Username</mat-label> -->
-						<input matInput placeholder="First name" required>
+						<mat-form-field appearance="outline">						
+						<input matInput placeholder="First name"  formControlName="first_name" required>
 						</mat-form-field>
 					</div>
 					<div>
 						<p>&nbsp;</p>
-						<mat-form-field appearance="outline">
-						<!-- <mat-label>Username</mat-label> -->
-						<input matInput placeholder="Last name" required>
+						<mat-form-field appearance="outline">						
+						<input matInput placeholder="Last name" required formControlName="last_name" >
 						</mat-form-field>
 					</div>
 					
@@ -44,7 +42,7 @@
 				<div class="date_box">
 					<p>Today's date</p>
 				<mat-form-field appearance="outline">
-					<input matInput [matDatepicker]="userpicker" (click)="userpicker.open()" placeholder="mm/dd/yyyy">
+					<input matInput [matDatepicker]="userpicker" (click)="userpicker.open()" placeholder="mm/dd/yyyy" formControlName="user_date" >
 					<mat-datepicker #userpicker></mat-datepicker>
 				</mat-form-field>
 				</div>
@@ -52,16 +50,14 @@
 				<div class="name_box">
 					<div>
 						<p>Spouse's Name</p>
-						<mat-form-field appearance="outline">
-						<!-- <mat-label>Username</mat-label> -->
-						<input matInput placeholder="First name" required>
+						<mat-form-field appearance="outline">						
+						<input matInput placeholder="First name"  formControlName="spouse_first_name" >
 						</mat-form-field>
 					</div>
 					<div>
 						<p>&nbsp;</p>
-						<mat-form-field appearance="outline">
-						<!-- <mat-label>Username</mat-label> -->
-						<input matInput placeholder="Last name" required>
+						<mat-form-field appearance="outline">						
+						<input matInput placeholder="Last name"  formControlName="spouse_last_name" >
 						</mat-form-field>
 					</div>
 					
@@ -69,7 +65,7 @@
 				<div class="date_box">
 					<p>Today's date</p>
 				<mat-form-field appearance="outline">
-					<input matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="mm/dd/yyyy">
+					<input matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="mm/dd/yyyy" formControlName="spouse_date" >
 					<mat-datepicker #picker></mat-datepicker>
 				</mat-form-field>
 				</div>
@@ -99,10 +95,12 @@
 
 			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
 		</div>
+		<!-----lll--->
+	</form>
 	</div>
 
 	<div class="dashboard_footer">
-		Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+		Copyright © {{currentYear}} Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
 	</div>
 
 	

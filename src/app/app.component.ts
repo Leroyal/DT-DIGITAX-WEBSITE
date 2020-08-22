@@ -8,7 +8,7 @@ import { VERSION, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA ,MatDial
 import {ConfirmationDialog} from './confirmation-dialog.component';
 
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,8 @@ export class AppComponent {
   title = 'digitax';
   opened:boolean=false;
   sidebarShow:boolean=true;
+  currentYear: number;
+  lastYear: number 
    
    constructor(private authService: AuthService,
    router: Router,
@@ -48,6 +50,10 @@ export class AppComponent {
         this.openDialog();
       }
     });
+
+    this.currentYear= moment().year();
+    this.lastYear= moment().subtract(1, 'years').year();
+    console.log("lastYear"+this.lastYear);
   }
 
    openDialog() {

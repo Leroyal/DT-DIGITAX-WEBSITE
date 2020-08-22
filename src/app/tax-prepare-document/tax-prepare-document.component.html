@@ -14,31 +14,26 @@
 
 	<div class="tax_prepare_body">
 		<p class="first_p"><span class="black_txt"><strong>Sample Name</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
-		<p class="second_p">Sign now, save time later</p>
-		<p class="third_p">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
+		<p class="second_p">Sign now, save time later</p>		
 
 		<div class="table_box">
-			<div class="center_txt">
-				<h2>LOREM IPSUM SIMPLY <span class="blue_txt">DUMMY TEXT</span></h2>
+			<div class="center_txt">				
 				<img src="assets/images/document_icon.png" alt="">
 			</div>
 			<div class="detail_txt">
+				
 				<p>
-					It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+					By sharing your tax information with your DigiTax account, you can save timeand effort.
 				</p>
 				<p>
-					The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-				</p>
-				<p>
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-				</p>
-				<p>
-					It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-				</p>
+					With your OK, you can get personalized analysis, strategies, and offers to help you save and manage your money beyond tax prep. This includes things like finding you tax savings, managing your expenses, refinancing your existing loans, and finding government benefits. The hard work will be done for you without you having to re-enter this data.
+			  </p>
+			 
+			       		
 			</div>
 			<div class="center_txt blue_txt">
-				<p>
-					Digitax values your privacy and works hard to protect your info.
+				<p (click)="privacyClick()">
+					DigiTax values your privacy and works hard to protect your personal information.
 				</p>
 			</div>
 		</div>
@@ -46,12 +41,13 @@
 		<div class="next_step">
 			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
 
-			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
+			
+			<button mat-raised-button class="blue_btn"   (click)="onNext($event)" #button>Continue<mat-icon>navigate_next</mat-icon> </button>
 		</div>
 	</div>
 
 	<div class="dashboard_footer">
-		Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+		Copyright © {{currentYear}} Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
 	</div>
 
 	

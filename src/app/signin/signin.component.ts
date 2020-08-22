@@ -56,7 +56,7 @@ export class SigninComponent implements OnInit {
               localStorage.setItem('user_id','123');
               let isLoggedIn = (localStorage.getItem('access_token'))?true:false; 
               //this.isLoggedIn = true;               
-              location.href = '/dashboard'; 
+              location.href = '/tax-prepare-profile'; 
    }
    else
    {

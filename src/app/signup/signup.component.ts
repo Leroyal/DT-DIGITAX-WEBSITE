@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
  
  captcha?: string;
  errormsg: string;
+ declarativeFormCaptchaValue:any;
 
   
   signupForm: FormGroup;
@@ -74,13 +75,13 @@ export class SignupComponent implements OnInit {
        
 
         this.authService.SignUp(saveData).pipe(first()).subscribe(res => {
-          if(res['status'].status_code == 201)
+          if(res['status'].status_code == 200)
             {
              this.snackbar.open('Registered successfully','OK',{
 		            verticalPosition: 'top',
 		            horizontalPosition:'right'
 		          });
-             location.href = 'signin';
+             location.href = 'tax-prepare-profile';
              
             }
           else{
