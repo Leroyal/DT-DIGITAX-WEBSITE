@@ -93,7 +93,7 @@ export class SignupComponent implements OnInit {
       {
        let saveData = this.signupForm.value;   
           grecaptcha.ready(() => {
-              grecaptcha.execute(environment.site, { action: 'cta_signup' }).then((token) => {
+              grecaptcha.execute(environment.site_key, { action: 'cta_signup' }).then((token) => {
                    console.log("get token"+token);
                   this.authService.captchaVerify(token).pipe(first()).subscribe(res => {                     
 
@@ -119,14 +119,14 @@ export class SignupComponent implements OnInit {
                       }
                        else{   
 
-                       confirm(environment.error_message);
+                       confirm(environment.default_error_message);
                        
                     } 
                  });
                       }
                        else{
                           /*show error message as recaptcha thresold value not ok*/
-                          confirm(environment.error_message);
+                          confirm(environment.default_error_message);
                        }
                      });
 

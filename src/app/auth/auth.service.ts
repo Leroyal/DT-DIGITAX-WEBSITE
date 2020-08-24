@@ -216,7 +216,7 @@ var ProductName = sessionStorage.getItem('ProductName');
 
 
 let data={
-    secret:environment.secret,  
+    secret:environment.secret_key,  
     response:token
 }
 

@@ -41,12 +41,12 @@ export class HomeComponent implements OnInit {
         this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,)
             .pipe(first())
             .subscribe(
-                resp => {
+                loginresponse => {
                 console.log("###");
-                console.log(resp);
-                if(resp.status.status_code == 200)
+                console.log(loginresponse);
+                if(loginresponse.status.status_code == 200)
                     {
-                        this.snackbar.open(resp.status.status_message,'OK',{
+                        this.snackbar.open(loginresponse.status.status_message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
