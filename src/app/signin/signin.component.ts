@@ -39,35 +39,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
   }
-  /*
- * This function is used for login
- * @params(email:string,password:string)
- * As  no live api url found we are setting token static value  
- */
-
-   loginsubmit() {
-     console.log("ok");
-     this.submitted = true;
-      if (this.loginForm.valid) { 
-        console.log(this.loginForm.value);
-         sessionStorage.setItem('access_token', 'Asdoosdfr5234');
-              sessionStorage.setItem('user_id', '123');
-              localStorage.setItem('access_token', 'Asdoosdfr5234');
-              localStorage.setItem('user_id','123');
-              let isLoggedIn = (localStorage.getItem('access_token'))?true:false; 
-              //this.isLoggedIn = true;               
-              location.href = '/tax-prepare-profile'; 
-   }
-   else
-   {
-     this.snackbar.open('Some fields are mandatory','OK',{
-                        verticalPosition: 'top',
-                        horizontalPosition:'right',
-                        panelClass: ['red-snackbar'],
-                        duration:2000
-                      });
-   }
- }
+ 
 
  /*
  * This function is used for login
@@ -75,7 +47,7 @@ export class SigninComponent implements OnInit {
  * We are activating this one when live api url found
  */
 
- /* loginsubmitrun() {
+  loginsubmit() {
      console.log("ok");
      this.submitted = true;
       if (this.loginForm.valid) { 
@@ -86,7 +58,7 @@ export class SigninComponent implements OnInit {
                 resp => {
                 console.log("###");
                 console.log(resp);
-                if(resp.status.status_code == 401)
+                if(resp.status.status_code == 200)
                     {
                         this.snackbar.open(resp.status.status_message,'OK',{
                         verticalPosition: 'top',
@@ -96,7 +68,7 @@ export class SigninComponent implements OnInit {
                       });
                     }
                    else{
-                    location.href = '/dashboard';
+                    location.href = '/tax-prepare-profile';
                    }
                 },
                 error => {
@@ -117,6 +89,6 @@ export class SigninComponent implements OnInit {
                         duration:2000
                       });
    }
- }*/
+ }
 
 }

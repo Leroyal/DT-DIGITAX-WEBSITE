@@ -15,6 +15,8 @@ import { OnExecuteData, ReCaptchaV3Service } from 'ng-recaptcha';
 import { Subscription } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
+
 declare var grecaptcha: any;
 
 @Component({
@@ -45,6 +47,7 @@ export class SignupComponent implements OnInit {
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
                private recaptchaV3Service: ReCaptchaV3Service
+               
   	           )
                {
   	               this.signupForm = this.fb.group({
@@ -62,7 +65,7 @@ export class SignupComponent implements OnInit {
 
    
   ngOnInit() {
-    this.loadExternalScript('https://www.google.com/recaptcha/api.js?render=6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn');
+    this.loadExternalScript(environment.autoload);
   
   	
   }
@@ -90,8 +93,8 @@ export class SignupComponent implements OnInit {
       {
        let saveData = this.signupForm.value;   
           grecaptcha.ready(() => {
-              grecaptcha.execute('6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn', { action: 'cta_signup' }).then((token) => {
-                   console.log(token);
+              grecaptcha.execute(environment.site, { action: 'cta_signup' }).then((token) => {
+                   console.log("get token"+token);
                   this.authService.captchaVerify(token).pipe(first()).subscribe(res => {                     
 
                        if(res['score'] >=0.5){                       
@@ -114,15 +117,16 @@ export class SignupComponent implements OnInit {
                           horizontalPosition:'right'
                         });
                       }
-                       else{                      
-                       confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
+                       else{   
+
+                       confirm(environment.error_message);
                        
                     } 
                  });
                       }
                        else{
                           /*show error message as recaptcha thresold value not ok*/
-                          confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
+                          confirm(environment.error_message);
                        }
                      });
 

@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,NgModule } from '@angular/core';
 import { Router }      from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import {first , tap, delay,map } from 'rxjs/operators';
+import {DatePipe} from '@angular/common';
+
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -32,21 +36,36 @@ export class HomeComponent implements OnInit {
      console.log("ok");
      this.submitted = true;
       if (this.loginForm.valid) { 
-        console.log(this.loginForm.value);
-         sessionStorage.setItem('access_token', '234');
-              sessionStorage.setItem('user_id', '123');
-
-              localStorage.setItem('access_token', '234');
-              localStorage.setItem('user_id', '123');
-              let isLoggedIn = (localStorage.getItem('access_token'))?true:false; 
-              //this.isLoggedIn = true;
-              let fetch={
-              user_id:'123',
-              access_token:'234'
-
-              };  
-              location.href = '/tax-prepare-profile'; 
-             // location.href = '/dashboard'; 
+        console.log(this.loginForm.value);         
+        
+        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,)
+            .pipe(first())
+            .subscribe(
+                resp => {
+                console.log("###");
+                console.log(resp);
+                if(resp.status.status_code == 200)
+                    {
+                        this.snackbar.open(resp.status.status_message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                    }
+                   else{
+                    location.href = '/tax-prepare-profile';
+                   }
+                },
+                error => {
+                    this.snackbar.open(error,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                });   
+             
    }
    else
    {

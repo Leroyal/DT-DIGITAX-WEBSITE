@@ -41,7 +41,7 @@ export class AuthService {
 
   login(email: string, password: string, remember:boolean){
     
-     return this.http.post<any>(`${environment.BASE_URL}auth/signin`, { email, password })
+     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signin`, { email, password })
     
       .pipe(map(fetchresult => {
       console.log(" user",fetchresult)
@@ -64,19 +64,7 @@ export class AuthService {
 
 
 
-  loginnew(email: string, password: string, remember:boolean){
-    
-     sessionStorage.setItem('access_token', '234');
-              sessionStorage.setItem('user_id', '123');
-              this.isLoggedIn = true;
-              let fetch={
-              user_id:'123',
-              access_token:'234'
-
-              };
-              return fetch;
-
-  }
+  
 
  SignUp(data:any)
     {  
@@ -228,17 +216,16 @@ var ProductName = sessionStorage.getItem('ProductName');
 
 
 let data={
-//6LeJqqsZAAAAADgHTJGWg4YMI028ffU6c--Av2YR(client)
-//6LdoiLwZAAAAADmQpBrZnki6eFbWJS-WaD1r1luU---owner
-//secret:"6LdoiLwZAAAAADmQpBrZnki6eFbWJS-WaD1r1luU",
-
-   secret:"6LdoiLwZAAAAADmQpBrZnki6eFbWJS-WaD1r1luU",
-   response:token
+    secret:environment.secret,  
+    response:token
 }
 
       const body = new HttpParams({fromObject: data});
-    const options = { headers: this.headers1};
-    return this.http.post(`https://www.google.com/recaptcha/api/siteverify`, body.toString(), options);
+    const options = { headers: this.headers1}; 
+
+    
+
+      return this.http.post(`${environment.CAPTCHA_URL}`, body.toString(), options);
 
   }
 }
