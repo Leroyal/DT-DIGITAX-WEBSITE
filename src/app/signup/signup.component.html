@@ -5,31 +5,25 @@
 			<p>Hello! Let’s create account</p>
 
 			<form [formGroup]="signupForm" (ngSubmit)="signupFormSubmit()" >
+				
+
+				
+
+				<p>Username</p>
+				<mat-form-field appearance="outline">
+					
+					<input matInput formControlName="username" placeholder="Sample Name" required>
+					<mat-icon matSuffix class="valid">check</mat-icon>
+                    
+					<mat-error>Enter valid username</mat-error>
+				</mat-form-field>
+
+
 				<p>Email</p>
 				<mat-form-field appearance="outline">					
 					<input matInput formControlName="email" placeholder="sample@email.com" required>					
 					<mat-error>Please enter your email address in the format: youremail@example.com.</mat-error>
 				</mat-form-field>
-
-				
-
-				<p>User ID</p>
-				<mat-form-field appearance="outline">
-					
-					<input matInput formControlName="user_id" placeholder="Sample Name" required>
-					<mat-icon matSuffix class="valid">check</mat-icon>
-					<mat-error>Enter valid user ID</mat-error>
-				</mat-form-field>
-				
-
-				<p>Phone Number</p>
-				<mat-form-field appearance="outline">
-					<span matPrefix>+91 &nbsp;</span>
-					<input type="tel" formControlName="phone" matInput placeholder="555-555-1234">
-					<mat-error>Enter valid Phone Number</mat-error>
-				</mat-form-field>
-			
-
 
 				<p>Password</p>
 				<mat-form-field appearance="outline">
@@ -38,23 +32,31 @@
                  <mat-error>Enter valid Password</mat-error>
 					
 				</mat-form-field>
-				
-				
-				<div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+
+					<div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
           
             <div *ngIf="f.password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
             <div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
            </div>
         </div>
-      <!--run<div #recaptcha ></div>-->
-       <!--<div class="g-recaptcha" ng-model="g-recaptcha-response" data-sitekey="6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD" ></div>-->
-       <form #declarativeForm="ngForm">
-		<re-captcha [(ngModel)]="declarativeFormCaptchaValue" name="captcha" required></re-captcha>
-		
-	</form>
-  
+				
 
-				<button class="login_btn" mat-raised-button [disabled]="!declarativeForm.valid" >SIGN UP</button>
+				<p>Phone Number</p>
+				<mat-form-field appearance="outline">
+					<span matPrefix>+91 &nbsp;</span>
+					<input type="tel" formControlName="phone" matInput placeholder="555-555-1234">
+					<mat-error>Enter valid Phone Number</mat-error>
+				</mat-form-field>	
+
+
+				
+				
+				
+			
+
+ 
+
+				<button class="login_btn" mat-raised-button >SIGN UP</button>
 			</form>
 			<p class="signin_copy">Copyright &copy; 2020 Digitax</p>
 		</div>
@@ -69,3 +71,5 @@
 		</div>
 	</div>
 </section>
+
+

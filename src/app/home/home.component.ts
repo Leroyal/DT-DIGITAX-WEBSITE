@@ -35,6 +35,9 @@ export class HomeComponent implements OnInit {
         console.log(this.loginForm.value);
          sessionStorage.setItem('access_token', '234');
               sessionStorage.setItem('user_id', '123');
+
+              localStorage.setItem('access_token', '234');
+              localStorage.setItem('user_id', '123');
               let isLoggedIn = (localStorage.getItem('access_token'))?true:false; 
               //this.isLoggedIn = true;
               let fetch={
