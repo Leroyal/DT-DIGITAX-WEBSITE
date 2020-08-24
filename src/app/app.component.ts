@@ -18,7 +18,8 @@ import * as moment from 'moment';
 export class AppComponent {
   title = 'digitax';
   opened:boolean=false;
-  sidebarShow:boolean=false;
+  sidebarShow:boolean=true;
+  //sidebarShow:boolean=false;
   currentYear: number;
   lastYear: number 
    

@@ -10,7 +10,8 @@ export const environment = {
   secret:"6LdoiLwZAAAAADmQpBrZnki6eFbWJS-WaD1r1luU",
   site:"6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn",
   error_message:"Sorry, an error occurred. Please email support@digitaltaxusa.com",
-  autoload:"https://www.google.com/recaptcha/api.js?render=6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn"
+  autoload:"https://www.google.com/recaptcha/api.js?render=6LdoiLwZAAAAANJ-MV-ZORWzs8IwU1IjDPJcXnvn",
+  title:"DIGITAX"
 };
 
 /*

@@ -11,10 +11,12 @@
 	<div class="signup_right">
 		<div class="signup_right_inner">
 			<h2>SIGN <span>IN</span></h2>
-			<p>Hello! Let's get Started</p>
+			<!--<p>Hello! Let's get Started</p>-->
+			<p>Welcome back!</p>
 
 			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
-				<p>Email</p>
+				<!--<p>Email</p>-->
+				<p>Phone number,email or username</p>
 				<mat-form-field appearance="outline">
 					<!-- <mat-label>Username</mat-label> -->
 					<input matInput formControlName="email"  placeholder="sample@email.com" required>
@@ -34,7 +36,7 @@
 				<div class="form_info">
 					<p>
 						By clicking Sign In,you agree to the
-						DIGITAX <a href="">Terms of Service</a>, DigiTax <a href="">Terms of Use</a>
+						{{title}} <a href="">Terms of Service</a>, {{title}} <a href="">Terms of Use</a>
 						and have read and acknowledge our Privacy Statement
 					</p>
 				</div>

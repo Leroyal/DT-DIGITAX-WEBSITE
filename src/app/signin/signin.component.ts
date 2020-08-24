@@ -9,6 +9,7 @@ import {DatePipe} from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SigninComponent implements OnInit {  
    
     submitted:boolean=false;
+    title:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -38,6 +40,7 @@ export class SigninComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
   ngOnInit() {
+    this.title=environment.title;
   }
  
 
