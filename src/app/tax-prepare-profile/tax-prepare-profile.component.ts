@@ -7,6 +7,8 @@ import { UserService } from '../../app/services/user.service';
 import {first , tap, delay,map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 import * as moment from 'moment';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-tax-prepare-profile',
@@ -23,6 +25,7 @@ export class TaxPrepareProfileComponent implements OnInit {
   currentYear: number;
   lastYear: number 
   @ViewChild('button', {static: true }) button: ElementRef;
+  title:string;
   
 
   constructor(private userService:UserService) { }
@@ -31,6 +34,7 @@ export class TaxPrepareProfileComponent implements OnInit {
   
 
  this.currentYear= moment().year();
+ this.title=environment.title;
  this.lastYear= moment().subtract(1, 'years').year();  
    	this.listUserDetails();
     

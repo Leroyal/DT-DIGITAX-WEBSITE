@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import * as moment from 'moment';
 
 declare var grecaptcha: any;
 
@@ -32,6 +33,8 @@ export class SignupComponent implements OnInit {
  rec_response:any;
  grecaptcha:any;
  score:any;
+ title:string;
+ currentYear:number;
 
 
   public recentToken: string = '';
@@ -66,6 +69,8 @@ export class SignupComponent implements OnInit {
    
   ngOnInit() {
     this.loadExternalScript(environment.autoload);
+    this.currentYear= moment().year();
+    this.title=environment.title;
   
   	
   }

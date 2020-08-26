@@ -10,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../environments/environment';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signin',
@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
    
     submitted:boolean=false;
     title:string;
+    currentYear:number;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -41,6 +42,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     this.title=environment.title;
+    this.currentYear= moment().year();
   }
  
 

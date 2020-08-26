@@ -4,6 +4,8 @@ import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators}
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../../app/services/user.service';
 import {first , tap, delay,map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-tax-prepare-register',
@@ -15,6 +17,7 @@ export class TaxPrepareRegisterComponent implements OnInit {
   @ViewChild('button', {static: true }) button: ElementRef;
   userForm: FormGroup;
   isSubmitted:boolean=false;
+  title:string;
   constructor(private fb: FormBuilder, 
   	           private snackbar: MatSnackBar, public userService: UserService,) {
 
@@ -31,6 +34,8 @@ export class TaxPrepareRegisterComponent implements OnInit {
 
   ngOnInit() {
   this.currentYear= moment().year();
+  this.title=environment.title;
+  
   }
 
    onNext(event) {
