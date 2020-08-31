@@ -120,3 +120,7 @@ mat-tab-body{
 	border-left:3px solid #ff4612;
 }
 
+.signup_left .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
+	padding: 5px !important;
+}
+

@@ -15,13 +15,14 @@ import { Observable, of } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
  submitted:boolean=false;
+ flag:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar) { }
 
    loginForm = new FormGroup({
-				       email:new FormControl('', [Validators.required,Validators.email]),
+				       email:new FormControl('', [Validators.required]),
 				       password: new FormControl('',[Validators.required]),
 				       remember_me: new FormControl('')
 				    });
@@ -36,9 +37,22 @@ export class HomeComponent implements OnInit {
      console.log("ok");
      this.submitted = true;
       if (this.loginForm.valid) { 
-        console.log(this.loginForm.value);         
+        console.log(this.loginForm.value); 
+
+        if (this.f.email.value.indexOf('@') != -1) {
+             console.log("email get");
+             this.flag="email";
+          }
+          else if (this.f.email.value.match(/^[0-9()]+$/)) {
+             console.log("phone number get");
+             this.flag="phone";
+          }
+          else{
+              console.log("username get");
+              this.flag="username";
+          }        
         
-        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,)
+        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
             .pipe(first())
             .subscribe(
                 loginresponse => {
@@ -46,15 +60,22 @@ export class HomeComponent implements OnInit {
                 console.log(loginresponse);
                 if(loginresponse.status.status_code == 200)
                     {
-                        this.snackbar.open(loginresponse.status.status_message,'OK',{
+                        this.snackbar.open(loginresponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
+
+                      location.href = '/tax-prepare-profile';
                     }
                    else{
-                    location.href = '/tax-prepare-profile';
+                     this.snackbar.open(loginresponse.status.status_message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
                    }
                 },
                 error => {

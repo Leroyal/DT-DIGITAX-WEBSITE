@@ -46,26 +46,30 @@ export class TaxPrepareProfileComponent implements OnInit {
 
   listUserDetails(){  
      
-     this.userDetails={
+     /*this.userDetails={
       user_name:'rick roy',
       no_of_dependants:2
 
-     };
-     this.incomeDetails ={
+     };*/
+     this.userDetails='';
+     /*this.incomeDetails ={
        form_name:"Scedule C",
        form_desc:"1099 - G"
-     }
+     }*/
+     this.incomeDetails='';
      this.taxDetails ={
        tax_desc:"Donations"
       
      }
-     this.summaryDetails ={
+     this.taxDetails='';
+     /*this.summaryDetails ={
        filed_on:"Donations",
        filed_type:"AGI",       
        filed_fund:"Federal Refund",
        filed_another:"CA Stoto Rofund"
       
-     }
+     }*/
+     this.summaryDetails='';
      
   	
   }

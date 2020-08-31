@@ -18,8 +18,8 @@ import * as moment from 'moment';
 export class AppComponent {
   title = 'digitax';
   opened:boolean=false;
-  sidebarShow:boolean=true;
-  //sidebarShow:boolean=false;
+  //sidebarShow:boolean=true;
+  sidebarShow:boolean=false;
   currentYear: number;
   lastYear: number 
    
@@ -82,8 +82,8 @@ export class AppComponent {
     console.log("logout");
     event.preventDefault();
 
-   this.authService.logout().subscribe(() => {
-     location.href = '/';
+   this.authService.siteLogout().subscribe(() => {
+     //location.href = '/';
    },
    (error: any) => {
       console.log("okj");

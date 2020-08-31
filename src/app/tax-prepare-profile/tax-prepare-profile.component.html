@@ -22,8 +22,8 @@
 				<div class="white_box">
 					<img src="assets/images/personal_info_icon.png" alt="">
 					<p class="heading">Personal Info</p>					
-					<p>{{userDetails.user_name}}</p>					
-					<p>With {{userDetails.no_of_dependants}} dependents</p>
+					<p *ngIf="userDetails;else noIncomeHistory">{{userDetails.user_name}}</p>					
+					<p *ngIf="userDetails">With {{userDetails.no_of_dependants}} dependents</p>
 				</div>
 			</div>
 
@@ -31,8 +31,12 @@
 				<div class="white_box">
 					<img src="assets/images/income_icon.png" alt="">
 					<p class="heading">Income</p>					
-					<p>Forms : {{incomeDetails.form_name}}</p>					
-					<p>{{incomeDetails.form_desc}}</p>
+					<p *ngIf="incomeDetails;else noIncomeHistory">Forms : {{incomeDetails.form_name}}</p>
+
+					<p > <ng-template #noIncomeHistory>
+                      No history
+                    </ng-template></p>					
+					<p *ngIf="incomeDetails">{{incomeDetails.form_desc}}</p>
 				</div>
 			</div>
 
@@ -40,7 +44,7 @@
 				<div class="white_box">
 					<img src="assets/images/tax_breaks_icon.png" alt="">
 					<p class="heading">Tax breaks</p>					
-					<p>{{taxDetails.tax_desc}}</p>
+					<p *ngIf="taxDetails;else noIncomeHistory">{{taxDetails.tax_desc}}</p>
 				</div>
 			</div>
 
@@ -48,10 +52,10 @@
 				<div class="white_box">
 					<img src="assets/images/summary_icon.png" alt="">
 					<p class="heading">{{lastYear}} Summary</p>					
-					<p>{{summaryDetails.filed_on}}</p>
-					<p>{{summaryDetails.filed_type}}</p>
-					<p>{{summaryDetails.filed_fund}}</p>
-					<p>{{summaryDetails.filed_another}}</p>
+					<p *ngIf="summaryDetails;else noIncomeHistory">{{summaryDetails.filed_on}}</p>
+					<p *ngIf="summaryDetails">{{summaryDetails.filed_type}}</p>
+					<p *ngIf="summaryDetails">{{summaryDetails.filed_fund}}</p>
+					<p *ngIf="summaryDetails">{{summaryDetails.filed_another}}</p>
 				</div>
 			</div>
 		</div>

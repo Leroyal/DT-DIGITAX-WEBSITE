@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
      this.headers = new  HttpHeaders().set("Access-Control-Allow-Origin",  "*"); 
   }
-  isLoggedIn = (localStorage.getItem('access_token'))?true:false; 
+  isLoggedIn = (localStorage.getItem('access_token') || sessionStorage.getItem('access_token'))?true:false; 
   
   // store the URL so we can redirect after logging in
  
@@ -39,25 +39,36 @@ export class AuthService {
         })
       };
 
-  login(email: string, password: string, remember:boolean){
+  login(email: string, password: string, remember:boolean,flag:string){
+
+     let signinObj={
+
+         [flag]:email,
+         password:password,
+         deviceType:"web"
+
+     }
     
-     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signin`, { email, password })
+     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signin`, signinObj/*{ email, password }*/)
     
       .pipe(map(fetchresult => {
       console.log(" user",fetchresult)
          
           if (fetchresult && fetchresult.data.session && remember) {
+              console.log("with remember");
               localStorage.setItem('access_token', fetchresult.data.session.accessToken);
               localStorage.setItem('user_id', fetchresult.data.user.id);
-              this.isLoggedIn = true
-              return fetchresult.result;
+              this.isLoggedIn = true;
+              return fetchresult;
           }
           else if(fetchresult && fetchresult.data.session && !remember){
+              console.log("with no remember");
               sessionStorage.setItem('access_token', fetchresult.data.session.accessToken);
               sessionStorage.setItem('user_id', fetchresult.data.user.id);
-              this.isLoggedIn = true
-              return fetchresult.result;
+              this.isLoggedIn = true;
+              return fetchresult;
           }
+          this.isLoggedIn = true;
           return fetchresult;
      }));
   }
@@ -101,6 +112,7 @@ export class AuthService {
   }
 
   logout(): Observable<boolean> {
+    console.log("logout func call");
     return of(true).pipe(
       delay(1000),
       tap(val =>{
@@ -125,7 +137,7 @@ export class AuthService {
       };
 
         
-        return this.http.post(`${environment.BASE_URL}auth/logout`, payloadObj, {headers: this.headers}).pipe(map(fetchresult => {
+        return this.http.post(`${environment.BASE_URL}/api/auth/signout`, payloadObj, {headers: this.headers}).pipe(map(fetchresult => {
          console.log(" user",fetchresult)
          
           if (fetchresult) {
