@@ -16,7 +16,9 @@
 		<p class="first_p"><span class="black_txt"><strong>Sample Name</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
 		<p class="second_p">We just need to sign and date this form below.</p>
 		<p class="third_p">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-        <form [formGroup]="userForm" (ngSubmit)="userFormSubmit()" >
+        <!--<form [formGroup]="userForm" (ngSubmit)="userFormSubmit()" >-->
+
+        	<form [formGroup]="userForm">
 		<div class="table_box">
 			<div class="center_txt">
 				<h2>LOREM IPSUM SIMPLY <span class="blue_txt">DUMMY TEXT</span></h2>
@@ -40,7 +42,7 @@
 					
 				</div>
 				<div class="date_box">
-					<p>Today's date</p>
+					<p>Today's Date</p>
 				<mat-form-field appearance="outline">
 					<input matInput [matDatepicker]="userpicker" (click)="userpicker.open()" placeholder="mm/dd/yyyy" formControlName="user_date" >
 					<mat-datepicker #userpicker></mat-datepicker>
@@ -63,7 +65,7 @@
 					
 				</div>
 				<div class="date_box">
-					<p>Today's date</p>
+					<p>Today's Date</p>
 				<mat-form-field appearance="outline">
 					<input matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="mm/dd/yyyy" formControlName="spouse_date" >
 					<mat-datepicker #picker></mat-datepicker>
@@ -93,9 +95,10 @@
 		<div class="next_step">
 			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
 
-			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
+			<button mat-raised-button class="blue_btn" (click)="userFormSubmit()">Continue <mat-icon>navigate_next</mat-icon></button>
 		</div>
 		<!-----lll--->
+	<!--</form>-->
 	</form>
 	</div>
 
