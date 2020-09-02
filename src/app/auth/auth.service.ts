@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHeaders, HttpHandler, HttpEvent, HttpInterceptor,HttpClient } from '@angular/common/http';
+import { HttpRequest, HttpHeaders, HttpHandler, HttpEvent, HttpInterceptor,HttpClient ,HttpParams} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 import { Observable, of } from 'rxjs';
 import { tap, delay,map } from 'rxjs/operators';
-
+import { retry, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
    headers;
+   headers1;
    access_token;
   constructor(private http: HttpClient) {
      this.headers = new  HttpHeaders().set("Access-Control-Allow-Origin",  "*"); 
@@ -20,9 +21,27 @@ export class AuthService {
  
   redirectUrl: string;
 
+  httpOptions = {
+        headers: new HttpHeaders({
+            'Access-Control-Allow-Methods':'DELETE, POST, GET, OPTIONS',
+            'Access-Control-Allow-Headers':'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+            'Content-Type':  'application/json',
+            'Access-Control-Allow-Origin':'http://localhost:4200'
+        })
+      };
+
+      httpOptions1 = {
+        headers: new HttpHeaders({
+            'Access-Control-Allow-Methods':'DELETE, POST, GET, OPTIONS',
+            'Access-Control-Allow-Headers':'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Access-Control-Allow-Origin':'http://localhost:4200'
+        })
+      };
+
   login(email: string, password: string, remember:boolean){
     
-     return this.http.post<any>(`${environment.BASE_URL}auth/signin`, { email, password })
+     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signin`, { email, password })
     
       .pipe(map(fetchresult => {
       console.log(" user",fetchresult)
@@ -45,36 +64,24 @@ export class AuthService {
 
 
 
-  loginnew(email: string, password: string, remember:boolean){
-    
-     sessionStorage.setItem('access_token', '234');
-              sessionStorage.setItem('user_id', '123');
-              this.isLoggedIn = true;
-              let fetch={
-              user_id:'123',
-              access_token:'234'
-
-              };
-              return fetch;
-
-  }
+  
 
  SignUp(data:any)
-    {        
+    {  
 
-        /*return this.http.post(`${environment.BASE_URL}auth/signup`, data, {headers: this.headers});*/
-        
 
-     return this.http.post<any>(`${environment.BASE_URL}auth/signup`, data,{headers: this.headers})
+     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signup`, data,{headers: this.headers})
     
       .pipe(map(fetchresult => {
-      console.log(" user",fetchresult)
+           console.log(" user",fetchresult.status.status_code)
+         if(fetchresult && fetchresult.status.status_code==200){
          
           if (fetchresult && fetchresult.data.session) {
               localStorage.setItem('access_token', fetchresult.data.session.accessToken);
               localStorage.setItem('user_id', fetchresult.data.user.id);
               this.isLoggedIn = true
-              return fetchresult.result;
+              return fetchresult;
+          }
           }
          
           return fetchresult;
@@ -97,6 +104,7 @@ export class AuthService {
     return of(true).pipe(
       delay(1000),
       tap(val =>{
+
          localStorage.removeItem('access_token');
          localStorage.removeItem('user_id');
 
@@ -104,6 +112,7 @@ export class AuthService {
          sessionStorage.removeItem('user_id');
  
          //sessionStorage.clear();
+          localStorage.clear();
          this.isLoggedIn = false;
          })
     );
@@ -179,4 +188,44 @@ var ProductName = sessionStorage.getItem('ProductName');
             return fetchresult;
         }));
     }
+
+    captchaVerify(token: string){
+
+
+ 
+
+       let httpOptions1 = {
+        headers: new HttpHeaders({
+            'Access-Control-Allow-Methods':'DELETE, POST, GET, OPTIONS',
+            'Access-Control-Allow-Headers':'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Access-Control-Allow-Origin':'http://localhost:4200'
+        })
+      };
+
+      this.headers1 = new HttpHeaders(
+        {
+            'Content-Type':  'application/x-www-form-urlencoded',
+            Accept: '*/*',
+
+            
+        }
+    );
+
+
+
+
+let data={
+    secret:environment.secret_key,  
+    response:token
+}
+
+      const body = new HttpParams({fromObject: data});
+    const options = { headers: this.headers1}; 
+
+    
+
+      return this.http.post(`${environment.CAPTCHA_URL}`, body.toString(), options);
+
+  }
 }

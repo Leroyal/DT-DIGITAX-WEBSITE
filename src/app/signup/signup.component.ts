@@ -11,7 +11,11 @@ import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators}
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PasswordValidator } from './password.validator';
 
+import { OnExecuteData, ReCaptchaV3Service } from 'ng-recaptcha';
+import { Subscription } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
 
 declare var grecaptcha: any;
 
@@ -24,7 +28,17 @@ export class SignupComponent implements OnInit {
  
  captcha?: string;
  errormsg: string;
- declarativeFormCaptchaValue:any;
+ window: any;
+ rec_response:any;
+ grecaptcha:any;
+ score:any;
+
+
+  public recentToken: string = '';
+  public readonly executionLog: OnExecuteData[] = [];
+
+  private allExecutionsSubscription: Subscription;
+  private singleExecutionSubscription: Subscription;
 
   
   signupForm: FormGroup;
@@ -32,12 +46,14 @@ export class SignupComponent implements OnInit {
   constructor( public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
+               private recaptchaV3Service: ReCaptchaV3Service
+               
   	           )
                {
   	               this.signupForm = this.fb.group({
                    email: new FormControl('',[Validators.compose([Validators.required,Validators.email,Validators.pattern(/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/)]) ]),
                    //captcha: new FormControl('',[Validators.required]),
-                   user_id: new FormControl('',[Validators.required]),                   
+                   username: new FormControl('',[Validators.required]),                   
                    password: ['', [Validators.required,Validators.minLength(6),PasswordValidator.cannotContainSpace]],
                    phone: new FormControl(''),
                     });
@@ -45,51 +61,81 @@ export class SignupComponent implements OnInit {
 
                      
   	            }
-  
+
+
+   
   ngOnInit() {
+    this.loadExternalScript(environment.autoload);
   
   	
   }
+  public loadExternalScript(url: string) {
+  const body = <HTMLDivElement> document.body;
+  const script = document.createElement('script');
+  script.innerHTML = '';
+  script.src = url;
+  script.async = true;
+  script.defer = true;
+  body.appendChild(script);
+}
+
+  
+
   /*
  * This function is used for signup
- * @params(email:string,password:string,user id:string,phone number:string)
- * As  no live api url found we are setting token static value  
+ * @params(email:string,password:string,user name:string,phone number:string)   
  */
-
   signupFormSubmit(){
-      this.isSubmitted = true;
-       const response = grecaptcha.getResponse();
-      console.log("forms"+response);
-      if (response.length === 0) {
-          console.log("not");
-          this.errormsg = 'Recaptcha not verified. Please try again!';
-           this.snackbar.open('Recaptcha not verified. Please try again!','OK',{
-                verticalPosition: 'top',
-                horizontalPosition:'right'
-              });
-          return;
-        }
+      this.isSubmitted = true;         
+      
+      
       if(this.signupForm.valid)
       {
-      let saveData = this.signupForm.value;   
-       
+       let saveData = this.signupForm.value;   
+          grecaptcha.ready(() => {
+              grecaptcha.execute(environment.site_key, { action: 'cta_signup' }).then((token) => {
+                   console.log("get token"+token);
+                  this.authService.captchaVerify(token).pipe(first()).subscribe(res => {                     
 
-        this.authService.SignUp(saveData).pipe(first()).subscribe(res => {
-          if(res['status'].status_code == 200)
-            {
-             this.snackbar.open('Registered successfully','OK',{
-		            verticalPosition: 'top',
-		            horizontalPosition:'right'
-		          });
-             location.href = 'tax-prepare-profile';
-             
-            }
-          else{
-            console.log("lko");
-             confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
-             
-          } 
-         });
+                       if(res['score'] >=0.5){                       
+                            
+                             this.authService.SignUp(saveData).pipe(first()).subscribe(signupres => {
+                    
+                    if(signupres.status.status_code == 200)
+                      {
+                       console.log("ok"); 
+                       this.snackbar.open('Registered successfully','OK',{
+                          verticalPosition: 'top',
+                          horizontalPosition:'right'
+                        });
+                      location.href = 'tax-prepare-profile';
+                       
+                      }
+                      else if(signupres['status'].status_code == 400){
+                         this.snackbar.open(signupres['status']['message'],'OK',{
+                          verticalPosition: 'top',
+                          horizontalPosition:'right'
+                        });
+                      }
+                       else{   
+
+                       confirm(environment.default_error_message);
+                       
+                    } 
+                 });
+                      }
+                       else{
+                          /*show error message as recaptcha thresold value not ok*/
+                          confirm(environment.default_error_message);
+                       }
+                     });
+
+                
+                   
+              });
+          });          
+
+       
       }
       else
       {
@@ -113,5 +159,12 @@ export class SignupComponent implements OnInit {
         console.log(`Resolved captcha with response: ${captchaResponse}`);
     }
                   
+    public formatToken(token: string): string {
+    if (!token) {
+      return '(empty)';
+    }
 
+    return `${token.substr(0, 7)}...${token.substr(-7)}`;
+  } 
+ 
 }

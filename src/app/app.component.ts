@@ -18,7 +18,7 @@ import * as moment from 'moment';
 export class AppComponent {
   title = 'digitax';
   opened:boolean=false;
-  sidebarShow:boolean=true;
+  sidebarShow:boolean=false;
   currentYear: number;
   lastYear: number 
    
@@ -27,7 +27,8 @@ export class AppComponent {
    private bnIdle: BnNgIdleService,
    private dialog: MatDialog,
     private snackBar: MatSnackBar) {
-     if (this.authService.isLoggedIn ) { 
+      console.log("logn"+this.authService.isLoggedIn);
+     if (this.authService.isLoggedIn  ) { 
        this.sidebarShow = true; 
      }
      router.events.subscribe(val => {
@@ -43,11 +44,13 @@ export class AppComponent {
  * This function is used for srssion logout after 15 minutes
  * After signup dialog box open 
  */
-
+    
     this.bnIdle.startWatching(900).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
         console.log('session expired');
-        this.openDialog();
+        if (this.authService.isLoggedIn ) { 
+          this.openDialog();
+        }
       }
     });
 
@@ -75,6 +78,7 @@ export class AppComponent {
 
 
     onLogout(event) {
+    console.log("logout");
     event.preventDefault();
 
    this.authService.logout().subscribe(() => {

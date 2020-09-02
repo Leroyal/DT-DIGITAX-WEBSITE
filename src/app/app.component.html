@@ -4,7 +4,7 @@
 		<!-- <button (click)="sidenav.close()" mat-raised-button> close</button> -->
 		<p align="center"><img src="assets/images/logo.png" alt=""></p>
 		
-		<ul class="sidenav">
+		<ul class="sidenav" *ngIf="sidebarShow">
 			<li class="active"><a routerLink="/dashboard">Tax Home</a></li>
 			<li><a routerLink="/tax-prepare-document">Documents</a></li>
 			<mat-divider></mat-divider>
