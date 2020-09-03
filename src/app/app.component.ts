@@ -17,8 +17,7 @@ import * as moment from 'moment';
 })
 export class AppComponent {
   title = 'digitax';
-  opened:boolean=false;
-  //sidebarShow:boolean=true;
+  opened:boolean=false;  
   sidebarShow:boolean=false;
   currentYear: number;
   lastYear: number 
@@ -66,8 +65,7 @@ export class AppComponent {
         title:"aaa",
         message: ' For your protection, your session has ended because it was idle for more than 15 minutes.',
         buttonText: {
-          ok: 'OK'
-          //cancel: 'No'
+          ok: 'OK'          
         }
       }
     });
@@ -83,7 +81,7 @@ export class AppComponent {
     event.preventDefault();
 
    this.authService.siteLogout().subscribe(() => {
-     //location.href = '/';
+     location.href = '/';
    },
    (error: any) => {
       console.log("okj");

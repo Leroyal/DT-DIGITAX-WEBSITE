@@ -121,9 +121,8 @@ export class AuthService {
          localStorage.removeItem('user_id');
 
          sessionStorage.removeItem('access_token');
-         sessionStorage.removeItem('user_id');
- 
-         //sessionStorage.clear();
+         sessionStorage.removeItem('user_id'); 
+         
           localStorage.clear();
          this.isLoggedIn = false;
          })
@@ -146,8 +145,8 @@ export class AuthService {
 
              sessionStorage.removeItem('access_token');
              sessionStorage.removeItem('user_id');
-     
-             //sessionStorage.clear();
+              localStorage.clear();
+             
              this.isLoggedIn = false;
           }         
           return fetchresult;

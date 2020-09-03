@@ -30,13 +30,13 @@
 					<div>
 						<p>Your Name</p>
 						<mat-form-field appearance="outline">						
-						<input matInput placeholder="First name"  formControlName="first_name" required>
+						<input matInput placeholder="First name"  formControlName="first_name" value="{{userFirstName}}"required>
 						</mat-form-field>
 					</div>
 					<div>
 						<p>&nbsp;</p>
 						<mat-form-field appearance="outline">						
-						<input matInput placeholder="Last name" required formControlName="last_name" >
+						<input matInput placeholder="Last name" required formControlName="last_name" value="{{userLastName}}">
 						</mat-form-field>
 					</div>
 					
@@ -53,13 +53,13 @@
 					<div>
 						<p>Spouse's Name</p>
 						<mat-form-field appearance="outline">						
-						<input matInput placeholder="First name"  formControlName="spouse_first_name" >
+						<input matInput placeholder="First name"  formControlName="spouse_first_name" value="{{spouseFirstName}}">
 						</mat-form-field>
 					</div>
 					<div>
 						<p>&nbsp;</p>
 						<mat-form-field appearance="outline">						
-						<input matInput placeholder="Last name"  formControlName="spouse_last_name" >
+						<input matInput placeholder="Last name"  formControlName="spouse_last_name" value="{{spouseLastName}}" >
 						</mat-form-field>
 					</div>
 					
@@ -97,7 +97,7 @@
 
 			<button mat-raised-button class="blue_btn" (click)="userFormSubmit()">Continue <mat-icon>navigate_next</mat-icon></button>
 		</div>
-		<!-----lll--->
+		
 	<!--</form>-->
 	</form>
 	</div>

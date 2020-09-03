@@ -18,13 +18,19 @@ export class TaxPrepareRegisterComponent implements OnInit {
   userForm: FormGroup;
   isSubmitted:boolean=false;
   title:string;
+  consentResult:any;
+  userFirstName:"";
+  userLastName:"";
+  spouseFirstName:"";
+  spouseLastName:"";
+
   constructor(private fb: FormBuilder, 
   	           private snackbar: MatSnackBar, public userService: UserService,) {
 
     this.userForm = this.fb.group({
                    first_name: new FormControl('',[Validators.required]),                   
                    last_name: new FormControl('',[Validators.required]),                   
-                   user_date:new FormControl('',[Validators.required]),    
+                   user_date:new FormControl(''),    
                    spouse_first_name: new FormControl(''), 
                    spouse_last_name: new FormControl(''),
                    spouse_date: new FormControl('')
@@ -35,6 +41,8 @@ export class TaxPrepareRegisterComponent implements OnInit {
   ngOnInit() {
   this.currentYear= moment().year();
   this.title=environment.title;
+  this.userConsentDetails();
+
   
   }
 
@@ -58,7 +66,7 @@ export class TaxPrepareRegisterComponent implements OnInit {
       console.log("saveData"+JSON.stringify(saveData));  
       console.log('date_of_admission'+moment(new Date(saveData.user_date)).format('YYYY-MM-DD'));      
        let currentDated=new Date();
-        console.log("timestamp"+currentDated.getTime());
+        
 
 
              if(this.userForm.valid)
@@ -66,17 +74,23 @@ export class TaxPrepareRegisterComponent implements OnInit {
           let saveData = this.userForm.value;   
        
 
-        this.userService.saveUserConsent(saveData).pipe(first()).subscribe(res => {
-          if(res['status'].status_code == 200)
+        this.userService.saveUserConsent(saveData).pipe(first()).subscribe(consentResponse => {
+          
+          if(consentResponse['status'].status_code == 200)
             {
+             
              this.snackbar.open('Save successfully','OK',{
                 verticalPosition: 'top',
                 horizontalPosition:'right'
               });              
              
             }
-           else{            
-             confirm('Sorry, an error occurred. Please email support@digitaltaxusa.com');
+           else{     
+             this.snackbar.open('Sorry, an error occurred. Please email support@digitaltaxusa.com','OK',{
+                verticalPosition: 'top',
+                horizontalPosition:'right'
+              });       
+             
              
           } 
          });
@@ -91,6 +105,36 @@ export class TaxPrepareRegisterComponent implements OnInit {
             
       
     }
+
+
+    
+
+     /* This function is used for fetching user consent related data
+
+   */
+   userConsentDetails(){
+
+      this.userService.getUserConsent().subscribe(users => {
+      console.log("users"+JSON.stringify(users["data"]["firstName"]));         
+      this.userFirstName= users["data"]["firstName"];
+      this.userLastName= users["data"]["lastName"];
+      this.spouseFirstName= users["data"]["spouseFirstName"];
+      this.spouseLastName= users["data"]["spouseLastName"];  
+          if(this.userFirstName !=''){           
+            this.userForm.controls["first_name"].setErrors(null);
+            
+           }
+           if(this.userLastName !=''){           
+            this.userForm.controls["last_name"].setErrors(null);
+            
+           }
+
+                       
+
+      
+      });
+   }
+
 
 
 }
