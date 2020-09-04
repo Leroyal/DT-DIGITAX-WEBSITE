@@ -99,4 +99,30 @@ export class HomeComponent implements OnInit {
    }
  }
 
+ slideConfig = {"slidesToShow": 3, "slidesToScroll": 1, "autoplay": true, "autoplaySpeed": 3000, "dots": true, "infinite": true,
+  responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 1
+        }
+      }
+    ]
+ }
+slickInit(e) {
+    console.log('slick initialized');
+  }
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+  
+  afterChange(e) {
+    console.log('afterChange');
+  }
+  
+  beforeChange(e) {
+    console.log('beforeChange');
+  }
+
 }

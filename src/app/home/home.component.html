@@ -222,7 +222,59 @@
 <section class="full-width mt-50">
 	<h2 class="serve_head">Our customers <span class="violet_txt">love</span> us</h2>
 	<p class="serve_sub">Committed to giving you the right tools at the right price</p>
+
 	<div class="customer_cmnt_box">
+	<ngx-slick-carousel class="carousel" 
+		#slickModal="slick-carousel" 
+		[config]="slideConfig"
+		(init)="slickInit($event)"
+		(breakpoint)="breakpoint($event)"
+		(afterChange)="afterChange($event)"
+		(beforeChange)="beforeChange($event)">
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-1.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-2.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-3.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-2.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+	</ngx-slick-carousel>
+</div>
+	<!--<div class="customer_cmnt_box">
 		<div class="customer_cmnt_box_inner">
 			<div class="customer_box_shadow">
 				<img src="assets/images/qut_blue.png" alt="">
@@ -257,7 +309,7 @@
 			
 
 		</div>
-	</div>
+	</div>--->
 </section>
 
 <section class="full-width">

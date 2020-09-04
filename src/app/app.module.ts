@@ -63,6 +63,8 @@ import {
 import {NgxPrintModule} from 'ngx-print';
 
 import {MatDividerModule} from '@angular/material/divider';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 @NgModule({
   exports: [   
     MatDialogModule   
@@ -125,7 +127,8 @@ export class MaterialModule {}
     MatDialogModule,
     NgxPrintModule,
     RecaptchaV3Module,
-    MatDividerModule
+    MatDividerModule,
+    SlickCarouselModule
     
 
   ],
