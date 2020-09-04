@@ -42,8 +42,8 @@ export class AuthService {
   login(email: string, password: string, remember:boolean,flag:string){
 
      let signinObj={
-
-         [flag]:email,
+         
+         username:email,
          password:password,
          deviceType:"web"
 
