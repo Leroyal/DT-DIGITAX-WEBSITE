@@ -26,6 +26,12 @@ export class UserService {
         return this.http.post(`${environment.BASE_URL}users-list`,{headers: this.headers});
     }
 
+     getUserListDetails() {
+      console.log('userlist api');
+      console.log(this.headers);
+        return this.http.get(`${environment.BASE_URL}/api/auth/user-tax-history`,{headers: this.headers});
+    }
+
 
 
      saveUserDetails(savedata) {
