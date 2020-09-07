@@ -11,14 +11,14 @@
 	<div class="signup_right">
 		<div class="signup_right_inner">
 			<h2>SIGN <span>IN</span></h2>
-			<!--<p>Hello! Let's get Started</p>-->
+			
 			<p>Welcome back!</p>
 
 			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
-				<!--<p>Email</p>-->
-				<p>Phone number,email or username</p>
+				
+				<p>Phone number, email or username</p>
 				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input matInput formControlName="email"  placeholder="sample@email.com" required>
 					<mat-icon matSuffix  class="valid">check</mat-icon>
 					<mat-error>Enter valid email ID</mat-error>
