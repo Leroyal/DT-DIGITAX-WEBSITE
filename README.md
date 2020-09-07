@@ -43,6 +43,7 @@ Hence for security we have used both local storage and session storage, If users
     * [For Login](#login)
     * [For Idle](#idle)
     * [For UserTaxDetails](#usertaxdetails)
+    * [For UserConsentDetails](#userconsentdetails)
     * [For Recaptcha](#userrecaptcha)
 
     
@@ -83,6 +84,11 @@ g stands for global installation. If you use -g later you can use the CLI in any
 
  1. Create tax-prepare-profile component .To do that ,we need to use the following command :ng g c tax-prepare-profile/tax-prepare-profile
  2. User personal info,tax info is figure out by this tool.
+
+ ### For UserConsentDetails
+
+ 1. Create tax-prepare-register component .To do that ,we need to use the following command :ng g c tax-prepare-register/tax-prepare-register
+ 2. User consent is figure out by this tool.
 
  ### For Recaptcha
 

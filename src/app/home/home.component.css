@@ -59,7 +59,7 @@ label{
     line-height: 20px;
 }
 .forget_pass{
-	font-size: 12px;
+	font-size: 14px;
 	float: right;
     color: #e65100;
     line-height: 25px;
@@ -114,12 +114,12 @@ label{
 	font-size: 30px;
 }
 .remember_txt{
-	font-size: 12px;
+	font-size: 14px;
 	color:#607d8b;
 }
 .form_info{
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
 	color: #607d8b;
 	line-height: 19px;
 	font-weight: 500;

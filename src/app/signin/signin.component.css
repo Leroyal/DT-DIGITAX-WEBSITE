@@ -115,7 +115,7 @@ form p{
 	margin:0 0 20px 0 !important;
 }
 .forget_pass{
-	font-size: 12px;
+	font-size: 14px;
 	float: right;
     color: #e65100;
     line-height: 25px;
@@ -137,7 +137,7 @@ form p{
 }
 .form_info{
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
 	color: #607d8b;
 	line-height: 19px;
 	font-weight: 500;
@@ -155,7 +155,7 @@ form p{
 	color: #607d8b;
 }
 .remember_txt{
-	font-size: 12px;
+	font-size: 14px;
 	color:#607d8b;
 }
 

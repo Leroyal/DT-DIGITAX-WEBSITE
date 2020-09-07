@@ -11,7 +11,7 @@ export class UserService {
   
     constructor(private http: HttpClient, public authService: AuthService) {
                this.access_token = this.authService.getToken();                           
-                this.headers = new  HttpHeaders().set("access_token", this.access_token);
+                this.headers = new  HttpHeaders().set("Authorization", 'Bearer '+this.access_token);
                
     }
 
@@ -43,17 +43,20 @@ export class UserService {
     //SAVE USER CONSENT
      saveUserConsent(savedata) {
       console.log('save userconsent api');      
-      /*let payloadObj={
-        first_name:savedata.first_name,
-        last_name:savedata.last_name,
-        user_date:savedata.user_date,
-        spouse_first_name:savedata.spouse_first_name,
-        spouse_last_name:savedata.spouse_last_name,
-        spouse_date:savedata.spouse_date,
-        consentToCollectPersonalInformation:true
+      let payloadObj={
+        firstName:savedata.first_name,
+        lastName:savedata.last_name,        
+        spouseFirstName:savedata.spouse_first_name,
+        spouseLastName:savedata.spouse_last_name,
+        consentToShareInformation:true
+        
 
-      };*/
-       return this.http.post(`${environment.BASE_URL}save-user-consent`,savedata);
+      };
+       return this.http.post(`${environment.BASE_URL}/api/auth/user-consents`,payloadObj,{headers: this.headers});
+      }
+
+      getUserConsent(){
+        return this.http.get(`${environment.BASE_URL}/api/auth/user-consents`,{headers: this.headers});
       }
       
     

@@ -9,7 +9,8 @@ import {DatePipe} from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { environment } from '../../environments/environment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signin',
@@ -19,6 +20,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SigninComponent implements OnInit {  
    
     submitted:boolean=false;
+    title:string;
+    currentYear:number;
+    flag:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -30,7 +34,7 @@ export class SigninComponent implements OnInit {
                }
   
    loginForm = new FormGroup({
-				       email:new FormControl('', [Validators.required,Validators.email]),
+				       email:new FormControl('', [Validators.required/*,Validators.email*/]),
 				       password: new FormControl('',[Validators.required]),
 				       remember_me: new FormControl('')
 				    });
@@ -38,6 +42,8 @@ export class SigninComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
   ngOnInit() {
+    this.title=environment.title;
+    this.currentYear= moment().year();
   }
  
 
@@ -52,23 +58,44 @@ export class SigninComponent implements OnInit {
      this.submitted = true;
       if (this.loginForm.valid) { 
       	console.log(this.loginForm.value);
-        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,)
+
+        /////////////////////
+          if (this.f.email.value.indexOf('@') != -1) {
+             console.log("email get");
+             this.flag="email";
+          }
+          else if (this.f.email.value.match(/^[0-9()]+$/)) {
+             console.log("phone number get");
+             this.flag="phone";
+          }
+          else{
+              console.log("username get");
+              this.flag="username";
+          }
+        ///////////////////////
+        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
             .pipe(first())
             .subscribe(
-                resp => {
+                loginresponse => {
                 console.log("###");
-                console.log(resp);
-                if(resp.status.status_code == 200)
+                console.log(loginresponse);
+                if(loginresponse.status.status_code == 200)
                     {
-                        this.snackbar.open(resp.status.status_message,'OK',{
+                        this.snackbar.open(loginresponse.status.status_message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
+                      location.href = '/tax-prepare-profile';
                     }
                    else{
-                    location.href = '/tax-prepare-profile';
+                     this.snackbar.open(loginresponse.status.status_message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
                    }
                 },
                 error => {
