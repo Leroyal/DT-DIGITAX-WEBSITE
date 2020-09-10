@@ -42,6 +42,8 @@ import { FaqComponent } from './faq/faq.component';
 import { SurveyComponent } from './survey/survey.component';
 import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.component';
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
 import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
@@ -64,12 +66,15 @@ import {NgxPrintModule} from 'ngx-print';
 
 import {MatDividerModule} from '@angular/material/divider';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { TermsServiceComponent } from './terms-service/terms-service.component';
+import { TermsUseComponent } from './terms-use/terms-use.component';
 
 @NgModule({
   exports: [   
     MatDialogModule   
     
-  ]
+  ],
+  
 })
 export class MaterialModule {}
 
@@ -98,7 +103,10 @@ export class MaterialModule {}
     SurveyStepThreeComponent,
     SurveyFeedbackComponent,
     ConfirmationDialog,
-    AlertDialogComponent
+    AlertDialogComponent,
+    PrivacyPolicyComponent,
+    TermsServiceComponent,
+    TermsUseComponent
 
   ],
   imports: [

@@ -20,6 +20,12 @@ import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.compon
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
 import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
 
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
+import { TermsServiceComponent } from './terms-service/terms-service.component';
+
+import { TermsUseComponent } from './terms-use/terms-use.component';
+
 
 const routes: Routes = [
 	{ path  : "", 
@@ -37,6 +43,11 @@ const routes: Routes = [
 				pathMatch: 'full',
 				component  : FaqComponent  
 		    },
+		    /*{ 
+				path: '**',
+				pathMatch: 'full',
+				component  : PageNotFoundComponent  
+		    },*/
 		    { 
 				path: 'dashboard',
 				pathMatch: 'full',
@@ -116,6 +127,21 @@ const routes: Routes = [
 		path: 'reset-password',
 		pathMatch: 'full',
 		component  : ResetPasswordComponent  
+    },
+    { 
+		path: 'privacy-policy',
+		pathMatch: 'full',
+		component  : PrivacyPolicyComponent  
+    },
+    { 
+		path: 'terms-service',
+		pathMatch: 'full',
+		component  : TermsServiceComponent  
+    },
+    { 
+		path: 'terms-use',
+		pathMatch: 'full',
+		component  : TermsUseComponent  
     },
 
     

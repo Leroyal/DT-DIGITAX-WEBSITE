@@ -7,6 +7,7 @@ import {first , tap, delay,map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { Observable, of } from 'rxjs';
 export class HomeComponent implements OnInit {
  submitted:boolean=false;
  flag:string;
+ title:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
     get f() { return this.loginForm.controls; } 	           
 
   ngOnInit() {
+    this.title=environment.title;
   }
 
 
