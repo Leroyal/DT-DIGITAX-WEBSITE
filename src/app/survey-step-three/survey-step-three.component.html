@@ -13,15 +13,19 @@
 	</div>
 	<div class="dashboard_body">
 		<h2>Now let's talk a bit <span class="blue_txt">about your life?</span></h2>
-		<div class="dashboard_small_box">
+		<!---loop start --->
+		<div class="dashboard_small_box" *ngFor="let category of categories" (click)="onClick(category)" [ngClass]="{ 'selected': category == selectedItem }">
 			<div class="dashboard_small_box_inner center_text">
 				<div class="blue_line"></div>
 				<img src="assets/images/college_expenses_icon.png" alt="">
 				<p>
-					College<br>expenses/tution
+					<!--College<br>expenses/tution-->
+					{{category.name}}
 				</p>
 			</div>
 		</div>
+
+		<!--
 
 		<div class="dashboard_small_box">
 			<div class="dashboard_small_box_inner center_text">
@@ -212,6 +216,7 @@
 				</p>
 			</div>
 		</div>
+	-->
 
 		<div class="next_step">
 			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
@@ -222,5 +227,5 @@
 </section>
 
 <div class="dashboard_footer">
-	Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+	Copyright © {{currentYear}} Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
 </div>
