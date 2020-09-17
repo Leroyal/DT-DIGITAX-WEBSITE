@@ -70,7 +70,7 @@ export class SurveyComponent implements OnInit  {
       
        let categoryIndex =checkboxStorageValue.findIndex(x => x.value == categoryid);
       
-      //a.splice(index1, 1);
+      
       checkboxStorageValue.splice(checkboxStorageValue.indexOf(categoryid), 1);
 
       let comString=JSON.stringify(checkboxStorageValue);
@@ -79,7 +79,7 @@ export class SurveyComponent implements OnInit  {
     }
   }
    onNext(event) {    
-    //event.preventDefault();
+    
      let formsvalue=this.myForm.value;
      let saveData1 = this.myForm.value;
     

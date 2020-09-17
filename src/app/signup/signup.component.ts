@@ -112,12 +112,12 @@ export class SignupComponent implements OnInit {
               grecaptcha.execute(environment.site_key, { action: 'cta_signup' }).then((token) => {
                    console.log("get token"+token);
 
-                   /*this.authService.captchaVerify(token).subscribe(res =>*/
+                   
                   
                   this.authService.captchaVerify(token).pipe(first()).subscribe(res =>
 
                    {      
-                       console.log("ty"+res);               
+                                      
 
                        if(res['score'] >=0.5){                       
                             
@@ -129,7 +129,7 @@ export class SignupComponent implements OnInit {
                        this.snackbar.open('Registration successful! Verify your email to login','OK',{
                           verticalPosition: 'top',
                           horizontalPosition:'right'
-                          /*,                         duration: 2000*/
+                          
                         }).onAction()
                           .subscribe(() => this.router.navigateByUrl('signin'));                  
 
@@ -144,7 +144,7 @@ export class SignupComponent implements OnInit {
                       }
                        else{   
 
-                       /*confirm(environment.default_error_message);*/
+                       
 
                         this.snackbar.open(signupres['status']['message'],'OK',{
                           verticalPosition: 'top',
@@ -161,15 +161,14 @@ export class SignupComponent implements OnInit {
                      },
         (error) => {                              //Error callback
           console.log('error caught in component'+error)
-          //this.errorMessage = error;
-          //this.loading = false;
+          
 
           this.snackbar.open(environment.default_error_message,'OK',{
                           verticalPosition: 'top',
                           horizontalPosition:'right'
                         });
     
-          //throw error;   //You can also throw the error to a global error handler
+          
         });
 
                      
