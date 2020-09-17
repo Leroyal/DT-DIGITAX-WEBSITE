@@ -131,10 +131,9 @@ export class SignupComponent implements OnInit {
                           horizontalPosition:'right'
                           /*,                         duration: 2000*/
                         }).onAction()
-                          .subscribe(() => this.router.navigateByUrl('signin'));
-                      //location.href = 'tax-prepare-profile';
+                          .subscribe(() => this.router.navigateByUrl('signin'));                  
 
-                      //location.href = 'signin';
+                      
                        
                       }
                       else if(signupres['status'].status_code == 400 || signupres['status'].status_code==401){
