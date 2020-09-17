@@ -1,26 +1,27 @@
 <div class="home_background">
 	<img src="assets/images/background.png" alt="" width="100%">
 	<div class="banner_inner">
-		<div class="ban_text">
-			<h2 class="ban_head">Lorem Ipsum $0</h2>
-			<p class="ban_text_sub">$0 Fed. $0 State. $0 to File</p>
+		<div class="ban_text">		
+
+			<h2 class="ban_head">Get your maximum  <br> refund, guaranteed!</h2>
+			
 			<p class="small_text">
-				Easily and accurately file <br>
-				your Simple tax returs
+				 Quick, simple, secure and 100% accuracy
 			</p>
+			
 		</div>
 		<div class="banner_form">
 			<div class="form_box">
 				<img src="assets/images/form_img.png" alt="">
-				<p class="form_txt_one">welcome to</p>
+				<p class="form_txt_one">Welcome to</p>
 				<p class="form_txt_two">DIGITAX</p>
 
 				<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
 				<p><label>Email</label></p>
-				<!--<p><label>Username</label></p>-->
+				
 				
 				<mat-form-field appearance="fill">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input matInput placeholder="Sample Name" required formControlName="email" >
 					<mat-icon matSuffix class="valid">check</mat-icon>
 					<mat-error>Error</mat-error>
@@ -28,11 +29,11 @@
 				<p><label>Password</label></p>
 				
 				<mat-form-field appearance="fill">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input type="password" matInput placeholder="Password" required formControlName="password" >
 					<mat-error>Error</mat-error>
 				</mat-form-field>
-				<mat-checkbox><span class="remember_txt">Remember Me</span></mat-checkbox>
+				<mat-checkbox formControlName="remember_me"><span class="remember_txt">Remember Me</span></mat-checkbox>
 				<span class="forget_pass">Forgot Password ?</span>
 				<button class="login_btn" mat-raised-button>login</button>
 				<div class="form_info">
@@ -52,53 +53,7 @@
 	
 </div>
 
-<!--<section class="full-width">
-	<h2 class="service_text">GET THEIR <span>$100</span> SERVICE FOR $0</h2>
-	<p class="survice_sub">File advanced and simple feaderal taxes for free</p>
-	<div class="service_flex">
-		<div class="service_flex_inner">
-			<div class="p-15">
-				<img src="assets/images/simply_free.png" alt="">
-				<h3 class="service_head">Simply Free</h3>
-				<p class="small_text">Easy enough for firts-time users Step-by-step guidance</p>
-				<p class="service_price">$0</p>
-				<p>Max refund, fast</p>
-				<button mat-stroked-button class="service_btn">GET STARTED</button>
-			</div>
-		</div>
-		<div class="service_flex_inner">
-			<div class="p-15">
-				<img src="assets/images/classic.png" alt="">
-				<h3 class="service_head">Classic</h3>
-				<p class="small_text">Easy enough for firts-time users Step-by-step guidance</p>
-				<p class="service_price">$12</p>
-				<p>Max refund, fast</p>
-				<button mat-stroked-button class="service_btn">GET STARTED</button>
-			</div>
-		</div>
-		<div class="service_flex_inner">
-			<div class="p-15">
-				<img src="assets/images/premium.png" alt="">
-				<h3 class="service_head">Premium</h3>
-				<p class="small_text">Easy enough for firts-time users Step-by-step guidance</p>
-				<p class="service_price">$34</p>
-				<p>Max refund, fast</p>
-				<button mat-stroked-button class="service_btn">GET STARTED</button>
-			</div>
-		</div>
-		<div class="service_flex_inner">
-			<div class="p-15">
-				<img src="assets/images/self.png" alt="">
-				<h3 class="service_head">Slef-Employed</h3>
-				<p class="small_text">Easy enough for firts-time users Step-by-step guidance</p>
-				<p class="service_price">$56</p>
-				<p>Max refund, fast</p>
-				<button mat-stroked-button class="service_btn">GET STARTED</button>
-			</div>
-		</div>
 
-	</div>
-</section>-->
 
 <section class="full-width">
 	<div class="connect_section">
@@ -106,13 +61,16 @@
 			<img src="assets/images/live.png" alt="" width="100%">
 		</div>
 		<div class="connect_txt">
-			<img src="assets/images/logo.png" alt="">
+			<img src="assets/images/digitax_usa_icon.png" alt="digitax_usa" width="190">
 			<h2 class="connect_head">Talk to Real <span>CPA</span></h2>
-			<p class="connect_subhead">Lorem ipsum dummy text</p>
-			<p class="small_text">
-				Easily and accurately file<br>
-				your Simple tax returs
+			
+            <p class="small_text">
+				Connect with our live CPAs or EAs to ensure tax filing done right with 100% ease of mind!
+
+
+
 			</p>
+			
 			<button class="get_started" mat-raised-button>Get Started <mat-icon>navigate_next</mat-icon></button>
 		</div>
 	</div>	
@@ -177,18 +135,19 @@
 	<div class="hdw_area">
 		<div>
 			<img src="assets/images/account.png" alt="">
-			<p class="serve_flex_inner_head">Create your free account.</p>
-			<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+			<p class="serve_flex_inner_head">Free Account!
+</p>
+			<p class="small_text">Free & easy registration process!</p>
 		</div>
 		<div>
 			<img src="assets/images/income.png" alt="">
-			<p class="serve_flex_inner_head">Create your free account.</p>
-			<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+			<p class="serve_flex_inner_head"> Simple Tax Filing</p>
+			<p class="small_text">Easy to navigate filing process.</p>
 		</div>
 		<div>
 			<img src="assets/images/return.png" alt="">
-			<p class="serve_flex_inner_head">Create your free account.</p>
-			<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+			<p class="serve_flex_inner_head">Download the App</p>
+			<p class="small_text"> For tips to maximize your refund, advanced automatic tax reporting features and more!</p>
 		</div>
 	</div>
 </section>
@@ -258,7 +217,7 @@
 			<img src="assets/images/smartphone.png" alt="" width="100%">
 		</div>
 		<div class="download_info">
-			<img src="assets/images/digitax_icon.png" alt="">
+			<img src="assets/images/digitax_usa_logo.png" alt="digitax_usa" width="120">
 			<h2 class="serve_head text-left no_margin">DIGITax <span class="red_txt">app</span></h2>
 			<p>File Faster and Easier</p>
 			<p class="small_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>

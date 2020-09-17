@@ -3,7 +3,7 @@
 		<div class="signup_left_inner">
 			<h2 class="signUp_head">Hello, Friend!</h2>
 			<p><img src="assets/images/signup_icon.png" alt=""></p>
-			<p>Enter your personal details and start journey with us</p>
+			<p>Don't have an account? Let's get you registered.</p>
 			<a routerLink="/signup"><button mat-raised-button>SIGN UP</button></a>
 		</div>
 	</div>
@@ -11,12 +11,14 @@
 	<div class="signup_right">
 		<div class="signup_right_inner">
 			<h2>SIGN <span>IN</span></h2>
-			<p>Hello! Let's get Started</p>
+			
+			<p>Welcome back!</p>
 
 			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
-				<p>Email</p>
+				
+				<p>Phone number, email or username</p>
 				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input matInput formControlName="email"  placeholder="sample@email.com" required>
 					<mat-icon matSuffix  class="valid">check</mat-icon>
 					<mat-error>Enter valid email ID</mat-error>
@@ -34,12 +36,12 @@
 				<div class="form_info">
 					<p>
 						By clicking Sign In,you agree to the
-						DIGITAX <a href="">Terms of Service</a>, DigiTax <a href="">Terms of Use</a>
+						{{title}} <a href="">Terms of Service</a>, {{title}} <a href="">Terms of Use</a>
 						and have read and acknowledge our Privacy Statement
 					</p>
 				</div>
 			</form>
-			<p class="signin_copy">Copyright © 2020 Digitax</p>
+			<p class="signin_copy">Copyright © {{currentYear}} {{title}}</p>
 		</div>
 	</div>
 </section>

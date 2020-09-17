@@ -43,14 +43,10 @@
 
 				<p>Phone Number</p>
 				<mat-form-field appearance="outline">
-					<span matPrefix>+91 &nbsp;</span>
+					<span matPrefix>+1 &nbsp;</span>
 					<input type="tel" formControlName="phone" matInput placeholder="555-555-1234">
 					<mat-error>Enter valid Phone Number</mat-error>
-				</mat-form-field>	
-
-
-				
-				
+				</mat-form-field>		
 				
 			
 
@@ -58,7 +54,7 @@
 
 				<button class="login_btn" mat-raised-button >SIGN UP</button>
 			</form>
-			<p class="signin_copy">Copyright &copy; 2020 Digitax</p>
+			<p class="signin_copy">Copyright &copy; {{currentYear}} {{title}}</p>
 		</div>
 	</div>
 
@@ -66,7 +62,9 @@
 		<div class="signup_right_inner">
 			<h2 class="signUp_head">Welcome Back!</h2>
 			<p><img src="assets/images/signin_icon.png" alt=""></p>
-			<p>To keep connected with us please sign in with your personal info</p>
+			
+
+			<p>Have an account already? Let's get you signed in.</p>
 			<a routerLink="/signin"><button mat-raised-button>SIGN IN</button></a>
 		</div>
 	</div>
