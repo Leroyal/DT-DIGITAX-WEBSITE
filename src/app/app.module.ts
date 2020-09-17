@@ -68,12 +68,16 @@ import {MatDividerModule} from '@angular/material/divider';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { TermsServiceComponent } from './terms-service/terms-service.component';
 import { TermsUseComponent } from './terms-use/terms-use.component';
+import { PrivacyStatementComponent } from './privacy-statement/privacy-statement.component';
+
+import { NgxSpinnerModule,NgxSpinnerService } from "ngx-spinner";
 
 @NgModule({
   exports: [   
     MatDialogModule   
     
   ],
+ // declarations: [PrivacyStatementComponent],
   
 })
 export class MaterialModule {}
@@ -106,7 +110,8 @@ export class MaterialModule {}
     AlertDialogComponent,
     PrivacyPolicyComponent,
     TermsServiceComponent,
-    TermsUseComponent
+    TermsUseComponent,
+    PrivacyStatementComponent
 
   ],
   imports: [
@@ -136,7 +141,8 @@ export class MaterialModule {}
     NgxPrintModule,
     RecaptchaV3Module,
     MatDividerModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxSpinnerModule
     
 
   ],
@@ -148,7 +154,7 @@ export class MaterialModule {}
     } as RecaptchaSettings,
   },
 
-  BnNgIdleService],
+  BnNgIdleService,NgxSpinnerService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialog, AlertDialogComponent]
 })

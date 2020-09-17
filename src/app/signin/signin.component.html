@@ -33,11 +33,11 @@
 				<mat-checkbox formControlName="remember_me" ><span class="remember_txt">Remember Me</span></mat-checkbox>
 				<span class="forget_pass">Forgot Password ?</span>
 				<button class="login_btn" mat-raised-button >SIGN IN</button>
-				<div class="form_info">
+				<div class="form_info">					
 					<p>
-						By clicking Sign In,you agree to the
-						{{title}} <a href="">Terms of Service</a>, {{title}} <a href="">Terms of Use</a>
-						and have read and acknowledge our Privacy Statement
+						By clicking Sign In, you agree to 
+						{{privacy_title}} <a href="">Terms of Service</a> and <a href="">Terms of Use</a>.
+						And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
 					</p>
 				</div>
 			</form>

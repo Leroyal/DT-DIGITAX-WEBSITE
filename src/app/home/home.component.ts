@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
  submitted:boolean=false;
  flag:string;
  title:string;
+ privacy_title:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.title=environment.title;
+    this.privacy_title=environment.privacy_title;
   }
 
 

@@ -11,68 +11,157 @@
 			your tax returns and documents
 		</div>
 	</div>
-	<div class="dashboard_body">
-		<h2>How did you do your <span class="blue_txt">taxes last year?</span></h2>
-		<a routerLink="/survey-step-two"><div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/tax_icon.png" alt="">
-				<p>
-					Digitax
-				</p>
-			</div>
-		</div></a>
+	<form  [formGroup]="myForm" autocomplete="off">
+		<div class="dashboard_body">
+			<h2>How did you do your <span class="blue_txt">taxes last year?</span></h2>
 
-		<a routerLink="/survey-step-two"><div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/other_tax_software_icon.png" alt="">
-				<p>
-					Other tax<br>software
-				</p>
-			</div>
-		</div></a>
+			<div class="dashboard_small_box" *ngFor="let category of categories" >
+				<label class="checkbox_container">
 
-		<a routerLink="/survey-step-two"><div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/accountant_icon.png" alt="">
-				<p>
-					Accountant/tax<br>pro
-				</p>
+					<input type="checkbox" value="{{category.id}}"id="" (change)="onChange(category.id, $event.target.checked)"  name="orders" [checked]="isExists(category.id)">
+					
+					<!--<input type="checkbox" value="{{category.id}}"id="" (change)="onChange(category.id, $event.target.checked)"  formArrayName="orders" [checked]="isExists(category.id)">-->
+				
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/tax_icon.png" alt="">
+								<p>{{category.title}}</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>{{category.title}}</p>
+							</div>
+						</div>
+					</span>
+				</label>
 			</div>
-		</div></a>
 
-		<a routerLink="/survey-step-two"><div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/tax_service_icon.png" alt="">
-				<p>
-					Tax service<br>(H&R Block etc.)
-				</p>
+			<!--<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/tax_icon.png" alt="">
+								<p>Digitax</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Digitax</p>
+							</div>
+						</div>
+					</span>
+				</label>
 			</div>
-		</div></a>
 
-		<a routerLink="/survey-step-two"><div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/tax_files_last_year_icon.png" alt="">
-				<p>
-					Didn't file taxes <br>last year
-				</p>
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/other_tax_software_icon.png" alt="">
+								<p>Other tax<br>software</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Other tax<br>software</p>
+							</div>
+						</div>
+					</span>
+				</label>
 			</div>
-		</div></a>
 
-		<a routerLink="/survey-step-two"><div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/other_icon.png" alt="">
-				<p>
-					Other
-				</p>
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/accountant_icon.png" alt="">
+								<p>Accountant/tax<br>pro</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Accountant/tax<br>pro</p>
+							</div>
+						</div>
+					</span>
+				</label>
 			</div>
-		</div></a>
-	</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/tax_service_icon.png" alt="">
+								<p>Tax service<br>(H&R Block etc.)</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Tax service<br>(H&R Block etc.)</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/tax_files_last_year_icon.png" alt="">
+								<p>Didn't file taxes <br>last year</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Didn't file taxes <br>last year</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/other_icon.png" alt="">
+								<p>Other</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Other</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>-->
+
+			<div class="next_step">
+				<!--<a [routerLink]="['/survey-step-two']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>-->
+			<button mat-raised-button class="blue_btn"  (click)="onNext($event)" #button>Continue <mat-icon>navigate_next</mat-icon></button>
+
+			</div>
+
+
+		</div>
+	</form>
+
 </section>
 
 <div class="dashboard_footer">

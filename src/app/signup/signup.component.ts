@@ -18,6 +18,10 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import * as moment from 'moment';
 
+
+import { NgxSpinnerService } from "ngx-spinner";  
+
+
 declare var grecaptcha: any;
 
 @Component({
@@ -35,6 +39,8 @@ export class SignupComponent implements OnInit {
  score:any;
  title:string;
  currentYear:number;
+ signupMessage:string;
+ privacy_title:string;
 
 
   public recentToken: string = '';
@@ -49,7 +55,9 @@ export class SignupComponent implements OnInit {
   constructor( public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
-               private recaptchaV3Service: ReCaptchaV3Service
+               private recaptchaV3Service: ReCaptchaV3Service,
+               private router: Router,
+               private spinner: NgxSpinnerService
                
   	           )
                {
@@ -71,6 +79,8 @@ export class SignupComponent implements OnInit {
     this.loadExternalScript(environment.autoload);
     this.currentYear= moment().year();
     this.title=environment.title;
+    this.signupMessage=environment.signup_privacy;
+    this.privacy_title=environment.privacy_title;
   
   	
   }
@@ -96,11 +106,18 @@ export class SignupComponent implements OnInit {
       
       if(this.signupForm.valid)
       {
+       this.spinner.show();
        let saveData = this.signupForm.value;   
           grecaptcha.ready(() => {
               grecaptcha.execute(environment.site_key, { action: 'cta_signup' }).then((token) => {
                    console.log("get token"+token);
-                  this.authService.captchaVerify(token).pipe(first()).subscribe(res => {                     
+
+                   /*this.authService.captchaVerify(token).subscribe(res =>*/
+                  
+                  this.authService.captchaVerify(token).pipe(first()).subscribe(res =>
+
+                   {      
+                       console.log("ty"+res);               
 
                        if(res['score'] >=0.5){                       
                             
@@ -109,14 +126,18 @@ export class SignupComponent implements OnInit {
                     if(signupres.status.status_code == 200)
                       {
                        console.log("ok"); 
-                       this.snackbar.open('Registered successfully','OK',{
+                       this.snackbar.open('Registration successful! Verify your email to login','OK',{
                           verticalPosition: 'top',
                           horizontalPosition:'right'
-                        });
-                      location.href = 'tax-prepare-profile';
+                          /*,                         duration: 2000*/
+                        }).onAction()
+                          .subscribe(() => this.router.navigateByUrl('signin'));
+                      //location.href = 'tax-prepare-profile';
+
+                      //location.href = 'signin';
                        
                       }
-                      else if(signupres['status'].status_code == 400){
+                      else if(signupres['status'].status_code == 400 || signupres['status'].status_code==401){
                          this.snackbar.open(signupres['status']['message'],'OK',{
                           verticalPosition: 'top',
                           horizontalPosition:'right'
@@ -124,7 +145,12 @@ export class SignupComponent implements OnInit {
                       }
                        else{   
 
-                       confirm(environment.default_error_message);
+                       /*confirm(environment.default_error_message);*/
+
+                        this.snackbar.open(signupres['status']['message'],'OK',{
+                          verticalPosition: 'top',
+                          horizontalPosition:'right'
+                        });
                        
                     } 
                  });
@@ -133,11 +159,26 @@ export class SignupComponent implements OnInit {
                           /*show error message as recaptcha thresold value not ok*/
                           confirm(environment.default_error_message);
                        }
-                     });
+                     },
+        (error) => {                              //Error callback
+          console.log('error caught in component'+error)
+          //this.errorMessage = error;
+          //this.loading = false;
+
+          this.snackbar.open(environment.default_error_message,'OK',{
+                          verticalPosition: 'top',
+                          horizontalPosition:'right'
+                        });
+    
+          //throw error;   //You can also throw the error to a global error handler
+        });
+
+                     
 
                 
                    
               });
+              this.spinner.hide();
           });          
 
        
@@ -148,6 +189,7 @@ export class SignupComponent implements OnInit {
             verticalPosition: 'top',
             horizontalPosition:'right'
           });
+          this.spinner.hide();
       }
       
     }

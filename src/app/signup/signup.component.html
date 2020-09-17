@@ -3,7 +3,9 @@
 		<div class="signup_left_inner">
 			<h2>SIGN <span>UP</span></h2>
 			<p>Hello! Let’s create account</p>
-
+           <ngx-spinner bdColor="black" size="default" type="ball-spin-clockwise">  
+    <p style="color: black">Please Wait. </p>  
+    </ngx-spinner> 
 			<form [formGroup]="signupForm" (ngSubmit)="signupFormSubmit()" >
 				
 
@@ -44,7 +46,8 @@
 				<p>Phone Number</p>
 				<mat-form-field appearance="outline">
 					<span matPrefix>+1 &nbsp;</span>
-					<input type="tel" formControlName="phone" matInput placeholder="555-555-1234">
+					<input type="tel" formControlName="phone" matInput placeholder="555-555-1234" maxlength="10" minlength="10" pattern="[0-9]*" digitOnly
+                               >
 					<mat-error>Enter valid Phone Number</mat-error>
 				</mat-form-field>		
 				
@@ -53,8 +56,16 @@
  
 
 				<button class="login_btn" mat-raised-button >SIGN UP</button>
+				 
 			</form>
-			<p class="signin_copy">Copyright &copy; {{currentYear}} {{title}}</p>
+			<!--<p class="signin_copy">Copyright &copy; {{currentYear}} {{title}}</p>-->
+            <div class="form_info">            	
+			<p>
+						By clicking Sign Up, you agree to 
+						{{privacy_title}} <a href="">Terms of Service</a> and <a href="">Terms of Use</a>.
+						And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
+					</p>
+				</div>
 		</div>
 	</div>
 

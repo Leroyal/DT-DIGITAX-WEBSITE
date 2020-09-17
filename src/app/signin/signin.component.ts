@@ -23,6 +23,7 @@ export class SigninComponent implements OnInit {
     title:string;
     currentYear:number;
     flag:string;
+    privacy_title:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -44,6 +45,7 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.title=environment.title;
     this.currentYear= moment().year();
+    this.privacy_title=environment.privacy_title;
   }
  
 

@@ -11,221 +11,399 @@
 			your tax returns and documents
 		</div>
 	</div>
-	<div class="dashboard_body">
-		<h2>Now let's talk a bit <span class="blue_txt">about your life?</span></h2>
-		<!---loop start --->
-		<div class="dashboard_small_box" *ngFor="let category of categories" (click)="onClick(category)" [ngClass]="{ 'selected': category == selectedItem }">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/college_expenses_icon.png" alt="">
-				<p>
-					<!--College<br>expenses/tution-->
-					{{category.name}}
-				</p>
+	<form action="">
+		<div class="dashboard_body">
+			<h2>Now let's talk a bit <span class="blue_txt">about your life?</span></h2>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/college_expenses_icon.png" alt="">
+								<p>College<br>expenses/tution</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>College<br>expenses/tution</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/vehicle_registration_fee_icon.png" alt="">
+								<p>Vehicle<br>registration fees</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Vehicle<br>registration fees</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/had_a_job_icon.png" alt="">
+								<p>Had a job</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Had a job</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/child_care_expenses_icon.png" alt="">
+								<p>Child-care expenses</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Child-care expenses</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/owned_rental_property_icon.png" alt="">
+								<p>Owned rental property</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Owned rental property</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/donating_to_charity_icon.png" alt="">
+								<p>Donating to <br>charity</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Donating to <br>charity</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/bank_account_interest_icon.png" alt="">
+								<p>Bank account <br>interest</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Bank account <br>interest</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/cryptocurrency_icon.png" alt="">
+								<p>I sold or traded<br>Cryptocurrencey</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>I sold or traded<br>Cryptocurrencey</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/cryptocurrency_icon.png" alt="">
+								<p>Medical expenses</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Medical expenses</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/sold_stocks_icon.png" alt="">
+								<p>Sold stocks or<br>investments</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Sold stocks or<br>investments</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/traditional_IRA_icon.png" alt="">
+								<p>Traditional/Roth IRA<br>constitution</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Traditional/Roth IRA<br>constitution</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/received_dividend.png" alt="">
+								<p>Received<br>dividends</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Received<br>dividends</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/health_saving_account_icon.png" alt="">
+								<p>Health saving<br>account</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Health saving<br>account</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/social_security_icon.png" alt="">
+								<p>Social security<br>benefits</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Social security<br>benefits</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/retirement_plan_withdrawl_icon.png" alt="">
+								<p>Retirement plan<br>withdrawl</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Retirement plan<br>withdrawl</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/paid_student_loan_icon.png" alt="">
+								<p>Paid student loan<br>interest</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Paid student loan<br>interest</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/unemployment_benefits_icon.png" alt="">
+								<p>Unemployment<br>benefits</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Unemployment<br>benefits</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/gambling_winnings_icon.png" alt="">
+								<p>Gambling<br>winnings</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Gambling<br>winnings</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/received_alimony_icon.png" alt="">
+								<p>Received alimony</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Received alimony</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/farm_income_icon.png" alt="">
+								<p>Farm income</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Farm income</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="next_step">
+				<p>If you don't see what you're looking for, we'll cover more situations later.</p>
+				<a [routerLink]="['/survey-step-two']"><button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button></a>
+				<a [routerLink]="['/survey-feedback']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>
 			</div>
 		</div>
-
-		<!--
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/vehicle_registration_fee_icon.png" alt="">
-				<p>
-					Vehicle<br>registration fees
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/had_a_job_icon.png" alt="">
-				<p>
-					Had a job
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/child_care_expenses_icon.png" alt="">
-				<p>
-					Child-care expenses
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/owned_rental_property_icon.png" alt="">
-				<p>
-					Owned rental property
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/donating_to_charity_icon.png" alt="">
-				<p>
-					Donating to <br>charity
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/bank_account_interest_icon.png" alt="">
-				<p>
-					Bank account <br>interest
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/cryptocurrency_icon.png" alt="">
-				<p>
-					I sold or traded<br>Cryptocurrencey
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/cryptocurrency_icon.png" alt="">
-				<p>
-					Medical expenses
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/sold_stocks_icon.png" alt="">
-				<p>
-					Sold stocks or<br>investments
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/traditional_IRA_icon.png" alt="">
-				<p>
-					Traditional/Roth IRA<br>constitution
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/received_dividend.png" alt="">
-				<p>
-					Received<br>dividends
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/health_saving_account_icon.png" alt="">
-				<p>
-					Health saving<br>account
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/social_security_icon.png" alt="">
-				<p>
-					Social security<br>benefits
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/retirement_plan_withdrawl_icon.png" alt="">
-				<p>
-					Retirement plan<br>withdrawl
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/paid_student_loan_icon.png" alt="">
-				<p>
-					Paid student loan<br>interest
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/unemployment_benefits_icon.png" alt="">
-				<p>
-					Unemployment<br>benefits
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/gambling_winnings_icon.png" alt="">
-				<p>
-					Gambling<br>winnings
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/received_alimony_icon.png" alt="">
-				<p>
-					Received alimony
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/farm_income_icon.png" alt="">
-				<p>
-					Farm income
-				</p>
-			</div>
-		</div>
-	-->
-
-		<div class="next_step">
-			<p>If you don't see what you're looking for, we'll cover more situations later.</p>
-			<a [routerLink]="['/survey-step-two']"><button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button></a>
-			<a [routerLink]="['/survey-feedback']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>
-		</div>
-	</div>
+	</form>
 </section>
 
 <div class="dashboard_footer">
-	Copyright © {{currentYear}} Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+	Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
 </div>
