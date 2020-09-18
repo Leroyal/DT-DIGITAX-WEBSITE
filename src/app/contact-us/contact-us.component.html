@@ -1,0 +1,103 @@
+<section class="signUp_container">
+	<div class="signup_left">
+		<div class="signup_left_inner">
+			<h2>SIGN <span>UP</span></h2>
+			<p>Hello! Let’s create account</p>
+           
+			<form [formGroup]="contactForm" (ngSubmit)="contactFormSubmit()" >
+				
+
+				
+
+				<p>First Name</p>
+				<mat-form-field appearance="outline">
+					
+					<input matInput formControlName="first_name" placeholder="Sample Name" required>
+					
+                    
+					<mat-error>Enter valid first name</mat-error>
+				</mat-form-field>
+
+
+				<p>Last Name</p>
+				<mat-form-field appearance="outline">					
+					<input matInput formControlName="last_name" required>					
+					<mat-error>Please enter your last name.</mat-error>
+				</mat-form-field>
+
+                <p>Message</p>
+									
+				<textarea formControlName="message"></textarea>	
+
+				<p>Email Address</p>
+				<mat-form-field appearance="outline">				
+					<input type="email" formControlName="email" matInput  >
+					<mat-error>Enter valid Email address</mat-error>
+				</mat-form-field>	
+
+				
+                        <p>Confirm Email Address</p>
+                        <mat-form-field appearance="outline">	
+                        <input type="email" formControlName="confirm_email"  matInput/>
+
+                        <mat-error>Confirm email is required</mat-error>
+
+                        </mat-form-field>	
+                        <div *ngIf="f.confirm_email.errors">
+
+                            <!--<div *ngIf="f.confirm_email.errors.required"><mat-error>Confirm email is required</mat-error></div>-->
+                            <div *ngIf="f.confirm_email.errors.mustMatch"><mat-error>email must match</mat-error></div>
+                        </div>
+                        
+                    
+
+
+				<!---<p>Confirm Email Address</p>
+				<mat-form-field appearance="outline">				
+					<input type="email" formControlName="confirm_email" matInput  >
+					
+				</mat-form-field>
+
+		
+
+
+                <div *ngIf="f.confirm_email.errors?.required">Confirm Email is required</div>
+				<div *ngIf="f.confirm_email.errors.mustMatch"><mat-error>The email not match</mat-error>
+               </div>-->	
+
+				<p>State</p>
+				<mat-form-field>
+  
+				  <mat-select formControlName="state">
+				    <mat-option *ngFor="let team of teams" [value]="team.name">
+				      {{team.name}}
+				    </mat-option>
+				  </mat-select>
+				</mat-form-field>
+
+
+				<p>Subject</p>
+				<mat-form-field>
+  
+				  <mat-select formControlName="subject">
+				    <mat-option *ngFor="let sub of subjects" [value]="sub.name">
+				      {{sub.name}}
+				    </mat-option>
+				  </mat-select>
+				</mat-form-field>	
+				
+			
+
+ 
+
+				<button class="login_btn" mat-raised-button >SUBMIT</button>
+				 
+			</form>
+			
+		</div>
+	</div>
+
+	
+</section>
+
+

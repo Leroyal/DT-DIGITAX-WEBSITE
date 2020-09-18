@@ -71,13 +71,15 @@ import { TermsUseComponent } from './terms-use/terms-use.component';
 import { PrivacyStatementComponent } from './privacy-statement/privacy-statement.component';
 
 import { NgxSpinnerModule,NgxSpinnerService } from "ngx-spinner";
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   exports: [   
     MatDialogModule   
     
-  ],
- // declarations: [PrivacyStatementComponent],
+  ]
   
 })
 export class MaterialModule {}
@@ -111,7 +113,8 @@ export class MaterialModule {}
     PrivacyPolicyComponent,
     TermsServiceComponent,
     TermsUseComponent,
-    PrivacyStatementComponent
+    PrivacyStatementComponent,
+    ContactUsComponent
 
   ],
   imports: [
@@ -142,7 +145,8 @@ export class MaterialModule {}
     RecaptchaV3Module,
     MatDividerModule,
     SlickCarouselModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatSelectModule
     
 
   ],

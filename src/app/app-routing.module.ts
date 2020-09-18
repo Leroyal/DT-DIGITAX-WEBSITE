@@ -28,6 +28,7 @@ import { TermsUseComponent } from './terms-use/terms-use.component';
 
 import { PrivacyStatementComponent } from './privacy-statement/privacy-statement.component';
 
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
 	{ path  : "", 
@@ -133,6 +134,12 @@ const routes: Routes = [
 		path: 'privacy-statement',
 		pathMatch: 'full',
 		component  : PrivacyStatementComponent  
+    },
+    
+     { 
+		path: 'contact-us',
+		pathMatch: 'full',
+		component  : ContactUsComponent  
     },
 	    ]
     },
