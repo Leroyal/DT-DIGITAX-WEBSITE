@@ -175,7 +175,7 @@ subjects: any[] = [
 
        console.log("saveData"+JSON.stringify(saveData));  
         
-                   this.contactService.saveUserDetails(saveData).pipe(first()).subscribe(contactres => {
+                   /*this.contactService.saveUserDetails(saveData).pipe(first()).subscribe(contactres => {
                     
                     if(contactres.status.status_code == 200)
                       {
@@ -206,7 +206,7 @@ subjects: any[] = [
                         });
                        
                     } 
-                 });
+                 });*/
                       
                     
        ;
