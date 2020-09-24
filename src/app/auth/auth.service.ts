@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHeaders, HttpHandler, HttpEvent, HttpInterceptor,HttpClient ,HttpParams} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import { Observable, of } from 'rxjs';
-import { tap, delay,map } from 'rxjs/operators';
+import { Observable, of,throwError } from 'rxjs';
+import { tap, delay,map  } from 'rxjs/operators';
 import { retry, catchError } from 'rxjs/operators';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -79,9 +81,27 @@ export class AuthService {
 
  SignUp(data:any)
     {  
+      let payloadObj;
+     if(data.phone){
+          payloadObj={
+          deviceType:"web",
+          email:data.email,
+          password:data.password,
+          phone:data.phone,
+          //role:data.role,
+          username:data.username
+       }
+     }
+     else{
+        payloadObj={
+          deviceType:"web",
+          email:data.email,
+          password:data.password,          
+          username:data.username
+       }
 
-
-     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signup`, data,{headers: this.headers})
+     }
+     return this.http.post<any>(`${environment.BASE_URL}/api/auth/signup`, payloadObj,{headers: this.headers})
     
       .pipe(map(fetchresult => {
            console.log(" user",fetchresult.status.status_code)
@@ -119,12 +139,13 @@ export class AuthService {
 
          localStorage.removeItem('access_token');
          localStorage.removeItem('user_id');
+         localStorage.removeItem('survey_step_chkbox');
 
          sessionStorage.removeItem('access_token');
          sessionStorage.removeItem('user_id'); 
          
           localStorage.clear();
-         this.isLoggedIn = false;
+           this.isLoggedIn = false;
          })
     );
   }
@@ -235,8 +256,30 @@ let data={
     const options = { headers: this.headers1}; 
 
     
+      
+      /*return this.http.post(`${environment.CAPTCHA_URL}`, body.toString(), options);*/
 
-      return this.http.post(`${environment.CAPTCHA_URL}`, body.toString(), options);
+       return this.http.post(`${environment.CAPTCHA_URL}`, body.toString(), options).pipe(
+               // retry(1),
+                catchError(this.handleError)
+            );
+
+       
 
   }
+
+
+    handleError(error) {
+        console.log("handle");
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        console.log(errorMessage);
+        return throwError(errorMessage);
+    }
 }

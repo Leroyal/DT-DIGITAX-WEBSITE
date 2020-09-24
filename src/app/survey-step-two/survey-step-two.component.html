@@ -11,87 +11,155 @@
 			your tax returns and documents
 		</div>
 	</div>
-	<div class="dashboard_body">
-		<h2>Now let's talk a bit <span class="blue_txt">about your life?</span></h2>
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/single_icon.png" alt="">
-				<p>
-					Single
-				</p>
+	<form action="">
+		<div class="dashboard_body">
+			<h2>Now let's talk a bit <span class="blue_txt">about your life?</span></h2>
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/single_icon.png" alt="">
+								<p>Single</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Single</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/married_icon.png" alt="">
+								<p>Married</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Married</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/other_icon.png" alt="">
+								<p>Accountant/tax<br>pro</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Accountant/tax<br>pro</p>
+							</div>
+						</div>
+					</span>
+				</label>
 			</div>
 		</div>
 
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/married_icon.png" alt="">
-				<p>
-					Married
-				</p>
+		<div class="dashboard_body">
+			<h2>Did any of these <span class="blue_txt">apply in 2019?</span></h2>
+			<p>FYI. Filling return with your better half almost always saves money on your taxes.</p>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/children_icon.png" alt="">
+								<p>Children/<br> Dependents</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Children/<br> Dependents</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="green_line"></div>
+								<img src="assets/images/college_student_icon.png" alt="">
+								<p>College student in<br>family</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>College student in<br>family</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="violet_line"></div>
+								<img src="assets/images/owned_a home_icon.png" alt="">
+								<p>Owned a home</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Owned a home</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="dashboard_small_box">
+				<label class="checkbox_container">
+					<input type="checkbox" id="">
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="orange_line"></div>
+								<img src="assets/images/paid_rent_icon.png" alt="">
+								<p>Paid rent</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>Paid rent</p>
+							</div>
+						</div>
+					</span>
+				</label>
+			</div>
+
+			<div class="next_step">
+				<!--<a [routerLink]="['/survey']"><button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button></a>-->
+
+				<button mat-raised-button class="back_btn" [disableRipple]="true" (click)="onNext($event)" #button><mat-icon>navigate_before</mat-icon> Back </button>
+				<a [routerLink]="['/survey-step-three']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>
 			</div>
 		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/other_icon.png" alt="">
-				<p>
-					Accountant/tax<br>pro
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="dashboard_body">
-		<h2>Did any of these <span class="blue_txt">apply in 2019?</span></h2>
-		<p>FYI. Filling return with your better half almost always saves money on your taxes.</p>
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/children_icon.png" alt="">
-				<p>
-					Children/<br> Dependents
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/college_student_icon.png" alt="">
-				<p>
-					College student in<br>family
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/owned_a home_icon.png" alt="">
-				<p>
-					Owned a home
-				</p>
-			</div>
-		</div>
-
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/paid_rent_icon.png" alt="">
-				<p>
-					Paid rent
-				</p>
-			</div>
-		</div>
-
-		<div class="next_step">
-			<a [routerLink]="['/survey']"><button mat-raised-button class="back_btn" [disableRipple]="true"><mat-icon>navigate_before</mat-icon> Back </button></a>
-			<a [routerLink]="['/survey-step-three']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>
-		</div>
-	</div>
+	</form>
 </section>
 
 <div class="dashboard_footer">

@@ -7,6 +7,7 @@ import {first , tap, delay,map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,8 @@ import { Observable, of } from 'rxjs';
 export class HomeComponent implements OnInit {
  submitted:boolean=false;
  flag:string;
+ title:string;
+ privacy_title:string;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -30,6 +33,8 @@ export class HomeComponent implements OnInit {
     get f() { return this.loginForm.controls; } 	           
 
   ngOnInit() {
+    this.title=environment.title;
+    this.privacy_title=environment.privacy_title;
   }
 
 
@@ -98,5 +103,31 @@ export class HomeComponent implements OnInit {
                       });
    }
  }
+
+ slideConfig = {"slidesToShow": 3, "slidesToScroll": 1, "autoplay": true, "autoplaySpeed": 3000, "dots": true, "infinite": true,
+  responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 1
+        }
+      }
+    ]
+ }
+slickInit(e) {
+    console.log('slick initialized');
+  }
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+  
+  afterChange(e) {
+    console.log('afterChange');
+  }
+  
+  beforeChange(e) {
+    console.log('beforeChange');
+  }
 
 }

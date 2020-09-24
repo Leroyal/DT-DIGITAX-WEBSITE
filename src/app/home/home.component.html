@@ -14,7 +14,7 @@
 			<div class="form_box">
 				<img src="assets/images/form_img.png" alt="">
 				<p class="form_txt_one">Welcome to</p>
-				<p class="form_txt_two">DIGITAX</p>
+				<p class="form_txt_two">{{title}}</p>
 
 				<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
 				<p><label>Email</label></p>
@@ -39,9 +39,9 @@
 				<div class="form_info">
 					<p>Dont have an account? <a routerLink="/signup">Sign Up</a></p>
 					<p>
-						By clicking Sign In,you agree to the
-						DIGITAX <a href="">Terms of Service</a>, DigiTax <a href="">Terms of Use</a>
-						and have read and acknowledge our Privacy Statement
+						By clicking Sign In, you agree to
+						{{privacy_title}} <a routerLink="/terms-service" href="">Terms of Service</a> and <a routerLink="/terms-use" href="">Terms of Use</a>.
+						And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
 					</p>
 				</div>
 			</form>
@@ -100,7 +100,7 @@
 		<div class="serve_flex_inner">
 			<div>
 				<img src="assets/images/calculation.png" alt="">
-				<p class="serve_flex_inner_head">100% accurate calculations</p>
+				<p class="serve_flex_inner_head">100% Accurate Calculations</p>
 				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
 			</div>
 		</div>
@@ -108,7 +108,7 @@
 		<div class="serve_flex_inner">
 			<div>
 				<img src="assets/images/life_changes.png" alt="">
-				<p class="serve_flex_inner_head">Big life changes</p>
+				<p class="serve_flex_inner_head">Big Life Changes</p>
 				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
 			</div>
 		</div>
@@ -116,14 +116,14 @@
 		<div class="serve_flex_inner">
 			<div>
 				<img src="assets/images/guidance.png" alt="">
-				<p class="serve_flex_inner_head">Guidance in case of audit</p>
+				<p class="serve_flex_inner_head">Guidance in Case of Audit</p>
 				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
 			</div>
 		</div>
 		<div class="serve_flex_inner">
 			<div>
 				<img src="assets/images/fastest_tax.png" alt="">
-				<p class="serve_flex_inner_head">Fastest tax refund possible </p>
+				<p class="serve_flex_inner_head">Fastest Tax Refund Possible </p>
 				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
 			</div>
 		</div>
@@ -171,7 +171,59 @@
 <section class="full-width mt-50">
 	<h2 class="serve_head">Our customers <span class="violet_txt">love</span> us</h2>
 	<p class="serve_sub">Committed to giving you the right tools at the right price</p>
+
 	<div class="customer_cmnt_box">
+	<ngx-slick-carousel class="carousel" 
+		#slickModal="slick-carousel" 
+		[config]="slideConfig"
+		(init)="slickInit($event)"
+		(breakpoint)="breakpoint($event)"
+		(afterChange)="afterChange($event)"
+		(beforeChange)="beforeChange($event)">
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-1.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-2.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-3.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+		<div class="customer_cmnt_box_inner slide" ngxSlickItem>
+			<div class="customer_box_shadow">
+				<div class="customer_img">
+					<img src="assets/images/customer-2.png" alt="" width="100%">
+				</div>
+				<p class="small_text">Lorem Ipsum has been the industry's standard dummy text .</p>
+				<p class="customer_name">Sample Name</p>
+			</div>
+		</div>
+
+	</ngx-slick-carousel>
+</div>
+	<!--<div class="customer_cmnt_box">
 		<div class="customer_cmnt_box_inner">
 			<div class="customer_box_shadow">
 				<img src="assets/images/qut_blue.png" alt="">
@@ -206,11 +258,11 @@
 			
 
 		</div>
-	</div>
+	</div>--->
 </section>
 
 <section class="full-width">
-	<h2 class="serve_head">DIGITax <span class="red_txt">app</span></h2>
+	<h2 class="serve_head">{{title}} <span class="red_txt">app</span></h2>
 	<p class="serve_sub">Easy, dependable, fast, and accurate</p>
 	<div class="download_box">
 		<div class="download_img">
@@ -218,7 +270,7 @@
 		</div>
 		<div class="download_info">
 			<img src="assets/images/digitax_usa_logo.png" alt="digitax_usa" width="120">
-			<h2 class="serve_head text-left no_margin">DIGITax <span class="red_txt">app</span></h2>
+			<h2 class="serve_head text-left no_margin">{{title}} <span class="red_txt">app</span></h2>
 			<p>File Faster and Easier</p>
 			<p class="small_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 			<p class="download_btn">

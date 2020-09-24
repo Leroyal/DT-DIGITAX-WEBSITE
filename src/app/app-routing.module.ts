@@ -20,6 +20,14 @@ import { SurveyStepTwoComponent } from './survey-step-two/survey-step-two.compon
 import { SurveyStepThreeComponent } from './survey-step-three/survey-step-three.component';
 import { SurveyFeedbackComponent } from './survey-feedback/survey-feedback.component';
 
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
+import { TermsServiceComponent } from './terms-service/terms-service.component';
+
+import { TermsUseComponent } from './terms-use/terms-use.component';
+
+import { PrivacyStatementComponent } from './privacy-statement/privacy-statement.component';
+
 
 const routes: Routes = [
 	{ path  : "", 
@@ -37,6 +45,11 @@ const routes: Routes = [
 				pathMatch: 'full',
 				component  : FaqComponent  
 		    },
+		    /*{ 
+				path: '**',
+				pathMatch: 'full',
+				component  : PageNotFoundComponent  
+		    },*/
 		    { 
 				path: 'dashboard',
 				pathMatch: 'full',
@@ -81,7 +94,8 @@ const routes: Routes = [
 		    { 
 				path: 'survey',
 				pathMatch: 'full',
-				component  : SurveyComponent  
+				component  : SurveyComponent,
+				canActivate: [AuthGuard]  
 		    },
 		    { 
 				path: 'survey-step-two',
@@ -97,7 +111,29 @@ const routes: Routes = [
 				path: 'survey-feedback',
 				pathMatch: 'full',
 				component  : SurveyFeedbackComponent  
-		    }
+		    },
+
+		    { 
+		path: 'privacy-policy',
+		pathMatch: 'full',
+		component  : PrivacyPolicyComponent  
+    },
+    { 
+		path: 'terms-service',
+		pathMatch: 'full',
+		component  : TermsServiceComponent  
+    },
+    { 
+		path: 'terms-use',
+		pathMatch: 'full',
+		component  : TermsUseComponent  
+    },
+    
+     { 
+		path: 'privacy-statement',
+		pathMatch: 'full',
+		component  : PrivacyStatementComponent  
+    },
 	    ]
     },
 
@@ -116,7 +152,8 @@ const routes: Routes = [
 		path: 'reset-password',
 		pathMatch: 'full',
 		component  : ResetPasswordComponent  
-    },
+    }
+    
 
     
 

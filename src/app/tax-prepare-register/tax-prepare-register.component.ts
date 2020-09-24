@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../../app/services/user.service';
 import {first , tap, delay,map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Routes, RouterModule,Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class TaxPrepareRegisterComponent implements OnInit {
   spouseLastName:"";
 
   constructor(private fb: FormBuilder, 
-  	           private snackbar: MatSnackBar, public userService: UserService,) {
+  	           private snackbar: MatSnackBar, public userService: UserService,private router: Router) {
 
     this.userForm = this.fb.group({
                    first_name: new FormControl('',[Validators.required]),                   
@@ -49,7 +50,9 @@ export class TaxPrepareRegisterComponent implements OnInit {
    onNext(event) {
     console.log("next");
     event.preventDefault();    
-    this.userFormSubmit();  
+    this.userFormSubmit();
+
+
      
      
 
@@ -82,7 +85,9 @@ export class TaxPrepareRegisterComponent implements OnInit {
              this.snackbar.open('Save successfully','OK',{
                 verticalPosition: 'top',
                 horizontalPosition:'right'
-              });              
+              });   
+
+              this.router.navigate(['/survey']);           
              
             }
            else{     

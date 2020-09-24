@@ -26,6 +26,7 @@ export class TaxPrepareProfileComponent implements OnInit {
   lastYear: number 
   @ViewChild('button', {static: true }) button: ElementRef;
   title:string;
+  username:any;
   
 
   constructor(private userService:UserService) { }
@@ -44,33 +45,71 @@ export class TaxPrepareProfileComponent implements OnInit {
    * personal info,tax info,last year summary details
   */
 
-  listUserDetails(){  
-     
-     this.userDetails={
-      user_name:'rick roy',
-      no_of_dependants:2
+  listUserDetails(){ 
 
-     };
-     this.userDetails='';
-     this.incomeDetails ={
-       form_name:"Scedule C",
-       form_desc:"1099 - G"
+
+
+  //////////////////
+   this.userService.getUserListDetails().subscribe(users => {
+      console.log("users"+JSON.stringify(users["data"]["personalInfo"]["fullName"]));
+      console.log("length"+ Object.keys(users["data"]["taxBreaks"]).length);  
+       
+         if(Object.keys(users["data"]["personalInfo"]).length >0){
+           console.log("plk");
+          this.userDetails={
+          user_name:(!users["data"]["personalInfo"]["fullName"]) ? "" :users["data"]["personalInfo"]["fullName"],
+          no_of_dependants:(!users["data"]["personalInfo"]["numberOfDependents"]) ? "" : users["data"]["personalInfo"]["numberOfDependents"]
+
+       };
+         this.username=users["data"]["personalInfo"]["fullName"];
+      }
+     else{
+       this.userDetails='';
+
      }
-     this.incomeDetails='';
-     this.taxDetails ={
-       tax_desc:"Donations"
-      
-     }
-     this.taxDetails='';
-     this.summaryDetails ={
-       filed_on:"Donations",
-       filed_type:"AGI",       
-       filed_fund:"Federal Refund",
-       filed_another:"CA Stoto Rofund"
-      
-     }
-     this.summaryDetails='';
      
+     
+
+      if(Object.keys(users["data"]["income"]).length >0){
+        this.incomeDetails ={
+           form_name:(!users["data"]["income"]["name"]) ? "" : users["data"]["income"]["name"],
+           form_desc:(!users["data"]["income"]["description"]) ? "" : users["data"]["income"]["description"]
+         }
+     }
+     else{
+
+        this.incomeDetails='';
+
+     }
+     
+     if(Object.keys(users["data"]["taxBreaks"]).length >0){
+        this.taxDetails ={
+           tax_desc:(!users["data"]["taxBreaks"]["taxBreaks"]) ? "" : users["data"]["taxBreaks"]["taxBreaks"]
+      
+         }
+      }
+      else{
+        this.taxDetails='';
+
+      }
+        
+      if(Object.keys(users["data"]["previousYearSummary"]).length >0){
+        this.summaryDetails ={
+           filed_on:(!users["data"]["previousYearSummary"]["FederalRefund"]) ? "" : users["data"]["previousYearSummary"]["FederalRefund"],
+           filed_type:(!users["data"]["previousYearSummary"]["FederalRefund"]) ? "" : users["data"]["previousYearSummary"]["FederalRefund"],       
+           filed_fund:(!users["data"]["previousYearSummary"]["AdjustedGrossIncome"]) ? "" : users["data"]["previousYearSummary"]["AdjustedGrossIncome"],
+           filed_another:(!users["data"]["previousYearSummary"]["StateRefund"]) ? "" : users["data"]["previousYearSummary"]["StateRefund"]
+      
+          }       
+
+      }
+      else{
+        this.summaryDetails='';
+
+      }
+  
+       
+       });
   	
   }
   
