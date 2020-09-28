@@ -5,6 +5,8 @@ import 'core-js/features/array/includes';
 import { CacheService } from '../../app/services/cache.service';
 import { Routes, RouterModule,Router } from '@angular/router';
 
+import {Pipe, PipeTransform} from '@angular/core';
+
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -19,10 +21,13 @@ export class SurveyComponent implements OnInit  {
   ngOnInit() {
       this.myForm = this.fb.group({
       	orders: this.fb.array([])     
-    });
-     
+    });     
      this.listCategoryDetails();     
   }
+
+       /*
+        * This function is used to check for category  already enabled or not 
+      */
 
   isExists(value){  
 
@@ -38,12 +43,24 @@ export class SurveyComponent implements OnInit  {
      return false; 
   }
   }
+
+  /*
+ * This function is used to fetch category details data
+ * @params(
+   accessToken:string 
+
+   ) 
+ */
   listCategoryDetails(){    
    this.serveyService.listSurvey().subscribe(categories => {           
        this.categories= categories["data"]; 
        })
 
       }
+
+      /*
+        * This function is used while change category 
+      */
 
       onChange(categoryid: string, isChecked: boolean) {
       console.log("chk"+categoryid+"isChecked"+isChecked);
@@ -78,6 +95,9 @@ export class SurveyComponent implements OnInit  {
       localStorage.setItem('survey_step_chkbox',comString );
     }
   }
+   /*
+        * This function is used while click continue button 
+      */
    onNext(event) {    
     
      let formsvalue=this.myForm.value;

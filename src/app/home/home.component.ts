@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
                       location.href = '/tax-prepare-profile';
                     }
                    else{
-                     this.snackbar.open(loginresponse.status.status_message,'OK',{
+                     this.snackbar.open(loginresponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
@@ -84,6 +84,7 @@ export class HomeComponent implements OnInit {
                    }
                 },
                 error => {
+                    console.log("kll") 
                     this.snackbar.open(error,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',

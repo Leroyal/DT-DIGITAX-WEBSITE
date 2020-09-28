@@ -9,7 +9,7 @@ import {DatePipe} from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-//import { PasswordValidator } from '../signup/password.validator';
+
 
 import { MustMatch } from './match.validator';
 
@@ -35,7 +35,7 @@ declare var grecaptcha: any;
 })
 export class ContactUsComponent implements OnInit {
 
-  captcha?: string;
+captcha?: string;
  errormsg: string;
  window: any;
  rec_response:any;
@@ -87,7 +87,7 @@ subjects: any[] = [
   	           )
                {
 
-                   this.contactForm = this.fb.group({
+            this.contactForm = this.fb.group({
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
@@ -100,44 +100,7 @@ subjects: any[] = [
             confirm_email: ['', Validators.required]
         }, {
             validator: MustMatch('email', 'confirm_email')
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-  	               /*this.contactForm = this.fb.group({
-                   email: new FormControl('',[Validators.compose([Validators.required,Validators.email,Validators.pattern(/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/)]) ]),
-                   //captcha: new FormControl('',[Validators.required]),
-                   first_name: new FormControl('',[Validators.required]), 
-                   last_name: new FormControl('',[Validators.required]),
-                   message: new FormControl('',[Validators.required]), 
-
-                   confirm_email: new FormControl('',[Validators.required]), 
-
-                  
-
-                   state: new FormControl('',[Validators.required]),
-
-                   subject: new FormControl('',[Validators.required])
-
-                   
-                  
-                    },
-                    {
-            validator:
-                MustMatch('email', 'confirm_email')
-
-            
-        }
-                    );|*/
+        });             
 
 
                      
@@ -145,25 +108,24 @@ subjects: any[] = [
   ngOnInit() {
   }
 
-  matchingEmailsValidator(emailKey: string, confirmEmailKey: string) {
-        return (group: FormGroup): {[key: string]: any} => {
-
-            let email = group.controls[emailKey];
-            let confirmEmail = group.controls[confirmEmailKey];
-
-            if (email.value !== confirmEmail.value) {
-                return {
-                    mismatch: true
-                };
-            }
-        };
-    }
+  
 
   get f(){
                           return this.contactForm.controls;
                      }
 
+/*
+ * This function is used for save contact us data
+ * @params(
+   email:string,
+   state:string,
+   subject:string,
+   first name:string,
+   last name:string,
+   message:string
 
+   ) 
+ */
   contactFormSubmit(){
       this.isSubmitted = true;         
       
@@ -174,8 +136,10 @@ subjects: any[] = [
        let saveData = this.contactForm.value; 
 
        console.log("saveData"+JSON.stringify(saveData));  
-        
-                   /*this.contactService.saveUserDetails(saveData).pipe(first()).subscribe(contactres => {
+                   
+                   /*
+                   * We are activating this one when live api url found
+                   this.contactService.saveUserDetails(saveData).pipe(first()).subscribe(contactres => {
                     
                     if(contactres.status.status_code == 200)
                       {

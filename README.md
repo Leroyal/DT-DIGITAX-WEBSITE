@@ -45,6 +45,8 @@ Hence for security we have used both local storage and session storage, If users
     * [For UserTaxDetails](#usertaxdetails)
     * [For UserConsentDetails](#userconsentdetails)
     * [For Recaptcha](#userrecaptcha)
+    * [For Changepassword](#changepassword)
+    * [For Marketingpreferences](#marketingpreferences)
 
     
 * [Error Handling](#error-handling)
@@ -94,6 +96,17 @@ g stands for global installation. If you use -g later you can use the CLI in any
 
  1.We have to load recaptcha library in signup component.We have to use ng recaptcha tool for that. 
  2. We have to call google site verify api for recaptcha thresold value.
+ 
+
+ ### For Changepassword
+
+ 1. Create update-password component .To do that ,we need to use the following command :ng g c update-password
+ 2. User change password is figure out by this tool.
+
+### For Marketingpreferences
+
+ 1. Create marketing-preferences component .To do that ,we need to use the following command :ng g c marketing-preferences
+ 2. User marketing preferences is figure out by this tool.
 
 
 <a name="error-handling"></a>

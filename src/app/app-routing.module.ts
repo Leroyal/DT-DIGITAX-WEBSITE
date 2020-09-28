@@ -30,6 +30,28 @@ import { PrivacyStatementComponent } from './privacy-statement/privacy-statement
 
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
+import { MyInfoComponent } from './my-info/my-info.component';
+
+import { UpdateNameComponent } from './update-name/update-name.component';
+
+import { UpdateAddressComponent } from './update-address/update-address.component';
+
+import { UpdateBirthdayComponent } from './update-birthday/update-birthday.component';
+
+import { UpdateOccupationComponent } from './update-occupation/update-occupation.component';
+
+import { UpdateEmailComponent } from './update-email/update-email.component';
+
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+
+import { MobileVerificationComponent } from './mobile-verification/mobile-verification.component';
+
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+
+import { MarketingPreferencesComponent } from './marketing-preferences/marketing-preferences.component';
+
+import { SigninSecurityComponent } from './signin-security/signin-security.component';
+
 const routes: Routes = [
 	{ path  : "", 
       component  : LayoutComponent ,
@@ -141,6 +163,84 @@ const routes: Routes = [
 		pathMatch: 'full',
 		component  : ContactUsComponent  
     },
+
+    
+
+    { 
+		path: 'my-info',
+		pathMatch: 'full',
+		component  : MyInfoComponent,
+		canActivate: [AuthGuard]   
+    },
+
+    
+     { 
+		path: 'update-name',
+		pathMatch: 'full',
+		component  : UpdateNameComponent,
+		canActivate: [AuthGuard]   
+    },
+    { 
+		path: 'update-address',
+		pathMatch: 'full',
+		component  : UpdateAddressComponent,
+		canActivate: [AuthGuard]   
+    },
+    { 
+		path: 'update-birthday',
+		pathMatch: 'full',
+		component  : UpdateBirthdayComponent,
+		canActivate: [AuthGuard]   
+    },
+    { 
+		path: 'update-occupation',
+		pathMatch: 'full',
+		component  : UpdateOccupationComponent,
+		canActivate: [AuthGuard]   
+    },
+
+    
+    { 
+		path: 'update-email',
+		pathMatch: 'full',
+		component  : UpdateEmailComponent,
+		canActivate: [AuthGuard]   
+    },
+
+     { 
+		path: 'update-password',
+		pathMatch: 'full',
+		component  : UpdatePasswordComponent,
+		canActivate: [AuthGuard]   
+    },
+     { 
+		path: 'mobile-verify',
+		pathMatch: 'full',
+		component  : MobileVerificationComponent  
+    },
+    { 
+		path: 'otp-verify',
+		pathMatch: 'full',
+		component  : OtpVerificationComponent  
+    },
+
+     { 
+		path: 'marketing-preferences',
+		pathMatch: 'full',
+		component  : MarketingPreferencesComponent,
+		canActivate: [AuthGuard]   
+    },
+    
+    { 
+		path: 'signin-security',
+		pathMatch: 'full',
+		component  : SigninSecurityComponent,
+		canActivate: [AuthGuard]   
+    },
+
+    
+    
+
 	    ]
     },
 
