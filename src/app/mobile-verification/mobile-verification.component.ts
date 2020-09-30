@@ -18,6 +18,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MobileVerificationComponent implements OnInit {
   mobileVerificationForm: FormGroup;  
   isSubmitted:boolean=false;
+  phoneNumberStorage: any;
+  emailStorage:any;
+  firstWordEmail:any;
+  lastWordEmail:any;
 
   constructor(public authService: AuthService,
   private fb: FormBuilder,
@@ -30,6 +34,16 @@ export class MobileVerificationComponent implements OnInit {
    }
 
   ngOnInit() {
+     //user_phone
+     this.phoneNumberStorage=
+     localStorage.getItem('user_phone').substr(localStorage.getItem('user_phone').length - 4);
+
+     this.firstWordEmail=localStorage.getItem('email').charAt(0);
+
+     this.lastWordEmail=localStorage.getItem('email').replace(/@.*/,"");
+
+     this.lastWordEmail=this.lastWordEmail.substr(this.lastWordEmail.length - 1);
+     this.emailStorage=localStorage.getItem('user_email');
   }
 
   onNext(event) { 
@@ -50,7 +64,7 @@ export class MobileVerificationComponent implements OnInit {
 
          let saveData = this.mobileVerificationForm.value; 
           console.log("saveData"+JSON.stringify(saveData));
-
+               this.router.navigate(['/otp-verify']); 
           
            //this will enable after live api url created.             
            /*this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)

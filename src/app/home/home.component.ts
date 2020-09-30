@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild,NgModule } from '@angular/core';
-import { Router }      from '@angular/router';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
@@ -8,6 +8,8 @@ import {DatePipe} from '@angular/common';
 
 import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
+
+import { Routes, RouterModule,Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,8 @@ export class HomeComponent implements OnInit {
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
-  	           private snackbar: MatSnackBar) { }
+  	           private snackbar: MatSnackBar,
+               private router: Router) { }
 
    loginForm = new FormGroup({
 				       email:new FormControl('', [Validators.required]),
@@ -51,12 +54,56 @@ export class HomeComponent implements OnInit {
           else if (this.f.email.value.match(/^[0-9()]+$/)) {
              console.log("phone number get");
              this.flag="phone";
+
+             localStorage.setItem('user_phone',this.f.email.value);
+             ///call sms sending api
+             //we will enable this after live api url created
+             /*this.authService.sendOTP(this.f.email.value)
+            .pipe(first())
+            .subscribe(
+                otpResponse => {
+                console.log("###");
+                console.log(otpResponse);
+                if(otpResponse.status.status_code == 200)
+                    {
+                        this.sentotp = request["data"].otp;
+                        localStorage.setItem('sent_otp');
+                        localStorage.setItem('user_phone');
+                        this.snackbar.open(otpResponse.status.status_message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                      this.router.navigate(['/otp-verify']); 
+                    }
+                   else{
+                     this.snackbar.open(otpResponse.status.message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                   }
+                },
+                error => {
+                    this.snackbar.open(error,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                });*/
+
+             this.router.navigate(['/otp-verify']);
+
           }
           else{
               console.log("username get");
               this.flag="username";
           }        
-        
+        if(this.flag=="username" || this.flag=="email"){
+
         this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
             .pipe(first())
             .subscribe(
@@ -91,7 +138,9 @@ export class HomeComponent implements OnInit {
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
-                });   
+                }); 
+
+                }  
              
    }
    else

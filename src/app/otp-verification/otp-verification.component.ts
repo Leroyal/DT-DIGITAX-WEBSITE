@@ -20,6 +20,7 @@ export class OtpVerificationComponent implements OnInit {
   
   otpVerificationForm: FormGroup;  
   isSubmitted:boolean=false;
+  phoneNumberStorage:any;
   constructor(
   public authService: AuthService,
   private fb: FormBuilder,
@@ -32,6 +33,8 @@ export class OtpVerificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.phoneNumberStorage=
+     localStorage.getItem('user_phone').substr(localStorage.getItem('user_phone').length - 4);
   }
   
     /*

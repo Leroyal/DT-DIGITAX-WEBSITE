@@ -200,12 +200,7 @@ const routes: Routes = [
     },
 
     
-    { 
-		path: 'update-email',
-		pathMatch: 'full',
-		component  : UpdateEmailComponent,
-		canActivate: [AuthGuard]   
-    },
+   
 
      { 
 		path: 'update-password',
@@ -213,16 +208,7 @@ const routes: Routes = [
 		component  : UpdatePasswordComponent,
 		canActivate: [AuthGuard]   
     },
-     { 
-		path: 'mobile-verify',
-		pathMatch: 'full',
-		component  : MobileVerificationComponent  
-    },
-    { 
-		path: 'otp-verify',
-		pathMatch: 'full',
-		component  : OtpVerificationComponent  
-    },
+     
 
      { 
 		path: 'marketing-preferences',
@@ -259,6 +245,22 @@ const routes: Routes = [
 		path: 'reset-password',
 		pathMatch: 'full',
 		component  : ResetPasswordComponent  
+    },
+     { 
+		path: 'update-email',
+		pathMatch: 'full',
+		component  : UpdateEmailComponent
+		//canActivate: [AuthGuard]   
+    },
+    { 
+		path: 'mobile-verify',
+		pathMatch: 'full',
+		component  : MobileVerificationComponent  
+    },
+    { 
+		path: 'otp-verify',
+		pathMatch: 'full',
+		component  : OtpVerificationComponent  
     }
     
 

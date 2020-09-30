@@ -12,10 +12,10 @@
 				<label id="example-radio-group-label">Choose one option:</label>
 				<mat-radio-group class="example-radio-group" formControlName="verify_mobile">
 					<mat-radio-button class="example-radio-button" value="text">
-						Get a code texted to:<br>******8888
+						Get a code texted to:<br>******{{phoneNumberStorage}}
 					</mat-radio-button>
 					<mat-radio-button class="example-radio-button" value="email">
-						Get a code emailed to:<br>s*****h@gmail.com
+						Get a code emailed to:<br>{{firstWordEmail}}*****{{lastWordEmail}}@gmail.com
 					</mat-radio-button>
 					<mat-radio-button class="example-radio-button" value="other">
 						Confirm my account a different way<br>(takes longer)

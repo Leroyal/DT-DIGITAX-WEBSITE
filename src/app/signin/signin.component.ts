@@ -72,6 +72,7 @@ export class SigninComponent implements OnInit {
           else if (this.f.email.value.match(/^[0-9()]+$/)) {
              console.log("phone number get");
              this.flag="phone";
+             localStorage.setItem('user_phone',this.f.email.value);
              ///call sms sending api
              /*this.authService.sendOTP(this.f.email.value)
             .pipe(first())
@@ -83,6 +84,7 @@ export class SigninComponent implements OnInit {
                     {
                         this.sentotp = request["data"].otp;
                         localStorage.setItem('sent_otp');
+                        localStorage.setItem('user_phone');
                         this.snackbar.open(otpResponse.status.status_message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
