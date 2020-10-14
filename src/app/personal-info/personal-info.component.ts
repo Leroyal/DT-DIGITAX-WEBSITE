@@ -150,7 +150,6 @@ export class PersonalInfoComponent implements OnInit {
   }
 
 
-
    /*
  * This function is used for fetch name data  
  */
