@@ -14,22 +14,22 @@
 				</p>
 				<p>Enter the 6-digit code</p>
 				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input #otp  matInput formControlName="verify_code" required maxlength="6" type="password">
 					<mat-error>
-The code you entered is invalid.</mat-error>
+					The code you entered is invalid.</mat-error>
 				</mat-form-field>
 				<div>
-				<p class="btn_row">
-					<button type="submit" class="save_btn" mat-raised-button>Continue</button>
+					<p class="btn_row">
+						<button type="submit" class="save_btn" mat-raised-button>Continue</button>
 
 
- 
-<a [routerLink]="['/mobile-verify']" [state]="{ password:state}">
-					<!--<a routerLink="/mobile-verify" [state]=state>-->Don't recive a code</a>
-				</p>
-			</div>
-			</div>
-		</form>
-	</div>
-</section>
+						
+						<a [routerLink]="['/mobile-verify']" [state]="{ password:state}">
+							Don't recive a code</a>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
