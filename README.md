@@ -42,12 +42,12 @@ Hence for security we have used both local storage and session storage, If users
     * [Installation](#installation)    
     * [For Login](#login)
     * [For Idle](#idle)
-    * [For UserTaxDetails](#usertaxdetails)
-    * [For UserConsentDetails](#userconsentdetails)
+    * [For User Tax Details](#usertaxdetails)
+    * [For User Consent Details](#userconsentdetails)
     * [For Recaptcha](#userrecaptcha)
-    * [For Changepassword](#changepassword)
-    * [For Changeemail](#changeemail)
-    * [For Marketingpreferences](#marketingpreferences)
+    * [For Change Password](#changepassword)
+    * [For Change Email](#changeemail)
+    * [For Marketing Preferences](#marketingpreferences)
 
     
 * [Error Handling](#error-handling)
@@ -83,12 +83,12 @@ g stands for global installation. If you use -g later you can use the CLI in any
  1. We need to use bn-ng-idle tool in app component
  2. If session idle for 15 minutes or more than that it is figure out by this tool.
 
- ### For UserTaxDetails
+ ### For User Tax Details
 
  1. Create tax-prepare-profile component .To do that ,we need to use the following command :ng g c tax-prepare-profile/tax-prepare-profile
  2. User personal info,tax info is figure out by this tool.
 
- ### For UserConsentDetails
+ ### For User Consent Details
 
  1. Create tax-prepare-register component .To do that ,we need to use the following command :ng g c tax-prepare-register/tax-prepare-register
  2. User consent is figure out by this tool.
@@ -99,17 +99,17 @@ g stands for global installation. If you use -g later you can use the CLI in any
  2. We have to call google site verify api for recaptcha thresold value.
  
 
- ### For Changepassword
+ ### For Change Password
 
  1. Create update-password component .To do that ,we need to use the following command :ng g c update-password
  2. User change password is figure out by this tool.
 
- ### For Changepassword
+ ### For Change Email
 
  1. Create update-email component .To do that ,we need to use the following command :ng g c update-email
  2. User change email is figure out by this tool.
 
-### For Marketingpreferences
+### For Marketing Preferences
 
  1. Create marketing-preferences component .To do that ,we need to use the following command :ng g c marketing-preferences
  2. User marketing preferences is figure out by this tool.
