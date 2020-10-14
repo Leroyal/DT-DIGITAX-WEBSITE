@@ -22,7 +22,11 @@ The code you entered is invalid.</mat-error>
 				<div>
 				<p class="btn_row">
 					<button type="submit" class="save_btn" mat-raised-button>Continue</button>
-					<a routerLink="/mobile-verify">Don't recive a code</a>
+
+
+ 
+<a [routerLink]="['/mobile-verify']" [state]="{ password:state}">
+					<!--<a routerLink="/mobile-verify" [state]=state>-->Don't recive a code</a>
 				</p>
 			</div>
 			</div>

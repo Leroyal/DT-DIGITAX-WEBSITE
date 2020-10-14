@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  
+  BASE1_URL:"/home/redapple069/Downloads/all_data.zip",
   BASE_URL:`http://digitaxapi-env.eba-nrr834zb.us-east-1.elasticbeanstalk.com:8080`,
   CAPTCHA_URL   :`https://www.google.com/recaptcha/api/siteverify`,
   secret_key:"6LdoiLwZAAAAADmQpBrZnki6eFbWJS-WaD1r1luU",
@@ -17,7 +17,8 @@ export const environment = {
 
   signup_privacy:"By clicking Sign Up, you agree to Digital Tax USA Terms of Service and Terms of Use. And have read and acknowledge our Privacy Statement.",
 
-  privacy_title:"Digital Tax USA"
+  privacy_title:"Digital Tax USA",
+  phone_code:"+91"
 };
 
 /*

@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
  flag:string;
  title:string;
  privacy_title:string;
+ phone_codes:any;
+
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit {
     get f() { return this.loginForm.controls; } 	           
 
   ngOnInit() {
+    this.phone_codes= environment.phone_code;
     this.title=environment.title;
     this.privacy_title=environment.privacy_title;
   }
@@ -54,28 +57,33 @@ export class HomeComponent implements OnInit {
           else if (this.f.email.value.match(/^[0-9()]+$/)) {
              console.log("phone number get");
              this.flag="phone";
-
+             
+             console.log("environment.phone_code"+this.phone_codes); 
+             
              localStorage.setItem('user_phone',this.f.email.value);
+             
              ///call sms sending api
-             //we will enable this after live api url created
-             /*this.authService.sendOTP(this.f.email.value)
+             this.authService.sendOTP(this.phone_codes+this.f.email.value)
             .pipe(first())
             .subscribe(
                 otpResponse => {
-                console.log("###");
-                console.log(otpResponse);
+                //console.log("###");
+                //console.log(otpResponse);
                 if(otpResponse.status.status_code == 200)
-                    {
-                        this.sentotp = request["data"].otp;
-                        localStorage.setItem('sent_otp');
-                        localStorage.setItem('user_phone');
-                        this.snackbar.open(otpResponse.status.status_message,'OK',{
+                    {                      
+                        
+                        
+                        this.snackbar.open(otpResponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
-                      this.router.navigate(['/otp-verify']); 
+                      
+
+                      this.router.navigate(['otp-verify'], { 
+                      state: { password: this.f.password.value } 
+                    });
                     }
                    else{
                      this.snackbar.open(otpResponse.status.message,'OK',{
@@ -93,10 +101,8 @@ export class HomeComponent implements OnInit {
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
-                });*/
-
-             this.router.navigate(['/otp-verify']);
-
+                });              
+              
           }
           else{
               console.log("username get");

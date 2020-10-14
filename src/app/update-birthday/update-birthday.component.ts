@@ -33,6 +33,10 @@ export class UpdateBirthdayComponent implements OnInit {
   birth_date:any;
   updateBirthForm: FormGroup;  
   isSubmitted:boolean=false;
+  fetchBirth:any;
+  birthVisible:boolean=false;
+
+
   constructor(public birthService: BirthService,private fb: FormBuilder,private snackbar: MatSnackBar,private router: Router) {
      this.updateBirthForm = this.fb.group({
                    
@@ -49,10 +53,19 @@ export class UpdateBirthdayComponent implements OnInit {
 
   getBirthDetails(){
      //this will enable after live url created
-    /* this.birthService.getBirthListDetails().subscribe(birthdetails => {
+     this.birthService.getBirthListDetails().subscribe(birthdetails => {
        console.log("ok");
 
-   });*/
+       this.fetchBirth=birthdetails["data"]["userDetails"]["userDateofbirth"];
+
+       if(this.fetchBirth){
+           this.birthVisible=true;
+           this.updateBirthForm.controls['birth_date'].setValue(this.fetchBirth);
+       }
+       
+
+
+   });
   }
 
   /*
@@ -73,9 +86,9 @@ export class UpdateBirthdayComponent implements OnInit {
        let saveData = this.updateBirthForm.value; 
        console.log("saveData"+JSON.stringify(saveData));
        //this will enable after live url created
-       /*this.birthService.saveBirthDetails(saveData).pipe(first()).subscribe(updatebirthresult => {
+       this.birthService.saveBirthDetails(saveData).pipe(first()).subscribe(updatebirthresult => {
                     
-                    if(updatebirthresult.status.status_code == 200)
+                    if(updatebirthresult["status"].status_code == 200)
                       {
                        console.log("ok"); 
                        this.snackbar.open('Saved successful!','OK',{
@@ -83,7 +96,7 @@ export class UpdateBirthdayComponent implements OnInit {
                           horizontalPosition:'right'
                           
                         }).onAction()
-                          .subscribe(() => this.router.navigateByUrl('my-info'));                  
+                          .subscribe(() => this.router.navigateByUrl('personal-info'));                  
 
                       
                        
@@ -104,7 +117,7 @@ export class UpdateBirthdayComponent implements OnInit {
                         });
                        
                     } 
-                 });*/
+                 });
        }
   }
 

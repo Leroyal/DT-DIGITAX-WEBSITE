@@ -12,5 +12,7 @@ export const environment = {
 
   signup_privacy:"By clicking Sign Up, you agree to Digital Tax USA Terms of Service and Terms of Use. And have read and acknowledge our Privacy Statement.",
 
-  privacy_title:"Digital Tax USA"
+  privacy_title:"Digital Tax USA",
+
+  phone_code:"+91"
 };

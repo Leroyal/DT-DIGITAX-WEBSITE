@@ -10,18 +10,23 @@ import { AuthService } from '../auth/auth.service';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-mobile-verification',
   templateUrl: './mobile-verification.component.html',
   styleUrls: ['./mobile-verification.component.css']
 })
 export class MobileVerificationComponent implements OnInit {
+  state:any;
   mobileVerificationForm: FormGroup;  
   isSubmitted:boolean=false;
   phoneNumberStorage: any;
   emailStorage:any;
   firstWordEmail:any;
   lastWordEmail:any;
+   
+
 
   constructor(public authService: AuthService,
   private fb: FormBuilder,
@@ -34,16 +39,20 @@ export class MobileVerificationComponent implements OnInit {
    }
 
   ngOnInit() {
+
+
      //user_phone
+     this.state = window.history.state.password; 
+     console.log("this.hero"+this.state);
      this.phoneNumberStorage=
      localStorage.getItem('user_phone').substr(localStorage.getItem('user_phone').length - 4);
+     
+     //this.firstWordEmail=localStorage.getItem('email').charAt(0);
 
-     this.firstWordEmail=localStorage.getItem('email').charAt(0);
+    // this.lastWordEmail=localStorage.getItem('email').replace(/@.*/,"");
 
-     this.lastWordEmail=localStorage.getItem('email').replace(/@.*/,"");
-
-     this.lastWordEmail=this.lastWordEmail.substr(this.lastWordEmail.length - 1);
-     this.emailStorage=localStorage.getItem('user_email');
+     //this.lastWordEmail=this.lastWordEmail.substr(//this.lastWordEmail.length - 1);
+     //this.emailStorage=localStorage.getItem('user_email');
   }
 
   onNext(event) { 
@@ -64,27 +73,34 @@ export class MobileVerificationComponent implements OnInit {
 
          let saveData = this.mobileVerificationForm.value; 
           console.log("saveData"+JSON.stringify(saveData));
-               this.router.navigate(['/otp-verify']); 
+
+               this.router.navigate(['otp-verify'], { 
+                state: { password: this.state } 
+              }); 
           
-           //this will enable after live api url created.             
-           /*this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
+           //this will enable after live api url created. 
+           console.log("environment.phone_code"+environment.phone_code)            
+           this.authService.sendOTP(environment.phone_code+localStorage.getItem('user_phone'))
             .pipe(first())
             .subscribe(
-                loginresponse => {
-                console.log("###");
-                console.log(loginresponse);
-                if(loginresponse.status.status_code == 200)
+                verifyresponse => {
+                
+                if(verifyresponse.status.status_code == 200)
                     {
-                        this.snackbar.open(loginresponse.status.status_message,'OK',{
+                        this.snackbar.open(verifyresponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
-                      location.href = '/tax-prepare-profile';
+
+                      this.router.navigate(['otp-verify'], { 
+                      state: { password: this.state } 
+                       });
+                      
                     }
                    else{
-                     this.snackbar.open(loginresponse.status.message,'OK',{
+                     this.snackbar.open(verifyresponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
@@ -99,7 +115,7 @@ export class MobileVerificationComponent implements OnInit {
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
-                }); */
+                }); 
 
 
 

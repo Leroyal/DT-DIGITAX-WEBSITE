@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHeaders, HttpHandler, HttpEvent, HttpInterceptor,HttpClient ,HttpParams} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
+import { SigninComponent } from '../signin/signin.component';
+
 import { Observable, of,throwError } from 'rxjs';
 import { tap, delay,map  } from 'rxjs/operators';
 import { retry, catchError } from 'rxjs/operators';
@@ -14,6 +16,7 @@ export class AuthService {
    headers;
    headers1;
    access_token;
+   public hero: SigninComponent;
   constructor(private http: HttpClient) {
      this.headers = new  HttpHeaders().set("Access-Control-Allow-Origin",  "*"); 
   }
@@ -41,6 +44,8 @@ export class AuthService {
         })
       };
 
+      
+
   login(email: string, password: string, remember:boolean,flag:string){
 
      let signinObj={
@@ -63,6 +68,8 @@ export class AuthService {
 
               localStorage.setItem('user_email', fetchresult.data.user.email);
 
+              localStorage.setItem('user_contact_no', fetchresult.data.user.phone);
+
               localStorage.setItem('access_token', fetchresult.data.session.accessToken);
               localStorage.setItem('user_id', fetchresult.data.user.id);
               this.isLoggedIn = true;
@@ -71,6 +78,8 @@ export class AuthService {
           else if(fetchresult && fetchresult.data.session && !remember){
               console.log("with no remember");
               sessionStorage.setItem('user_email', fetchresult.data.user.email);
+
+              sessionStorage.setItem('user_contact_no', fetchresult.data.user.phone);
               
               sessionStorage.setItem('access_token', fetchresult.data.session.accessToken);
               sessionStorage.setItem('user_id', fetchresult.data.user.id);
@@ -137,11 +146,13 @@ export class AuthService {
 
 
   sendOTP(email: string){
-     return this.http.post<any>(`${environment.BASE_URL}admin/generate-otp`, { communiaction_mode:'email', communication_details:email })
+     return this.http.post<any>(`${environment.BASE_URL}/api/auth/send-otp`, { phone:email})
       .pipe(map(fetchresult => {
           return fetchresult;
      }));
   }
+
+  
 
   logout(): Observable<boolean> {
     console.log("logout func call");
@@ -177,8 +188,10 @@ export class AuthService {
               localStorage.removeItem('user_id');
 
              sessionStorage.removeItem('access_token');
+             sessionStorage.removeItem('user_email');
              sessionStorage.removeItem('user_id');
               localStorage.clear();
+              sessionStorage.clear();
              
              this.isLoggedIn = false;
           }         
@@ -215,13 +228,13 @@ var ProductName = sessionStorage.getItem('ProductName');
 
     
 
-    checkOtp(phone_no: string, otp:string, communication_code:string){
+    verifyOtp(phone_no: string, otp:string){
       let body = {
-          communication_details: phone_no,
-          otp: otp,
-          communication_code: communication_code
+          phone: phone_no,
+          otp: otp
+          
       }
-      return this.http.post<any>(`${environment.BASE_URL}check-otp`, body)
+      return this.http.post<any>(`${environment.BASE_URL}/api/auth/verify-otp`, body)
         .pipe(map(fetchresult => {
           return fetchresult;
       }));

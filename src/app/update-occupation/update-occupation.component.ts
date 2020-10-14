@@ -33,6 +33,8 @@ export class UpdateOccupationComponent implements OnInit {
   updateOccupationForm: FormGroup;  
   isSubmitted:boolean=false;
   occupation:any;
+  occupationVisible:boolean=false;
+  fetchOccupation:any;
 
   constructor(public birthService: BirthService,private fb: FormBuilder,private snackbar: MatSnackBar,private router: Router) { 
      this.updateOccupationForm = this.fb.group({
@@ -52,10 +54,15 @@ export class UpdateOccupationComponent implements OnInit {
  */
   getOccupationDetails(){
     //we will enable it after live api url found
-    /* this.birthService.getOccupationListDetails().subscribe(birthdetails => {
+     this.birthService.getOccupationListDetails().subscribe(occupationdetails => {
        console.log("ok");
+       this.fetchOccupation=occupationdetails["data"]["userDetails"]["userOcupation"];
 
-   });*/
+       if(this.fetchOccupation){
+           this.occupationVisible=true;
+           this.updateOccupationForm.controls['occupation'].setValue(this.fetchOccupation);
+       }
+   });
   }
 
 /*
@@ -75,9 +82,9 @@ export class UpdateOccupationComponent implements OnInit {
        let saveData = this.updateOccupationForm.value; 
        console.log("saveData"+JSON.stringify(saveData));
         //we will enable it after live api url created
-       /*this.birthService.saveOccupationDetails(saveData).pipe(first()).subscribe(updateoccupationresult => {
+       this.birthService.saveOccupationDetails(saveData).pipe(first()).subscribe(updateoccupationresult => {
                     
-                    if(updateoccupationresult.status.status_code == 200)
+                    if(updateoccupationresult["status"].status_code == 200)
                       {
                        console.log("ok"); 
                        this.snackbar.open('Saved successful!','OK',{
@@ -85,7 +92,7 @@ export class UpdateOccupationComponent implements OnInit {
                           horizontalPosition:'right'
                           
                         }).onAction()
-                          .subscribe(() => this.router.navigateByUrl('my-info'));                  
+                          .subscribe(() => this.router.navigateByUrl('personal-info'));                  
 
                       
                        
@@ -106,7 +113,7 @@ export class UpdateOccupationComponent implements OnInit {
                         });
                        
                     } 
-                 });*/
+                 });
        }
   }
 

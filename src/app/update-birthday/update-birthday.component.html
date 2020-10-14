@@ -15,8 +15,11 @@
 					<mat-datepicker #dob color="primary"></mat-datepicker>
 				</mat-form-field>
 				<p class="btn_row">
-					<button type="submit" class="save_btn" mat-raised-button [disabled]="!birth_date"> Save</button>
-					<a routerLink="/my-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
+					<!--<button type="submit" class="save_btn" mat-raised-button [disabled]="!birth_date"> Save</button>-->
+                    <button *ngIf="!birthVisible" type="submit" class="save_btn" mat-raised-button> Add</button>
+
+					<button *ngIf="birthVisible" type="submit" class="save_btn" mat-raised-button > Update</button>
+					<a routerLink="/personal-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
 				</p>
 			</div>
 		</form>

@@ -13,25 +13,30 @@
 	</div>
 	<form  [formGroup]="myForm" autocomplete="off">
 		<div class="dashboard_body">
-			<h2>How did you do your <span class="blue_txt">taxes last year?</span></h2>
+			
+
+			<h2>Let us know what is <span class="blue_txt">going on with you.</span></h2>
+			<p>Select the categories that best match your life changes.</p>
+
+			
 
 			<div class="dashboard_small_box" *ngFor="let category of categories" >
 				<label class="checkbox_container">
 
 					<input type="checkbox" value="{{category.id}}"id="" (change)="onChange(category.id, $event.target.checked)"  name="orders" [checked]="isExists(category.id)">
 					
-					<!--<input type="checkbox" value="{{category.id}}"id="" (change)="onChange(category.id, $event.target.checked)"  formArrayName="orders" [checked]="isExists(category.id)">-->
+					
 				
 					<span class="checkmark">
 						<div class="dashboard_small_box_inner center_text">
 							<div class="before_check">
 								<div class="blue_line"></div>
 								<img src="assets/images/tax_icon.png" alt="">
-								<p>{{category.title | titlecase}}</p>
+								<p>{{category.categoryLabel}}</p>
 							</div>
 							<div class="after_check">
 								<img src="assets/images/checkmark.png" alt="" width="80">
-								<p>{{category.title | titlecase}}</p>
+								<p>{{category.categoryLabel}}</p>
 							</div>
 						</div>
 					</span>
@@ -153,7 +158,7 @@
 			</div>-->
 
 			<div class="next_step">
-				<!--<a [routerLink]="['/survey-step-two']"><button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button></a>-->
+				
 			<button mat-raised-button class="blue_btn"  (click)="onNext($event)" #button>Continue <mat-icon>navigate_next</mat-icon></button>
 
 			</div>

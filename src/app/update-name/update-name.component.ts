@@ -34,12 +34,20 @@ export class UpdateNameComponent implements OnInit {
   last_name:any;
   updateNameForm: FormGroup;  
   isSubmitted:boolean=false;
+  fetchUserFirstName:any;
+  fetchUserLastName:any;
+  nameVisible:boolean=false;
+  fetchUserMiddleName:any;
+
+
   constructor(private fb: FormBuilder,public infoService: InfoService,private snackbar: MatSnackBar,private router: Router) {
 
        this.updateNameForm = this.fb.group({
                    
                    
-                   first_name: new FormControl('',[Validators.required]),                
+                   first_name: new FormControl('',[Validators.required]),
+
+                   middle_name: new FormControl('',[Validators.required]),                
                    
                    last_name: new FormControl('',[Validators.required])
                     });
@@ -56,10 +64,24 @@ export class UpdateNameComponent implements OnInit {
 
   getNameDetails(){
     //this will enable after live api url created
-    /* this.infoService.getBirthListDetails().subscribe(getnamedetails => {
-       console.log("ok");
+     this.infoService.getUserListDetails().subscribe(getnamedetails => {
+       this.fetchUserFirstName=getnamedetails["data"]["userDetails"]["userFirstName"];
 
-   });*/
+       this.fetchUserLastName=getnamedetails["data"]["userDetails"]["userLastName"];
+
+       this.fetchUserMiddleName=getnamedetails["data"]["userDetails"]["userMiddleInitial"];
+       
+       if(this.fetchUserFirstName || this.fetchUserLastName || this.fetchUserMiddleName){
+          this.nameVisible=true;
+
+          this.updateNameForm.controls['first_name'].setValue(this.fetchUserFirstName);
+
+          this.updateNameForm.controls['last_name'].setValue(this.fetchUserLastName);
+
+          this.updateNameForm.controls['middle_name'].setValue(this.fetchUserMiddleName);
+       }
+
+   });
   }
 
   /*
@@ -81,9 +103,9 @@ export class UpdateNameComponent implements OnInit {
        let saveData = this.updateNameForm.value; 
        console.log("saveData"+JSON.stringify(saveData));
           //this will enable after live api url created
-         /*this.infoService.saveUserDetails(saveData).pipe(first()).subscribe(updatenameresult => {
+         this.infoService.saveUserDetails(saveData).pipe(first()).subscribe(updatenameresult => {
                     
-                    if(updatenameresult.status.status_code == 200)
+                    if(updatenameresult[            "status"].status_code == 200)
                       {
                        console.log("ok"); 
                        this.snackbar.open('Saved successful!','OK',{
@@ -91,7 +113,7 @@ export class UpdateNameComponent implements OnInit {
                           horizontalPosition:'right'
                           
                         }).onAction()
-                          .subscribe(() => this.router.navigateByUrl('my-info'));                  
+                          .subscribe(() => this.router.navigateByUrl('personal-info'));                  
 
                       
                        
@@ -112,7 +134,7 @@ export class UpdateNameComponent implements OnInit {
                         });
                        
                     } 
-                 });*/
+                 });
                       
                     
        ;

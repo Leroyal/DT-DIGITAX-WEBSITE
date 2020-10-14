@@ -46,6 +46,7 @@ Hence for security we have used both local storage and session storage, If users
     * [For UserConsentDetails](#userconsentdetails)
     * [For Recaptcha](#userrecaptcha)
     * [For Changepassword](#changepassword)
+    * [For Changeemail](#changeemail)
     * [For Marketingpreferences](#marketingpreferences)
 
     
@@ -102,6 +103,11 @@ g stands for global installation. If you use -g later you can use the CLI in any
 
  1. Create update-password component .To do that ,we need to use the following command :ng g c update-password
  2. User change password is figure out by this tool.
+
+ ### For Changepassword
+
+ 1. Create update-email component .To do that ,we need to use the following command :ng g c update-email
+ 2. User change email is figure out by this tool.
 
 ### For Marketingpreferences
 

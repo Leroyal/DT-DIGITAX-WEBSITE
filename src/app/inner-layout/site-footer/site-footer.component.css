@@ -1,0 +1,183 @@
+.foot_offer{
+	color: #1f9ed7;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 50px 30px;
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+.footer_area{
+	float: left;
+	padding: 30px;
+	width: 100%;
+	box-sizing: border-box;
+	border-bottom: 2px solid #e0e5ed;
+    margin-bottom: 30px;
+}
+.foot_logo,
+.foot_info{
+	float: left;
+}
+.foot_logo{
+	width: 74px;
+}
+.foot_info{
+	margin-left:15px;
+}
+.foot_info p{
+	margin:0;
+}
+.foot_head{
+	color: #607d8b;
+	font-size: 20px;
+	font-weight: bolder;
+	margin-top: 0;
+}
+.foot_info span img{
+	margin-right: 10px;
+}
+.footer_menu{
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+}
+.footer_menu div{
+	float: left;
+	width: 25%;
+}
+.footer_menu div p{
+	font-size: 18px;
+	font-weight: bolder;
+}
+.footer_menu ul{
+	margin:0;
+	padding: 0;
+}
+.footer_menu ul li{
+	display: block;
+	list-style: none;
+	margin-bottom: 10px;
+}
+.footer_menu ul li a{
+	font-size: 14px;
+	color: #607d8b;
+	text-decoration: none;
+}
+.copyright_area{
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+	border-top: 2px solid #e0e5ed;
+	/*padding: 30px 0;*/
+	margin-top: 30px;
+	font-size: 16px;
+	color: #607d8b;
+}
+.copyright_area a{
+	color: #03a9f4;
+	text-decoration: none;
+}
+.copy_txt{
+	line-height: 92px;
+}
+.left-float,
+.left-side{
+	float: left;
+}
+.right-float,
+.right-side{
+	float: right;
+}
+.social td{
+	padding: 0 20px 0 0;
+}
+.social td a{
+	color:#c8d2df;
+	font-size: 20px;
+}
+.social td a:hover{
+	color:#e53935;
+}
+.support_table{
+	margin-top: 15px;
+}
+.support_table td img{
+	margin-bottom: -5px;
+	margin-right: 5px;
+	margin-left: -7px;
+}
+.support_table td{
+	padding-right:15px;
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px){
+	.footer_menu div{
+		width: 50%;
+	}
+	.copyright_area{
+		text-align: center;
+	}
+	.left-float,
+	.right-float{
+		float: none;
+	}
+}
+
+@media only screen and (max-width: 600px){
+	.footer_menu div{
+		width: 100%;
+	}
+	.copyright_area{
+		padding: 15px 0;
+		text-align: center;
+	}
+	.copy_txt{
+		line-height: 20px
+	}
+	.left-float,
+	.right-float{
+		float: none;
+	}
+	.foot_offer{
+		padding: 30px 0;
+		text-align: center;
+	}
+	.full-width{
+		padding: 0;
+	}
+	.foot_logo{
+		margin:0 auto;
+		text-align: center;
+		float: none;
+	}
+	.foot_info{
+		text-align: center;
+		width: 100%;
+	}
+	.footer_area{
+		padding: 30px 0;
+	}
+	.small_div{
+		width: 100%;
+	}
+	.support_table{
+		width: 100%;
+	}
+	.foot_social{
+		width:100%;
+		margin-top: 15px;
+	}
+	.foot_head{
+		text-align: center;
+	}
+	.foot_social table{
+		margin:0 auto;
+	}
+	.footer_menu{
+		padding: 0 30px;
+	}
+	.copyright_area{
+		padding: 15px;
+	}
+}

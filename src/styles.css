@@ -14,6 +14,10 @@ body { margin: 0;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 }
+:focus{
+	outline: none;
+	box-shadow: none;
+}
 .full-width{
 	display: block;
 	float: left;
@@ -131,11 +135,67 @@ mat-tab-body{
 	margin: 0;
 }
 
+.account_section .mat-tab-group {
+    flex-direction: row;
+}
+.account_section .mat-tab-labels {
+    flex-direction: column;
+}
+.account_section .mat-ink-bar {
+    height: 100%;
+    left: 98% !important;
+}
+.account_section .mat-tab-body-wrapper {
+    flex: 1 1 auto;
+}
+.account_section .mat-tab-header {
+  border-bottom: none;
+}
+.account_section .mat-tab-header-pagination {
+    display: none !important;
+}
+.account_section .mat-tab-label-active{
+	border-radius: 0;
+	border-right:2px solid #03a9f4;
+
+}
+.account_section mat-tab-body{
+	border-radius: 0;
+}
+
+.account_section mat-tab-group .mat-tab-list{
+	background: #dbe2e9;
+}
+
+.data_privacy .mat-step-header,
+.data_privacy .mat-stepper-horizontal-line{
+	display: none !important;
+}
+
+.data_privacy .mat-horizontal-content-container{
+	padding: 0;
+}
 
 @media only screen and (min-width: 769px) and (max-width: 1350px){
 	.signup_left .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
 		position: inherit !important;
 	}
+}
+
+@media only screen and (max-width: 480px){
+	.account_section .mat-tab-group {
+    flex-direction: column ;
+}
+.account_section .mat-tab-labels {
+    flex-direction: initial;
+}
+.account_section .mat-ink-bar {
+    height: 100%;
+    left: 98% !important;
+}
+.account_section .mat-tab-body-wrapper {
+    flex: 1 1 auto;
+}
 }
 
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
