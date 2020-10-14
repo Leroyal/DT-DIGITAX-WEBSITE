@@ -167,6 +167,14 @@ mat-tab-body{
 	background: #dbe2e9;
 }
 
+.mat-step-header,
+.mat-stepper-horizontal-line{
+	display: none !important;
+}
+.mat-horizontal-content-container{
+	padding: 0 !important;
+}
+
 .data_privacy .mat-step-header,
 .data_privacy .mat-stepper-horizontal-line{
 	display: none !important;
