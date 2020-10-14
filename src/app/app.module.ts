@@ -71,13 +71,35 @@ import { TermsUseComponent } from './terms-use/terms-use.component';
 import { PrivacyStatementComponent } from './privacy-statement/privacy-statement.component';
 
 import { NgxSpinnerModule,NgxSpinnerService } from "ngx-spinner";
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MyInfoComponent } from './my-info/my-info.component';
+import { UpdateNameComponent } from './update-name/update-name.component';
+import { UpdateAddressComponent } from './update-address/update-address.component';
+import { UpdateBirthdayComponent } from './update-birthday/update-birthday.component';
+import { UpdateOccupationComponent } from './update-occupation/update-occupation.component';
+import { UpdateEmailComponent } from './update-email/update-email.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
+
+import { MobileVerificationComponent } from './mobile-verification/mobile-verification.component';
+
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+
+import {MatRadioModule} from '@angular/material/radio';
+
+import { MarketingPreferencesComponent } from './marketing-preferences/marketing-preferences.component';
+import { SigninSecurityComponent } from './signin-security/signin-security.component';
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 @NgModule({
   exports: [   
     MatDialogModule   
     
   ],
- // declarations: [PrivacyStatementComponent],
+  
   
 })
 export class MaterialModule {}
@@ -111,7 +133,19 @@ export class MaterialModule {}
     PrivacyPolicyComponent,
     TermsServiceComponent,
     TermsUseComponent,
-    PrivacyStatementComponent
+    PrivacyStatementComponent,
+    ContactUsComponent,
+    MyInfoComponent,
+    UpdateNameComponent,
+    UpdateAddressComponent,
+    UpdateBirthdayComponent,
+    UpdateOccupationComponent,
+    UpdateEmailComponent,
+    UpdatePasswordComponent,
+    MobileVerificationComponent,
+    OtpVerificationComponent,
+    MarketingPreferencesComponent,
+    SigninSecurityComponent
 
   ],
   imports: [
@@ -142,7 +176,12 @@ export class MaterialModule {}
     RecaptchaV3Module,
     MatDividerModule,
     SlickCarouselModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatSlideToggleModule
+
+    
     
 
   ],

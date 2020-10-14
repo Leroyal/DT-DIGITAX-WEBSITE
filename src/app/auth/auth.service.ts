@@ -55,9 +55,14 @@ export class AuthService {
     
       .pipe(map(fetchresult => {
       console.log(" user",fetchresult)
+
+           if(fetchresult.status.status_code==200){
          
           if (fetchresult && fetchresult.data.session && remember) {
               console.log("with remember");
+
+              localStorage.setItem('user_email', fetchresult.data.user.email);
+
               localStorage.setItem('access_token', fetchresult.data.session.accessToken);
               localStorage.setItem('user_id', fetchresult.data.user.id);
               this.isLoggedIn = true;
@@ -65,13 +70,20 @@ export class AuthService {
           }
           else if(fetchresult && fetchresult.data.session && !remember){
               console.log("with no remember");
+              sessionStorage.setItem('user_email', fetchresult.data.user.email);
+              
               sessionStorage.setItem('access_token', fetchresult.data.session.accessToken);
               sessionStorage.setItem('user_id', fetchresult.data.user.id);
               this.isLoggedIn = true;
               return fetchresult;
           }
+          }
+          else{
+          
           this.isLoggedIn = true;
           return fetchresult;
+
+          }
      }));
   }
 

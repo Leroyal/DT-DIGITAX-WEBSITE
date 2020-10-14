@@ -1,8 +1,6 @@
 import { Component, NgModule, OnInit,ViewChild } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { Router }      from '@angular/router';
-
 import { Observable, of } from 'rxjs';
 import {first , tap, delay,map } from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
@@ -11,6 +9,8 @@ import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators}
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../environments/environment';
 import * as moment from 'moment';
+
+import { Routes, RouterModule,Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -24,10 +24,12 @@ export class SigninComponent implements OnInit {
     currentYear:number;
     flag:string;
     privacy_title:string;
+    sentotp:any;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
+               private router: Router
   	           ) 
                {
                 
@@ -57,6 +59,7 @@ export class SigninComponent implements OnInit {
 
   loginsubmit() {
      console.log("ok");
+     console.log("sessionstore|"+sessionStorage.getItem('user_id'));
      this.submitted = true;
       if (this.loginForm.valid) { 
       	console.log(this.loginForm.value);
@@ -69,12 +72,53 @@ export class SigninComponent implements OnInit {
           else if (this.f.email.value.match(/^[0-9()]+$/)) {
              console.log("phone number get");
              this.flag="phone";
+             ///call sms sending api
+             /*this.authService.sendOTP(this.f.email.value)
+            .pipe(first())
+            .subscribe(
+                otpResponse => {
+                console.log("###");
+                console.log(otpResponse);
+                if(otpResponse.status.status_code == 200)
+                    {
+                        this.sentotp = request["data"].otp;
+                        localStorage.setItem('sent_otp');
+                        this.snackbar.open(otpResponse.status.status_message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                      this.router.navigate(['/otp-verify']); 
+                    }
+                   else{
+                     this.snackbar.open(otpResponse.status.message,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                   }
+                },
+                error => {
+                    this.snackbar.open(error,'OK',{
+                        verticalPosition: 'top',
+                        horizontalPosition:'right',
+                        panelClass: ['red-snackbar'],
+                        duration:2000
+                      });
+                });*/
+
+             this.router.navigate(['/otp-verify']); 
+
           }
           else{
               console.log("username get");
               this.flag="username";
           }
         ///////////////////////
+
+        if(this.flag=="username" || this.flag=="email"){
         this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
             .pipe(first())
             .subscribe(
@@ -92,7 +136,7 @@ export class SigninComponent implements OnInit {
                       location.href = '/tax-prepare-profile';
                     }
                    else{
-                     this.snackbar.open(loginresponse.status.status_message,'OK',{
+                     this.snackbar.open(loginresponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
@@ -107,7 +151,10 @@ export class SigninComponent implements OnInit {
                         panelClass: ['red-snackbar'],
                         duration:2000
                       });
-                });      
+                });  
+
+
+                }    
    }
    else
    {

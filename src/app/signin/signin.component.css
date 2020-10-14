@@ -158,16 +158,21 @@ form p{
 	font-size: 14px;
 	color:#607d8b;
 }
-
-@media only screen and (min-width: 601px) and (max-width: 768px){
+@media only screen and (min-width: 921px) and (max-width: 1200px){
+	.signup_right,
+	.signup_left{
+		padding: 30px 90px;
+	}
+}
+@media only screen and (min-width: 601px) and (max-width: 920px){
 	.signup_left{
 		width: 100%;
-		height: 50vh;
+		height: auto;
 		padding: 43px 140px;
 	}
 	.signup_right{
 		width: 100%;
-		height: 60vh;
+		height: auto;
 		padding: 43px 140px;
 	}
 }

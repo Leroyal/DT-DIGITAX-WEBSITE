@@ -1,0 +1,22 @@
+<section class="full-width">
+	
+	<div class="infoBox">
+		<div class="myinfo_section">
+			<img src="assets/images/personal_info_01.png" alt="" width="80">
+			<h2 class="text-center">Update Occupation</h2>
+		</div>
+		<form [formGroup]="updateOccupationForm" (ngSubmit)="updateOccupationFormSubmit()">
+			<div class="form_area">
+				<p>Occupation</p>
+				<mat-form-field appearance="outline">
+					
+					<input  matInput placeholder="Enter Occupation" formControlName="occupation"  [(ngModel)]="occupation">
+				</mat-form-field>
+				<p class="btn_row">
+					<button type="submit" class="save_btn" mat-raised-button [disabled]="!occupation"> Save</button>
+					<a routerLink="/my-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
+				</p>
+			</div>
+		</form>
+	</div>
+</section>
