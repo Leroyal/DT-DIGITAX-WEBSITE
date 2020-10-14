@@ -5,7 +5,7 @@
 			<img src="assets/images/digitax_usa_icon.png" alt="" width="140">
 			<h2 class="text-center">Check your phone</h2>
 			<p>We sent a code to:</p>
-			<p>******8888</p>
+			<p>******{{phoneNumberStorage}}</p>
 		</div>
 		<form [formGroup]="otpVerificationForm" (ngSubmit)="otpVerifyFormSubmit()">
 			<div class="form_area">
@@ -14,15 +14,22 @@
 				</p>
 				<p>Enter the 6-digit code</p>
 				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
+					
 					<input #otp  matInput formControlName="verify_code" required maxlength="6" type="password">
-					<mat-error>Enter verification code</mat-error>
+					<mat-error>
+					The code you entered is invalid.</mat-error>
 				</mat-form-field>
-				<p class="btn_row">
-					<button type="submit" class="save_btn" mat-raised-button>Continue</button>
-					<a routerLink="/mobile-verify">Don't recive a code</a>
-				</p>
-			</div>
-		</form>
-	</div>
-</section>
+				<div>
+					<p class="btn_row">
+						<button type="submit" class="save_btn" mat-raised-button>Continue</button>
+
+
+						
+						<a [routerLink]="['/mobile-verify']" [state]="{ password:state}">
+							Don't recive a code</a>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>

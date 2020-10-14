@@ -38,6 +38,14 @@ export class UpdateAddressComponent implements OnInit {
   city:any;
   state:any;
   zip:any;
+  fetchAddress1:any;
+  fetchAddress2:any;
+  fetchCountry:any;
+  fetchState:any;
+  fetchCity:any;
+  fetchZip:any;
+  addressVisible:boolean=false;
+
   
   
   constructor(public birthService: BirthService,
@@ -46,7 +54,7 @@ export class UpdateAddressComponent implements OnInit {
   private router: Router) {
        this.updateAddressForm = this.fb.group({
                    address1: new FormControl('',[Validators.required]),
-                   address2: new FormControl('',[Validators.required]),
+                   address2: new FormControl(''),
                    country: new FormControl('',[Validators.required]),
                    state: new FormControl('',[Validators.required]),
                    city: new FormControl('',[Validators.required]),
@@ -62,10 +70,43 @@ export class UpdateAddressComponent implements OnInit {
 
    getAddressDetails(){
       //this will enable after live url created
-     /*this.birthService.getAddressListDetails().subscribe(addressdetails => {
+     this.birthService.getAddressListDetails().subscribe(addressdetails => {
        console.log("ok");
 
-   });*/
+       console.log("ok");
+
+       this.fetchAddress1=addressdetails["data"]["userAddress"]["addressLine1"];
+
+       this.fetchAddress2=addressdetails["data"]["userAddress"]["addressLine2"];
+
+       this.fetchCountry=addressdetails["data"]["userAddress"]["country"];
+
+       this.fetchState=addressdetails["data"]["userAddress"]["state"];
+
+       this.fetchCity=addressdetails["data"]["userAddress"]["city"];
+
+       this.fetchZip=addressdetails["data"]["userAddress"]["postalCode"];
+
+
+       if(this.fetchAddress1 || this.fetchAddress2
+       || this.fetchCountry || this.fetchState 
+       || this.fetchCity || this.fetchZip
+       ){
+           this.addressVisible=true;
+           this.updateAddressForm.controls['address1'].setValue(this.fetchAddress1);
+
+           this.updateAddressForm.controls['address2'].setValue(this.fetchAddress2);
+
+           this.updateAddressForm.controls['country'].setValue(this.fetchCountry);
+
+           this.updateAddressForm.controls['state'].setValue(this.fetchState);
+
+           this.updateAddressForm.controls['city'].setValue(this.fetchCity);
+
+           this.updateAddressForm.controls['zip'].setValue(this.fetchZip);
+       }
+
+   });
   }
 
   /*
@@ -91,9 +132,9 @@ export class UpdateAddressComponent implements OnInit {
        let saveData = this.updateAddressForm.value; 
        console.log("saveData"+JSON.stringify(saveData));
        //this will enable after live api url created
-       /*this.birthService.saveAddressDetails(saveData).pipe(first()).subscribe(updateaddressresult => {
+       this.birthService.saveAddressDetails(saveData).pipe(first()).subscribe(updateaddressresult => {
                     
-                    if(updateaddressresult.status.status_code == 200)
+                    if(updateaddressresult["status"].status_code == 200)
                       {
                        console.log("ok"); 
                        this.snackbar.open('Saved successful!','OK',{
@@ -101,7 +142,7 @@ export class UpdateAddressComponent implements OnInit {
                           horizontalPosition:'right'
                           
                         }).onAction()
-                          .subscribe(() => this.router.navigateByUrl('my-info'));                  
+                          .subscribe(() => this.router.navigateByUrl('personal-info'));                  
 
                       
                        
@@ -122,7 +163,7 @@ export class UpdateAddressComponent implements OnInit {
                         });
                        
                     } 
-                 });*/
+                 });
        }
   }
 

@@ -1,0 +1,35 @@
+<mat-toolbar class="header">
+	<div class="dashboard_head">
+		<div class="inner_logo">
+			<a [routerLink]="['/']"><img src="assets/images/digitax_usa_icon.png" alt="Digitax" width="100%"></a>
+		</div>
+		<div class="tax_box">
+			<button mat-icon-button [matMenuTriggerFor]="menu">
+				<mat-icon>settings</mat-icon>
+			</button>
+		</div>
+		<mat-menu #menu="matMenu">
+			<a routerLink="/personal-info">
+			  <button mat-menu-item>
+		  		<mat-icon>person</mat-icon>
+				<span>Profile</span>
+			  </button>
+			</a>
+		  	<mat-divider></mat-divider>
+		  	<a routerLink="/personal-info">
+			  <button mat-menu-item>
+		  		<mat-icon>privacy_tip</mat-icon>
+				<span>Account Management</span>
+			  </button>
+			</a>
+		  	<mat-divider></mat-divider>
+		  	<a routerLink="">
+				<button mat-menu-item>
+					<mat-icon>power_settings_new</mat-icon>
+					<span>Logout</span>
+				</button>
+		  	</a>
+			  
+		</mat-menu>
+	</div>
+</mat-toolbar>

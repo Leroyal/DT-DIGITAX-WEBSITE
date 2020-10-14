@@ -1,38 +1,39 @@
 <div class="contact_background">
-	<img src="assets/images/contact_us.png" alt="" width="100%">
+	<!---<img src="assets/images/contact_us.png" alt="" width="100%">-->
 	<div class="banner_inner">
 		<div class="ban_text">
-			<h2 class="ban_head">We need a way for<br>
-				our customers to<br>reach us.</h2>
+			<!--<h2 class="ban_head">Contact Us</h2>-->
+			<!---<h2 class="ban_head">We need a way for<br>
+				our customers to<br>reach us.</h2>-->
 		</div>
 	</div>
 </div>
 <section class="contact_sec">
-	<h2>This can be a simple form with the following fields:</h2>
+	<h2>Tell us what is on your mind</h2>
 	<form  [formGroup]="contactForm" (ngSubmit)="contactFormSubmit()" >
 		<div class="contact_area">
 			<p>First Name</p>
 			<mat-form-field appearance="outline">
-				<input matInput placeholder="First Name" required formControlName="first_name">
-				<mat-error>Enter valid first name</mat-error>
+				<input matInput placeholder="Sample Name" required formControlName="first_name">
+				<mat-error>Please enter your first name</mat-error>
 			</mat-form-field>
 
 			<p>Last Name</p>
 			<mat-form-field appearance="outline">
-				<input matInput formControlName="last_name" placeholder="Last Name" required>
+				<input matInput formControlName="last_name" placeholder="Sample Name" required>
 				<mat-error>Please enter your last name.</mat-error>
 			</mat-form-field>
 
 			<p>Email Address</p>
 			<mat-form-field appearance="outline">
-				<input formControlName="email" matInput required>
-				<mat-error>Enter valid Email address</mat-error>
+				<input formControlName="email" matInput required placeholder="sample@email.com">
+				<mat-error>Please enter your Email address</mat-error>
 			</mat-form-field>
 
 			<p>Confirm Email Address</p>
 			<mat-form-field appearance="outline">
-				<input formControlName="confirm_email" type="email" matInput required>
-				<mat-error>Confirm email is required</mat-error>
+				<input formControlName="confirm_email" type="email" matInput required placeholder="sample@email.com">
+				<mat-error>Please enter confirm email address</mat-error>
 			</mat-form-field>
 
 			<div *ngIf="f.confirm_email.errors">
@@ -42,27 +43,29 @@
 
 			<p>State</p>
 			<mat-form-field appearance="outline">
-				<mat-select formControlName="state" placeholder="Please Select">
+				<mat-select formControlName="state" placeholder="Please select state">
 					<mat-option *ngFor="let team of teams" [value]="team.name">
 				      {{team.name}}
 				    </mat-option>
 				</mat-select>
+				<mat-error>Please select state</mat-error>
 			</mat-form-field>
 
 			<p>Subject</p>
 			<mat-form-field appearance="outline">
-				<mat-select formControlName="subject" placeholder="Please Select">
+				<mat-select formControlName="subject" placeholder="Please select subject">
 					<mat-option *ngFor="let sub of subjects" [value]="sub.name">
 				      {{sub.name}}
 				    </mat-option>
 				</mat-select>
+				<mat-error>Please select subject</mat-error>
 			</mat-form-field>
 
 			<p>Provide detailed information regarding your concern:</p>
 			<mat-form-field appearance="outline">
 				
-				<textarea formControlName="message" matInput ></textarea>
-				<mat-error>Information is required</mat-error>
+				<textarea formControlName="message" matInput placeholder="Ex. I need help logging in to my account"></textarea>
+				<mat-error>Please enter information </mat-error>
 			</mat-form-field>
 			<p class="text-center">
 				<button type="submit" mat-raised-button class="save_btn">Submit</button>

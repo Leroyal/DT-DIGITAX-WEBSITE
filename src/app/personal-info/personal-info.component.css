@@ -1,0 +1,264 @@
+mat-tab-group{
+	background: #fff;
+	border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.22);
+}
+
+div{
+	box-sizing: border-box;
+}
+.account_section{
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	background:#e1e7ed;
+	float: left;
+	box-sizing: border-box;
+}
+
+.dashboard_body{
+	width: 100%;
+	float: left;
+	padding: 30px;
+	/*margin-top: 80px;*/
+}
+
+.full-width{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+	padding: 0 30px;
+	box-sizing: border-box;
+	width: 100%;
+}
+.text-center{
+	text-align: center;
+}
+.myinfo_section{
+	width: 100%;
+	float: left;
+	text-align: center;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+.myinfo_section h2{
+	font-size: 20px;
+	font-weight: 800;
+}
+.myinfo_section p{
+	font-size: 14px;
+}
+.infoBox{
+	width: 60%;
+	padding: 15px;
+	margin: 0 auto;
+	padding-top: 0;
+	float: left;
+	border-radius: 8px;
+}
+.infoBox table{
+	width: 100%;
+	/*border: 1px solid #dedede;
+	border-bottom: none;*/
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.22);
+}
+.infoBox table tr th{
+	font-weight: 500;
+	text-align: left;
+	padding: 15px;
+	border-bottom: 1px solid #dedede;
+	font-size: 14px;
+}
+.infoBox table tr td{
+	padding: 15px;
+	border-bottom: 1px solid #dedede;
+	font-size: 14px;
+}
+.infoBox table tr td a{
+	text-decoration: none;
+	color: #03a9f4;
+	font-size: 14px;
+
+}
+
+.dataBox{
+	width: 60%;
+	padding: 15px;
+	margin: 0 auto;
+	padding-top: 0;
+	float: left;
+	border-radius: 8px;
+}
+.dataBox table{
+	width: 100%;
+	border:1px solid #f3f3f3;
+	border-bottom:none;
+}
+.dataBox table tr th{
+	font-weight: 500;
+	text-align: left;
+	padding: 15px;
+	border-bottom: 1px solid #f3f3f3;
+	font-size: 14px;
+}
+.dataBox table tr td{
+	padding: 15px;
+	border-bottom: 1px solid #f3f3f3;
+	font-size: 14px;
+}
+.dataBox table tr td a{
+	text-decoration: none;
+	color: #03a9f4;
+	font-size: 14px;
+}
+.data_notify h3{
+	margin-bottom: 10px;
+}
+.data_notify p{
+	margin-bottom: 15px !important;
+}
+.data_notify ul{
+	font-size: 14px;
+	margin-bottom: 60px;
+}
+
+.data_notify ul li{
+	margin-bottom: 15px; 
+}
+.data_txt{
+	margin-top: 15px !important;
+}
+
+.btn_area{
+	margin-top:15px;
+	width: 100%;
+	float: left;
+}
+.download_btn{
+	background: #02aaf3;
+	color: #FFF;
+}
+.form_area{
+	width: 100%;
+	float: left;
+	/*border: 1px solid #dedede;
+	border-bottom: none;*/
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.22);
+	padding: 15px;
+	box-sizing: border-box;
+}
+.form_area p{
+	font-size: 14px;
+	margin: 0;
+}
+.form_area mat-form-field{
+	font-size: 14px;
+	width: 100%;
+}
+.save_btn{
+	background: #03a9f4;
+    color: #fff;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+    margin-right: 10px;
+}
+
+.cancel_btn{
+	background: #fff;
+    color: #000;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+}
+
+.btn_row{
+	text-align: right;
+}
+ a{
+	text-decoration: none !important;
+}
+.alert_msg{
+	width: 100%;
+	float: left;
+	padding: 15px;
+	background: #dbe2e9;
+	border-radius: 8px;
+}
+
+.marketing h2{
+	font-size: 32px;
+    font-weight: 500;
+    color: #212121;
+    margin-top: 0;
+}
+.marketing p{
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.marketing_inner{
+	background: #fff;
+	width: 100%;
+	float: left;
+	color: #607d8b;
+}
+.notice{
+	background: #e1e7ed;
+	padding: 20px;
+	text-align: center;
+	border-radius: 8px;
+}
+.marketing-option{
+	float: left;
+	width: 100%;
+	box-sizing: border-box;
+}
+.marketing-option table{
+	width: 100%;
+}
+.marketing-option table tr td{
+	padding: 15px 0;
+	width: 50%;
+}
+.mat-step-header{
+	display: none !important;
+}
+
+
+@media only screen and (max-width: 768px){
+	.infoBox{
+		width: 70%;
+	}
+	.dataBox{
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 600px){
+	.dashboard_body{
+		padding: 15px;
+	}
+	.infoBox{
+		width: 100%;
+		padding: 0;
+	}
+	.dataBox{
+		width: 100%;
+		padding: 0;
+	}
+	.full-width{
+		padding: 0;
+	}
+	.infoBox table tr td,
+	.infoBox table tr th{
+		padding: 10px 8px;
+	}
+}

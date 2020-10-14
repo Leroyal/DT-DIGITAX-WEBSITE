@@ -10,65 +10,150 @@ import { AuthService } from '../auth/auth.service';
 import {FormControl, FormGroup, FormsModule, FormBuilder, FormArray, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { environment } from '../../environments/environment';
+
 
 @Component({
-  selector: 'app-otp-verification',
-  templateUrl: './otp-verification.component.html',
-  styleUrls: ['./otp-verification.component.css']
+selector: 'app-otp-verification',
+templateUrl: './otp-verification.component.html',
+styleUrls: ['./otp-verification.component.css']
 })
 export class OtpVerificationComponent implements OnInit {
-  
-  otpVerificationForm: FormGroup;  
-  isSubmitted:boolean=false;
-  constructor(
-  public authService: AuthService,
-  private fb: FormBuilder,
-  private snackbar: MatSnackBar,
-  private router: Router) { 
-      this.otpVerificationForm = this.fb.group({
-                   verify_code: new FormControl('',[Validators.required])                   
-                  
-                    });
-  }
+state:any;
+localsendOtp:any;
+otpVerificationForm: FormGroup;  
+isSubmitted:boolean=false;
+phoneNumberStorage:any;
+constructor(
+public authService: AuthService,
+private fb: FormBuilder,
+private snackbar: MatSnackBar,
+private router: Router) { 
+this.otpVerificationForm = this.fb.group({
+verify_code: new FormControl('',[Validators.required])                   
 
-  ngOnInit() {
-  }
-  
-    /*
-      * This function is used for compare user otp verification code
- 
-    */
-    otpVerifyFormSubmit(){
-      this.isSubmitted = true;         
-      
-      
-      if(this.otpVerificationForm.valid)
-      {
+});
+}
 
-         let saveData = this.otpVerificationForm.value; 
-          console.log("saveData"+JSON.stringify(saveData));
+ngOnInit() {
+this.state = window.history.state.password; 
+console.log("this.hero"+this.state);
+this.localsendOtp=localStorage.getItem('sent_otp');
+this.phoneNumberStorage=
+localStorage.getItem('user_phone').substr(localStorage.getItem('user_phone').length - 4);
+}
 
-          this.snackbar.open('Invalid verification code','OK',{
-                          verticalPosition: 'top',
-                          horizontalPosition:'right'
-                        });
-           //this will enable after live api url created             
-          /*if(localStorage.getItem('sent_otp')==saveData.verify_code){
-             
-          }
-          else{
-              this.snackbar.open('Invalid verification code','OK',{
-                          verticalPosition: 'top',
-                          horizontalPosition:'right'
-                        });
-          }*/
+/*
+* This function is used for compare user otp verification code
+
+*/
+otpVerifyFormSubmit(){
+this.isSubmitted = true;         
+
+
+if(this.otpVerificationForm.valid)
+{
+
+let saveData = this.otpVerificationForm.value; 
+console.log("saveData"+JSON.stringify(saveData));
 
 
 
-      }
+//call verify otp api and match
+this.authService.verifyOtp(environment.phone_code+localStorage.getItem('user_phone'), saveData.verify_code)
+.pipe(first())
+.subscribe(
+verifyresponse => {
 
-      }
 
-   
+console.log("this.verifyresponse"+JSON.stringify(verifyresponse));
+
+if(verifyresponse.status.status_code == 200)
+{
+
+
+//call signin api
+
+this.authService.login(localStorage.getItem('user_phone'), this.state, true,'phone')
+.pipe(first())
+.subscribe(
+loginresponse => {
+console.log("###");
+console.log(loginresponse);
+if(loginresponse.status.status_code == 200)
+{
+this.snackbar.open(loginresponse.status.status_message,'OK',{
+verticalPosition: 'top',
+horizontalPosition:'right',
+panelClass: ['red-snackbar'],
+duration:2000
+});
+location.href = '/tax-prepare-profile';
+}
+else{
+this.snackbar.open(loginresponse.status.message,'OK',{
+verticalPosition: 'top',
+horizontalPosition:'right',
+panelClass: ['red-snackbar'],
+duration:2000
+});
+}
+},
+error => {
+this.snackbar.open(error,'OK',{
+verticalPosition: 'top',
+horizontalPosition:'right',
+panelClass: ['red-snackbar'],
+duration:2000
+});
+}); 
+
+}
+else{
+//verify code not match
+this.snackbar.open('Verification code does not match','OK',{
+verticalPosition: 'top',
+horizontalPosition:'right',
+panelClass: ['red-snackbar'],
+duration:2000
+});
+}
+
+
+
+
+
+////verify otp call
+
+},
+error => {
+this.snackbar.open(error,'OK',{
+verticalPosition: 'top',
+horizontalPosition:'right',
+panelClass: ['red-snackbar'],
+duration:2000
+});
+}); 
+
+
+}
+else
+{
+this.snackbar.open('Some fields are mandatory','OK',{
+verticalPosition: 'top',
+horizontalPosition:'right',
+panelClass: ['red-snackbar'],
+duration:2000
+});
+}
+
+
+
+
+}
+
+
+
+
 
 }

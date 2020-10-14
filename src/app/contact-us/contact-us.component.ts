@@ -34,7 +34,8 @@ declare var grecaptcha: any;
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit {
-
+hero:any;
+ public state = '';
 captcha?: string;
  errormsg: string;
  window: any;
@@ -106,6 +107,9 @@ subjects: any[] = [
                      
   	            }
   ngOnInit() {
+     this.hero = this.authService.hero;
+      this.state = window.history.state.password; 
+     console.log("this.hero"+this.state);
   }
 
   

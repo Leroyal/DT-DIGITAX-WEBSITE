@@ -1,0 +1,334 @@
+<section class="account_section">
+	<div class="dashboard_body">
+		<mat-tab-group>
+			<!-- MY INFO TAB -->
+			<mat-tab label="Personal Info">
+				<section class="full-width">
+					<div class="infoBox">
+						<div class="myinfo_section">
+							<img src="assets/images/personal_info_01.png" alt="" width="80">
+							<h2 class="text-center">Personal Info</h2>
+							<p class="text-center">Name, address, birthday, job and other details that make your account yours</p>
+						</div>
+						
+						<form action="">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<th>Name</th>
+
+									<td *ngIf="nameVisible">{{ fullName}}</td>
+
+									<td *ngIf="!nameVisible"><a routerLink="/update-name">Add your name.</a></td>
+									<td align="right">
+										<a routerLink="/update-name">
+											<button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>Date of Birth</th>
+
+									<td *ngIf="birthVisible">{{birthFormat}}</td>
+									<td *ngIf="!birthVisible"><a routerLink="/update-birthday">Add your date of birth.</a></td>
+									<td align="right">
+										<a routerLink="/update-birthday">
+											<button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>Occupation</th>
+									<td *ngIf="occupationVisible">{{fetchOccupation}}</td>
+									<td *ngIf="!occupationVisible"><a routerLink="/update-occupation">Add your occupation.</a></td>
+									<td align="right">
+										<a routerLink="/update-occupation"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></a>
+									</td>
+								</tr>
+								<tr>
+									<th>Address</th>
+									<td *ngIf="addressVisible">{{fetchAddress}}..</td>
+									<td *ngIf="!addressVisible"><a routerLink="/update-address">Add your address.</a></td>
+									<td align="right">
+										<a routerLink="/update-address"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></a>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</section>
+			</mat-tab>
+
+			<!-- EMAIL TAB -->
+			<mat-tab label="Change Email">
+				<div class="alert_msg" *ngIf="emailMessage" >
+					We received your request to change your personal information and have sent you an email to verify these updates. You must verify these changes within 24 hours for them to take place.
+				</div>
+				<section class="full-width">
+					<div class="infoBox">
+						<div class="myinfo_section">
+							<img src="assets/images/update_email.png" alt="" width="80">
+							<h2 class="text-center">Update your email</h2>
+						</div>
+						<form  [formGroup]="updateEmailForm" (ngSubmit)="updateEmailFormSubmit()">
+							<div class="form_area">
+								<p>Email address</p>
+								<mat-form-field appearance="outline">
+									
+									<input matInput formControlName="email"  [(ngModel)]="email" type="email" required>
+									<mat-error>Enter valid email</mat-error>
+								</mat-form-field>
+
+								<p>Confirm email address</p>
+								<mat-form-field appearance="outline">
+									
+									<input type="email" matInput formControlName="confirm_email"  [(ngModel)]="confirm_email" required>
+									
+								</mat-form-field>
+								<div *ngIf="f.confirm_email.errors">
+									<div *ngIf="f.confirm_email.errors.mustMatch"><mat-error>confirm email must match</mat-error></div>
+								</div>
+								<br>
+
+								<p>Password</p>
+								<mat-form-field appearance="outline">
+									
+									<input type="password" matInput formControlName="password"   [(ngModel)]="password" required>
+									<mat-error>Enter valid password</mat-error>
+								</mat-form-field>
+								<div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+									
+									<div *ngIf="f.password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
+									<div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
+									</div>
+								</div>
+
+								<p class="btn_row">
+									<button type="submit" class="save_btn" mat-raised-button [disabled]="!password || !confirm_email || !email">Update</button>
+								</p>
+							</div>
+						</form>
+					</div>
+				</section>
+			</mat-tab>
+
+			<!-- PASSWORD TAB -->
+			<mat-tab label="Change Password">
+				<section class="full-width">
+					<div class="infoBox">
+						<div class="myinfo_section">
+							<img src="assets/images/update_password.png" alt="" width="80">
+							<h2 class="text-center">Update your password</h2>
+						</div>
+						<form [formGroup]="updatePasswordForm" (ngSubmit)="updatePasswordFormSubmit()" >
+							<div class="form_area">
+								<p>New password</p>
+								<mat-form-field appearance="outline">
+									
+									<input matInput formControlName="new_password"  [(ngModel)]="new_password" type="password" required>
+									<mat-error>Enter valid password</mat-error>
+								</mat-form-field>
+
+								<div *ngIf="g.new_password.touched && g.new_password.invalid" class="alert alert-danger">
+									
+									<div *ngIf="g.new_password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
+									<div *ngIf="g.new_password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
+									</div>
+								</div>
+
+								<p>Confirm your new password</p>
+								<mat-form-field appearance="outline">
+									<input type="password" matInput formControlName="confirm_password"   [(ngModel)]="confirm_password" required>
+								</mat-form-field>
+
+								<div *ngIf="g.confirm_password.errors">
+									<div *ngIf="g.confirm_password.errors.mustMatch"><mat-error>confirm password must match</mat-error></div>
+								</div>
+								<br>
+
+								<p>Current Password</p>
+								<mat-form-field appearance="outline">
+									<input type="password" matInput formControlName="old_password"   [(ngModel)]="old_password" required>
+									<mat-error>Enter valid password</mat-error>
+								</mat-form-field>
+								
+								<p class="btn_row">
+									<button type="submit" class="save_btn" mat-raised-button  [disabled]="!old_password || !new_password || !confirm_password">Update</button>
+									
+								</p>
+							</div>
+						</form>
+					</div>
+				</section>
+			</mat-tab>
+			<!-- MARKETING PREFERENCES -->
+			<mat-tab label="Marketing Preferences">
+				<section class="full-width marketing">
+					<div class="marketing_inner">
+						<h2>Select Your Marketing Preferences</h2>
+						<p>By enabling any of the Communications, I agree to receive marketing and promotional content from Digital Tax USA, LLC. If you do not enable any of these communication mediums, you may still get important communications specific to your account, transactions or inquiries.</p>
+
+						<p class="notice">We do not share personal information with outside companies for their promotional use.</p>
+
+						<div class="marketing-option">
+							<form [formGroup]="marketingForm" (ngSubmit)="marketingFormSubmit()">
+								<table>
+									<tr>
+										<td>Contact me by mail :</td>
+										<td>
+											<mat-slide-toggle
+											[(ngModel)]="isContactViaMailDisabled"
+											class="example-margin"
+											[color]="color" formControlName="mail_option"
+											>
+											
+										</mat-slide-toggle>
+									</td>
+								</tr>
+								<tr>
+									<td>Contact me by phone :</td>
+									<td>
+										<mat-slide-toggle
+										[(ngModel)]="isContactViaPhoneDisabled"
+										class="example-margin"
+										[color]="color" formControlName="phone_option"
+										>
+										
+									</mat-slide-toggle>
+								</td>
+							</tr>
+							<tr>
+								<td>Contact me by email :</td>
+								<td>
+									<mat-slide-toggle
+									[(ngModel)]="isContactViaEmailDisabled"
+									class="example-margin"
+									[color]="color" formControlName="email_option"
+									>
+									
+								</mat-slide-toggle>
+							</td>
+						</tr>
+					</table>
+					<p>
+						<button type="submit" class="save_btn" mat-raised-button>Save</button>
+					</p>
+				</form>
+			</div>
+		</div>
+	</section>
+</mat-tab>
+
+<!-- DATA AND PRIVACY -->
+<mat-tab label="Data & Privacy">
+	<section class="full-width data_privacy">
+		<div class="dataBox">
+			<div class="myinfo_section">
+				<img src="assets/images/update_password.png" alt="" width="80">
+				<h2 class="text-center">Data & Privacy</h2>
+				<p class="text-center">Preferences on when we reach out to you, and your Digitax data privacy</p>
+			</div>
+			<div class="form_area">
+				<mat-horizontal-stepper #stepper>
+					<mat-step [stepControl]="firstFormGroup">
+						<form [formGroup]="firstFormGroup">
+							<div>
+								<table border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<th>Download</th>
+										<td>Download a copy of data.</td>
+										<td align="right"><button mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button></td>
+									</tr>
+									<tr>
+										<th>Delete</th>
+										<td>Permanently delete all or some of your data.</td>
+										<td align="right"><button mat-icon-button  (click)="onClickDelete()" ><mat-icon>keyboard_arrow_right</mat-icon></button></td>
+
+
+									</tr>
+									<tr [hidden]="delshow" #del>
+										<td >                    You can send us another request once we're done working on your current one. This can take up to 45 days from when you sent the request. .</td>
+									</tr>
+								</table>
+							</div>
+							<div class="data_notify">
+								<h3>Notification</h3>
+								<p>Set the rules of our engagement with you.</p>
+							</div>
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<th>Phone</th>
+									<td>(+1) {{loginPhone}}</td>
+								</tr>
+								<tr>
+									<th></th>
+									<td>Phone Communications <span style="float: right;"><mat-slide-toggle  (change)="onChange($event)"  [(ngModel)]="isChecked" formControlName="phone_communication" ></mat-slide-toggle></span></td>
+								</tr>
+							</table>
+							<p class="data_txt">
+								By enabling Phone Communications, I agree to receive promotional calls to this phone number from Digital Tax USA agents. If you do not turn this on, you may still get important communications specific to your account, transactions or inquiries.
+							</p>
+						</form>
+					</mat-step>
+					<mat-step [stepControl]="secondFormGroup">
+						<form [formGroup]="secondFormGroup">
+							<div class="data_notify">
+								<h4>You can download your data whenever you want</h4>
+								<p class="data_txt">To help give you transparency into the data we collect, you can download your Digitax data whenever you like.</p>
+							</div>
+							
+							<div>
+								<table border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td>I want to download last year’s tax return from Digital Tax USA.</td>
+										<td align="right">
+
+											<button mat-icon-button (click)="clickLastTaxDownload()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+											<!--<button mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button>-->
+										</td>
+									</tr>
+									<tr [hidden]="showLastTax">
+										<td>last</td>
+									</tr>
+									<tr>
+										<td>I want to download all my Digital Tax USA data</td>
+										<td align="right"><button mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button></td>
+									</tr>
+								</table>
+							</div>
+							<div class="btn_area">
+								<button mat-button matStepperPrevious>Cancel</button>
+								<!-- <button mat-button matStepperNext>Next</button> -->
+							</div>
+						</form>
+					</mat-step>
+					<mat-step>
+						<div class="data_notify">
+							<h4>Here's some important things to know</h4>
+							<p class="data_txt">This is what to expect when you request to download your data</p>
+							<ul>
+								<li>We'll Email you when the data you select is ready to download. This can take 45 or so depending on how much data you request.</li>
+								<li>We process one request at a time, so you won't be able to send another request to download or delete data untill your download request is complete. Again, this can take around 45 days.</li>
+								<li>
+									The data in the files we send you can't be re-upload to one of our products.
+								</li>
+							</ul>
+						</div>
+						<div class="btn_area">
+							<button mat-button (click)="stepper.reset()">Cancel</button>
+							
+							<button class="download_btn" mat-button style="float: right;">Download My Data</button>
+
+							<button mat-button matStepperPrevious style="float: right;">Back</button>
+						</div>
+					</mat-step>
+				</mat-horizontal-stepper>
+				
+			</div>
+			
+		</div>
+		
+	</section>
+</mat-tab>
+</mat-tab-group>
+</div>
+</section>

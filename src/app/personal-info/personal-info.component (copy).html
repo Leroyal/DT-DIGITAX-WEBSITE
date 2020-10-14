@@ -1,0 +1,159 @@
+<section class="account_section">
+	<div class="dashboard_body">
+		<mat-tab-group>
+<!-- MY INFO TAB -->
+			<mat-tab label="Personal Info">
+				<section class="full-width">
+					<div class="infoBox">
+						<div class="myinfo_section">
+							<img src="assets/images/personal_info_01.png" alt="" width="80">
+							<h2 class="text-center">Personal Info</h2>
+							<p class="text-center">Name, address, birthday, job and other details that make your account yours</p>
+						</div>
+						
+						<form action="">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<th>Name</th>
+									<td><a routerLink="/update-name">Add your name.</a></td>
+									<td align="right">
+										<a routerLink="/update-name">
+											<button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>Date of Birth</th>
+									<td><a routerLink="/update-birthday">Add your date of birth.</a></td>
+									<td align="right">
+										<a routerLink="/update-birthday">
+											<button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button>
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>Occupation</th>
+									<td><a routerLink="/update-occupation">Add your occupation.</a></td>
+									<td align="right">
+										<a routerLink="/update-occupation"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></a>
+									</td>
+								</tr>
+								<tr>
+									<th>Address</th>
+									<td *ngIf="addressVisible">{{address1}}</td>
+									<td *ngIf="!addressVisible"><a routerLink="/update-address">Add your address.</a></td>
+									<td align="right">
+										<a routerLink="/update-address"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></a>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</section>
+			</mat-tab>
+
+<!-- EMAIL TAB -->
+			<mat-tab label="Change Email">
+				<div class="alert_msg" *ngIf="emailMessage" >
+					We received your request to change your personal information and have sent you an email to verify these updates. You must verify these changes within 24 hours for them to take place.
+				</div>
+				<section class="full-width">
+					<div class="infoBox">
+						<div class="myinfo_section">
+							<img src="assets/images/update_email.png" alt="" width="80">
+							<h2 class="text-center">Update your email</h2>
+						</div>
+						<form  [formGroup]="updateEmailForm" (ngSubmit)="updateEmailFormSubmit()">
+							<div class="form_area">
+								<p>Email address</p>
+								<mat-form-field appearance="outline">
+									
+									<input matInput formControlName="email"  [(ngModel)]="email" type="email" required>
+					<mat-error>Enter valid email</mat-error>
+								</mat-form-field>
+
+								<p>Confirm email address</p>
+								<mat-form-field appearance="outline">
+									
+									<input type="email" matInput formControlName="confirm_email"  [(ngModel)]="confirm_email" required>
+									
+								</mat-form-field>
+								<div *ngIf="f.confirm_email.errors">
+                   <div *ngIf="f.confirm_email.errors.mustMatch"><mat-error>confirm email must match</mat-error></div>
+                        </div>
+								<br>
+
+								<p>Password</p>
+								<mat-form-field appearance="outline">
+									
+									<input type="password" matInput formControlName="password"   [(ngModel)]="password" required>
+					<mat-error>Enter valid password</mat-error>
+								</mat-form-field>
+								<div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+          
+            <div *ngIf="f.password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
+            <div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
+           </div>
+        </div>
+
+								<p class="btn_row">
+									<button type="submit" class="save_btn" mat-raised-button [disabled]="!password || !confirm_email || !email">Update</button>
+								</p>
+							</div>
+						</form>
+					</div>
+				</section>
+			</mat-tab>
+
+<!-- PASSWORD TAB -->
+			<mat-tab label="Change Password">
+				<section class="full-width">
+					<div class="infoBox">
+						<div class="myinfo_section">
+							<img src="assets/images/update_password.png" alt="" width="80">
+							<h2 class="text-center">Update your password</h2>
+						</div>
+						<form [formGroup]="updatePasswordForm" (ngSubmit)="updatePasswordFormSubmit()" >
+							<div class="form_area">
+								<p>New password</p>
+								<mat-form-field appearance="outline">
+									
+									<input matInput formControlName="new_password"  [(ngModel)]="new_password" type="password" required>
+					<mat-error>Enter valid password</mat-error>
+								</mat-form-field>
+
+								<div *ngIf="g.new_password.touched && g.new_password.invalid" class="alert alert-danger">
+          
+            <div *ngIf="g.new_password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
+            <div *ngIf="g.new_password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
+           </div>
+        </div>
+
+								<p>Confirm your new password</p>
+								<mat-form-field appearance="outline">
+									<input type="password" matInput formControlName="confirm_password"   [(ngModel)]="confirm_password" required>
+								</mat-form-field>
+
+								<div *ngIf="g.confirm_password.errors">
+                   <div *ngIf="g.confirm_password.errors.mustMatch"><mat-error>confirm password must match</mat-error></div>
+                        </div>
+                        <br>
+
+								<p>Current Password</p>
+								<mat-form-field appearance="outline">
+									<input type="password" matInput formControlName="old_password"   [(ngModel)]="old_password" required>
+					<mat-error>Enter valid password</mat-error>
+								</mat-form-field>
+								
+								<p class="btn_row">
+									<button type="submit" class="save_btn" mat-raised-button  [disabled]="!old_password || !new_password || !confirm_password">Update</button>
+									
+								</p>
+							</div>
+						</form>
+					</div>
+				</section>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
+</section>

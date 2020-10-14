@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -93,12 +93,32 @@ import { SigninSecurityComponent } from './signin-security/signin-security.compo
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+import {MatMenuModule} from '@angular/material/menu';
+
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
+
+
+/*import { WebLayoutComponent } from './web-layout/site-layout.component';*/
+
+import { SiteHeaderComponent } from './inner-layout/site-header/site-header.component';
+import { SiteFooterComponent } from './inner-layout/site-footer/site-footer.component';
+
+import { InnerLayoutComponent } from './inner-layout/site-layout.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { VerifyPasswordComponent } from './verify-password/verify-password.component';
+import { SignupConfirmationComponent } from './signup-confirmation/signup-confirmation.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 @NgModule({
   exports: [   
     MatDialogModule   
     
-  ],
+  ]
+  
+  
   
   
 })
@@ -145,7 +165,16 @@ export class MaterialModule {}
     MobileVerificationComponent,
     OtpVerificationComponent,
     MarketingPreferencesComponent,
-    SigninSecurityComponent
+    SigninSecurityComponent,
+    PersonalInfoComponent,
+    //WebLayoutComponent,
+    SiteHeaderComponent,
+    SiteFooterComponent,
+    InnerLayoutComponent,
+    VerifyEmailComponent,
+    VerifyPasswordComponent,
+    SignupConfirmationComponent,
+    NotfoundComponent
 
   ],
   imports: [
@@ -179,12 +208,16 @@ export class MaterialModule {}
     NgxSpinnerModule,
     MatSelectModule,
     MatRadioModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatStepperModule
+    
 
     
     
 
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   //providers: [BnNgIdleService],
   providers: [{
     provide: RECAPTCHA_V3_SITE_KEY,

@@ -18,36 +18,40 @@
 				<p>Street Address</p>
 				<mat-form-field appearance="outline">
 					<input matInput placeholder="Enter Street Address" [(ngModel)]="address1" formControlName="address1" >
-					<mat-error>Error</mat-error>
+					<mat-error>Please enter your address.</mat-error>
 				</mat-form-field>
 
 				<p>Street Address (Optional)</p>
 				<mat-form-field appearance="outline">
 					<input matInput placeholder="Enter Street Address" formControlName="address2" [(ngModel)]="address2">
-					<mat-error>Error</mat-error>
+					
 				</mat-form-field>
 
 				<p>City</p>
 				<mat-form-field appearance="outline">
 					<input matInput placeholder="Enter City" formControlName="city" [(ngModel)]="city">
-					<mat-error>Error</mat-error>
+					<mat-error>Please enter your city.</mat-error>
 				</mat-form-field>
 
 				<p>State</p>
 				<mat-form-field appearance="outline">
 					<input matInput placeholder="Enter State" formControlName="state" [(ngModel)]="state">
-					<mat-error>Error</mat-error>
+					<mat-error>Please enter your state.</mat-error>
 				</mat-form-field>
 
 				<p>ZIP Code</p>
 				<mat-form-field appearance="outline">
 					<input matInput placeholder="Enter ZIP Code" formControlName="zip" [(ngModel)]="zip" >
-					<mat-error>Error</mat-error>
+					<mat-error>Please enter your ZIP code.</mat-error>
 				</mat-form-field>
 
 				<p class="btn_row">
-					<button type="submit" class="save_btn" mat-raised-button [disabled]="!zip || !state || !city || !address2 || !address1 || !country"> Save</button>
-					<a routerLink="/my-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
+					
+					<button *ngIf="!addressVisible" type="submit" class="save_btn" mat-raised-button> Add</button>
+
+					<button *ngIf="addressVisible" type="submit" class="save_btn" mat-raised-button> Update</button>
+					
+					<a routerLink="/personal-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
 				</p>
 			</div>
 		</form>
