@@ -307,4 +307,8 @@ let data={
         console.log(errorMessage);
         return throwError(errorMessage);
     }
+
+    getDeviceDetails(){
+         return this.http.get(`${environment.BASE_URL}/api/auth/user-account-activity-by-device`,{headers: this.headers});  
+      }
 }

@@ -24,7 +24,7 @@ export class InfoService {
      saveUserDetails(savedata) {
       let payloadObj={
          firstName:savedata.first_name,
-         middleName:savedata.middle_name,
+         middleInitial:savedata.middle_name,
          lastName:savedata.last_name
       }
       console.log('save userdetails api');
