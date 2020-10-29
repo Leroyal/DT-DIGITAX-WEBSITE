@@ -75,11 +75,11 @@ console.log("this.verifyresponse"+JSON.stringify(verifyresponse));
 
 if(verifyresponse.status.status_code == 200)
 {
-
+location.href = '/tax-prepare-profile';
 
 //call signin api
 
-this.authService.login(localStorage.getItem('user_phone'), this.state, true,'phone')
+/*this.authService.login(localStorage.getItem('user_phone'), this.state, true,'phone')
 .pipe(first())
 .subscribe(
 loginresponse => {
@@ -111,7 +111,7 @@ horizontalPosition:'right',
 panelClass: ['red-snackbar'],
 duration:2000
 });
-}); 
+});*/ 
 
 }
 else{

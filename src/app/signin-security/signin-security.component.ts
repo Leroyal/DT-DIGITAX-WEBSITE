@@ -16,12 +16,20 @@ export class SigninSecurityComponent implements OnInit {
   constructor(private http: HttpClient,public infoService: InfoService) { }
 
   ngOnInit() {
+    console.log(
+    "sh"+encodeURIComponent('?x=test'));
+    //base64 encode
+    console.log("btoa"+btoa("test"));
+    //base64 decode
+    console.log("atob"+atob("dGVzdA=="))
     this.emailStorage=(!localStorage.getItem('user_email')) ? sessionStorage.getItem('user_email') : localStorage.getItem('user_email');
     console.log("this.emailStorage"+this.emailStorage)
   }
 
+   
+
   public zipAndDownload(): Observable<any> {
-      let url="/home/redapple069/Downloads/all_data.zip";
+      let url="https://s3.amazonaws.com/digitaxbucket/1603178195073-all_data.zip";
       console.log("zip")
 
        const options:any = {
@@ -38,16 +46,13 @@ export class SigninSecurityComponent implements OnInit {
   }
 
   download(): void {
-    this.infoService.download('/home/redapple069/Downloads/all_data.zip')
-      .subscribe(blob => {
-        console.log("pl");
-        const a = document.createElement('a')
-        const objectUrl = URL.createObjectURL(blob)
-        a.href = objectUrl
-        a.download = 'archive.zip';
-        a.click();
-        URL.revokeObjectURL(objectUrl);
-      })
+    const link = document.createElement('a');
+    //link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'https://s3.amazonaws.com/digitaxbucket/1603178195073-all_data.zip');
+    link.setAttribute('download', `a.zip`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   }
 
 }

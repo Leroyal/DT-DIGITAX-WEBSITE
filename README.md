@@ -48,6 +48,9 @@ Hence for security we have used both local storage and session storage, If users
     * [For Change Password](#change-password)
     * [For Change Email](#change-email)
     * [For Marketing Preferences](#marketing-preferences)
+    * [For Account Activity](#account-activity)
+    * [For Tax Tips](#tax-tips)
+    * [For Service](#service)
 
     
 * [Error Handling](#error-handling)
@@ -120,6 +123,25 @@ g stands for global installation. If you use -g later you can use the CLI in any
 
  1. Create marketing-preferences component .To do that ,we need to use the following command :ng g c marketing-preferences
  2. User marketing preferences is figure out by this tool.
+
+ <a name="account-activity"></a>
+### For Account Activity
+
+ 1. UPdate personal-info component .To do that ,we need to use the following command :ng g c personal-info
+ 2. User account activity is figure out by this tool.
+
+<a name="tax-tips"></a>
+### For Tax Tips
+
+ 1. UPdate tax-prepare-profile component .To do that ,we need to use the following command :ng g c tax-prepare-profile
+ 2. User tax tips is figure out by this tool.
+
+ 
+ <a name="service"></a>
+### For Service
+
+ 1. Create terms-service component .To do that ,we need to use the following command :ng g c terms-service
+ 2. User terms service is figure out by this tool.
 
 
 <a name="error-handling"></a>

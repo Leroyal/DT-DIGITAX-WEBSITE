@@ -15,8 +15,8 @@
 			<p>Welcome back!</p>
 
 			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
-				<!--<div *ngIf="!cacheVisible">-->
-				<div style="display: block;">
+				<div *ngIf="!cacheVisible">
+				<!--<div style="display: block;">-->
 					<p>Phone number, email or username</p>
 					<mat-form-field appearance="outline">
 
@@ -37,8 +37,8 @@
 				</div>
 
 				<!-- SIGNIN CACHE -->
-				<!--<div  *ngIf="cacheVisible">-->
-				<div  style="display: none;">
+				<div  *ngIf="cacheVisible">
+				<!--<div  style="display: none;">-->
 					<mat-horizontal-stepper #stepper>
 						<mat-step [stepControl]="firstFormGroup">
 							<table class="cache_login" width="100%" cellpadding="0" cellspacing="0">

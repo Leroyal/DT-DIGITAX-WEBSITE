@@ -32,6 +32,7 @@ export class SigninComponent implements OnInit {
     cache_phone:any;
     cache_phone_code:any;
     cache_phone_show:boolean=false;
+    firstFormGroup:any;
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 

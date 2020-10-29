@@ -246,7 +246,16 @@ div{
 .notice_table td{
 	border:none !important;
 }
-
+.activity_info{
+	text-align: center;
+	width: 100%;
+	margin: 15px 0;
+	font-size: 14px;
+}
+.activity_info a{
+	color: #03aaf3;
+	text-decoration: none;
+}
 @media only screen and (max-width: 768px){
 	.infoBox{
 		width: 70%;

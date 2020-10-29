@@ -1,16 +1,24 @@
+
 <section class="tax_prepare_section">
-	<div class="tax_prepare_head">
-		<div class="search_box">
-			<mat-form-field appearance="fill">
-				<span matPrefix><img src="assets/images/search_icon.png" alt=""></span>
-				<input type="search" matInput placeholder="Search Here">
-			</mat-form-field>
-		</div>
-		<div class="tax_box">
-			<img src="assets/images/tax_documents.png" alt="">
-			your tax returns and documents
+
+	<div class="tax_tip">
+		<div class="tax_tip_inner">
+			<h3 class="tips_small_head"><span class="black_txt">Tax</span> <span class="blue_txt"> Tips</span></h3>
+			<div class="tips_box">
+				<div class="tips_img">
+					<img [src]="activeImage" alt="" width="100%">
+				</div>
+				<div>
+					<h2 class="tips_main_head blue_txt">{{tipTitle}}</h2>
+					<p>{{tipLabel}}</p>
+					<a class="read_more">Read More</a>
+				</div>
+				
+			</div>
+			
 		</div>
 	</div>
+	
 
 	<div class="tax_prepare_body">
 		<p class="first_p"><span class="black_txt"><strong>{{username}}</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
@@ -34,8 +42,8 @@
 					<p *ngIf="incomeDetails;else noIncomeHistory">Forms : {{incomeDetails.form_name}}</p>
 
 					<p > <ng-template #noIncomeHistory>
-                      No history
-                    </ng-template></p>					
+						No history
+					</ng-template></p>					
 					<p *ngIf="incomeDetails">{{incomeDetails.form_desc}}</p>
 				</div>
 			</div>
@@ -64,8 +72,9 @@
 			<h2>All set! Next, lets choose the right product for you</h2>
 			<p>We’ll help you update any change since last your as we go.</p>
 
-			
-			<button mat-raised-button class="blue_btn"   (click)="onNext($event)" #button>Continue<mat-icon>navigate_next</mat-icon> </button>
+			<div *ngIf="!taxSeasonRestrict">
+				<button mat-raised-button class="blue_btn"   (click)="onNext($event)" #button>Continue<mat-icon>navigate_next</mat-icon> </button>
+			</div>
 		</div>
 
 		

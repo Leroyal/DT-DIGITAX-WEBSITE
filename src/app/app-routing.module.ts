@@ -65,267 +65,275 @@ import { SignupConfirmationComponent } from './signup-confirmation/signup-confir
 
 import { NotfoundComponent } from './notfound/notfound.component';
 
+import { AccountActivityComponent } from './account-activity/account-activity.component';
+
 const routes: Routes = [
-	{ path  : "", 
-      component  : LayoutComponent ,
-      //canActivate: [AuthGuard],
-      
-      	children: [
-			{ 
-				path: '',
-				pathMatch: 'full',
-				component  : HomeComponent  
-		    },
-		    { 
-				path: 'faq',
-				pathMatch: 'full',
-				component  : FaqComponent  
-		    },
-		    /*{ 
-				path: '**',
-				pathMatch: 'full',
-				component  : PageNotFoundComponent  
-		    },*/
-		    { 
-				path: 'dashboard',
-				pathMatch: 'full',
-				component  : DashboardComponent  
-		    },	    
+{ path  : "", 
+component  : LayoutComponent ,
+//canActivate: [AuthGuard],
 
-		    
+children: [
+{ 
+path: '',
+pathMatch: 'full',
+component  : HomeComponent  
+},
+{ 
+path: 'faq',
+pathMatch: 'full',
+component  : FaqComponent  
+},
+/*{ 
+path: '**',
+pathMatch: 'full',
+component  : PageNotFoundComponent  
+},*/
+{ 
+path: 'dashboard',
+pathMatch: 'full',
+component  : DashboardComponent  
+},	    
 
-		    { 
-		path: 'privacy-policy',
-		pathMatch: 'full',
-		component  : PrivacyPolicyComponent  
-    },
-    { 
-		path: 'terms-service',
-		pathMatch: 'full',
-		component  : TermsServiceComponent  
-    },
-    { 
-		path: 'terms-use',
-		pathMatch: 'full',
-		component  : TermsUseComponent  
-    },
-    
-     { 
-		path: 'privacy-statement',
-		pathMatch: 'full',
-		component  : PrivacyStatementComponent  
-    },
-    
-     { 
-		path: 'contact-us',
-		pathMatch: 'full',
-		component  : ContactUsComponent  
-    },
-    { 
-		path: 'verify-email',
-		pathMatch: 'full',
-		component  : VerifyEmailComponent
-		   
-    },
-    { 
-		path: 'verify-password',
-		pathMatch: 'full',
-		component  : VerifyPasswordComponent
-		   
-    },
-    { 
-		path: 'signup-mail',
-		pathMatch: 'full',
-		component  : SignupConfirmationComponent
-		   
-    }
-       
-    
 
-	    ]
-    },
 
-    { 
-		path: 'signin',
-		pathMatch: 'full',
-		component  : SigninComponent  
-    },
-    { 
-		path: 'signup',
-		pathMatch: 'full',
-		component  : SignupComponent  
-    },
+{ 
+path: 'privacy-policy',
+pathMatch: 'full',
+component  : PrivacyPolicyComponent  
+},
+{ 
+path: 'terms-service',
+pathMatch: 'full',
+component  : TermsServiceComponent  
+},
+{ 
+path: 'terms-use',
+pathMatch: 'full',
+component  : TermsUseComponent  
+},
 
-    { 
-		path: 'reset-password',
-		pathMatch: 'full',
-		component  : ResetPasswordComponent  
-    },
-     { 
-		path: 'update-email',
-		pathMatch: 'full',
-		component  : UpdateEmailComponent
-		//canActivate: [AuthGuard]   
-    },
-    { 
-		path: 'mobile-verify',
-		pathMatch: 'full',
-		component  : MobileVerificationComponent  
-    },
-    { 
-		path: 'otp-verify',
-		pathMatch: 'full',
-		component  : OtpVerificationComponent  
-    },
+{ 
+path: 'privacy-statement',
+pathMatch: 'full',
+component  : PrivacyStatementComponent  
+},
 
-    {
-         path: '404',
-         component: NotfoundComponent
-    },
-    /*{
-    path: '**',
-    redirectTo: '/404'
-    },*/
-    
-    
+{ 
+path: 'contact-us',
+pathMatch: 'full',
+component  : ContactUsComponent  
+},
+{ 
+path: 'verify-email',
+pathMatch: 'full',
+component  : VerifyEmailComponent
 
-    { 
-        path: '',
-        component: InnerLayoutComponent, 
-        //canActivate: [AuthGuard],
-        children: [
-          { 
-	          path: 'personal-info', 
-	          component: PersonalInfoComponent
-	           
-          },
-          { 
-				path: 'tax-prepare-profile',
-				pathMatch: 'full',
-				component  : TaxPrepareProfileComponent  
-		    },
+},
+{ 
+path: 'verify-password',
+pathMatch: 'full',
+component  : VerifyPasswordComponent
 
-		    { 
-				path: 'tax-prepare-package',
-				pathMatch: 'full',
-				component  : TaxPreparePackageComponent  
-		    },
+},
+{ 
+path: 'signup-mail',
+pathMatch: 'full',
+component  : SignupConfirmationComponent
 
-		    { 
-				path: 'tax-prepare-document',
-				pathMatch: 'full',
-				component  : TaxPrepareDocumentComponent  
-		    },
-		    { 
-				path: 'tax-prepare-register',
-				pathMatch: 'full',
-				component  : TaxPrepareRegisterComponent  
-		    },
+}
 
-		    { 
-				path: 'result',
-				pathMatch: 'full',
-				component  : ResultComponent  
-		    },
 
-		    { 
-				path: 'submission',
-				pathMatch: 'full',
-				component  : SubmissionComponent  
-		    },
 
-		    { 
-				path: 'survey',
-				pathMatch: 'full',
-				component  : SurveyComponent,
-				canActivate: [AuthGuard]  
-		    },
-		    { 
-				path: 'survey-step-two',
-				pathMatch: 'full',
-				component  : SurveyStepTwoComponent  
-		    },
-		    { 
-				path: 'survey-step-three',
-				pathMatch: 'full',
-				component  : SurveyStepThreeComponent  
-		    },
-		    { 
-				path: 'survey-feedback',
-				pathMatch: 'full',
-				component  : SurveyFeedbackComponent  
-		    },
+]
+},
 
-		    { 
-		path: 'update-name',
-		pathMatch: 'full',
-		component  : UpdateNameComponent
-		
-    },
-    { 
-		path: 'update-address',
-		pathMatch: 'full',
-		component  : UpdateAddressComponent
-		   
-    },
-    { 
-		path: 'update-birthday',
-		pathMatch: 'full',
-		component  : UpdateBirthdayComponent
-		 
-    },
-    { 
-		path: 'update-occupation',
-		pathMatch: 'full',
-		component  : UpdateOccupationComponent
-		 
-    },
+{ 
+path: 'signin',
+pathMatch: 'full',
+component  : SigninComponent  
+},
+{ 
+path: 'signup',
+pathMatch: 'full',
+component  : SignupComponent  
+},
 
-    { 
-		path: 'my-info',
-		pathMatch: 'full',
-		component  : MyInfoComponent
-		
-    },  
-     
-    
-   
+{ 
+path: 'reset-password',
+pathMatch: 'full',
+component  : ResetPasswordComponent  
+},
+{ 
+path: 'update-email',
+pathMatch: 'full',
+component  : UpdateEmailComponent
+//canActivate: [AuthGuard]   
+},
+{ 
+path: 'mobile-verify',
+pathMatch: 'full',
+component  : MobileVerificationComponent  
+},
+{ 
+path: 'otp-verify',
+pathMatch: 'full',
+component  : OtpVerificationComponent  
+},
 
-     { 
-		path: 'update-password',
-		pathMatch: 'full',
-		component  : UpdatePasswordComponent
-		
-    },
-     
+{
+path: '404',
+component: NotfoundComponent
+},
+/*{
+path: '**',
+redirectTo: '/404'
+},*/
 
-     { 
-		path: 'marketing-preferences',
-		pathMatch: 'full',
-		component  : MarketingPreferencesComponent
-		
-    },
-    
-    { 
-		path: 'signin-security',
-		pathMatch: 'full',
-		component  : SigninSecurityComponent
-		   
-    } 
 
-    
-    
-    
 
-        ]
-    }
+{ 
+path: '',
+component: InnerLayoutComponent, 
+//canActivate: [AuthGuard],
+children: [
+{ 
+path: 'personal-info', 
+component: PersonalInfoComponent
 
-    
+},
+{ 
+path: 'tax-prepare-profile',
+pathMatch: 'full',
+component  : TaxPrepareProfileComponent  
+},
+
+{ 
+path: 'tax-prepare-package',
+pathMatch: 'full',
+component  : TaxPreparePackageComponent  
+},
+
+{ 
+path: 'tax-prepare-document',
+pathMatch: 'full',
+component  : TaxPrepareDocumentComponent  
+},
+{ 
+path: 'tax-prepare-register',
+pathMatch: 'full',
+component  : TaxPrepareRegisterComponent  
+},
+
+{ 
+path: 'result',
+pathMatch: 'full',
+component  : ResultComponent  
+},
+
+{ 
+path: 'submission',
+pathMatch: 'full',
+component  : SubmissionComponent  
+},
+
+{ 
+path: 'survey',
+pathMatch: 'full',
+component  : SurveyComponent,
+canActivate: [AuthGuard]  
+},
+{ 
+path: 'survey-step-two',
+pathMatch: 'full',
+component  : SurveyStepTwoComponent  
+},
+{ 
+path: 'survey-step-three',
+pathMatch: 'full',
+component  : SurveyStepThreeComponent  
+},
+{ 
+path: 'survey-feedback',
+pathMatch: 'full',
+component  : SurveyFeedbackComponent  
+},
+
+{ 
+path: 'update-name',
+pathMatch: 'full',
+component  : UpdateNameComponent
+
+},
+{ 
+path: 'update-address',
+pathMatch: 'full',
+component  : UpdateAddressComponent
+
+},
+{ 
+path: 'update-birthday',
+pathMatch: 'full',
+component  : UpdateBirthdayComponent
+
+},
+{ 
+path: 'update-occupation',
+pathMatch: 'full',
+component  : UpdateOccupationComponent
+
+},
+
+{ 
+path: 'my-info',
+pathMatch: 'full',
+component  : MyInfoComponent
+
+},  
+
+
+
+
+{ 
+path: 'update-password',
+pathMatch: 'full',
+component  : UpdatePasswordComponent
+
+},
+
+
+{ 
+path: 'marketing-preferences',
+pathMatch: 'full',
+component  : MarketingPreferencesComponent
+
+},
+
+{ 
+path: 'signin-security',
+pathMatch: 'full',
+component  : SigninSecurityComponent
+
+},
+{ 
+path: 'account-activity',
+pathMatch: 'full',
+component  : AccountActivityComponent
+
+}  
+
+
+
+
+
+]
+}
+
+
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+imports: [RouterModule.forRoot(routes)],
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

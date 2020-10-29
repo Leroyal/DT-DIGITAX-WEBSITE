@@ -86,6 +86,9 @@ delshow = true;
 showLastTax = true;
 loginPhone: any;
 
+//account activity
+userArr:any;
+
 constructor(private fb: FormBuilder, public infoService: InfoService, private snackbar: MatSnackBar, private router: Router,
 public marketingService: MarketingService
 ) {
@@ -148,7 +151,30 @@ secondCtrl: ['', Validators.required]
 this.getMarketingDetails();
 
 this.getNameDetails();
+this.fetchAccountActivity();
 }
+
+/*This function is used for user account activity
+*/
+
+fetchAccountActivity(){
+    this.infoService.getUserAccountActivity().subscribe(getAccountDetails => {
+
+      this.userArr=getAccountDetails["data"];
+
+       console.log("account activity"+JSON.stringify(getAccountDetails));
+
+       console.log("clientos"+getAccountDetails["data"][0].clientOS);
+
+       let firstPart = getAccountDetails["data"][0].clientBrowser.split('-')[0];
+
+       console.log("firstPart"+firstPart);
+
+       let isLoggedIn=getAccountDetails["data"][0].isLoggedIn;
+
+       console.log(isLoggedIn)
+    });
+  }
 
 
 /*
@@ -456,5 +482,19 @@ this.showLastTax = true;
 }
 
 }
+
+//https://s3.amazonaws.com/digitaxbucket/1603178195073-all_data.zip
+
+
+ downloadDataAll() {
+    console.log("ok")
+    const link = document.createElement('a');
+    //link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'https://s3.amazonaws.com/digitaxbucket/1603178195073-all_data.zip');
+    link.setAttribute('download', `a.zip`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
 
 }

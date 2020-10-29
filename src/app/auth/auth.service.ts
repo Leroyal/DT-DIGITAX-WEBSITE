@@ -52,7 +52,8 @@ export class AuthService {
          
          username:email,
          password:password,
-         deviceType:"web"
+         deviceType:"Web"
+         //deviceType:"web"
 
      }
     
@@ -105,7 +106,8 @@ export class AuthService {
       let payloadObj;
      if(data.phone){
           payloadObj={
-          deviceType:"web",
+          deviceType:"Web",
+          //deviceType:"web",
           email:data.email,
           password:data.password,
           phone:data.phone,
@@ -225,10 +227,22 @@ var ProductName = sessionStorage.getItem('ProductName');
     return this.http.post(`${environment.BASE_URL}authenticate`,'',{headers: this.headers});
     }
 
-
+  verifyOtp(phone_no: string, otp:string){
+      let body = {
+          phone: phone_no,
+          otp: otp,
+          deviceType:"web",
+          countryCode:"IN"
+          
+      }
+      return this.http.post<any>(`${environment.BASE_URL}/api/auth/mobile-number-signin`, body)
+        .pipe(map(fetchresult => {
+          return fetchresult;
+      }));
+    }
     
 
-    verifyOtp(phone_no: string, otp:string){
+    verifyOtpOld(phone_no: string, otp:string){
       let body = {
           phone: phone_no,
           otp: otp

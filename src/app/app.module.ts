@@ -110,6 +110,7 @@ import { SignupConfirmationComponent } from './signup-confirmation/signup-confir
 import { NotfoundComponent } from './notfound/notfound.component';
 
 import {MatStepperModule} from '@angular/material/stepper';
+import { AccountActivityComponent } from './account-activity/account-activity.component';
 
 
 @NgModule({
@@ -117,6 +118,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatDialogModule   
     
   ]
+  
   
   
   
@@ -174,7 +176,8 @@ export class MaterialModule {}
     VerifyEmailComponent,
     VerifyPasswordComponent,
     SignupConfirmationComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    AccountActivityComponent
 
   ],
   imports: [
