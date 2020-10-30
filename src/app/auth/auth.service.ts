@@ -53,7 +53,7 @@ export class AuthService {
          username:email,
          password:password,
          deviceType:"Web"
-         //deviceType:"web"
+         
 
      }
     
@@ -106,18 +106,16 @@ export class AuthService {
       let payloadObj;
      if(data.phone){
           payloadObj={
-          deviceType:"Web",
-          //deviceType:"web",
+          deviceType:"Web",          
           email:data.email,
           password:data.password,
-          phone:data.phone,
-          //role:data.role,
+          phone:data.phone,          
           username:data.username
        }
      }
      else{
         payloadObj={
-          deviceType:"web",
+          deviceType:"Web",
           email:data.email,
           password:data.password,          
           username:data.username

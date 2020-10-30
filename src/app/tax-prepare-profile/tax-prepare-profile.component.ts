@@ -43,12 +43,6 @@
  constructor(private userService:UserService,private restrictseason:RestrictSeasonService,private snackbar: MatSnackBar) { }
 
  ngOnInit() {
- this.selectImages = ['https://bootdey.com/img/Content/user_1.jpg', 'https://bootdey.com/img/Content/user_2.jpg', 'https://bootdey.com/img/Content/user_3.jpg'];
-
- this.pickImagefun();
-
-
-
  this.currentYear= moment().year();
  this.title=environment.title;
  this.lastYear= moment().subtract(1, 'years').year();  
@@ -60,6 +54,8 @@
  /*
  * This function is used for fetch user details.
  * personal info,tax info,last year summary details
+ * @param accessToken 
+ * @return @array
  */
 
  listUserDetails(){ 
@@ -130,7 +126,11 @@
 
  }
 
-
+ /**
+ * This function is used for switching next page.
+ * @param event 
+ * @return
+ */
  onNext(event) {
  console.log("next");
  event.preventDefault();
@@ -150,7 +150,10 @@
 
  }
 
- /*This is for fetching season tax information
+ /**
+   * This is for fetching season tax information
+   * @param accessToken 
+   * @return
  */
  seasonGet(){
  this.restrictseason.fetchTaxSeason().subscribe(seasonsGet => {           
@@ -168,7 +171,11 @@
  })
 
  }
- //fetch tax tips
+ /**
+ * This function is used for fetching tax tips.
+ * @param accessToken 
+ * @return
+ */
  fetchTips=()=>{
  this.userService.fetchTips().subscribe(tipsGet => { 
  console.log("tipsGet"+JSON.stringify(tipsGet));
@@ -188,10 +195,9 @@
  })
  }
 
- pickImagefun = function () {
- this.myImage = this.selectImages[Math.floor(Math.random() * 3)];
-
- }
+ /**
+ * This function is used for fetching random images after some time interval.
+ */
 
  setActiveImage(promotions) {
  for (let i = 0; i <= promotions.length - 1; i++) {

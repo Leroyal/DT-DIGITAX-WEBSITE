@@ -32,6 +32,8 @@ this.seasonGet();
 }
 
 /*This is for fetching season tax information
+  * @param accessToken 
+  * @return
 */
 seasonGet(){
 this.restrictseason.fetchTaxSeason().subscribe(seasonsGet => {           
@@ -53,7 +55,6 @@ this.taxSeasonRestrict=true;
 /*
 * This function is used to check for category  already enabled or not 
 */
-
 isExists(value){  
 
 if(localStorage.getItem('survey_step_chkbox')) {   
@@ -86,7 +87,6 @@ this.categories= categories["data"];
 /*
 * This function is used while change category 
 */
-
 onChange(categoryid: string, isChecked: boolean) {
 console.log("chk"+categoryid+"isChecked"+isChecked);
 
