@@ -316,7 +316,7 @@
 						<div class="btn_area">
 							<button mat-button (click)="stepper.reset()">Cancel</button>
 							
-							<button class="download_btn" mat-button style="float: right;">Download My Data</button>
+							<button (click)="downloadDataAll()" class="download_btn" mat-button style="float: right;">Download My Data</button>
 
 							<button mat-button matStepperPrevious style="float: right;">Back</button>
 						</div>
@@ -329,6 +329,40 @@
 		
 	</section>
 </mat-tab>
-</mat-tab-group>
-</div>
+
+<!-- Acount Activity -->
+<mat-tab label="Account Activity">
+	<section class="full-width data_privacy">
+		<div class="dataBox">
+			<div class="myinfo_section">
+				<!-- <img src="assets/images/update_password.png" alt="" width="80"> -->
+				<h2 class="text-center">Account Activity</h2>
+			</div>
+
+			<div class="form_area">
+				<table cellpadding="0" cellspacing="0">
+					<tr *ngFor="let user of userArr">
+						<td>Digitax</td>
+						<td>
+							<p><i class="fas fa-desktop"></i>  {{user.clientOS}}  using {{user.clientBrowser.split('-')[0] }}</p><br>
+							<p>Signed in  {{user.updatedAt | date:'medium'}}</p>
+						</td>
+					</tr>
+								<!--<tr>
+									<td>DigiTax</td>
+									<td>
+										<p><i class="fas fa-desktop"></i> Windows using chrome</p><br>
+										<p><i class="far fa-envelope"></i> Signed in from new device</p>
+									</td>
+								</tr>-->
+							</table>
+							<div class="activity_info">Notice any suspicious activity? <a routerLink="/personal-info">Change your password to reset devices</a></div>
+						</div>
+					</div>
+
+
+				</section>
+			</mat-tab>
+		</mat-tab-group>
+	</div>
 </section>

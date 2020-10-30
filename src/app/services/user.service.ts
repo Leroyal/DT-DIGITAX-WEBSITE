@@ -64,6 +64,9 @@ export class UserService {
       getUserConsent(){
         return this.http.get(`${environment.BASE_URL}/api/auth/user-consents`,{headers: this.headers});
       }
+      fetchTips(){
+       return this.http.get(`${environment.BASE_URL}/api/auth/tax-tips`,{headers: this.headers});
+      }
       
     
 

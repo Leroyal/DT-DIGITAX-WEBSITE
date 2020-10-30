@@ -32,12 +32,14 @@ export class UpdateNameComponent implements OnInit {
   visibleStatus:false;
   first_name:any;
   last_name:any;
+  middle_name:any;
   updateNameForm: FormGroup;  
   isSubmitted:boolean=false;
   fetchUserFirstName:any;
   fetchUserLastName:any;
   nameVisible:boolean=false;
   fetchUserMiddleName:any;
+  firstFormGroup:any;
 
 
   constructor(private fb: FormBuilder,public infoService: InfoService,private snackbar: MatSnackBar,private router: Router) {

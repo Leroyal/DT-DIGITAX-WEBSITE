@@ -24,7 +24,7 @@ export class InfoService {
      saveUserDetails(savedata) {
       let payloadObj={
          firstName:savedata.first_name,
-         middleName:savedata.middle_name,
+         middleInitial:savedata.middle_name,
          lastName:savedata.last_name
       }
       console.log('save userdetails api');
@@ -146,10 +146,23 @@ export class InfoService {
 
      download(url: string): Observable<Blob> {
      console.log("kkk")
-    return this.http.get(`${environment.BASE1_URL}`, {
+    return this.http.get(`${environment.BASE_URL}`, {
       responseType: 'blob'
     })
   }
 
+  //get User Account Activity
+   getUserAccountActivity() {
+       console.log('userlist api');
+       console.log(this.headers);
+        return this.http.get(`${environment.BASE_URL}/api/auth/user-account-activity`,{headers: this.headers});
+    }
+    //getTaxTips
+
+     getTaxTips() {
+       console.log('userlist api');
+       console.log(this.headers);
+        return this.http.get(`${environment.BASE_URL}/api/auth/tax-tips`,{headers: this.headers});
+    }
 
 }

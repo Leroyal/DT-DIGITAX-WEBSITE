@@ -135,6 +135,22 @@ form p{
 .login_btn:hover{
 	box-shadow: 0 7px 10px 0px rgba(3, 169, 243, 0.3);
 }
+.center_txt{
+	text-align: center;
+	margin: 15px 0 !important;
+}
+.code_btn{
+	background: #e3e3e3;
+    color: #000;
+    border-radius: 8px;
+    width: 100%;
+    padding: 6px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+    box-shadow: none;
+}
 .form_info{
 	text-align: center;
 	font-size: 14px;
@@ -158,6 +174,32 @@ form p{
 	font-size: 14px;
 	color:#607d8b;
 }
+.different_btn{
+	background: none;
+	border:none;
+	color: #03a9f4;
+}
+.cache_login{
+	width: 100%;
+	border:1px solid #f3f3f3;
+	border-bottom: none;
+}
+.hist_user{
+	background: none;
+	text-align: left;
+	border:none;
+	font-size: 16px;
+}
+.cache_login td{
+	padding: 10px;
+	border-bottom:1px solid #f3f3f3;
+	height: 60px;
+}
+.hist_user span{
+	font-size: 14px;
+	color: #ccc;
+}
+
 @media only screen and (min-width: 921px) and (max-width: 1200px){
 	.signup_right,
 	.signup_left{

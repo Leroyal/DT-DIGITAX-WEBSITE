@@ -15,35 +15,102 @@
 			<p>Welcome back!</p>
 
 			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
-				
-				<p>Phone number, email or username</p>
-				<mat-form-field appearance="outline">
-					
-					<input matInput formControlName="email"  placeholder="sample@email.com" required>
-					<mat-icon matSuffix  class="valid">check</mat-icon>
-					<mat-error>Enter valid email ID</mat-error>
-				</mat-form-field>
+				<div *ngIf="!cacheVisible">
+				<!--<div style="display: block;">-->
+					<p>Phone number, email or username</p>
+					<mat-form-field appearance="outline">
 
-				<p>Password</p>
-				<mat-form-field appearance="outline">
-					<input type="Password" formControlName="password" matInput placeholder="Password" required>
-					<mat-error>Enter valid Password(must be 6 character)</mat-error>
-				</mat-form-field>
+						<input matInput formControlName="email"  placeholder="sample@email.com" required>
+						<mat-icon matSuffix  class="valid">check</mat-icon>
+						<mat-error>Enter valid email ID</mat-error>
+					</mat-form-field>
 
-				<mat-checkbox formControlName="remember_me" ><span class="remember_txt">Remember Me</span></mat-checkbox>
-				<span class="forget_pass">Forgot Password ?</span>
-				<button class="login_btn" mat-raised-button >SIGN IN</button>
-				<div class="form_info">					
-					<p>
-						By clicking Sign In, you agree to 
-						{{privacy_title}} <a href="">Terms of Service</a> and <a href="">Terms of Use</a>.
-						And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
-					</p>
+					<p>Password</p>
+					<mat-form-field appearance="outline">
+						<input type="Password" formControlName="password" matInput placeholder="Password" required>
+						<mat-error>Enter valid Password(must be 6 character)</mat-error>
+					</mat-form-field>
+
+					<mat-checkbox formControlName="remember_me" ><span class="remember_txt">Remember Me</span></mat-checkbox>
+					<span class="forget_pass">Forgot Password ?</span>
+					<button class="login_btn" mat-raised-button >SIGN IN</button>
 				</div>
-			</form>
-			<p class="signin_copy">Copyright © {{currentYear}} {{title}}</p>
-		</div>
+
+				<!-- SIGNIN CACHE -->
+				<div  *ngIf="cacheVisible">
+				<!--<div  style="display: none;">-->
+					<mat-horizontal-stepper #stepper>
+						<mat-step [stepControl]="firstFormGroup">
+							<table class="cache_login" width="100%" cellpadding="0" cellspacing="0">
+								<tr *ngFor="let user of userArr">
+									<td width="20"><i class="far fa-user-circle"></i></td>
+
+									<td ><button (click)="userClick(user.userName,user.phone)" class="hist_user" type="button" matStepperNext>
+										{{user.userName}}<br>
+										<span>Last access {{user.updatedAt | date}}
+										 on this device.</span>
+									</button>
+								</td>
+									<!--<td><button class="hist_user" type="button" matStepperNext>
+										bits1<br>
+										<span>Last access Sep 17, 2020 on this device.</span>
+									</button>
+								</td>-->
+							</tr>
+							<tr>
+								<td width="20"><i class="fas fa-user-plus"></i></td>
+								<td (click)="differentUserClick()">Use a different user ID</td>
+							</tr>
+							<tr>
+								<td width="20"><i class="fas fa-minus-circle"></i></td>
+								<td>Remove user ID</td>
+							</tr>
+						</table>
+					</mat-step>
+					<mat-step>
+						<form [formGroup]="cacheForm"  (ngSubmit)="cachesubmit()">
+
+
+							<mat-form-field appearance="outline"*ngIf="cache_email_show">
+
+							<input type="email" matInput placeholder="email" required formControlName="cache_email">
+
+							</mat-form-field>
+
+							<mat-form-field appearance="outline"*ngIf="cache_phone_show">
+
+							<input type="text" matInput placeholder="email" required formControlName="cache_phone">
+
+							</mat-form-field>
+
+							<p>Password</p>
+							<mat-form-field appearance="outline">
+								<input formControlName="cache_password" type="Password" matInput placeholder="Password" required >
+								<mat-error>Enter valid Password(must be 6 character)</mat-error>
+							</mat-form-field>
+							<button class="login_btn" mat-raised-button >SIGN IN</button>
+
+							<p class="center_txt" style="margin: 15px 0 !important">OR</p>
+                            <a class="code_btn" mat-raised-button (click)="otpVerify()">Text a code to (***) ***-**{{cache_phone}}</a>
+							<!--<button class="code_btn" mat-raised-button (click)="otpVerify()">Text a code to (***) ***-**{{cache_phone}}</button>-->
+
+							<p class="center_txt" style="margin: 15px 0 !important"><button type="button" class="different_btn" matStepperPrevious>Sign in a different way</button></p>
+						</form>
+					</mat-step>
+				</mat-horizontal-stepper>
+			</div>
+
+			<div class="form_info">					
+				<p>
+					By clicking Sign In, you agree to 
+					{{privacy_title}} <a href="">Terms of Service</a> and <a href="">Terms of Use</a>.
+					And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
+				</p>
+			</div>
+		</form>
+		<p class="signin_copy">Copyright © {{currentYear}} {{title}}</p>
 	</div>
+</div>
 </section>
 
 <section class="signin_container">

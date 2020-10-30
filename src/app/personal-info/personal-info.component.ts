@@ -50,6 +50,7 @@ address1: any;
 color: any;
 fetchUserFirstName: any;
 fetchUserLastName: any;
+fetchUserMiddleName: any;
 nameVisible: boolean = false;
 fullName: any;
 fetchDateOfBirth: any;
@@ -84,6 +85,9 @@ isChecked = false;
 delshow = true;
 showLastTax = true;
 loginPhone: any;
+
+//account activity
+userArr:any;
 
 constructor(private fb: FormBuilder, public infoService: InfoService, private snackbar: MatSnackBar, private router: Router,
 public marketingService: MarketingService
@@ -147,13 +151,34 @@ secondCtrl: ['', Validators.required]
 this.getMarketingDetails();
 
 this.getNameDetails();
+this.fetchAccountActivity();
+}
+
+/*This function is used for user account activity
+*/
+fetchAccountActivity(){
+this.infoService.getUserAccountActivity().subscribe(getAccountDetails => {
+
+this.userArr=getAccountDetails["data"];
+
+console.log("account activity"+JSON.stringify(getAccountDetails));
+
+console.log("clientos"+getAccountDetails["data"][0].clientOS);
+
+let firstPart = getAccountDetails["data"][0].clientBrowser.split('-')[0];
+
+console.log("firstPart"+firstPart);
+
+let isLoggedIn=getAccountDetails["data"][0].isLoggedIn;
+
+console.log(isLoggedIn)
+});
 }
 
 
 /*
 * This function is used for fetch name data
 */
-
 getNameDetails() {
 //this will enable after live api url created
 this.infoService.getUserListDetails().subscribe(getnamedetails => {
@@ -162,10 +187,12 @@ this.fetchUserFirstName = getnamedetails["data"]["userDetails"]["userFirstName"]
 
 this.fetchUserLastName = getnamedetails["data"]["userDetails"]["userLastName"];
 
-this.fullName = this.fetchUserFirstName + " " + this.fetchUserLastName;
+this.fetchUserMiddleName=getnamedetails["data"]["userDetails"]["userMiddleInitial"];
+
+this.fullName = this.fetchUserFirstName + " " + this.fetchUserMiddleName + " "+this.fetchUserLastName;
 
 
-if (this.fetchUserFirstName || this.fetchUserLastName) {
+if (this.fetchUserFirstName || this.fetchUserLastName || this.fetchUserMiddleName) {
 this.nameVisible = true;
 }
 
@@ -210,7 +237,6 @@ password:string
 
 )
 */
-
 updateEmailFormSubmit() {
 this.isSubmitted = true;
 
@@ -340,9 +366,9 @@ return this.marketingForm.controls;
 
 /*
 * This function is used to fetch user marketing preferences data
-
+ * @param accessToken of login user
+ * @return object
 */
-
 getMarketingDetails() {
 this.marketingService.getMarketingDetails().subscribe(marketingdetails => {
 console.log("ok" + JSON.stringify(marketingdetails));
@@ -360,8 +386,11 @@ this.isContactViaPhoneDisabled = (marketingdetails["data"]["isContactViaPhoneDis
 }
 
 /*
-* This function is used to save user marketing preferences data
-
+* This function is used to save user marketing preferences data.
+ * @param phone_option
+ * @param mail_option
+ * @param email_option
+ * @return
 */
 marketingFormSubmit() {
 
@@ -425,6 +454,8 @@ horizontalPosition: 'right'
 
 /*Phone communication enable
 **By turning ON, Users receive promotional calls to this phone number from Digitax agents. If user do not turn this on, user may still get important communications specific to their account, transactions, or inquiries.
+* @param accessToken 
+ * @return
 */
 onChange(value: MatSlideToggleChange) {
 const {checked} = value;
@@ -432,7 +463,11 @@ const {checked} = value;
 console.log("checked" + checked)
 }
 
-//This is hit after clicking delete button
+/**
+ * This function is hit after clicking delete button 
+ * @param event
+ * @return
+*/
 onClickDelete() {
 console.log("event")
 if (this.delshow == true) {
@@ -443,8 +478,9 @@ this.delshow = true;
 
 
 }
-
-//This is hit after clicking download last year tax return
+/**
+ * This function is hit after clicking download last year tax return
+*/
 clickLastTaxDownload() {
 if (this.showLastTax == true) {
 this.showLastTax = false;
@@ -452,6 +488,19 @@ this.showLastTax = false;
 this.showLastTax = true;
 }
 
+}
+/**
+* This function is used for download tax files
+*/
+downloadDataAll() {
+console.log("ok")
+const link = document.createElement('a');
+link.setAttribute('target', '_blank');
+link.setAttribute('href', 'https://s3.amazonaws.com/digitaxbucket/1603178195073-all_data.zip');
+link.setAttribute('download', `a.zip`);
+document.body.appendChild(link);
+link.click();
+link.remove();
 }
 
 }

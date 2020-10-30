@@ -19,6 +19,7 @@ templateUrl: './otp-verification.component.html',
 styleUrls: ['./otp-verification.component.css']
 })
 export class OtpVerificationComponent implements OnInit {
+cache_flag:any;
 state:any;
 localsendOtp:any;
 otpVerificationForm: FormGroup;  
@@ -36,6 +37,8 @@ verify_code: new FormControl('',[Validators.required])
 }
 
 ngOnInit() {
+this.cache_flag=window.history.state.flag; 
+console.log("this.cache_flag"+this.cache_flag)
 this.state = window.history.state.password; 
 console.log("this.hero"+this.state);
 this.localsendOtp=localStorage.getItem('sent_otp');
@@ -53,7 +56,9 @@ this.isSubmitted = true;
 
 if(this.otpVerificationForm.valid)
 {
-
+/*if(this.cache_flag){
+	location.href = '/tax-prepare-profile';
+}*/
 let saveData = this.otpVerificationForm.value; 
 console.log("saveData"+JSON.stringify(saveData));
 
@@ -70,11 +75,11 @@ console.log("this.verifyresponse"+JSON.stringify(verifyresponse));
 
 if(verifyresponse.status.status_code == 200)
 {
-
+location.href = '/tax-prepare-profile';
 
 //call signin api
 
-this.authService.login(localStorage.getItem('user_phone'), this.state, true,'phone')
+/*this.authService.login(localStorage.getItem('user_phone'), this.state, true,'phone')
 .pipe(first())
 .subscribe(
 loginresponse => {
@@ -106,7 +111,7 @@ horizontalPosition:'right',
 panelClass: ['red-snackbar'],
 duration:2000
 });
-}); 
+});*/ 
 
 }
 else{

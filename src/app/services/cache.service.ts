@@ -73,6 +73,10 @@ export class CacheService {
       getUserConsent(){
         return this.http.get(`${environment.BASE_URL}/api/auth/user-consents`,{headers: this.headers});
       }
+      //fetch login details
+      getDeviceDetails(){
+         return this.http.get(`${environment.BASE_URL}/api/auth/user-account-activity-by-device`,{headers: this.headers});  
+      }
       
     
 

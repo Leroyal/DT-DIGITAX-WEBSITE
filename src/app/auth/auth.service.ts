@@ -52,7 +52,8 @@ export class AuthService {
          
          username:email,
          password:password,
-         deviceType:"web"
+         deviceType:"Web"
+         
 
      }
     
@@ -105,17 +106,16 @@ export class AuthService {
       let payloadObj;
      if(data.phone){
           payloadObj={
-          deviceType:"web",
+          deviceType:"Web",          
           email:data.email,
           password:data.password,
-          phone:data.phone,
-          //role:data.role,
+          phone:data.phone,          
           username:data.username
        }
      }
      else{
         payloadObj={
-          deviceType:"web",
+          deviceType:"Web",
           email:data.email,
           password:data.password,          
           username:data.username
@@ -225,10 +225,22 @@ var ProductName = sessionStorage.getItem('ProductName');
     return this.http.post(`${environment.BASE_URL}authenticate`,'',{headers: this.headers});
     }
 
-
+  verifyOtp(phone_no: string, otp:string){
+      let body = {
+          phone: phone_no,
+          otp: otp,
+          deviceType:"web",
+          countryCode:"IN"
+          
+      }
+      return this.http.post<any>(`${environment.BASE_URL}/api/auth/mobile-number-signin`, body)
+        .pipe(map(fetchresult => {
+          return fetchresult;
+      }));
+    }
     
 
-    verifyOtp(phone_no: string, otp:string){
+    verifyOtpOld(phone_no: string, otp:string){
       let body = {
           phone: phone_no,
           otp: otp
@@ -307,4 +319,8 @@ let data={
         console.log(errorMessage);
         return throwError(errorMessage);
     }
+
+    getDeviceDetails(){
+         return this.http.get(`${environment.BASE_URL}/api/auth/user-account-activity-by-device`,{headers: this.headers});  
+      }
 }

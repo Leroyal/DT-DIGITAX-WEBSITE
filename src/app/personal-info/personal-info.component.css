@@ -232,8 +232,30 @@ div{
 .mat-step-header{
 	display: none !important;
 }
-
-
+.notice_border{
+	border-left: 2px solid #03a9f3;
+}
+.notice_title{
+	margin: 0 0 8px 0;
+	font-weight: 500;
+}
+.notice_body{
+	font-size: 14px;
+}
+.notice_table,
+.notice_table td{
+	border:none !important;
+}
+.activity_info{
+	text-align: center;
+	width: 100%;
+	margin: 15px 0;
+	font-size: 14px;
+}
+.activity_info a{
+	color: #03aaf3;
+	text-decoration: none;
+}
 @media only screen and (max-width: 768px){
 	.infoBox{
 		width: 70%;
@@ -260,5 +282,8 @@ div{
 	.infoBox table tr td,
 	.infoBox table tr th{
 		padding: 10px 8px;
+	}
+	.dataBox table tr td{
+		padding: 15px 0 15px 15px
 	}
 }
