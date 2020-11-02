@@ -68,7 +68,7 @@
 			</div>
 		</div>
 
-		<div class="next_step">
+		<div class="next_step" *ngIf="!taxSeasonRestrict">
 			<h2>All set! Next, lets choose the right product for you</h2>
 			<p>We’ll help you update any change since last your as we go.</p>
 
@@ -82,7 +82,7 @@
 	</div>
 
 	<div class="dashboard_footer">
-		Copyright © {{currentYear}} {{title}}. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+		Copyright © {{currentYear}} {{title}}. All Rights Reserved. <a routerLink="/terms-use">Terms of Use</a> | <a routerLink="/terms-service">Privacy Statement</a>
 	</div>
 
 </section>
