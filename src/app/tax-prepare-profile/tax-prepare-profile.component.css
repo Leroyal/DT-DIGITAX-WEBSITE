@@ -13,18 +13,30 @@ div{
 	background:#dbe2e9;
 	width: 100%;
 	float: left;
-	padding: 15px;
+	padding: 0 15px;
 }
-.search_box,
+.select_year{
+	width: 150px;
+}
 .tax_box{
-	width: 50%;
+	width: 100%;
 	float: left;
+	line-height: 35px;
+}
+.download_btn{
+	background: #03a9f3;
+	color: #fff;
+	float: right;
 }
 .tax_box{
-	text-align: right;
+	text-align: left;
 	color: #607d8b;
-	font-size: 16px;
+	font-size: 14px;
 	padding: 12px 0;
+}
+.tax_box a{
+	color: #607d8b;
+	text-decoration: none;
 }
 .search_box mat-form-field{
 	width: 100%;
@@ -140,15 +152,18 @@ div{
 }
 .tips_small_head{
 	font-weight: 500;
-	margin: 0;
+	margin-bottom: 10px;
+	margin-top: 0;
 }
 .tips_main_head{
 	border-bottom: 1px solid #e3e3e3;
 	margin: 0;
-    padding: 15px 0 15px 0;
+    padding: 0px 0 10px 0;
     font-weight: 500;
+    font-size: 20px;
 }
 .read_more{
+	font-size: 14px;
 	color: #03a9f4;
 	text-decoration: none;
 }
@@ -157,11 +172,12 @@ div{
 	flex-direction: row;
 }
 .tips_box p{
+	margin-top:10px;
 	margin-bottom: 5px;
 }
 .tips_img{
-	width: 400px;
-	padding: 15px;
+	/*width: 360px;*/
+	padding: 0 10px 0 0;
 }
 
 @media only screen and (min-width: 769px) and (max-width: 920px) {

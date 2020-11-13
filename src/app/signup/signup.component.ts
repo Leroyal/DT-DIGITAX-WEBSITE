@@ -21,6 +21,12 @@ import * as moment from 'moment';
 
 import { NgxSpinnerService } from "ngx-spinner";  
 
+//import getMAC, { isMAC } from 'getmac';
+
+//import * as uuid from 'uuid';
+
+import { DeviceDetectorService } from 'ngx-device-detector';
+
 
 declare var grecaptcha: any;
 
@@ -41,6 +47,7 @@ export class SignupComponent implements OnInit {
  currentYear:number;
  signupMessage:string;
  privacy_title:string;
+ deviceInfo = null;
 
 
   public recentToken: string = '';
@@ -57,7 +64,8 @@ export class SignupComponent implements OnInit {
   	           private snackbar: MatSnackBar,
                private recaptchaV3Service: ReCaptchaV3Service,
                private router: Router,
-               private spinner: NgxSpinnerService
+               private spinner: NgxSpinnerService,
+               private deviceService: DeviceDetectorService
                
   	           )
                {
@@ -76,6 +84,15 @@ export class SignupComponent implements OnInit {
 
    
   ngOnInit() {
+    
+
+    this.deviceInfo = this.deviceService.getDeviceInfo();
+    console.log("deviceInfo"+JSON.stringify(this.deviceInfo));
+
+    console.log(navigator);
+
+
+
     this.loadExternalScript(environment.autoload);
     this.currentYear= moment().year();
     this.title=environment.title;
@@ -84,6 +101,9 @@ export class SignupComponent implements OnInit {
   
   	
   }
+  
+  
+
   public loadExternalScript(url: string) {
   const body = <HTMLDivElement> document.body;
   const script = document.createElement('script');
@@ -96,7 +116,7 @@ export class SignupComponent implements OnInit {
 
   
 
-  /*
+  /**
  * This function is used for signup
  * @params(email:string,password:string,user name:string,phone number:string)   
  */
@@ -193,17 +213,25 @@ export class SignupComponent implements OnInit {
     }
    
 
+  /**
+ * This function is used for fetching signup form details   
+ */
     get f(){
                           return this.signupForm.controls;
                      }
 
 
-  
+  /**
+ * This function is used for fetching recaptcha response(render while load)
+ */
 
   resolved(captchaResponse: string) {
         console.log(`Resolved captcha with response: ${captchaResponse}`);
     }
-                  
+    
+    /**
+ * This function is used for formatting token
+ */              
     public formatToken(token: string): string {
     if (!token) {
       return '(empty)';

@@ -11,6 +11,10 @@ import { environment } from '../../environments/environment';
 
 import { Routes, RouterModule,Router } from '@angular/router';
 
+import * as uuid from 'uuid';
+
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,12 +26,16 @@ export class HomeComponent implements OnInit {
  title:string;
  privacy_title:string;
  phone_codes:any;
+ cookieValue:any;
+ myId:any;
 
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
-               private router: Router) { }
+               private router: Router,
+               private cookieService: CookieService
+               ) { }
 
    loginForm = new FormGroup({
 				       email:new FormControl('', [Validators.required]),
@@ -43,16 +51,20 @@ export class HomeComponent implements OnInit {
     this.privacy_title=environment.privacy_title;
   }
 
-
+/*
+ * This function is used for login
+ * @params(email:string,password:string) 
+ */
    loginsubmit() {
      console.log("ok");
      this.submitted = true;
+     
       if (this.loginForm.valid) { 
         console.log(this.loginForm.value); 
 
         if (this.f.email.value.indexOf('@') != -1) {
              console.log("email get");
-             this.flag="email";
+             this.flag="email";             
           }
           else if (this.f.email.value.match(/^[0-9()]+$/)) {
              console.log("phone number get");
@@ -110,7 +122,18 @@ export class HomeComponent implements OnInit {
           }        
         if(this.flag=="username" || this.flag=="email"){
 
-        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
+
+        this.cookieValue=this.cookieService.get('userCookieId');
+        console.log("home cookie"+this.cookieValue);
+         if(!this.cookieValue){
+         this.myId = uuid.v4();
+         this.cookieService.set( 'userCookieId', this.myId,6 );
+         }
+         else{
+          this.myId=this.cookieValue;
+         }
+
+        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag,this.myId)
             .pipe(first())
             .subscribe(
                 loginresponse => {
@@ -159,7 +182,9 @@ export class HomeComponent implements OnInit {
                       });
    }
  }
-
+/*
+ * This configuration is used for testimonial section slider 
+ */
  slideConfig = {"slidesToShow": 3, "slidesToScroll": 1, "autoplay": true, "autoplaySpeed": 3000, "dots": true, "infinite": true,
   responsive: [
       {
@@ -171,7 +196,7 @@ export class HomeComponent implements OnInit {
       }
     ]
  }
-slickInit(e) {
+ slickInit(e) {
     console.log('slick initialized');
   }
   breakpoint(e) {

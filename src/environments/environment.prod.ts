@@ -14,5 +14,5 @@ export const environment = {
 
   privacy_title:"Digital Tax USA",
 
-  phone_code:"+91"
+  phone_code:"+1"
 };

@@ -65,7 +65,7 @@ console.log("saveData"+JSON.stringify(saveData));
 
 
 //call verify otp api and match
-this.authService.verifyOtp(environment.phone_code+localStorage.getItem('user_phone'), saveData.verify_code)
+this.authService.verifyOtp(localStorage.getItem('user_phone'), saveData.verify_code,environment.phone_code)
 .pipe(first())
 .subscribe(
 verifyresponse => {
@@ -76,42 +76,6 @@ console.log("this.verifyresponse"+JSON.stringify(verifyresponse));
 if(verifyresponse.status.status_code == 200)
 {
 location.href = '/tax-prepare-profile';
-
-//call signin api
-
-/*this.authService.login(localStorage.getItem('user_phone'), this.state, true,'phone')
-.pipe(first())
-.subscribe(
-loginresponse => {
-console.log("###");
-console.log(loginresponse);
-if(loginresponse.status.status_code == 200)
-{
-this.snackbar.open(loginresponse.status.status_message,'OK',{
-verticalPosition: 'top',
-horizontalPosition:'right',
-panelClass: ['red-snackbar'],
-duration:2000
-});
-location.href = '/tax-prepare-profile';
-}
-else{
-this.snackbar.open(loginresponse.status.message,'OK',{
-verticalPosition: 'top',
-horizontalPosition:'right',
-panelClass: ['red-snackbar'],
-duration:2000
-});
-}
-},
-error => {
-this.snackbar.open(error,'OK',{
-verticalPosition: 'top',
-horizontalPosition:'right',
-panelClass: ['red-snackbar'],
-duration:2000
-});
-});*/ 
 
 }
 else{

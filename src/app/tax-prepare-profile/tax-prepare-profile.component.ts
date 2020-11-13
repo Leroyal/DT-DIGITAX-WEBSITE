@@ -38,6 +38,9 @@
  promotions: any = [];
  tipTitle:any;
  tipLabel:any;
+ lastYearTaxExists:boolean = true;
+ tipsPanelShow:boolean = false;
+ imagePanelShow:boolean = false;
 
 
  constructor(private userService:UserService,private restrictseason:RestrictSeasonService,private snackbar: MatSnackBar) { }
@@ -184,6 +187,7 @@
  this.promotions = tipsGet["data"];
 
  if (this.promotions.length > 0) {
+ this.tipsPanelShow=true;
  this.setActiveImage(this.promotions);
  }           
  
@@ -204,11 +208,27 @@
  console.log("one promotion is: ", promotions[i]);
  setTimeout( ()=> {
  //SET SRC TO FILE FROM PROMOTIONS
+ if(promotions[i].image)
+   this.imagePanelShow=true;
  this.activeImage = promotions[i].image;
  this.tipTitle= promotions[i].title;
  this.tipLabel= promotions[i].taxTipLabel;
  }, 60000*(i)); //Change i+1 to i if you don't want delay for 1st image.
  }
  }
+
+ /**
+* This function is used for download tax files
+*/
+downloadLastYearTax() {
+console.log("ok")
+const link = document.createElement('a');
+//link.setAttribute('target', '_blank');
+link.setAttribute('href', 'https://s3.amazonaws.com/digitaxbucket/1603178195073-all_data.zip');
+link.setAttribute('download', `a.zip`);
+document.body.appendChild(link);
+link.click();
+link.remove();
+}
 
  }

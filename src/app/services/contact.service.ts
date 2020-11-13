@@ -15,7 +15,7 @@ export class ContactService {
                
     }
 
-    /*
+    /**
       * This function is used for save user details(personal info)
     */
      saveUserDetails(savedata) {

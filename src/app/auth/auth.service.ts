@@ -44,16 +44,32 @@ export class AuthService {
         })
       };
 
-      
+  /*
+* This function is used for login
+* @param email:string,password:string,remember:boolean,flag:string,myId:string
+*/    
 
-  login(email: string, password: string, remember:boolean,flag:string){
-
-     let signinObj={
+  login(email: string, password: string, remember:boolean,flag:string,myId:string){
+     let signinObj;
+     if(remember){
+        signinObj={
          
          username:email,
          password:password,
-         deviceType:"Web"
+         deviceType:"Web",
+         uniqueId:myId
+
+     }
+
+     }
+     else{
+         signinObj={
          
+         username:email,
+         password:password,
+         deviceType:"Web"        
+
+        }
 
      }
     
@@ -67,12 +83,18 @@ export class AuthService {
           if (fetchresult && fetchresult.data.session && remember) {
               console.log("with remember");
 
+              ///save user info in cookie
+
+
               localStorage.setItem('user_email', fetchresult.data.user.email);
 
               localStorage.setItem('user_contact_no', fetchresult.data.user.phone);
 
               localStorage.setItem('access_token', fetchresult.data.session.accessToken);
               localStorage.setItem('user_id', fetchresult.data.user.id);
+
+              localStorage.setItem('localstore_user_name', fetchresult.data.user.username);
+
               this.isLoggedIn = true;
               return fetchresult;
           }
@@ -84,6 +106,9 @@ export class AuthService {
               
               sessionStorage.setItem('access_token', fetchresult.data.session.accessToken);
               sessionStorage.setItem('user_id', fetchresult.data.user.id);
+
+              localStorage.setItem('localstore_user_name', fetchresult.data.user.username);
+
               this.isLoggedIn = true;
               return fetchresult;
           }
@@ -99,7 +124,10 @@ export class AuthService {
 
 
 
-  
+   /**
+   * This function is used for signup
+   * @param data:array
+*/ 
 
  SignUp(data:any)
     {  
@@ -143,7 +171,10 @@ export class AuthService {
 
     }
 
-
+  /**
+   * This function is used for sending otp
+   * @param email:string
+*/ 
 
   sendOTP(email: string){
      return this.http.post<any>(`${environment.BASE_URL}/api/auth/send-otp`, { phone:email})
@@ -152,7 +183,9 @@ export class AuthService {
      }));
   }
 
-  
+   /**
+   * This function is used for logout(default)   
+*/  
 
   logout(): Observable<boolean> {
     console.log("logout func call");
@@ -172,7 +205,9 @@ export class AuthService {
          })
     );
   }
-
+  /**
+   * This function is used for site logout(modified)  
+*/ 
   siteLogout()
     {      
       let payloadObj={
@@ -198,7 +233,9 @@ export class AuthService {
           return fetchresult;
      }));
     }
-  
+    /**
+   * This function is used for fetching token   
+*/ 
   getToken() {
         if(sessionStorage.getItem('access_token'))
         {
@@ -209,7 +246,10 @@ export class AuthService {
 
 var ProductName = sessionStorage.getItem('ProductName');
     }
-
+   /**
+   * This function is used for fetching userid
+   * @param data:array
+*/ 
   getUserId() {
      if(sessionStorage.getItem('user_id'))
         {
@@ -218,19 +258,24 @@ var ProductName = sessionStorage.getItem('ProductName');
         else
         return localStorage.getItem('user_id');
     }
-
+  /**
+   * This function is used for checking token  
+*/ 
   checkToken() {
             this.access_token = localStorage.getItem('access_token');
             this.headers = new  HttpHeaders().set("access_token", this.access_token);  
     return this.http.post(`${environment.BASE_URL}authenticate`,'',{headers: this.headers});
     }
-
-  verifyOtp(phone_no: string, otp:string){
+  /**
+   * This function is used for verifying otp
+   * @param phone_no:string
+*/ 
+  verifyOtp(phone_no: string, otp:string,country_code:string){
       let body = {
           phone: phone_no,
           otp: otp,
-          deviceType:"web",
-          countryCode:"IN"
+          deviceType:"Web",
+          countryCode:country_code
           
       }
       return this.http.post<any>(`${environment.BASE_URL}/api/auth/mobile-number-signin`, body)
@@ -239,7 +284,7 @@ var ProductName = sessionStorage.getItem('ProductName');
       }));
     }
     
-
+   
     verifyOtpOld(phone_no: string, otp:string){
       let body = {
           phone: phone_no,
@@ -251,13 +296,18 @@ var ProductName = sessionStorage.getItem('ProductName');
           return fetchresult;
       }));
     }
-
+  /**
+   * This function is used for fetching phone codes   
+*/ 
     getAllPhoneCodes() {
         return this.http.get<any>(`${environment.BASE_URL}phone-codes`).pipe(map(fetchresult => {
             return fetchresult;
         }));
     }
-
+  /**
+   * This function is used for verify captcha
+   * @param token:string
+*/ 
     captchaVerify(token: string){
 
 
@@ -305,7 +355,10 @@ let data={
 
   }
 
-
+  /**
+   * This function is used for handling error in apis
+   
+*/ 
     handleError(error) {
         console.log("handle");
         let errorMessage = '';
@@ -319,8 +372,21 @@ let data={
         console.log(errorMessage);
         return throwError(errorMessage);
     }
-
-    getDeviceDetails(){
-         return this.http.get(`${environment.BASE_URL}/api/auth/user-account-activity-by-device`,{headers: this.headers});  
+  /**
+   * This function is used for fetching device details
+   * @param deviceUniqueId:string
+*/ 
+    getDeviceDetails(deviceUniqueId: string){
+         return this.http.get(`${environment.BASE_URL}/api/auth/user-account-activity-by-device/${deviceUniqueId}`,{headers: this.headers});  
       }
+
+      /**
+   * This function is used for deleting device cache details
+   * @param deviceUniqueId:string,username:string
+*/
+      deleteDeviceDetails(deviceUniqueId: string,username:string){
+         let userStoreLocal=localStorage.getItem('localstore_user_name');
+         return this.http.delete(`${environment.BASE_URL}/api/auth/clear-cache/${deviceUniqueId}/${username}`,{headers: this.headers});  
+      }
+
 }

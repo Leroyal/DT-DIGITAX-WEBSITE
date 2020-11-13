@@ -51,6 +51,7 @@ Hence for security we have used both local storage and session storage, If users
     * [For Account Activity](#account-activity)
     * [For Tax Tips](#tax-tips)
     * [For Service](#service)
+    * [For Privacy](#privacy)
 
     
 * [Error Handling](#error-handling)
@@ -143,6 +144,11 @@ g stands for global installation. If you use -g later you can use the CLI in any
  1. Create terms-service component .To do that ,we need to use the following command :ng g c terms-service
  2. User terms service is figure out by this tool.
 
+<a name="privacy"></a>
+### For Privacy
+
+  1. Update personal-info component .To do that ,we need to use the following command :ng g c personal-info
+ 2. User data && privacy is figure out by this tool.
 
 <a name="error-handling"></a>
 ## Error Handling

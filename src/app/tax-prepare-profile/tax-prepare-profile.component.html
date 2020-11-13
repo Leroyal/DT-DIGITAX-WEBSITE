@@ -1,11 +1,26 @@
 
 <section class="tax_prepare_section">
+	<div class="tax_prepare_head" *ngIf="lastYearTaxExists">
+		<div class="tax_box">
+			<img src="assets/images/tax_documents.png" alt="">
+			Download Your Tax Returns and Documents
+			<mat-select class="select_year">
+				<mat-option>2019</mat-option>
+				<mat-option>2018</mat-option>
+				<mat-option>2017</mat-option>
+			</mat-select>
+			<button class="download_btn" mat-raised-button>Download PDF</button>
+			
+			
+		</div>
+		
+	</div>
 
-	<div class="tax_tip">
+	<div class="tax_tip" *ngIf="tipsPanelShow">
 		<div class="tax_tip_inner">
 			<h3 class="tips_small_head"><span class="black_txt">Tax</span> <span class="blue_txt"> Tips</span></h3>
 			<div class="tips_box">
-				<div class="tips_img">
+				<div class="tips_img" *ngIf="imagePanelShow">
 					<img [src]="activeImage" alt="" width="100%">
 				</div>
 				<div>
