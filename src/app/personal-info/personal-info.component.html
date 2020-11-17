@@ -235,7 +235,7 @@
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tr>
 										<th>Download</th>
-										<td>Download a copy of data.</td>
+										<td>Download copy of your data.</td>
 										<td align="right"><button mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button></td>
 									</tr>
 									<tr>
@@ -246,27 +246,11 @@
 
 									</tr>
 									<tr [hidden]="delshow" #del>
-										<td >                    You can send us another request once we're done working on your current one. This can take up to 45 days from when you sent the request. .</td>
+										<td >                    You can send us another request once we're done working on your current one. This can take up to 45 days from when you sent the request.</td>
 									</tr>
 								</table>
 							</div>
-							<div class="data_notify">
-								<h3>Notification</h3>
-								<p>Set the rules of our engagement with you.</p>
-							</div>
-							<table border="0" cellpadding="0" cellspacing="0">
-								<tr>
-									<th>Phone</th>
-									<td>(+1) {{loginPhone}}</td>
-								</tr>
-								<tr>
-									<th></th>
-									<td>Phone Communications <span style="float: right;"><mat-slide-toggle  (change)="onChange($event)"  [(ngModel)]="isChecked" formControlName="phone_communication" ></mat-slide-toggle></span></td>
-								</tr>
-							</table>
-							<p class="data_txt">
-								By enabling Phone Communications, I agree to receive promotional calls to this phone number from Digital Tax USA agents. If you do not turn this on, you may still get important communications specific to your account, transactions or inquiries.
-							</p>
+							
 						</form>
 					</mat-step>
 					<mat-step [stepControl]="secondFormGroup">
@@ -282,26 +266,24 @@
 										<td>I want to download last year’s tax return from Digital Tax USA.</td>
 										<td align="right">
 
-											<button mat-icon-button (click)="clickLastTaxDownload()"><mat-icon>keyboard_arrow_right</mat-icon></button>
-											<!--<button mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button>-->
+											
+											<button (click)="clickLastTaxDownload()" mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button>
 										</td>
 									</tr>
-									<tr [hidden]="showLastTax">
-										<td>last</td>
-									</tr>
+									
 									<tr>
 										<td>I want to download all my Digital Tax USA data</td>
-										<td align="right"><button mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button></td>
+										<td align="right"><button (click)="clickallTaxDownload()" mat-icon-button matStepperNext><mat-icon>keyboard_arrow_right</mat-icon></button></td>
 									</tr>
 								</table>
 							</div>
 							<div class="btn_area">
 								<button mat-button matStepperPrevious>Cancel</button>
-								<!-- <button mat-button matStepperNext>Next</button> -->
+								
 							</div>
 						</form>
 					</mat-step>
-					<mat-step>
+					<mat-step *ngIf="showLastTax">
 						<div class="data_notify">
 							<h4>Here's some important things to know</h4>
 							<p class="data_txt">This is what to expect when you request to download your data</p>
@@ -321,6 +303,26 @@
 							<button mat-button matStepperPrevious style="float: right;">Back</button>
 						</div>
 					</mat-step>
+
+					<!--new- for last year tax-->
+					<mat-step *ngIf="showLastYearTax">
+						<div class="data_notify">
+							<h4>Here's some important things to know </h4>
+							<p class="data_txt">You can download a PDF or last year's return right in DIGITAX.</p>
+							<ul>
+								
+								
+							</ul>
+						</div>
+						<div class="btn_area">
+							<button mat-button (click)="stepper.reset()">Cancel</button>
+							
+							<button (click)="downloadDataAll()" class="download_btn" mat-button style="float: right;">Show me how</button>
+
+							<button mat-button matStepperPrevious style="float: right;">Back</button>
+						</div>
+					</mat-step>
+					<!--new- for last year tax-->
 				</mat-horizontal-stepper>
 				
 			</div>
@@ -335,7 +337,7 @@
 	<section class="full-width data_privacy">
 		<div class="dataBox">
 			<div class="myinfo_section">
-				<!-- <img src="assets/images/update_password.png" alt="" width="80"> -->
+				
 				<h2 class="text-center">Account Activity</h2>
 			</div>
 
@@ -348,21 +350,15 @@
 							<p>Signed in  {{user.updatedAt | date:'medium'}}</p>
 						</td>
 					</tr>
-								<!--<tr>
-									<td>DigiTax</td>
-									<td>
-										<p><i class="fas fa-desktop"></i> Windows using chrome</p><br>
-										<p><i class="far fa-envelope"></i> Signed in from new device</p>
-									</td>
-								</tr>-->
-							</table>
-							<div class="activity_info">Notice any suspicious activity? <a routerLink="/personal-info">Change your password to reset devices</a></div>
-						</div>
-					</div>
+					
+				</table>
+				<div class="activity_info">Notice any suspicious activity? <a routerLink="/personal-info">Change your password to reset devices</a></div>
+			</div>
+		</div>
 
 
-				</section>
-			</mat-tab>
-		</mat-tab-group>
-	</div>
+	</section>
+</mat-tab>
+</mat-tab-group>
+</div>
 </section>

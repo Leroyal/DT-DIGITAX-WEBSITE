@@ -12,6 +12,11 @@ import * as moment from 'moment';
 
 import { Routes, RouterModule,Router } from '@angular/router';
 
+import * as uuid from 'uuid';
+
+import { CookieService } from 'ngx-cookie-service';
+
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -33,11 +38,16 @@ export class SigninComponent implements OnInit {
     cache_phone_code:any;
     cache_phone_show:boolean=false;
     firstFormGroup:any;
+    cookieValue:any;
+    myId:any;
+    removeVisible:boolean=false;
+
 
   constructor(public authService: AuthService,
   	           private fb: FormBuilder, 
   	           private snackbar: MatSnackBar,
-               private router: Router
+               private router: Router,
+               private cookieService: CookieService
   	           ) 
                {
                 
@@ -73,48 +83,18 @@ export class SigninComponent implements OnInit {
 
     this.fetchLoginDevice();
   }
-   /*
+   /**
  * This function is used for fetching
  * login details w.r.t device 
  */
 
   fetchLoginDevice(){
-    /*this.cache_phone_code="7003386610";    
-    this.cache_phone=this.cache_phone_code.substr(this.cache_phone_code.length - 2);*/
-    /*this.userArr= [
-    {
-      "id": 58,
-      "userId": 8,
-      "userName": "sunayani",
-      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
-      "clientOS": "Unix",
-      "clientIpAddr": "103.51.149.22",
-      "clientBrowser": "Chrome-77.0.3865.120",
-      "hardwareAddress": "0E-AA-5F-ED-45-39",
-      "isLoggedIn": true,
-      "createdAt": null,
-      "updatedAt": 1602738946991
-    },
-    {
-      "id": 58,
-      "userId": 8,
-      "userName": "bits1",
-      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36",
-      "clientOS": "Unix",
-      "clientIpAddr": "103.51.149.22",
-      "clientBrowser": "Chrome-77.0.3865.120",
-      "hardwareAddress": "0E-AA-5F-ED-45-39",
-      "isLoggedIn": true,
-      "createdAt": null,
-      "updatedAt": 1602738946991
-    }
-  ];
-  console.log("this.userArr"+this.userArr.length)
-
-  if(this.userArr.length>0){
-    this.cacheVisible=true;
-  }*/
-    this.authService.getDeviceDetails().subscribe(logDetails => {
+    this.cookieValue=this.cookieService.get('userCookieId');
+    console.log("this.cookieValue"+this.cookieValue);
+    
+  if(this.cookieValue){
+    this.authService.getDeviceDetails(this.cookieValue).subscribe(logDetails => {
+    
 
       console.log("ok"+JSON.stringify(logDetails["data"]));
       if(logDetails["status"].status_code==200)
@@ -127,8 +107,11 @@ export class SigninComponent implements OnInit {
 
 
     });
+    }
   }
- 
+ /**
+ * This function is used while clicking particular user in cache section 
+ */
  userClick(username_click,user_phone_click){
    console.log("ok12"+username_click+user_phone_click)
    this.cacheForm.controls['cache_email'].setValue(username_click);
@@ -139,7 +122,7 @@ export class SigninComponent implements OnInit {
    this.cache_phone=this.cache_phone_code.substr(this.cache_phone_code.length - 2);
  }
 
- /*
+ /**
  * This function is used for login
  * @params(email:string,password:string) 
  */
@@ -148,6 +131,7 @@ export class SigninComponent implements OnInit {
      console.log("ok");
      console.log("sessionstore|"+sessionStorage.getItem('user_id'));
      this.submitted = true;
+     
       if (this.loginForm.valid) { 
       	console.log(this.loginForm.value);
 
@@ -213,7 +197,18 @@ export class SigninComponent implements OnInit {
         ///////////////////////
 
         if(this.flag=="username" || this.flag=="email"){
-        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag)
+
+        this.cookieValue=this.cookieService.get('userCookieId');
+        console.log("home cookie"+this.cookieValue);
+         if(!this.cookieValue){
+         this.myId = uuid.v4();
+         this.cookieService.set( 'userCookieId', this.myId,6 );
+         }
+         else{
+          this.myId=this.cookieValue;
+         }
+
+        this.authService.login(this.f.email.value, this.f.password.value, this.f.remember_me.value,this.flag,this.myId)
             .pipe(first())
             .subscribe(
                 loginresponse => {
@@ -262,7 +257,7 @@ export class SigninComponent implements OnInit {
  }
 
 
-  /*
+  /**
  * This function is used for login in cache
  * @params(email:string,password:string) 
  */
@@ -272,8 +267,8 @@ export class SigninComponent implements OnInit {
      this.cachesubmitted = true;
       if (this.cacheForm.valid) { 
         console.log(this.cacheForm.value);
-
-        this.authService.login(this.cache.cache_email.value, this.cache.cache_password.value, false,this.flag)
+        console.log("this.cookieValue"+this.cookieValue);
+        this.authService.login(this.cache.cache_email.value, this.cache.cache_password.value, false,this.flag,this.cookieService.get('userCookieId'))
             .pipe(first())
             .subscribe(
                 cacheLoginResponse => {
@@ -281,7 +276,7 @@ export class SigninComponent implements OnInit {
                 console.log(cacheLoginResponse);
                 if(cacheLoginResponse.status.status_code == 200)
                     {
-                        this.snackbar.open(cacheLoginResponse.status.status_message,'OK',{
+                        this.snackbar.open(cacheLoginResponse.status.message,'OK',{
                         verticalPosition: 'top',
                         horizontalPosition:'right',
                         panelClass: ['red-snackbar'],
@@ -320,14 +315,15 @@ export class SigninComponent implements OnInit {
    }
  }
 
- /* This is hit when user wants to login in different user id
+ /** This is hit when user wants to login in different user id
  */
  differentUserClick(){
     console.log("different user click");
     this.cacheVisible=false;
  }
-
- //This is hit after phone codes click
+/** This is hit after phone codes click
+ */
+ 
  otpVerify(){
     console.log("otp");
 
@@ -338,10 +334,9 @@ export class SigninComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 otpResponse => {
-                //console.log("###");
-                //console.log(otpResponse);
+                
                 if(otpResponse.status.status_code == 200)
-                    {                      
+                    {                   
                         
                         
                         this.snackbar.open(otpResponse.status.message,'OK',{
@@ -375,5 +370,34 @@ export class SigninComponent implements OnInit {
                 });
 
  }
+ /** This is hit when user wants to remove account
+ */
+ 
+  removeUserClick(){
+    console.log("different user click");
+    this.removeVisible=true;
+ }
+ /** This is hit when user confirm to remove account
+ */
+    cacheDelete(index,user){
+    console.log("cache user"+user+"ol"+index);
+    this.userArr.splice(index, 1);
+    this.authService.deleteDeviceDetails(this.cookieService.get('userCookieId'),user).subscribe(deleteDetails => {
+    
 
+      console.log("ok"+JSON.stringify(deleteDetails["data"]));
+      if(deleteDetails["status"].status_code==200)
+        {
+          console.log("remove user details done")
+        }
+
+
+    });
+    
+ }
+ /** This is hit when user completes remove account process
+ */
+ removeUserDone(){
+   this.removeVisible=false; 
+ }
 }

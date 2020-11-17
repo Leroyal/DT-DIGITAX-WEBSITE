@@ -4,6 +4,10 @@ body { margin: 0;
 	/*font-family: 'Montserrat', sans-serif;*/
 	font-family: 'Roboto', sans-serif; 
 	color:#212121;}
+.mat-drawer-content{
+	display: flex !important;
+	flex-direction: row;
+}
 .mat-button, 
 .mat-fab, 
 .mat-flat-button, 

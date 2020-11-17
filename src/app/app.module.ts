@@ -112,7 +112,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { AccountActivityComponent } from './account-activity/account-activity.component';
 
-
+import { DeviceDetectorService } from 'ngx-device-detector';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   exports: [   
     MatDialogModule   
@@ -220,8 +221,7 @@ export class MaterialModule {}
     
 
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  //providers: [BnNgIdleService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],  
   providers: [{
     provide: RECAPTCHA_V3_SITE_KEY,
     useValue: {
@@ -229,10 +229,9 @@ export class MaterialModule {}
     } as RecaptchaSettings,
   },
 
-  BnNgIdleService,NgxSpinnerService],
+  BnNgIdleService,NgxSpinnerService,DeviceDetectorService,CookieService],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialog, AlertDialogComponent]
 })
-//6LeJqqsZAAAAAKaXJ0q65NRkbaos4hbYjCpiY5t5
-//work 6LePbq4UAAAAAPqwJU8u5g1Of1TIEMyoPpJQpyaD
+
 export class AppModule { }

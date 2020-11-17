@@ -1,33 +1,32 @@
+<div class="full_container">
 <mat-sidenav-container *ngIf="sidebarShow">
-	<!-- <mat-sidenav  #sidenav mode="push" [(opened)]="opened">Sidenav -->
+	
 		
 	<mat-sidenav  #sidenav mode="push" [(opened)]="opened">
-		<!-- <button (click)="sidenav.close()" mat-raised-button> close</button> -->
+		
 		<p align="center"><img src="assets/images/digitax_usa_icon.png" alt="digitax_usa" width="165"></p>
 		
 		<ul class="sidenav" *ngIf="sidebarShow">
-			<li class="active"><a routerLink="/dashboard">Tax Home</a></li>
-			<li><a routerLink="/tax-prepare-document">Documents</a></li>
-			<!--<mat-divider></mat-divider>-->
-			<!--<li><a routerLink="/personal-info">My Info</a></li>-->
-			<li><a routerLink="/tax-prepare-profile">Federal</a></li>
-			<li><a routerLink="/tax-prepare-profile">State</a></li>
-			<li><a routerLink="/survey">Review</a></li>
-			<li><a routerLink="/tax-prepare-register">File</a></li>
-			<li><a routerLink="/faq">Help</a></li>
-			<li><a routerLink="/tax-prepare-package">Tax Tools</a></li>
-			<li><a routerLink="/tax-prepare-profile">Account</a></li>
+			<li><a routerLink="/dashboard" routerLinkActive="active">Tax Home</a></li>
+			<li><a routerLink="/tax-prepare-document" routerLinkActive="active">Documents</a></li>
+			
+			<li><a routerLink="/tax-prepare-profile" routerLinkActive="active">Federal</a></li>
+			<li><a routerLink="/tax-prepare-profile" routerLinkActive="active">State</a></li>
+			<li><a routerLink="/survey" routerLinkActive="active">Review</a></li>
+			<li><a routerLink="/tax-prepare-register" routerLinkActive="active">File</a></li>
+			<li><a routerLink="/faq" routerLinkActive="active">Help</a></li>
+			<li><a routerLink="/tax-prepare-package" routerLinkActive="active">Tax Tools</a></li>
+			<li><a routerLink="/tax-prepare-profile" routerLinkActive="active">Account</a></li>
 			<mat-divider></mat-divider>
 			<p class="submenu">
 				<li><a routerLink="/personal-info" routerLinkActive="active_sub">Profile</a></li>
-				<!--<li><a routerLink="/signin-security" routerLinkActive="active_sub">Signin &amp; Security</a></li>
-				<li><a routerLink="/marketing-preferences" routerLinkActive="active_sub">Marketing Preferences</a></li>-->
+				
 			</p>
 			<li><a href="" (click)="onLogout($event)">Sign Out</a></li>
 		</ul>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<!-- <button (click)="opened=!opened" mat-raished-button> MENU</button> -->
+		
 		<div class="side_nav">
 			<mat-icon aria-hidden="false" (click)="sidenav.open()">dehaze</mat-icon>
 		</div>
@@ -40,3 +39,4 @@
   <div *ngIf="!sidebarShow" class="main-content">
 			<router-outlet></router-outlet>
 		</div>
+</div>

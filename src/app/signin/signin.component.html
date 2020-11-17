@@ -16,7 +16,8 @@
 
 			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
 				<div *ngIf="!cacheVisible">
-				<!--<div style="display: block;">-->
+				
+
 					<p>Phone number, email or username</p>
 					<mat-form-field appearance="outline">
 
@@ -37,33 +38,41 @@
 				</div>
 
 				<!-- SIGNIN CACHE -->
-				<div  *ngIf="cacheVisible">
-				<!--<div  style="display: none;">-->
+				
+				
+					<div  *ngIf="cacheVisible">
 					<mat-horizontal-stepper #stepper>
 						<mat-step [stepControl]="firstFormGroup">
 							<table class="cache_login" width="100%" cellpadding="0" cellspacing="0">
-								<tr *ngFor="let user of userArr">
+								<tr *ngFor="let user of userArr;let i = index;">
 									<td width="20"><i class="far fa-user-circle"></i></td>
+									
 
-									<td ><button (click)="userClick(user.userName,user.phone)" class="hist_user" type="button" matStepperNext>
+									<td *ngIf="!removeVisible" ><button (click)="userClick(user.userName,user.phone)" class="hist_user" type="button" matStepperNext>
 										{{user.userName}}<br>
 										<span>Last access {{user.updatedAt | date}}
 										 on this device.</span>
 									</button>
 								</td>
-									<!--<td><button class="hist_user" type="button" matStepperNext>
-										bits1<br>
-										<span>Last access Sep 17, 2020 on this device.</span>
+								<td *ngIf="removeVisible" ><button (click)="userClick(user.userName,user.phone)" class="hist_user" type="button" >
+										{{user.userName}}<br>
+										<span>Last access {{user.updatedAt | date}}
+										 on this device.</span>
 									</button>
-								</td>-->
+								</td>
+								<td width="20" *ngIf="removeVisible" (click)="cacheDelete(i,user.userName)"><i class="fas fa-minus-circle" color="red"></i></td>
+
+									
 							</tr>
 							<tr>
 								<td width="20"><i class="fas fa-user-plus"></i></td>
 								<td (click)="differentUserClick()">Use a different user ID</td>
 							</tr>
 							<tr>
-								<td width="20"><i class="fas fa-minus-circle"></i></td>
-								<td>Remove user ID</td>
+								<td width="20" *ngIf="!removeVisible"><i class="fas fa-minus-circle"></i></td>
+								<td (click)="removeUserClick()" *ngIf="!removeVisible">Remove user ID</td>
+
+								<td (click)=" removeUserDone()"*ngIf="removeVisible">Done</td>
 							</tr>
 						</table>
 					</mat-step>
@@ -92,7 +101,7 @@
 
 							<p class="center_txt" style="margin: 15px 0 !important">OR</p>
                             <a class="code_btn" mat-raised-button (click)="otpVerify()">Text a code to (***) ***-**{{cache_phone}}</a>
-							<!--<button class="code_btn" mat-raised-button (click)="otpVerify()">Text a code to (***) ***-**{{cache_phone}}</button>-->
+							
 
 							<p class="center_txt" style="margin: 15px 0 !important"><button type="button" class="different_btn" matStepperPrevious>Sign in a different way</button></p>
 						</form>

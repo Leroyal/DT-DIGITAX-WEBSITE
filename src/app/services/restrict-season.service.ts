@@ -21,7 +21,9 @@ constructor(private http: HttpClient) {
 public  log(msg:string){
 return msg
 }
-
+/*
+* This function is used for fetching season details
+*/
 public fetchTaxSeason() {    
 
 

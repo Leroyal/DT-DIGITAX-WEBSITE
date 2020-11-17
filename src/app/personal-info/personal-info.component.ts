@@ -60,6 +60,7 @@ occupationVisible: boolean = false;
 fetchAddress: any;
 addressVisible: boolean = false;
 birthFormat: any;
+showLastYearTax:boolean = true;
 
 /////password update variable
 updatePasswordForm: FormGroup;
@@ -83,7 +84,7 @@ firstFormGroup: FormGroup;
 secondFormGroup: FormGroup;
 isChecked = false;
 delshow = true;
-showLastTax = true;
+showLastTax = false;
 loginPhone: any;
 
 //account activity
@@ -154,7 +155,7 @@ this.getNameDetails();
 this.fetchAccountActivity();
 }
 
-/*This function is used for user account activity
+/**This function is used for user account activity
 */
 fetchAccountActivity(){
 this.infoService.getUserAccountActivity().subscribe(getAccountDetails => {
@@ -176,7 +177,7 @@ console.log(isLoggedIn)
 }
 
 
-/*
+/**
 * This function is used for fetch name data
 */
 getNameDetails() {
@@ -227,7 +228,7 @@ this.addressVisible = true;
 });
 }
 
-/*
+/**
 * This function is used for save email change data
 * @params(
 email:string,
@@ -290,12 +291,14 @@ horizontalPosition: 'right'
 
 }
 
-
+/**
+* This function is used for fetching update email form values
+*/
 get f() {
 return this.updateEmailForm.controls;
 }
 
-/*
+/**
 * This function is used for save password change data
 * @params(
 old password:string,
@@ -355,19 +358,23 @@ horizontalPosition: 'right'
 }
 
 }
-
+/**
+* This function is used for fetching data for password update form values
+*/
 get g() {
 return this.updatePasswordForm.controls;
 }
-
+/**
+* This function is used for fetching data for marketing form values
+*/
 get m() {
 return this.marketingForm.controls;
 }
 
-/*
+/**
 * This function is used to fetch user marketing preferences data
- * @param accessToken of login user
- * @return object
+* @param accessToken of login user
+* @return object
 */
 getMarketingDetails() {
 this.marketingService.getMarketingDetails().subscribe(marketingdetails => {
@@ -385,12 +392,12 @@ this.isContactViaPhoneDisabled = (marketingdetails["data"]["isContactViaPhoneDis
 });
 }
 
-/*
+/**
 * This function is used to save user marketing preferences data.
- * @param phone_option
- * @param mail_option
- * @param email_option
- * @return
+* @param phone_option
+* @param mail_option
+* @param email_option
+* @return
 */
 marketingFormSubmit() {
 
@@ -455,7 +462,7 @@ horizontalPosition: 'right'
 /*Phone communication enable
 **By turning ON, Users receive promotional calls to this phone number from Digitax agents. If user do not turn this on, user may still get important communications specific to their account, transactions, or inquiries.
 * @param accessToken 
- * @return
+* @return
 */
 onChange(value: MatSlideToggleChange) {
 const {checked} = value;
@@ -464,9 +471,9 @@ console.log("checked" + checked)
 }
 
 /**
- * This function is hit after clicking delete button 
- * @param event
- * @return
+* This function is hit after clicking delete button 
+* @param event
+* @return
 */
 onClickDelete() {
 console.log("event")
@@ -479,15 +486,12 @@ this.delshow = true;
 
 }
 /**
- * This function is hit after clicking download last year tax return
+* This function is hit after clicking download last year tax return
 */
 clickLastTaxDownload() {
-if (this.showLastTax == true) {
 this.showLastTax = false;
-} else {
-this.showLastTax = true;
-}
-
+this.showLastYearTax = true;
+console.log("this.showLastTax"+this.showLastTax)
 }
 /**
 * This function is used for download tax files
@@ -502,5 +506,13 @@ document.body.appendChild(link);
 link.click();
 link.remove();
 }
+/**
+* This function is used for clickind download button
+*/
+clickallTaxDownload() {
+this.showLastTax = true;
+this.showLastYearTax = false;
 
+console.log("this.showLastTax"+this.showLastTax)
+}
 }
