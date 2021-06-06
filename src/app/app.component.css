@@ -1,7 +1,6 @@
 body{
 	margin:0 auto;
 	padding: 0;
-
 }
 .mat-drawer-container{
 	background: #fff;
@@ -19,20 +18,27 @@ mat-sidenav{
 mat-sidenav.mat-drawer.mat-drawer-push{
 	background: #fff;
 }
-
 .sidenav{
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 .sidenav li{
-	padding: 5px 0 6px 20px;
-	margin-bottom: 10px;
+	padding: 0;
+	/*margin-bottom: 10px;*/
 }
-.sidenav li.active{
-	position: relative;
+.sidenav li a{
+	text-decoration: none;
+	color: #000;
+	font-weight: 500;
+	display: block;
+    position: relative;
+    padding: 10px 0 10px 20px;
 }
-.sidenav li.active:before{
+.sidenav li a.active{
+	background: #ecf2f5;
+}
+.sidenav li a.active:before{
 	content:' ';
 	position: absolute;
 	left:0;
@@ -41,30 +47,62 @@ mat-sidenav.mat-drawer.mat-drawer-push{
 	width: 4px;
 	background: #03a9f4;
 }
-.sidenav li a{
-	text-decoration: none;
-	color: #000;
-	font-weight: 500;
-}
-
 .side_nav{
-	height: 100%;
+	/*height: 100%;*/
 	background: #212121;
 	float: left;
 	color:#fff;
 	width: 55px;
 	text-align: center;
-	position: fixed;
+	/*position: fixed;*/
 	z-index: 1;
-
+	/*padding: 0 15px;*/
+	position: relative;
 }
 .side_nav mat-icon{
 	color: #fff;
 	margin-top: 80px;
 	cursor: pointer;
+	position: fixed;
+	left: 10px;
 }
 .main-content{
+	width: 100%;
 	max-width: 1920px;
 	margin: 0 auto;
-	padding-left: 55px;
+	overflow: hidden;
+	/*padding-left: 55px;*/
+}
+.submenu{
+	margin: 0;
+	background: #f7f7f7;
+}
+.submenu li a{
+	/*padding-left: 40px; */
+}
+.submenu li a{
+	color: #607d8b ;
+	font-weight: 400 !important;
+	font-size: 14px;
+	padding: 8px 0 8px 40px
+}
+/*.active_sub{
+	color: #03a9f4 !important;
+	background: #ecf2f5;
+}*/
+.active_sub a path{
+	fill: #03a9f4 !important;
+}
+
+.submenu li a.active_sub{
+	background: #ecf2f5;
+}
+.submenu li a.active_sub:before{
+	content:' ';
+	position: absolute;
+	left:0;
+	top:0;
+	height: 100%;
+	width: 4px;
+	background: #03a9f4;
 }

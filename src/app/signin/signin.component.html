@@ -3,45 +3,123 @@
 		<div class="signup_left_inner">
 			<h2 class="signUp_head">Hello, Friend!</h2>
 			<p><img src="assets/images/signup_icon.png" alt=""></p>
-			<p>Enter your personal details and start journey with us</p>
-			<button mat-raised-button>SIGN UP</button>
+			<p>Don't have an account? Let's get you registered.</p>
+			<a routerLink="/signup"><button mat-raised-button>SIGN UP</button></a>
 		</div>
 	</div>
 
 	<div class="signup_right">
 		<div class="signup_right_inner">
 			<h2>SIGN <span>IN</span></h2>
-			<p>Hello! Let's get Started</p>
+			
+			<p>Welcome back!</p>
 
-			<form action="">
-				<p>Email</p>
-				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
-					<input matInput placeholder="sample@email.com" required>
-					<mat-icon matSuffix class="valid">check</mat-icon>
-					<mat-error>Error</mat-error>
-				</mat-form-field>
+			<form [formGroup]="loginForm"  (ngSubmit)="loginsubmit()">
+				<div *ngIf="!cacheVisible">
+				
 
-				<p>Password</p>
-				<mat-form-field appearance="outline">
-					<input type="Password" matInput placeholder="Password" required>
-					<mat-error>Error</mat-error>
-				</mat-form-field>
+					<p>Phone number, email or username</p>
+					<mat-form-field appearance="outline">
 
-				<mat-checkbox><span class="remember_txt">Remember Me</span></mat-checkbox>
-				<span class="forget_pass">Forgot Password ?</span>
-				<button class="login_btn" mat-raised-button >SIGN IN</button>
-				<div class="form_info">
-					<p>
-						By clicking Sign In,you agree to the
-						DIGITAX <a href="">Terms of Service</a>, DigiTax <a href="">Terms of Use</a>
-						and have read and acknowledge our Privacy Statement
-					</p>
+						<input matInput formControlName="email"  placeholder="sample@email.com" required>
+						<mat-icon matSuffix  class="valid">check</mat-icon>
+						<mat-error>Enter valid email ID</mat-error>
+					</mat-form-field>
+
+					<p>Password</p>
+					<mat-form-field appearance="outline">
+						<input type="Password" formControlName="password" matInput placeholder="Password" required>
+						<mat-error>Enter valid Password(must be 6 character)</mat-error>
+					</mat-form-field>
+
+					<mat-checkbox formControlName="remember_me" ><span class="remember_txt">Remember Me</span></mat-checkbox>
+					<span class="forget_pass">Forgot Password ?</span>
+					<button class="login_btn" mat-raised-button >SIGN IN</button>
 				</div>
-			</form>
-			<p class="signin_copy">Copyright © 2020 Digitax</p>
-		</div>
+
+				<!-- SIGNIN CACHE -->
+				
+				
+					<div  *ngIf="cacheVisible">
+					<mat-horizontal-stepper #stepper>
+						<mat-step [stepControl]="firstFormGroup">
+							<table class="cache_login" width="100%" cellpadding="0" cellspacing="0">
+								<tr *ngFor="let user of userArr;let i = index;">
+									<td width="20"><i class="far fa-user-circle"></i></td>
+									
+
+									<td *ngIf="!removeVisible" ><button (click)="userClick(user.userName,user.phone)" class="hist_user" type="button" matStepperNext>
+										{{user.userName}}<br>
+										<span>Last access {{user.updatedAt | date}}
+										 on this device.</span>
+									</button>
+								</td>
+								<td *ngIf="removeVisible" ><button (click)="userClick(user.userName,user.phone)" class="hist_user" type="button" >
+										{{user.userName}}<br>
+										<span>Last access {{user.updatedAt | date}}
+										 on this device.</span>
+									</button>
+								</td>
+								<td width="20" *ngIf="removeVisible" (click)="cacheDelete(i,user.userName)"><i class="fas fa-minus-circle" color="red"></i></td>
+
+									
+							</tr>
+							<tr>
+								<td width="20"><i class="fas fa-user-plus"></i></td>
+								<td (click)="differentUserClick()">Use a different user ID</td>
+							</tr>
+							<tr>
+								<td width="20" *ngIf="!removeVisible"><i class="fas fa-minus-circle"></i></td>
+								<td (click)="removeUserClick()" *ngIf="!removeVisible">Remove user ID</td>
+
+								<td (click)=" removeUserDone()"*ngIf="removeVisible">Done</td>
+							</tr>
+						</table>
+					</mat-step>
+					<mat-step>
+						<form [formGroup]="cacheForm"  (ngSubmit)="cachesubmit()">
+
+
+							<mat-form-field appearance="outline"*ngIf="cache_email_show">
+
+							<input type="email" matInput placeholder="email" required formControlName="cache_email">
+
+							</mat-form-field>
+
+							<mat-form-field appearance="outline"*ngIf="cache_phone_show">
+
+							<input type="text" matInput placeholder="email" required formControlName="cache_phone">
+
+							</mat-form-field>
+
+							<p>Password</p>
+							<mat-form-field appearance="outline">
+								<input formControlName="cache_password" type="Password" matInput placeholder="Password" required >
+								<mat-error>Enter valid Password(must be 6 character)</mat-error>
+							</mat-form-field>
+							<button class="login_btn" mat-raised-button >SIGN IN</button>
+
+							<p class="center_txt" style="margin: 15px 0 !important">OR</p>
+                            <a class="code_btn" mat-raised-button (click)="otpVerify()">Text a code to (***) ***-**{{cache_phone}}</a>
+							
+
+							<p class="center_txt" style="margin: 15px 0 !important"><button type="button" class="different_btn" matStepperPrevious>Sign in a different way</button></p>
+						</form>
+					</mat-step>
+				</mat-horizontal-stepper>
+			</div>
+
+			<div class="form_info">					
+				<p>
+					By clicking Sign In, you agree to 
+					{{privacy_title}} <a href="">Terms of Service</a> and <a href="">Terms of Use</a>.
+					And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
+				</p>
+			</div>
+		</form>
+		<p class="signin_copy">Copyright © {{currentYear}} {{title}}</p>
 	</div>
+</div>
 </section>
 
 <section class="signin_container">
