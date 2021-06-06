@@ -1,0 +1,48 @@
+<section class="full-width">
+	
+	<div class="infoBox">
+		<div class="myinfo_section">
+			<img src="assets/images/personal_info_01.png" alt="" width="80">
+			<h2 class="text-center">Personal Info</h2>
+			<p class="text-center">Name, address, birthday, job and other details that make your account yours</p>
+		</div>
+		
+		<form action="">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<th>Name</th>
+					<td><a routerLink="/update-name">Add your name.</a></td>
+					<td align="right">
+						<a routerLink="/update-name">
+							<button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<th>Date of Birth</th>
+					<td><a routerLink="/update-birthday">Add your date of birth.</a></td>
+					<td align="right">
+						<a routerLink="/update-birthday">
+							<button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<th>Occupation</th>
+					<td><a routerLink="/update-occupation">Add your occupation.</a></td>
+					<td align="right">
+						<a routerLink="/update-occupation"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></a>
+					</td>
+				</tr>
+				<tr>
+					<th>Address</th>
+					<td *ngIf="addressVisible">{{address1}}</td>
+					<td *ngIf="!addressVisible"><a routerLink="/update-address">Add your address.</a></td>
+					<td align="right">
+						<a routerLink="/update-address"><button mat-icon-button><mat-icon>keyboard_arrow_right</mat-icon></button></a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</section>
