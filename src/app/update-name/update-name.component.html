@@ -1,0 +1,41 @@
+<section class="full-width">
+	
+	<div class="infoBox">
+		<div class="myinfo_section">
+			<img src="assets/images/personal_info_01.png" alt="" width="80">
+			<h2 class="text-center">Update Name</h2>
+		</div>
+		<form [formGroup]="updateNameForm" (ngSubmit)="updateNameFormSubmit()" >
+			<div class="form_area">
+				<p>First Name</p>
+				<mat-form-field appearance="outline">
+					
+					<input matInput placeholder="First Name" formControlName="first_name"  [(ngModel)]="first_name" required>
+					<mat-error>Please enter a valid first name.</mat-error>
+				</mat-form-field>
+                <p>Middle Name</p>
+				<mat-form-field appearance="outline">
+					
+					<input matInput placeholder="Middle Name" formControlName="middle_name"  [(ngModel)]="middle_name" required>
+					<mat-error>Please enter a valid middle name.</mat-error>
+				</mat-form-field>
+
+				<p>Last Name</p>
+				<mat-form-field appearance="outline">
+					
+					<input matInput placeholder="Last Name" formControlName="last_name"   [(ngModel)]="last_name" required>
+					<mat-error>Please enter a valid last name.</mat-error>
+				</mat-form-field>
+				<p class="btn_row">
+					<button *ngIf="nameVisible" type="submit" class="save_btn" mat-raised-button> Update</button>
+					<button *ngIf="!nameVisible" type="submit" class="save_btn" mat-raised-button> Add</button>
+					<!--<button type="submit" class="save_btn" mat-raised-button [disabled]="!last_name || !first_name || !middle_name"> Save</button>-->
+					<a routerLink="/personal-info">
+						<button class="cancel_btn" mat-raised-button> Cancel</button>
+
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</section>

@@ -1,0 +1,52 @@
+div{
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none !important;
+}
+.header{
+	justify-content: space-between;
+	/*padding: 30px;*/
+    height: auto;
+    background: #fff;
+    /*padding-bottom: 16px;*/
+}
+.dashboard_head{
+	/*background:#dbe2e9;*/
+	background:#fff;
+	width: 100%;
+	float: left;
+	padding: 15px;
+	/*position: fixed;*/
+	/*top: 0;*/
+	z-index: 2;
+}
+.inner_logo{
+	width: 140px;
+	float: left;
+}
+
+.tax_box{
+	width: auto;
+	float: right;
+}
+.tax_box{
+	text-align: right;
+	color: #607d8b;
+	font-size: 16px;
+	/*padding: 12px 0;*/
+}
+
+@media only screen and (max-width: 600px){
+	.header{
+		padding: 15px;
+	}
+	.logo {
+	    width: 120px;
+	    float: left;
+	    margin: 12px 0;
+	}
+	.start_btn{
+		padding: 6px 10px;
+	}
+}
