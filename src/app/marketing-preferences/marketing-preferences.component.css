@@ -1,0 +1,85 @@
+.full-width{
+	display: block;
+	float: left;
+	padding:30px;
+	box-sizing: border-box;
+	width: 100%;
+}
+.marketing{
+	background: #e1e7ed;
+	height: 100%;
+    min-height: 100vh;
+}
+
+.marketing h2{
+	font-size: 32px;
+    font-weight: 500;
+    color: #212121;
+    margin-top: 0;
+}
+.marketing p{
+	font-size: 16px;
+	line-height: 25px;
+}
+
+.marketing_inner{
+	background: #fff;
+	width: 100%;
+	float: left;
+	padding: 30px;
+	box-sizing: border-box;
+	border-radius: 8px;
+	box-shadow: 0px 4px 10px 6px rgba(0, 0, 0, 0.10);
+	color: #607d8b;
+}
+.notice{
+	background: #e1e7ed;
+	padding: 20px;
+	text-align: center;
+	border-radius: 8px;
+}
+.marketing-option{
+	float: left;
+	width: 100%;
+	box-sizing: border-box;
+}
+.marketing-option table{
+	width: 100%;
+}
+.marketing-option table tr td{
+	padding: 15px 0;
+	width: 50%;
+}
+.save_btn{
+	background: #03a9f4;
+    color: #fff;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+    margin-right: 10px;
+}
+.cancel_btn{
+	background: #fff;
+    color: #000;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+}
+
+@media only screen and (max-width: 600px){
+	.full-width,
+	.marketing_inner{
+		padding: 15px;
+	}
+	.marketing h2{
+		font-size: 24px;
+	}
+	.marketing-option table tr td{
+		width: 88%;
+	}
+}
+
