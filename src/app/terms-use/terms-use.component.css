@@ -1,0 +1,27 @@
+.full-width{
+	display: block;
+	float: left;
+	padding: 0 30px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+p{
+	font-size: 16px;
+	line-height: 25px;
+	color: #607d8b;
+}
+
+ol li{
+	margin-bottom: 10px;
+	font-size: 16px;
+	line-height: 25px;
+	color: #607d8b;
+}

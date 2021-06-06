@@ -12,4 +12,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+   onNext(event) {
+    console.log("next");
+    event.preventDefault();
+    
+     location.href = '/signup'; 
+     
+
+   }
+
 }

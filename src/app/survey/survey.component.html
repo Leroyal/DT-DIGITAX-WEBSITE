@@ -11,68 +11,50 @@
 			your tax returns and documents
 		</div>
 	</div>
-	<div class="dashboard_body">
-		<h2>How did you do your <span class="blue_txt">taxes last year?</span></h2>
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="blue_line"></div>
-				<img src="assets/images/tax_icon.png" alt="">
-				<p>
-					Digitax
-				</p>
-			</div>
-		</div>
+	<form  [formGroup]="myForm" autocomplete="off">
+		<div class="dashboard_body">
+			
 
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="green_line"></div>
-				<img src="assets/images/other_tax_software_icon.png" alt="">
-				<p>
-					Other tax<br>software
-				</p>
-			</div>
-		</div>
+			<h2>Let us know what is <span class="blue_txt">going on with you.</span></h2>
+			<p>Select the categories that best match your life changes.</p>
 
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/accountant_icon.png" alt="">
-				<p>
-					Accountant/tax<br>pro
-				</p>
-			</div>
-		</div>
+			
 
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/tax_service_icon.png" alt="">
-				<p>
-					Tax service<br>(H&R Block etc.)
-				</p>
-			</div>
-		</div>
+			<div class="dashboard_small_box" *ngFor="let category of categories" >
+				<label class="checkbox_container">
 
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="violet_line"></div>
-				<img src="assets/images/tax_files_last_year_icon.png" alt="">
-				<p>
-					Didn't file taxes <br>last year
-				</p>
+					<input type="checkbox" value="{{category.id}}"id="" (change)="onChange(category.id, $event.target.checked)"  name="orders" [checked]="isExists(category.id)">
+					
+					
+				
+					<span class="checkmark">
+						<div class="dashboard_small_box_inner center_text">
+							<div class="before_check">
+								<div class="blue_line"></div>
+								<img src="assets/images/tax_icon.png" alt="">
+								<p>{{category.categoryLabel}}</p>
+							</div>
+							<div class="after_check">
+								<img src="assets/images/checkmark.png" alt="" width="80">
+								<p>{{category.categoryLabel}}</p>
+							</div>
+						</div>
+					</span>
+				</label>
 			</div>
-		</div>
 
-		<div class="dashboard_small_box">
-			<div class="dashboard_small_box_inner center_text">
-				<div class="orange_line"></div>
-				<img src="assets/images/other_icon.png" alt="">
-				<p>
-					Other
-				</p>
+			
+
+			<div class="next_step">
+				
+			<button mat-raised-button class="blue_btn"  (click)="onNext($event)" #button>Continue <mat-icon>navigate_next</mat-icon></button>
+
 			</div>
+
+
 		</div>
-	</div>
+	</form>
+
 </section>
 
 <div class="dashboard_footer">

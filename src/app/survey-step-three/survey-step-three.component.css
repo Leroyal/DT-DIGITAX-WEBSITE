@@ -145,6 +145,58 @@ div{
 	
 }
 
+.checkbox_container {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 16px;
+    width: 100%;
+    min-height: 226px;
+    float: left;
+}
+.checkbox_container input {
+  /*position: absolute;*/
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /*background-color: #eee;*/
+}
+.after_check{
+	display: none;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox_container:hover input ~ .checkmark {
+  /*background-color: #ccc;*/
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox_container input:checked ~ .checkmark .dashboard_small_box_inner {
+  background-color: #7bd7ff;
+  color: #fff;
+  border: 1px solid #03a9f3;
+}
+
+.checkbox_container input:checked ~ .checkmark .dashboard_small_box_inner .before_check{
+	display: none;
+}
+.checkbox_container input:checked ~ .checkmark .dashboard_small_box_inner .after_check{
+	display: block;
+}
+
 @media only screen and (min-width: 769px) and (max-width: 1270px) {
 	.dashboard_small_box{
 		width: 33%;

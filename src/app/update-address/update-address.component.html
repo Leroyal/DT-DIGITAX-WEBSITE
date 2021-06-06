@@ -1,0 +1,59 @@
+<section class="full-width">
+	
+	<div class="infoBox">
+		<div class="myinfo_section">
+			<img src="assets/images/personal_info_01.png" alt="" width="80">
+			<h2 class="text-center">Update Address</h2>
+		</div>
+		<form [formGroup]="updateAddressForm" (ngSubmit)="updateAddressFormSubmit()">
+			<div class="form_area">
+				<p>Country</p>
+				<mat-form-field appearance="outline">
+					<mat-select [(ngModel)]="country" formControlName="country" >
+						<mat-option value="US">US</mat-option>
+					</mat-select>
+					<mat-error>Error</mat-error>
+				</mat-form-field>
+
+				<p>Street Address</p>
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Enter Street Address" [(ngModel)]="address1" formControlName="address1" >
+					<mat-error>Please enter your address.</mat-error>
+				</mat-form-field>
+
+				<p>Street Address (Optional)</p>
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Enter Street Address" formControlName="address2" [(ngModel)]="address2">
+					
+				</mat-form-field>
+
+				<p>City</p>
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Enter City" formControlName="city" [(ngModel)]="city">
+					<mat-error>Please enter your city.</mat-error>
+				</mat-form-field>
+
+				<p>State</p>
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Enter State" formControlName="state" [(ngModel)]="state">
+					<mat-error>Please enter your state.</mat-error>
+				</mat-form-field>
+
+				<p>ZIP Code</p>
+				<mat-form-field appearance="outline">
+					<input matInput placeholder="Enter ZIP Code" formControlName="zip" [(ngModel)]="zip" >
+					<mat-error>Please enter your ZIP code.</mat-error>
+				</mat-form-field>
+
+				<p class="btn_row">
+					
+					<button *ngIf="!addressVisible" type="submit" class="save_btn" mat-raised-button> Add</button>
+
+					<button *ngIf="addressVisible" type="submit" class="save_btn" mat-raised-button> Update</button>
+					
+					<a routerLink="/personal-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
+				</p>
+			</div>
+		</form>
+	</div>
+</section>

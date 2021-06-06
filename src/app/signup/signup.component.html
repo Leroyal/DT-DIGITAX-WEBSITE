@@ -3,39 +3,71 @@
 		<div class="signup_left_inner">
 			<h2>SIGN <span>UP</span></h2>
 			<p>Hello! Let’s create account</p>
+           <ngx-spinner bdColor="black" size="default" type="ball-spin-clockwise">  
+    <p style="color: black">Please Wait. </p>  
+    </ngx-spinner> 
+			<form [formGroup]="signupForm" (ngSubmit)="signupFormSubmit()" >
+				
 
-			<form action="">
-				<p>Email</p>
-				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
-					<input matInput placeholder="sample@email.com" required>
-					<mat-error>Error</mat-error>
-				</mat-form-field>
+				
 
-				<p>User ID</p>
+				<p>Username</p>
 				<mat-form-field appearance="outline">
-					<!-- <mat-label>Username</mat-label> -->
-					<input matInput placeholder="Sample Name" required>
+					
+					<input matInput formControlName="username" placeholder="Sample Name" required>
 					<mat-icon matSuffix class="valid">check</mat-icon>
-					<mat-error>Error</mat-error>
+                    
+					<mat-error>Enter valid username</mat-error>
 				</mat-form-field>
 
-				<p>Phone Number</p>
-				<mat-form-field appearance="outline">
-					<span matPrefix>+91 &nbsp;</span>
-					<input type="tel" matInput placeholder="555-555-1234">
+
+				<p>Email</p>
+				<mat-form-field appearance="outline">					
+					<input matInput formControlName="email" placeholder="sample@email.com" required>					
+					<mat-error>Please enter your email address in the format: youremail@example.com.</mat-error>
 				</mat-form-field>
 
+				
 
 				<p>Password</p>
 				<mat-form-field appearance="outline">
-					<input type="Password" matInput placeholder="Password" required>
-					<mat-error>Error</mat-error>
+					<input type="Password"  formControlName="password" matInput placeholder="Password" required>
+					
+                 <mat-error>Enter valid Password</mat-error>
+					
 				</mat-form-field>
 
+					<div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+          
+            <div *ngIf="f.password.errors.minlength"><mat-error>Enter Password(must be 6 character)</mat-error></div>
+            <div *ngIf="f.password.errors.cannotContainSpace"><mat-error>The password you submitted contains spaces.</mat-error>
+           </div>
+        </div>
+				
+
+				<p>Phone Number</p>
+				<mat-form-field appearance="outline">
+					<span matPrefix>+1 &nbsp;</span>
+					<input type="tel" formControlName="phone" matInput placeholder="555-555-1234" maxlength="10" minlength="10" pattern="[0-9]*" digitOnly
+                               >
+					<mat-error>Enter valid Phone Number</mat-error>
+				</mat-form-field>		
+				
+			
+
+ 
+
 				<button class="login_btn" mat-raised-button >SIGN UP</button>
+				 
 			</form>
-			<p class="signin_copy">Copyright &copy; 2020 Digitax</p>
+			<!--<p class="signin_copy">Copyright &copy; {{currentYear}} {{title}}</p>-->
+            <div class="form_info">            	
+			<p>
+						By clicking Sign Up, you agree to 
+						{{privacy_title}} <a href="">Terms of Service</a> and <a href="">Terms of Use</a>.
+						And have read and acknowledge our <a routerLink="/privacy-statement" href="">Privacy Statement</a>.
+					</p>
+				</div>
 		</div>
 	</div>
 
@@ -43,8 +75,12 @@
 		<div class="signup_right_inner">
 			<h2 class="signUp_head">Welcome Back!</h2>
 			<p><img src="assets/images/signin_icon.png" alt=""></p>
-			<p>To keep connected with us please sign in with your personal info</p>
-			<button mat-raised-button>SIGN IN</button>
+			
+
+			<p>Have an account already? Let's get you signed in.</p>
+			<a routerLink="/signin"><button mat-raised-button>SIGN IN</button></a>
 		</div>
 	</div>
 </section>
+
+
