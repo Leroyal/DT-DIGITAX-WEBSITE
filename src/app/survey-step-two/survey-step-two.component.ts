@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-survey-step-two',
   templateUrl: './survey-step-two.component.html',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurveyStepTwoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _location: Location) { }
 
   ngOnInit() {
   }
+
+   onNext(event) {
+    console.log("next");
+    event.preventDefault();
+    this._location.back();
+
+    // location.href = '/tax-prepare-document'; 
+     
+
+   }
 
 }

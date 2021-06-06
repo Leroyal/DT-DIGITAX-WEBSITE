@@ -4,6 +4,10 @@ body { margin: 0;
 	/*font-family: 'Montserrat', sans-serif;*/
 	font-family: 'Roboto', sans-serif; 
 	color:#212121;}
+.mat-drawer-content{
+	display: flex !important;
+	flex-direction: row;
+}
 .mat-button, 
 .mat-fab, 
 .mat-flat-button, 
@@ -13,6 +17,10 @@ body { margin: 0;
 .mat-stroked-button{
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
+}
+:focus{
+	outline: none;
+	box-shadow: none;
 }
 .full-width{
 	display: block;
@@ -55,6 +63,10 @@ body { margin: 0;
 }
 
 .signup_left_inner .mat-form-field-wrapper{
+	padding-bottom: 10px !important;
+}
+
+.signup_right_inner .mat-form-field-wrapper{
 	padding-bottom: 10px !important;
 }
 
@@ -120,3 +132,101 @@ mat-tab-body{
 	border-left:3px solid #ff4612;
 }
 
+.signup_left .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper,
+.signup_right .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
+	padding: 5px !important;
+	position: inherit !important;
+	margin: 0;
+}
+
+.account_section .mat-tab-group {
+    flex-direction: row;
+}
+.account_section .mat-tab-labels {
+    flex-direction: column;
+}
+.account_section .mat-ink-bar {
+    height: 100%;
+    left: 98% !important;
+}
+.account_section .mat-tab-body-wrapper {
+    flex: 1 1 auto;
+}
+.account_section .mat-tab-header {
+  border-bottom: none;
+}
+.account_section .mat-tab-header-pagination {
+    display: none !important;
+}
+.account_section .mat-tab-label-active{
+	border-radius: 0;
+	border-right:2px solid #03a9f4;
+
+}
+.account_section mat-tab-body{
+	border-radius: 0;
+}
+
+.account_section mat-tab-group .mat-tab-list{
+	background: #dbe2e9;
+}
+
+.mat-step-header,
+.mat-stepper-horizontal-line{
+	display: none !important;
+}
+.mat-horizontal-content-container{
+	padding: 0 !important;
+}
+
+.data_privacy .mat-step-header,
+.data_privacy .mat-stepper-horizontal-line{
+	display: none !important;
+}
+
+.data_privacy .mat-horizontal-content-container{
+	padding: 0;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1350px){
+	.signup_left .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper{
+		position: inherit !important;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.account_section .mat-tab-group {
+    flex-direction: column ;
+}
+.account_section .mat-tab-labels {
+    flex-direction: initial;
+}
+.account_section .mat-ink-bar {
+    height: 100%;
+    left: 98% !important;
+}
+.account_section .mat-tab-body-wrapper {
+    flex: 1 1 auto;
+}
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:rgb(66, 134, 244); 
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:rgb(66, 134, 244);
+  background-color:rgb(66, 134, 244) ;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:rgba(66, 134, 244,.26) !important;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #03a9f4;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #03a9f4;
+}

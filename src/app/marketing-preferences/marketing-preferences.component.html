@@ -1,0 +1,66 @@
+<section class="full-width marketing">
+	<div class="marketing_inner">
+		<h2>Select Your Merketing Preferences</h2>
+		<p>By enabling any of the Communications, I agree to receive marketing and promotional content from Digital Tax USA, LLC. If you do not enable any of these communication mediums, you may still get important communications specific to your account, transactions or inquiries.</p>
+
+		<p class="notice">We do not share personal information with outside companies for their promotional use.</p>
+
+		<div class="marketing-option">
+			<form [formGroup]="marketingForm" (ngSubmit)="marketingFormSubmit()">
+				<table>
+					
+					<tr>
+						<td>Contact me by mail :</td>
+						<td>
+							<mat-slide-toggle
+							   [(ngModel)]="isContactViaMailDisabled"
+							   class="example-margin"
+							   [color]="color" formControlName="mail_option"
+							   >
+    
+							</mat-slide-toggle>
+							
+
+						 
+						</td>
+					</tr>
+					<tr>
+						<td>Contact me by phone :</td>
+
+
+						<td>
+							<mat-slide-toggle
+							   [(ngModel)]="isContactViaPhoneDisabled"
+							   class="example-margin"
+							   [color]="color" formControlName="phone_option"
+							   >
+    
+							</mat-slide-toggle>
+							
+						</td>
+					</tr>
+					<tr>
+						<td>Contact me by email :</td>
+						<td>
+							<mat-slide-toggle
+							   [(ngModel)]="isContactViaEmailDisabled"
+							   class="example-margin"
+							   [color]="color" formControlName="email_option"
+							   >
+    
+							</mat-slide-toggle>
+							
+						</td>
+					</tr>
+				</table>
+				<p>
+					<button type="submit" class="save_btn" mat-raised-button>Save</button>
+					<a routerLink="/marketing-preferences"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
+					
+				</p>
+			</form>
+
+		</div>
+	</div>
+	
+</section>
