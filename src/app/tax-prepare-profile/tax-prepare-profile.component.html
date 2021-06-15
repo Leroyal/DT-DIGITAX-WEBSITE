@@ -1,19 +1,42 @@
+
 <section class="tax_prepare_section">
-	<div class="tax_prepare_head">
-		<div class="search_box">
-			<mat-form-field appearance="fill">
-				<span matPrefix><img src="assets/images/search_icon.png" alt=""></span>
-				<input type="search" matInput placeholder="Search Here">
-			</mat-form-field>
-		</div>
+	<div class="tax_prepare_head" *ngIf="lastYearTaxExists">
 		<div class="tax_box">
 			<img src="assets/images/tax_documents.png" alt="">
-			your tax returns and documents
+			Download Your Tax Returns and Documents
+			<mat-select class="select_year">
+				<mat-option>2019</mat-option>
+				<mat-option>2018</mat-option>
+				<mat-option>2017</mat-option>
+			</mat-select>
+			<button class="download_btn" mat-raised-button>Download PDF</button>
+			
+			
 		</div>
+		
 	</div>
 
+	<div class="tax_tip" *ngIf="tipsPanelShow">
+		<div class="tax_tip_inner">
+			<h3 class="tips_small_head"><span class="black_txt">Tax</span> <span class="blue_txt"> Tips</span></h3>
+			<div class="tips_box">
+				<div class="tips_img" *ngIf="imagePanelShow">
+					<img [src]="activeImage" alt="" width="100%">
+				</div>
+				<div>
+					<h2 class="tips_main_head blue_txt">{{tipTitle}}</h2>
+					<p>{{tipLabel}}</p>
+					<a class="read_more">Read More</a>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+	
+
 	<div class="tax_prepare_body">
-		<p class="first_p"><span class="black_txt"><strong>Sample Name</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
+		<p class="first_p"><span class="black_txt"><strong>{{username}}</strong></span>, Welcome back to your <span class="blue_txt">3rd year</span> with Digitax</p>
 		<p class="second_p">We’re saving youtime and improving accuracy by pulling all of last years info</p>
 		<p class="third_p">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
 
@@ -21,46 +44,52 @@
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/personal_info_icon.png" alt="">
-					<p class="heading">Personal Info</p>
-					<p>Sample Name</p>
-					<p>With 2 dependents</p>
+					<p class="heading">Personal Info</p>					
+					<p *ngIf="userDetails;else noIncomeHistory">{{userDetails.user_name}}</p>					
+					<p *ngIf="userDetails">With {{userDetails.no_of_dependants}} dependents</p>
 				</div>
 			</div>
 
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/income_icon.png" alt="">
-					<p class="heading">Income</p>
-					<p>Forms : Scedule C,</p>
-					<p>1099 - G</p>
+					<p class="heading">Income</p>					
+					<p *ngIf="incomeDetails;else noIncomeHistory">Forms : {{incomeDetails.form_name}}</p>
+
+					<p > <ng-template #noIncomeHistory>
+						No history
+					</ng-template></p>					
+					<p *ngIf="incomeDetails">{{incomeDetails.form_desc}}</p>
 				</div>
 			</div>
 
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/tax_breaks_icon.png" alt="">
-					<p class="heading">Tax breaks</p>
-					<p>Donations</p>
+					<p class="heading">Tax breaks</p>					
+					<p *ngIf="taxDetails;else noIncomeHistory">{{taxDetails.tax_desc}}</p>
 				</div>
 			</div>
 
 			<div class="small_box">
 				<div class="white_box">
 					<img src="assets/images/summary_icon.png" alt="">
-					<p class="heading">2019 Summary</p>
-					<p>Filed on</p>
-					<p>AGI</p>
-					<p>Federal Refund</p>
-					<p>CA Stoto Rofund</p>
+					<p class="heading">{{lastYear}} Summary</p>					
+					<p *ngIf="summaryDetails;else noIncomeHistory">{{summaryDetails.filed_on}}</p>
+					<p *ngIf="summaryDetails">{{summaryDetails.filed_type}}</p>
+					<p *ngIf="summaryDetails">{{summaryDetails.filed_fund}}</p>
+					<p *ngIf="summaryDetails">{{summaryDetails.filed_another}}</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="next_step">
+		<div class="next_step" *ngIf="!taxSeasonRestrict">
 			<h2>All set! Next, lets choose the right product for you</h2>
 			<p>We’ll help you update any change since last your as we go.</p>
 
-			<button mat-raised-button class="blue_btn">Continue <mat-icon>navigate_next</mat-icon></button>
+			<div *ngIf="!taxSeasonRestrict">
+				<button mat-raised-button class="blue_btn"   (click)="onNext($event)" #button>Continue<mat-icon>navigate_next</mat-icon> </button>
+			</div>
 		</div>
 
 		
@@ -68,7 +97,7 @@
 	</div>
 
 	<div class="dashboard_footer">
-		Copyright © 2019-2020 Digitax. All Rights Reserved. <a href="">Terms of Use</a> | <a href="">Privacy Statement</a>
+		Copyright © {{currentYear}} {{title}}. All Rights Reserved. <a routerLink="/terms-use">Terms of Use</a> | <a routerLink="/terms-service">Privacy Statement</a>
 	</div>
 
 </section>

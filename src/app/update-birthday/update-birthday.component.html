@@ -1,0 +1,27 @@
+<section class="full-width">
+	
+	<div class="infoBox">
+		<div class="myinfo_section">
+			<img src="assets/images/personal_info_01.png" alt="" width="80">
+			<h2 class="text-center">Update Date of Birth</h2>
+		</div>
+		<form [formGroup]="updateBirthForm" (ngSubmit)="updateBirthFormSubmit()" >
+			<div class="form_area">
+				<p>Date of Birth</p>
+				<mat-form-field appearance="outline">
+					
+					<input  matInput [matDatepicker]="dob" placeholder="dd/mm/yy" formControlName="birth_date" [(ngModel)]="birth_date" >
+					<mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+					<mat-datepicker #dob color="primary"></mat-datepicker>
+				</mat-form-field>
+				<p class="btn_row">
+					<!--<button type="submit" class="save_btn" mat-raised-button [disabled]="!birth_date"> Save</button>-->
+                    <button *ngIf="!birthVisible" type="submit" class="save_btn" mat-raised-button> Add</button>
+
+					<button *ngIf="birthVisible" type="submit" class="save_btn" mat-raised-button > Update</button>
+					<a routerLink="/personal-info"><button class="cancel_btn" mat-raised-button> Cancel</button></a>
+				</p>
+			</div>
+		</form>
+	</div>
+</section>
