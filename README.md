@@ -1,122 +1,169 @@
-# DIGITAX (WEB)
+# DT-DIGITAX-WEBSITE
+DigiTax website
 
-DigiTax web is an online service designed to help individuals and/or companies prepare for and file income, corporate and similar tax returns. DigiTax streamlines the process of filing taxes by walking the user through tax forms and issues and also automatically calculates the individual's or company's tax obligations.  
 
-[![GitHub issues](https://img.shields.io/github/issues/Leroyal/DT-DIGITAX-WEBSITE)](https://github.com/Leroyal/DT-DIGITAX-WEBSITE/issues) [![Build Status](https://github.com/Leroyal/DT-DIGITAX-WEBSITE/workflows/CI/badge.svg)](https://github.com/Leroyal/DT-DIGITAX-WEBSITE/workflows/CI/badge.svg)
+This is project is built in Angular 9. It contains all of the specs from Angular's test guide as well as some extras. 
+
+Get started
+Clone the repo
+git clone https://github.com/Leroyal/DT-DIGITAX-WEBSITE.git
+cd DT-DIGITAX-WEBSITE
+Install npm packages
+Install the npm packages described in the package.json and verify that it works:
+
+npm install
+ng serve
+The ng serve command builds (compiles TypeScript and copies assets) the application into dist/, watches for changes to the source files, and runs lite-server on port 4200.
+
+Shut it down manually with Ctrl-C.
+
+npm scripts
+These are the most useful commands defined in package.json:
+
+npm start - runs the TypeScript compiler, asset copier, and a server at the same time, all three in "watch mode".
+npm run build - runs the TypeScript compiler and asset copier once.
+npm run build:watch - runs the TypeScript compiler and asset copier in "watch mode"; when changes occur to source files, they will be recompiled or copied into dist/.
+npm run lint - runs tslint on the project files.
+npm run serve - runs lite-server.
+These are the test-related scripts:
+
+npm test - builds the application and runs Intern tests (both unit and functional) one time.
+npm run ci - cleans, lints, and builds the application and runs Intern tests (both unit and functional) one time.
+Techniques
+
+Hence for security we have used both local storage and session storage, If users wants to remember them, then we are using local storage otherwise using session storage.
+
 
 ## Table of Contents
 
 * [Technical Information](#technical-information)
     * [Framework](#framework)
     * [Version](#version)
-    * [Installation](#installation)
-    * [Theme Integration](#theme-integration)
-    * [Create Routing](#create-routing)
-    * [Create Controllers](#create-controllers)
-    * [Create View Pages](#create-view-pages)
-    * [For Login](#login)    
-    * [For Dashboard](#dashboard)
+    * [Installation](#installation)    
+    * [For Login](#login)
+    * [For Idle](#idle)
+    * [For User Tax Details](#user-tax-details)
+    * [For User Consent Details](#user-consent-details)
+    * [For Recaptcha](#user-recaptcha)
+    * [For Change Password](#change-password)
+    * [For Change Email](#change-email)
+    * [For Marketing Preferences](#marketing-preferences)
+    * [For Account Activity](#account-activity)
+    * [For Tax Tips](#tax-tips)
+    * [For Service](#service)
+    * [For Privacy](#privacy)
+
+    
 * [Error Handling](#error-handling)
-* [CHANGELOG](#changelog)
+* [CHANGELOG](#change-log)
+
 
 <a name="technical-information"></a>
 ## Technical Information
 
+<a name="framework"></a>
+### Framework	: Angular
 
-### Framework	: Codeigniter
+<a name="version"></a>
+### Version	:9
 
-### Version	: 3.1.11
-
+<a name="installation"></a>
 ### Installation
 
-1. 	Download Codeigniter current version(3.1.11) from the Codeigniter official site i.e. "https://codeigniter.com/en/download". Change the folder name to "<insert folder name>"
-2. 	Keep your project within htdocs.
-3. 	Go to config folder. Open config.php and change your configurations.
-4. 	Under config folder open database.php and change database credentials like 'host','login', 'password','database' according to your local setup.
-5. 	Run the project in browser like 'localhost/developer.tatumgames.com'. You can see codeigniter default page.
-6. 	
-
-
-### Theme Integration
-
-1. Copy all the assets from theme and paste them under assets(path: public=>assets) folder.
-2. Have a look in the Controller section. There is a Common Controller and others.
-
-### Create Routing
-
-Go to routes.php under Config folder and change the "default_controller" to login.
-
-### Create Controllers
-
-	1.	Create controller "Login" and "Dashboard" with extending Commoncontroller.
-	2. 	Write functions in Controllers with common function index().
-
-### Create View Pages
-
-Controller name and view folder name will be same. In every view folder create index.ctp file for the page wise content. If controller name is Login, then view folder name will be "login"; If controller name is Dashboard, then view folder name will be "dashboard".
-
+1. 	First  of all, we are going to need Node js. NPM (node package manager, is a part of node js) is a tool for installing 3rd party libraries and dependencies to our project. If you don’t have it yet, you can download and install it from https://nodejs.org/en/
+2. 	If you have node js installed, the next step is installing the Angular CLI itself to your computer---npm install -g @angular/cli.
+g stands for global installation. If you use -g later you can use the CLI in any Angular project on your computer.
+3. 	After the installation is completed, you can use Angular CLI to create a new Angular project with the following command:ng new my-first-app
+4. 	After installing the CLI and creating a new Angular app, the final step is to start the project. To do that, we need to use the following command:ng serve -- open
+5. 	Run the project in browser like 'localhost:4200'. You can see angular default page.
+	
+<a name="login"></a>
 ### For Login
 
- 1. Paste the body content from auth-login.html to the path views=>login=>index.php.
- 2. Create signup.php same as before.
+ 1. Create login component .To do that ,we need to use the following command :ng g c signin/signin
+ 2. Create signup component same as before.
 
-### For Dashboard
+<a name="idle"></a>
+### For Idle
 
-The body content of index.html will be divided into different parts like "topnav.php", "leftpanel.php", "footer.php" and the main page content; These three pages will be created under "layout" of views Folder. The contents of "topnav.php", "leftpanel.php", "footer.php" are common for all pages after login, you have to call these three pages in every index.php.
+ 1. We need to use bn-ng-idle tool in app component
+ 2. If session idle for 15 minutes or more than that it is figure out by this tool.
 
- 1. Paste the body content from index.html to the path views=>dashboard=>index.php.
+<a name="user-tax-details"></a>
+ ### For User Tax Details
+
+ 1. Create tax-prepare-profile component .To do that ,we need to use the following command :ng g c tax-prepare-profile/tax-prepare-profile
+ 2. User personal info,tax info is figure out by this tool.
+
+<a name="user-consent-details"></a>
+ ### For User Consent Details
+
+ 1. Create tax-prepare-register component .To do that ,we need to use the following command :ng g c tax-prepare-register/tax-prepare-register
+ 2. User consent is figure out by this tool.
+
+<a name="user-recaptcha"></a>
+ ### For Recaptcha
+
+ 1.We have to load recaptcha library in signup component.We have to use ng recaptcha tool for that. 
+ 2. We have to call google site verify api for recaptcha thresold value.
  
+<a name="change-password"></a>
+ ### For Change Password
+
+ 1. Create update-password component .To do that ,we need to use the following command :ng g c update-password
+ 2. User change password is figure out by this tool.
+
+<a name="change-email"></a>
+ ### For Change Email
+
+ 1. Create update-email component .To do that ,we need to use the following command :ng g c update-email
+ 2. User change email is figure out by this tool.
+
+<a name="marketing-preferences"></a>
+### For Marketing Preferences
+
+ 1. Create marketing-preferences component .To do that ,we need to use the following command :ng g c marketing-preferences
+ 2. User marketing preferences is figure out by this tool.
+
+ <a name="account-activity"></a>
+### For Account Activity
+
+ 1. UPdate personal-info component .To do that ,we need to use the following command :ng g c personal-info
+ 2. User account activity is figure out by this tool.
+
+<a name="tax-tips"></a>
+### For Tax Tips
+
+ 1. UPdate tax-prepare-profile component .To do that ,we need to use the following command :ng g c tax-prepare-profile
+ 2. User tax tips is figure out by this tool.
+
  
+ <a name="service"></a>
+### For Service
+
+ 1. Create terms-service component .To do that ,we need to use the following command :ng g c terms-service
+ 2. User terms service is figure out by this tool.
+
+<a name="privacy"></a>
+### For Privacy
+
+  1. Update personal-info component .To do that ,we need to use the following command :ng g c personal-info
+ 2. User data && privacy is figure out by this tool.
+
 <a name="error-handling"></a>
 ## Error Handling
 
-If you are encountering a WordPress error, don't panic! Here is a list of common issues and how to solve them.
+If you are encountering a angular cli  error, don't panic! Here is a list of common issues and how to solve them.
 
-### The White Screen of Death
+### npm ERR! code ENOENT
 
-Both PHP errors and database errors can manifest as a white screen, a blank screen with no information, commonly known in the WordPress community as the WordPress White Screen of Death (WSOD).
+Try uninstalling clearing your cache first npm uninstall -g @angular/cli npm cache clean npm install -g @angular/cli@latest.
 
-There are a number of reasons for the WordPress white screen of death:
+### Module not found: Error: 
 
-* A Plugin is causing compatibility issues. If you can access the Administration Screens try deactivating all of your Plugins and then reactivating them one by one. If you are unable to access your Screens, log in to your website via FTP. Locate the folder wp-content/plugins and rename the Plugin folder plugins_old. This will deactivate all of your Plugins.
+If your component is inside the same directory, then you need to point your templateUrl to the same folder as well:
 
-* Your Theme may be causing the problem. This is especially likely if you are experiencing the white screen of death after you have just activated a new Theme, or created a New Site in a WordPress Network. Log in to the WordPress Administration Screens and activate the default WordPress Theme (e.g. Twenty Seventeen). If you can’t access your Administration Screens, access your website via FTP and navigate to the /wp-content/themes/ folder. Rename the folder for the active Theme.
-
-### Error Establishing Database Connection
-
-If you get a page featuring the message “Error Establishing Database Connection,” this means that there is a problem with the connection to your database and there could be a number of reasons for this. The following are possible reasons and solutions.
-
-#### 1 - Incorrect wp-config.php Information
-“Error establishing a database connection” is usually caused by an error in your wp-config.php file. Access your site in your FTP client. Open up wp-config.php and ensure that the following are correct:
-
-* Database name
-* Database username
-* Database password
-* Database host
-
-#### 2 - Incorrect wp-config.php Information
-The next step is to contact your web host. The following hosting issues may be causing the problem:
-
-Your database has met its quota and has been shut down.
-The server is down.
-Contact your hosting provider to see if either of these issues is causing your problem.
-
-#### 3 - Compromised Website
-If you have checked wp-config.php for errors, and confirmed with your host for hosting issues, it is possible that your site has been hacked.
-
-Scan your site with Sucuri SiteCheck to ensure that it hasn’t been compromised. If it has you should check out [My Site Was Hacked](https://wordpress.org/support/article/faq-my-site-was-hacked/).
-
-
-### Connection Timed Out
-
-The connection timed out error appears when your website is trying to do more than your server can manage. It is particularly common on shared hosting where your memory limit is restricted. Here are some things you can try:
-
-* Deactivate all Plugins. If deactivating all the WordPress Plugins on your site resolves the issue, reactivate them one-by-one to see which plugin is causing the problem. 
-* Switch to the default WordPress Theme. This should rule out any Theme-related problems.
-* Increase your memory limit in wp-config.php. If you are on shared hosting you may have to ask your hosting provider to increase your memory limit for you.
-* Increase the maximum execution time in your php.ini file. This is not a WordPress core file so if you are not sure how to edit it, contact your hosting provider to ask them to increase your maximum execution time. See below instructions for increasing maximum execution time.
-
-<a name="changelog"></a>
+<a name="change-log"></a>
 ## CHANGELOG
 
-1. 2020-06-08: Initial release 1.0.0
+1. 2020-08-03: Initial release 1.0.0

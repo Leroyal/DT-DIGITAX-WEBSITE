@@ -1,0 +1,59 @@
+.contact_background{
+	/*background: url('assets/images/background.png');*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.banner_inner{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left:0;
+	z-index: 1;
+	display: flex;
+    align-items: center;
+    height: 100%;
+}
+.ban_text{
+	width: 70%;
+	text-align: left;
+	padding-left: 30px;
+	box-sizing: border-box;
+}
+.ban_head{
+	font-size: 50px;
+	margin: 0;
+}
+.contact_sec{
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+	padding: 15px;
+}
+.contact_sec h2{
+	text-align: center;
+	font-size: 40px;
+}
+.contact_area{
+	width: 50%;
+	margin: 0 auto;
+}
+mat-form-field{
+	width: 100%;
+}
+
+.save_btn{
+	background: #03a9f4;
+    color: #fff;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+    margin-right: 10px;
+    padding: 3px 40px;
+    width: 200px;
+}
+.text-center{
+	text-align: center;
+}

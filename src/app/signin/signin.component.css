@@ -115,7 +115,7 @@ form p{
 	margin:0 0 20px 0 !important;
 }
 .forget_pass{
-	font-size: 12px;
+	font-size: 14px;
 	float: right;
     color: #e65100;
     line-height: 25px;
@@ -135,9 +135,25 @@ form p{
 .login_btn:hover{
 	box-shadow: 0 7px 10px 0px rgba(3, 169, 243, 0.3);
 }
+.center_txt{
+	text-align: center;
+	margin: 15px 0 !important;
+}
+.code_btn{
+	background: #e3e3e3;
+    color: #000;
+    border-radius: 8px;
+    width: 100%;
+    padding: 6px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    transition: all ease-in-out 0.3s;
+    box-shadow: none;
+}
 .form_info{
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
 	color: #607d8b;
 	line-height: 19px;
 	font-weight: 500;
@@ -155,19 +171,50 @@ form p{
 	color: #607d8b;
 }
 .remember_txt{
-	font-size: 12px;
+	font-size: 14px;
 	color:#607d8b;
 }
+.different_btn{
+	background: none;
+	border:none;
+	color: #03a9f4;
+}
+.cache_login{
+	width: 100%;
+	border:1px solid #f3f3f3;
+	border-bottom: none;
+}
+.hist_user{
+	background: none;
+	text-align: left;
+	border:none;
+	font-size: 16px;
+}
+.cache_login td{
+	padding: 10px;
+	border-bottom:1px solid #f3f3f3;
+	height: 60px;
+}
+.hist_user span{
+	font-size: 14px;
+	color: #ccc;
+}
 
-@media only screen and (min-width: 601px) and (max-width: 768px){
+@media only screen and (min-width: 921px) and (max-width: 1200px){
+	.signup_right,
+	.signup_left{
+		padding: 30px 90px;
+	}
+}
+@media only screen and (min-width: 601px) and (max-width: 920px){
 	.signup_left{
 		width: 100%;
-		height: 50vh;
+		height: auto;
 		padding: 43px 140px;
 	}
 	.signup_right{
 		width: 100%;
-		height: 60vh;
+		height: auto;
 		padding: 43px 140px;
 	}
 }
