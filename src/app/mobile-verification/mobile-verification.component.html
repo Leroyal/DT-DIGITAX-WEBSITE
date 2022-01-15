@@ -1,0 +1,34 @@
+<section class="full-width">
+	
+	<div class="infoBox">
+		<div class="myinfo_section">
+			<img src="assets/images/digitax_usa_icon.png" alt="" width="140">
+			<h2 class="text-center">Let's make sure its you</h2>
+			<p>Verify your info</p>
+			<p>This helps keep your account safe.</p>
+		</div>
+		<form [formGroup]="mobileVerificationForm" (ngSubmit)="mobileVerifyFormSubmit()">
+			<div class="form_area">
+				<label id="example-radio-group-label">Choose one option:</label>
+				<mat-radio-group class="example-radio-group" formControlName="verify_mobile">
+					<mat-radio-button class="example-radio-button" value="text">
+						Get a code texted to:<br>******{{phoneNumberStorage}}
+					</mat-radio-button>
+					<mat-radio-button class="example-radio-button" value="email">
+						Get a code emailed to:<br>{{firstWordEmail}}*****{{lastWordEmail}}@gmail.com
+					</mat-radio-button>
+					<mat-radio-button class="example-radio-button" value="other">
+						Confirm my account a different way<br>(takes longer)
+					</mat-radio-button>
+				</mat-radio-group>
+				<p class="btn_row">
+					
+
+					<button type="submit" class="save_btn" mat-raised-button>Continue</button>
+
+					
+				</p>
+			</div>
+		</form>
+	</div>
+</section>
